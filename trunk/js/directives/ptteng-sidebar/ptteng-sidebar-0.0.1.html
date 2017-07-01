@@ -1,0 +1,34 @@
+<div class=" sidebar ng-isolate-scope" role="navigation">
+    <!--collapse控制默认显示还是隐藏-->
+    <div class="sidebar-nav navbar-collapse collapse">
+        <ul class="nav in side" id="side-menu" ng-model="collapseVar" role="tablist" aria-multiselectable="true"
+            bs-collapse>
+
+
+            <!--<li ui-sref-active="active" class="active">-->
+            <!--<a href="#/dashboard"><i class="fa fa-home "></i> 欢迎页</a>-->
+            <!--</li>-->
+
+            <!--<li ng-repeat="side in sideList" ui-sref-active="active" class="active">-->
+            <!--<a href="#/{{side.url}}"><i class="fa fa-home fa-fw"></i> {{side.name}}</a>-->
+            <!--</li>-->
+
+
+            <li class="nav-first-level" ng-class="{active: collapseVar==($index)}" ng-repeat="side in sideList">
+                <a href="" bs-collapse-toggle role="tab">
+                    <i class="fa  fa-pencil"></i>
+                    {{side.name}}
+                    <span class="fa arrow "></span>
+                </a>
+                <ul class="nav nav-second-level side" ng-class={in:side.se} role="tabpanel" bs-collapse-target>
+                    <li ui-sref-active="active" ng-repeat="n in side.nodes">
+                        <a href="" ng-if="n.url" ui-sref="{{n.url}}" ui-sref-opts="{inherit: false}"
+                           ng-class="{'navActive': currentUrl ? currentUrl == n.url : n.selected}"
+                           ng-click="sideClick(n.id)">{{n.name}}</a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</div>
+

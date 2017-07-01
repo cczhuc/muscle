@@ -1,0 +1,15 @@
+<div class="dropdown">
+    <a class="dropdown-toggle" id='{{ dateId }}' role="button" data-toggle="dropdown" >
+        <div class="input-group">
+            <input type="text" class="form-control" data-ng-model="dateDataP" ng-change="dateChange()">
+            <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+        </div>
+    </a>
+    <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+        <datetimepicker   data-ng-model="dateData"
+                          data-datetimepicker-config="config"
+                          data-before-render="startDateBeforeRender($dates)"
+        ></datetimepicker>
+
+    </ul>
+</div>

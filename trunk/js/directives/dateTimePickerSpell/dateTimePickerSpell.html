@@ -1,0 +1,33 @@
+<div class='row'>
+    <div class="dropdown form-group col-sm-5 col-xs-12 start-lable">
+        <a class="dropdown-toggle" id="{{ drop1 }}" role="button" data-toggle="dropdown" data-target="#"
+           >
+            <div class="input-group date">
+                <input type="text" class="form-control" data-ng-model="dateRangeStartP" ng-change="changeDateStart()">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+            </div>
+        </a>
+        <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+            <datetimepicker data-ng-model="dateRangeStart"
+                            data-datetimepicker-config="configStart"
+                            data-on-set-time="startDateOnSetTime()"
+                            data-before-render="startDateBeforeRender($dates)"></datetimepicker>
+        </ul>
+    </div>
+    <label class="control-label col-md-2 middle-lable">——</label>
+    <div class="dropdown form-group col-sm-5 col-xs-12 end-lable">
+        <a class="dropdown-toggle" id="{{ drop2 }}" role="button" data-toggle="dropdown" data-target="#"
+           >
+            <div class="input-group date">
+                <input type="text" class="form-control" data-ng-model="dateRangeEndP" ng-change="changeDateEnd()">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+            </div>
+        </a>
+        <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+            <datetimepicker data-ng-model="dateRangeEnd"
+                            data-datetimepicker-config="configEnd"
+                            data-on-set-time="endDateOnSetTime()"
+                            data-before-render="endDateBeforeRender($view, $dates, $leftDate, $upDate, $rightDate)"></datetimepicker>
+        </ul>
+    </div>
+</div>
