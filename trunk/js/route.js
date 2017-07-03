@@ -250,15 +250,16 @@ function projectRouteConfig($stateProvider, $urlRouterProvider, $ocLazyLoadProvi
         })
         // 业务管理-认证管理
         .state('field.approvedList', {
-            url: '/approvedList',
+            url: '/approvedList?page&size',
             templateUrl: 'views/business/approvedList.html',
             controller: 'ApprovedListCtrl',
             controllerAs: 'vm',
-            // resolve: {
-            //     loadMyFile: _lazyLoad([
-            //         '',
-            //     ])
-            // }
+            resolve: {
+                loadMyFile: _lazyLoad([
+                    'js/controllers/business/approvedList.js',
+                    "js/directives/ptteng-paging/pagination.js"
+                ])
+            }
         })
         .state('field.approvedDetails', {
             url: '/approvedDetails',

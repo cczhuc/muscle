@@ -911,3 +911,7 @@ input[type="number"] {
 .divTableBody {
     display: table-row-group;
 }
+/*认证管理*/
+.text-green {
+    color:#00ff00;
+}
