@@ -1,0 +1,20 @@
+.f_inputbox {
+  display: inline;
+  margin: 0 10px;
+  width: 200px;
+  vertical-align: middle;
+}
+.f_redline {
+  padding-left: 10px;
+  border-left: 3px solid red;
+}
+.f_marginleft {
+  margin-left: 15px;
+}
+.f_btnpadding {
+  margin-right: 20px;
+  padding: 6px 20px;
+}
+.f_indent {
+  text-indent: 1.2em;
+}
