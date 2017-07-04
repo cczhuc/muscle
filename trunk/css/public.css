@@ -14,6 +14,10 @@
 .margin-left-5 {
     margin-left: 5%;
 }
+.margin-lr-10 {
+    margin: 0 10%;
+}
+
 .btn-margin {
     margin-right: 10px;
 }
@@ -94,7 +98,12 @@
 .pd-right-0 {
     padding-right: 0!important;
 }
-
+.pd-right-8 {
+    padding-right: 8px;
+}
+.pd-right-10 {
+    padding-right: 10px;
+}
 .f-size-12 {
     font-size: 12px!important;
 }
@@ -877,40 +886,6 @@ input[type="number"] {
     display: none;
 }
 
-/* div table */
-.divTable{
-    display: table;
-    width: 100%;
-    font-size: 14px;
-}
-.divTableRow {
-    display: table-row;
-}
-.divTableRow:nth-child(odd) {
-    background: #f9f9f9;
-}
-.divTableHeading {
-    display: table-header-group;
-    text-align: center;
-    font-weight: bolder;
-}
-.divTableCell, .divTableHead {
-    border: 1px solid #ddd;
-    display: table-cell;
-    padding: 7px 10px;
-}
-
-.divTableHeading {
-    display: table-header-group;
-    font-weight: bold;
-}
-.divTableFoot {
-    display: table-footer-group;
-    font-weight: bold;
-}
-.divTableBody {
-    display: table-row-group;
-}
 /*认证管理*/
 .text-green {
     color:#00ff00;

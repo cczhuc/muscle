@@ -1,0 +1,48 @@
+<div class="modal ng-scope top am-fade" tabindex="-1" role="dialog" aria-hidden="true" style="display: block;">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <a type="button" class="close" style="font-size: 15px;padding-top: 8px" ng-click="vm.cancel()"><span aria-hidden="true">关闭</span>
+                </a>
+                <h3 class="modal-title">操作提示</h3>
+            </div>
+            <div class="modal-body margin-lr-10">
+                <form name='checkForm'>
+                    <div class="col-md-12 ">
+                        <p>请选择通过或拒绝审核信息</p>
+                    </div>
+                    <div class="row pd-bottom-20">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <div class="col-md-5 col-md-offset-1">
+                                    <input type="radio" name="check" id="access" value="1" ng-model="vm.checkStatu">
+                                    <label for="access" class="control-label word-spacing-25">通过</label>
+                                </div>
+                                <div class="col-md-3 col-md-offset-3">
+                                    <input type="radio" name="check" id="refuse" value="2" ng-model="vm.checkStatu">
+                                    <label for="refuse" class="control-label word-spacing-25">拒绝</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row pd-bottom-20" ng-if="vm.checkStatu==2">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <div class="col-md-12">
+                                    <textarea class="form-control" cols="33" rows="3" placeholder="请填写拒绝理由"
+                                              ng-if="true" ng-model="vm.rejectReason" maxlength="25">
+                                    </textarea>
+                                    <span class="pull-right area-span">{{vm.rejectReason.length||0}}/25</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-warning" type="button" ng-click="vm.cancel()">取消</button>
+                <button class="btn btn-primary" type="button" ng-click="vm.ok()" ng-disabled="vm.checkStatu==2&&!vm.rejectReason.length">确认</button>
+            </div>
+        </div>
+    </div>
+</div>

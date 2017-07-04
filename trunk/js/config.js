@@ -94,77 +94,42 @@ angular.module('admin', ['oc.lazyLoad', 'ui.router', 'ngCookies', 'mgcrea.ngStra
             });
             modal.$promise.then(modal.show);
         };
-        //职业列表-删除确认
-        $rootScope.operationConfirm = function (title, content, okFn, cancelFn) {
-            var modal = $modal({
-                html: true,
-                show: false,
-                templateUrl: 'views/template/operationConfirm.html',
-                controller: function ($scope) {
-                    $scope.title = title;
-                    $scope.content = content;
-                    $scope.ok = function () {
-                        typeof okFn == 'function' && okFn();
-                        modal.$promise.then(modal.hide);
-                    };
-                    $scope.cancel = function ($scope) {
-                        typeof cancelFn == 'function' && cancelFn();
-                        modal.$promise.then(modal.hide);
-                    };
-                }
-            });
-            modal.$promise.then(modal.show);
-        };
-        //候选人列表预约选择框，依赖于datepickerspell指令
-        $rootScope.subscribeConfirm = function (okFn, cancelFn) {
-            var modal = $modal({
-                html: true,
-                show: false,
-                controllerAs:'vm',
-                templateUrl: 'views/template/subscribeConfirm.html',
-                controller: function ($scope) {
-                    var vm = this;
-                    //提交按钮禁用状态
-                    $scope.statusDis = true;
-                    //选择成功失败，默认成功
-                    $scope.bookStatu = 1;
-                    //传到服务的交互数据
-                    var passData = {
-                        statu:$scope.bookStatu,
-                        time:""
-                    };
-                    //修改statu的change事件，1为成功，2为失败
-                    $scope.statusChange = function () {
-                        if ($scope.bookStatu==1){
-                            $scope.disab=2;
-                            $scope.statusDis=true;
-                        }else {
-                            $scope.disab=1;
-                            $scope.statusDis=false
-                        }
-                        passData.statu = $scope.bookStatu;
-                    };
-                    vm.dateTime=null;
-                    $scope.$watch('vm.dateTime',function () {
-                        if ($scope.bookStatu==1&&vm.dateTime!=null){
-                            $scope.statusDis=false;
-                            passData.time = vm.dateTime;
-                        }else if (vm.dateTime==null){
-                            $scope.statusDis=true;
-                        }
-                    });
-                    $scope.ok = function () {
-                        productService.addProduct(passData);
-                        typeof okFn == 'function' && okFn();
-                        modal.$promise.then(modal.hide);
-                    };
-                    $scope.cancel = function () {
-                        typeof cancelFn == 'function' && cancelFn();
-                        modal.$promise.then(modal.hide);
-                    };
-                }
-            });
-            modal.$promise.then(modal.show);
+        //认证管理-审核认证信息
+        $rootScope.approvedCheck = function (okFn,cancelFn) {
+          var modal = $modal({
+              html:true,
+              show:true,
+              controllerAs:'vm',
+              templateUrl:'views/template/approvedCheck.html',
+              controller:function ($scope) {
+                  var vm =this;
+                  //提交按钮禁用状态
+                  vm.statusDis = true;
+                  //选择通过拒绝、默认通过
+                  vm.checkStatu = "1";
+                  //传到服务的交互数据
+                  var passData = {
+                      rejectReason:"",
+                      checkStatu:""
+                  };
+                  vm.ok = function () {
+                      passData.rejectReason = vm.rejectReason;
+                      passData.checkStatu = vm.checkStatu;
+                      if(passData.checkStatu==1) {
+                          passData.rejectReason="";
+                      }
+                      console.log(passData);
+                      // 发送请求，后端暂无接口，不知道怎么写假数据
+                      typeof okFn == 'function' && okFn();
+                      modal.$promise.then(modal.hide);
+                  };
+                  vm.cancel = function () {
+                      typeof cancelFn == 'function' && cancelFn();
+                      modal.$promise.then(modal.hide);
+                  };
+              }
+          });
+          modal.$promise.then(modal.show);
         };
     });
 

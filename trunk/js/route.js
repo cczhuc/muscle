@@ -28,9 +28,9 @@ function projectRouteConfig($stateProvider, $urlRouterProvider, $ocLazyLoadProvi
                 loadMyFile: _lazyLoad([
                     'js/controllers/admin/mainController.js',
                     'js/directives/ptteng-sidebar/ptteng-sidebar-0.0.1.js',
-                    // 'js/directives/searchParams/search-params.js',
+                    'js/directives/searchParams/search-params.js',
                     'js/directives/ptteng-user/ptteng-user-0.0.1.js',
-                    // 'page',
+                    'page',
                     "js/directives/numberic/numberic.js"
                 ])
             }
@@ -131,8 +131,7 @@ function projectRouteConfig($stateProvider, $urlRouterProvider, $ocLazyLoadProvi
             controllerAs: 'vm',
             resolve: {
                 loadMyFile: _lazyLoad([
-                    'js/controllers/business/userList.js',
-                    "js/directives/ptteng-paging/pagination.js"
+                    'js/controllers/business/userList.js'
                 ])
             }
         })
@@ -257,21 +256,20 @@ function projectRouteConfig($stateProvider, $urlRouterProvider, $ocLazyLoadProvi
             controllerAs: 'vm',
             resolve: {
                 loadMyFile: _lazyLoad([
-                    'js/controllers/business/approvedList.js',
-                    "js/directives/ptteng-paging/pagination.js"
+                    'js/controllers/business/approvedList.js'
                 ])
             }
         })
         .state('field.approvedDetails', {
-            url: '/approvedDetails',
+            url: '/approvedDetails?id',
             templateUrl: 'views/business/approvedDetails.html',
             controller: 'ApprovedDetailsCtrl',
             controllerAs: 'vm',
-            // resolve: {
-            //     loadMyFile: _lazyLoad([
-            //         '',
-            //     ])
-            // }
+            resolve: {
+                loadMyFile: _lazyLoad([
+                    'js/controllers/business/approvedDetails.js'
+                ])
+            }
         })
         // 业务管理-合作医院管理
         .state('field.hospitalList', {
