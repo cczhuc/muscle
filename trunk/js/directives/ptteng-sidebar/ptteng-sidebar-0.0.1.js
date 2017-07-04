@@ -1,5 +1,5 @@
 'use strict';
-
+/***13   24   27   三处console.log**********/
 angular.module('admin')
     .directive('sidebar', function () {
         return {
@@ -10,7 +10,7 @@ angular.module('admin')
             controller: function ($http, $scope, $rootScope, $state, $location, roleService, managerService, moduleService, recordCookies, commonUtil) {
 
                 var self = managerService.getSelfDetail();
-                console.log("self",self);
+                // console.log("self",self);
                 if (self == undefined) {
                     $rootScope.alert("您还未登录", function () {
                         $state.go("login");
@@ -21,10 +21,10 @@ angular.module('admin')
                 }
 
                 roleService.getRole(self.role.id).then(function (res) {
-                    console.log(res);
+                    // console.log(res);
                     if (res.data.code == 0) {
                         var moduleIDs = Object.keys(res.data.data.role.permissionsSet);
-                        console.log("moduleIDs",moduleIDs);
+                        // console.log("moduleIDs",moduleIDs);
                         // console.log("save permission set");
                         localStorage["permissionsSet"] = JSON.stringify(res.data.data.role.permissionsSet);
                         $rootScope.permissionsSet = JSON.parse(localStorage["permissionsSet"]);
