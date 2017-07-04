@@ -340,33 +340,33 @@ function projectRouteConfig($stateProvider, $urlRouterProvider, $ocLazyLoadProvi
             templateUrl: 'views/operation/parameterSetting.html',
             controller: 'ParameterSettingCtrl',
             controllerAs: 'vm',
-            // resolve: {
-            //     loadMyFile: _lazyLoad([
-            //         '',
-            //     ])
-            // }
+            resolve: {
+                loadMyFile: _lazyLoad([
+                    'js/controllers/operation/paranmeterSetting.js',
+                ])
+            }
         })
         .state('field.messageList', {
             url: '/messageList',
             templateUrl: 'views/operation/messageList.html',
             controller: 'MessageListCtrl',
             controllerAs: 'vm',
-            // resolve: {
-            //     loadMyFile: _lazyLoad([
-            //         '',
-            //     ])
-            // }
+            resolve: {
+                loadMyFile: _lazyLoad([
+                    'js/controllers/operation/messageList.js',
+                ])
+            }
         })
         .state('field.messageEdit', {
             url: '/messageEdit',
             templateUrl: 'views/operation/messageEdit.html',
             controller: 'MessageEditCtrl',
             controllerAs: 'vm',
-            // resolve: {
-            //     loadMyFile: _lazyLoad([
-            //         '',
-            //     ])
-            // }
+            resolve: {
+                loadMyFile: _lazyLoad([
+                    'js/controllers/operation/messageEdit.js',
+                ])
+            }
         })
         .state('field.versionManagement', {
             url: '/versionManagement',
