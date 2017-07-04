@@ -1,0 +1,22 @@
+{
+  "code": 0,
+  "message": "message",
+  "data": {
+    "id":"U2017011112",
+    "approvedId":1710000001,
+    "time":"1498965071000",
+    "creatAt":"1498965041000",
+    "telphone":"13000000001",
+    "IdCardNumber":"430822199308110011",
+    "name":"刘德华",
+    "number":"238293813829367892",
+    "status":1,
+    "hospital":"北京东城中医医院",
+    "reason":"拒绝、取消理由",
+    "img1":"",
+    "img2":"",
+    "positionalTitle":1
+  }
+}
+
+

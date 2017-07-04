@@ -1,8 +1,12 @@
 angular.module("admin").factory("portService",function ($http,address) {
     return {
-        // 获取banner图,type  0-首页 1-找职位 2-找精英
+        // 获取认证列表
         getApprovedList: function (data) {
             return $http.get(address.approvedList_url(),{params:data})
+        },
+        // 获取认证详情
+        getApprovedDetails: function (id) {
+            return $http.get(address.approvedDetails_url(id))
         },
 
         getUserList: function (data) {

@@ -306,6 +306,15 @@
     border: 1px solid #ddd;
     display: table-cell;
     padding: 7px 10px;
+    word-break: break-all;
+}
+.divTableFoot {
+    display: table-footer-group;
+    font-weight: bold;
+}
+.divTableBody {
+    display: table-row-group;
+    text-align: center;
 }
 
 /*萝卜多公司列表的表格太多了，为了小屏幕显示，减小padding*/
