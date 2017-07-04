@@ -94,6 +94,29 @@ angular.module('admin', ['oc.lazyLoad', 'ui.router', 'ngCookies', 'mgcrea.ngStra
             });
             modal.$promise.then(modal.show);
         };
+
+        //操作确认
+        $rootScope.operationConfirm = function (title, content, okFn, cancelFn) {
+            var modal = $modal({
+                html: true,
+                show: false,
+                templateUrl: 'views/template/operationConfirm.html',
+                controller: function ($scope) {
+                    $scope.title = title;
+                    $scope.content = content;
+                    $scope.ok = function () {
+                        typeof okFn == 'function' && okFn();
+                        modal.$promise.then(modal.hide);
+                    };
+                    $scope.cancel = function ($scope) {
+                        typeof cancelFn == 'function' && cancelFn();
+                        modal.$promise.then(modal.hide);
+                    };
+                }
+            });
+            modal.$promise.then(modal.show);
+        };
+
         //认证管理-审核认证信息
         $rootScope.approvedCheck = function (okFn,cancelFn) {
           var modal = $modal({
