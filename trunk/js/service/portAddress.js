@@ -3,7 +3,10 @@ angular.module("admin").factory("address",function ($state,$http){
         // 获取认证列表
         approvedList_url: function () {
             return "JSON/approvedList.json"
-        }
+        },
 
+        userList_url: function() {
+            return "JSON/userList.json"
+        }
     }
 });

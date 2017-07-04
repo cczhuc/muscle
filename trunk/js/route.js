@@ -127,13 +127,14 @@ function projectRouteConfig($stateProvider, $urlRouterProvider, $ocLazyLoadProvi
         .state('field.user', {
             url: '/user',
             templateUrl: 'views/business/user.html',
-            controller: 'UserCtrl',
+            controller: 'UserListCtrl',
             controllerAs: 'vm',
-            // resolve: {
-            //     loadMyFile: _lazyLoad([
-            //         '',
-            //     ])
-            // }
+            resolve: {
+                loadMyFile: _lazyLoad([
+                    'js/controllers/business/userList.js',
+                    "js/directives/ptteng-paging/pagination.js"
+                ])
+            }
         })
         //用户管理-患者版
         .state('field.patientDetails', {
