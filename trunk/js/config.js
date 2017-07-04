@@ -106,7 +106,7 @@ angular.module('admin', ['oc.lazyLoad', 'ui.router', 'ngCookies', 'mgcrea.ngStra
                   //提交按钮禁用状态
                   vm.statusDis = true;
                   //选择通过拒绝、默认通过
-                  vm.checkStatu = 1;
+                  vm.checkStatu = "1";
                   //传到服务的交互数据
                   var passData = {
                       rejectReason:"",
@@ -115,6 +115,9 @@ angular.module('admin', ['oc.lazyLoad', 'ui.router', 'ngCookies', 'mgcrea.ngStra
                   vm.ok = function () {
                       passData.rejectReason = vm.rejectReason;
                       passData.checkStatu = vm.checkStatu;
+                      if(passData.checkStatu==1) {
+                          passData.rejectReason="";
+                      }
                       console.log(passData);
                       // 发送请求，后端暂无接口，不知道怎么写假数据
                       typeof okFn == 'function' && okFn();
