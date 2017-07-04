@@ -1,7 +1,7 @@
 'use strict';
 angular.module('admin')
     // 认证管理-认证列表-认证状态
-    .filter('approvedListFilter', function () {
+    .filter('approvedListStatusFilter', function () {
         return function (status) {
             switch (status) {
                 case 0:
@@ -16,20 +16,16 @@ angular.module('admin')
         }
     })
     // 拒绝取消理由
-    .filter('approvedListFilter', function () {
-        return function (status) {
-            switch (status) {
-                case 0:
-                    return "已认证";
-                case 1:
-                    return "未认证";
-                case 2:
-                    return "已拒绝";
-                case 3:
-                    return "已撤销";
+    .filter('approvedListReasonFilter', function () {
+        return function (reason) {
+            if (reason==="") {
+                return "—";
+            }
+            else {
+                return reason
             }
         }
-    })
+    });
 
 
 

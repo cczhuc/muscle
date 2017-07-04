@@ -28,9 +28,9 @@ function projectRouteConfig($stateProvider, $urlRouterProvider, $ocLazyLoadProvi
                 loadMyFile: _lazyLoad([
                     'js/controllers/admin/mainController.js',
                     'js/directives/ptteng-sidebar/ptteng-sidebar-0.0.1.js',
-                    // 'js/directives/searchParams/search-params.js',
+                    'js/directives/searchParams/search-params.js',
                     'js/directives/ptteng-user/ptteng-user-0.0.1.js',
-                    // 'page',
+                    'page',
                     "js/directives/numberic/numberic.js"
                 ])
             }
