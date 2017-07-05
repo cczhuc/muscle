@@ -1,20 +1,29 @@
-.f_inputbox {
+.f-inputbox {
   display: inline;
   margin: 0 10px;
   width: 200px;
   vertical-align: middle;
 }
-.f_redline {
+.f-redline {
   padding-left: 10px;
   border-left: 3px solid red;
 }
-.f_marginleft {
+.f-marginleft {
   margin-left: 15px;
 }
-.f_btnpadding {
+.f-btnpadding {
   margin-right: 20px;
   padding: 6px 20px;
 }
-.f_indent {
+.f-indent {
   text-indent: 1.2em;
+}
+.f-short {
+  width: calc(80%);
+}
+.f-lineheight {
+  margin: 10px 0;
+}
+.f-min80 {
+  min-width: 80px;
 }

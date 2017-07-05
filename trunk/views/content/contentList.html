@@ -1,3 +1,124 @@
-<div class="row">
-    这是内容管理页面
+<div class="panel panel-default">
+    <form class="form-horizontal">
+        <div class="panel-body">
+            <div class="row pd-bottom-20">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label class="control-label col-md-4 word-spacing-25">标&emsp;&emsp;题</label>
+                        <div class="col-md-8">
+                            <input type="text" class="form-control">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label class="control-label col-md-4">创建日期</label>
+                        <div class="col-md-8">
+                            <input type="text" class="form-control" size="20" bs-datepicker autoclose="true"
+                                    data-date-format="yyyy-MM-dd" data-date-type="number"
+                                    data-max-date="{{vm.searchParams.endAt}}"
+                                    ng-model="vm.searchParams.startAt">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label class="control-label col-md-4 text-center ">—</label>
+                        <div class="col-md-8">
+                            <input type="text" class="form-control" size="20" bs-datepicker autoclose="true"
+                                    data-date-format="yyyy-MM-dd" data-date-type="number"
+                                    ng-model="vm.searchParams.endAt" data-min-date="{{vm.searchParams.startAt}}">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row pd-bottom-20">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label class="control-label col-md-4 word-spacing-25">创&ensp;建&ensp;者</label>
+                        <div class="col-md-8">
+                            <input type="text" class="form-control">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label class="control-label col-md-4 word-spacing-25">作&emsp;&emsp;者</label>
+                        <div class="col-md-8">
+                            <select class="form-control" ng-model="vm.searchParams.status">
+                                <option value="">全部</option>
+                                <option value="2">已认证</option>
+                                <option value="1">未认证</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label class="control-label col-md-4 word-spacing-25">状态</label>
+                        <div class="col-md-8">
+                            <select class="form-control" ng-model="vm.searchParams.status">
+                                <option value="">全部</option>
+                                <option value="2">已认证</option>
+                                <option value="1">未认证</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row pd-bottom-2">
+                <div class="col-md-4 pull-right text-right">
+                    <search params="vm.searchParams"></search>
+                </div>
+            </div>
+        </div>
+    </form>
 </div>
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <strong>内容管理</strong>
+        <div class="btn-group pull-right">
+            <button class="btn btn-primary btn-xs" ui-sref="field.contentEdit" ui-sref-opts="{reload:true}" href="#/messageEdit">
+                <i class="fa fa-plus-square fa-fw"></i>新增
+            </button>
+        </div>
+    </div>
+    <div class="panel-body table-responsive">
+        <table class="table table-striped add-table-border">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>申请时间</th>
+                    <th>手机号</th>
+                    <th>姓名</th>
+                    <th>医师资格证号</th>
+                    <th>认证状态</th>
+                    <th>拒绝/取消理由</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!--<tr ng-repeat="item in vm.approvedList track by $index">-->
+                <!--<td>{{item.approvedId}}</td>-->
+                <!--<td>-->
+                <!--<div>{{item.time|date:'yyyy-MM-dd'}}</div>-->
+                <!--<div>{{item.time|date:'HH:mm:ss'}}</div>-->
+                <!--</td>-->
+                <!--<td>{{item.telphone}}</td>-->
+                <!--<td>{{item.name}}</td>-->
+                <!--<td>{{item.number}}</td>-->
+                <!--<td class="text-red" ng-class="{'text-green':item.status==0}">{{item.status|approvedListFilter}}</td>-->
+                <!--<td>{{item.reason}}</td>-->
+                <!--<td>-->
+                <!--<a  type="button" class="btn btn-sm">医师详情</a>-->
+                <!--<a  type="button" class="btn btn-sm">审核</a>-->
+                <!--<a  type="button" class="btn btn-sm">查看</a>-->
+                <!--</td>-->
+                <!--</tr>-->
+            </tbody>
+        </table>
+    </div>
+    <pagination ng-if="vm.total" total="{{vm.total}}"></pagination>
+</div>
+

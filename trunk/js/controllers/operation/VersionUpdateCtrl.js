@@ -23,6 +23,18 @@
             // code
         }
         vm.f_info = ['你还','再见','哈哈'];
+        // 添加版本信息
+        vm.addTag = function(){
+            vm.f_info.push('a');
+        };
+        // 删除版本信息
+        vm.deleteTag = function($index){
+            if(vm.f_info.length>1){
+                vm.f_info.splice($index,1);
+            }else {
+                alert('至少有一条信息')
+            }
+        };
     }
 
 })();

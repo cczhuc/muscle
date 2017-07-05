@@ -313,22 +313,22 @@ function projectRouteConfig($stateProvider, $urlRouterProvider, $ocLazyLoadProvi
             templateUrl: 'views/content/contentList.html',
             controller: 'ContentListCtrl',
             controllerAs: 'vm',
-            // resolve: {
-            //     loadMyFile: _lazyLoad([
-            //         '',
-            //     ])
-            // }
+            resolve: {
+                loadMyFile: _lazyLoad([
+                    'js/controllers/content/contentList.js',
+                ])
+            }
         })
         .state('field.contentEdit', {
             url: '/contentEdit',
             templateUrl: 'views/content/contentEdit.html',
             controller: 'ContentEditCtrl',
             controllerAs: 'vm',
-            // resolve: {
-            //     loadMyFile: _lazyLoad([
-            //         '',
-            //     ])
-            // }
+            resolve: {
+                loadMyFile: _lazyLoad([
+                    'js/controllers/content/contentEdit.js',
+                ])
+            }
         })
         // 内容管理结束
 
@@ -393,22 +393,22 @@ function projectRouteConfig($stateProvider, $urlRouterProvider, $ocLazyLoadProvi
             templateUrl: 'views/operation/opinionList.html',
             controller: 'OpinionListCtrl',
             controllerAs: 'vm',
-            // resolve: {
-            //     loadMyFile: _lazyLoad([
-            //         '',
-            //     ])
-            // }
+            resolve: {
+                loadMyFile: _lazyLoad([
+                    'js/controllers/operation/opinionList.js',
+                ])
+            }
         })
         .state('field.opinionDetails', {
             url: '/opinionDetails',
             templateUrl: 'views/operation/opinionDetails.html',
             controller: 'OpinionDetailsCtrl',
             controllerAs: 'vm',
-            // resolve: {
-            //     loadMyFile: _lazyLoad([
-            //         '',
-            //     ])
-            // }
+            resolve: {
+                loadMyFile: _lazyLoad([
+                    'js/controllers/operation/opinionDetails.js',
+                ])
+            }
         })
         // 运营管理结束
 

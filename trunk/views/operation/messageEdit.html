@@ -7,7 +7,7 @@
             <div class="form-group">
                 <label class="col-md-2 control-label">*标题名称</label>
                 <div class="col-md-8">
-                    <input class="form-control" type="text" name="f_messageTitle" ng-model="vm.params.title" maxlength="500" ng-class="{'error':myform.f_messageTitle.$invalid && myform.f_messageTitle.$touched}" required>
+                    <input class="form-control" type="text" name="f-messageTitle" ng-model="vm.params.title" maxlength="500" ng-class="{'error':myform.f-messageTitle.$invalid && myform.f-messageTitle.$touched}" required>
                 </div>
             </div>
             <div class="form-group">
@@ -15,15 +15,15 @@
                 <div class="col-md-8">
                     <div class="row">
                         <div class="col-md-3">
-                            <label><input type="checkbox" name="f_peoples" required> 所有人</label>
+                            <label><input type="checkbox" name="f-peoples" required> 所有人</label>
                         </div>
                         <div class="col-md-3">
-                            <label><input type="checkbox" name="f_peoples" required> 所有患者</label>
+                            <label><input type="checkbox" name="f-peoples" required> 所有患者</label>
                         </div>
                         <div class="col-md-5">
-                            <label><input type="checkbox" name="f_peoples" required> 所有医师</label><br>
-                            <label class="f_indent"><input type="checkbox" name="f_peoples" required> 认证医师</label><br>
-                            <label class="f_indent"><input type="checkbox" name="f_peoples" required> 未认证医师</label>
+                            <label><input type="checkbox" name="f-peoples" required> 所有医师</label><br>
+                            <label class="f-indent"><input type="checkbox" name="f-peoples" required> 认证医师</label><br>
+                            <label class="f-indent"><input type="checkbox" name="f-peoples" required> 未认证医师</label>
                         </div>
                     </div>
                 </div>
@@ -31,15 +31,15 @@
             <div class="form-group">
                 <label class="col-md-2 control-label word-spacing-25">*消 息</label>
                 <div class="col-md-8">
-                    <textarea class="form-control" type="text" ng-model="vm.params.content" maxlength="25" name="f_message" ng-class="{'error':myform.f_message.$invalid && myform.f_message.$touched}" required></textarea>
+                    <textarea class="form-control" type="text" ng-model="vm.params.content" maxlength="25" name="f-message" ng-class="{'error':myform.f-message.$invalid && myform.f-message.$touched}" required></textarea>
                 </div>
             </div>
             <div class="form-group" ng-if="vm.params.type!=='4'">
                 <label class="col-md-2 control-label">定时发送</label>
                 <div class="col-md-8">
                     <label><input type="checkbox" ng-model="vm.params.url">
-                        <input type="text" size="10" data-date-format="yyyy/MM/dd" class="form-control f_inputbox" ng-model="sharedDate1" data-autoclose="1" placeholder="日期" bs-datepicker> 日期
-                        <input type="text" size="8" class="form-control f_inputbox" ng-model="sharedDate" data-time-format="HH:mm:ss a" data-autoclose="0" placeholder="时分" bs-timepicker> 时分
+                        <input type="text" size="10" data-date-format="yyyy/MM/dd" class="form-control f-inputbox" ng-model="sharedDate1" data-autoclose="1" placeholder="日期" bs-datepicker> 日期
+                        <input type="text" size="8" class="form-control f-inputbox" ng-model="sharedDate" data-time-format="HH:mm:ss a" data-autoclose="0" placeholder="时分" bs-timepicker> 时分
                     </label>
                 </div>
             </div>
@@ -47,14 +47,14 @@
                 <label class="col-md-2 control-label word-spacing-25">通知栏推送</label>
                 <div class="col-md-10 padding-0">
                     <div class="col-md-12 ">
-                        <label><input type="checkbox"> <span class="f_inputbox">推送</span></label>
+                        <label><input type="checkbox"> <span class="f-inputbox">推送</span></label>
                     </div>
                 </div>
             </div>
             <div class="form-group">
                 <div class="col-md-2"></div>
                 <div class="col-md-8">
-                    <button type="button" class="btn btn-success" ng-click="vm.f_send() " ng-disabled="!myform.$valid">发送
+                    <button type="button" class="btn btn-success" ng-click="vm.f-send() " ng-disabled="!myform.$valid">发送
                     </button>
                     <button type="button" class="btn btn-success" ng-click="vm.saveArticle()" ng-disabled="!myform.$valid">存为草稿
                     </button>

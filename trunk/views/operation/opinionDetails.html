@@ -1,3 +1,41 @@
-<div class="row">
-    这是意见详情页面
+<div class="panel panel-default">
+    <div class="panel-heading white">
+        <strong>意见详情</strong>
+    </div>
+    <div class="panel-body">
+        <form class="form-horizontal" name="myform">
+            <div class="form-group">
+                <label class="col-md-2 control-label">手&ensp;机&ensp;号</label>
+                <div class="col-md-8">
+                    <input class="form-control" type="text" name="f-messageTitle" ng-model="vm.params.title" maxlength="500" ng-class="{'error':myform.f-messageTitle.$invalid && myform.f-messageTitle.$touched}" disabled>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-2 control-label">姓&emsp;&emsp;名</label>
+                <div class="col-md-8">
+                    <input class="form-control" type="text" name="f-messageTitle" ng-model="vm.params.title" maxlength="500" ng-class="{'error':myform.f-messageTitle.$invalid && myform.f-messageTitle.$touched}" disabled>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-2 control-label">应&emsp;&emsp;用</label>
+                <div class="col-md-8">
+                    <input class="form-control" type="text" name="f-messageTitle" ng-model="vm.params.title" maxlength="500" ng-class="{'error':myform.f-messageTitle.$invalid && myform.f-messageTitle.$touched}" disabled>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-2 control-label">意见反馈</label>
+                <div class="col-md-8">
+                    <textarea class="form-control" type="text" name="f-messageTitle" ng-model="vm.params.title" maxlength="500" ng-class="{'error':myform.f-messageTitle.$invalid && myform.f-messageTitle.$touched}" disabled></textarea>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-2"></div>
+                <div class="col-md-8">
+                    <button type="button" class="btn btn-success" ng-click="vm.f-send() " ng-disabled="!myform.$valid">发送
+                    </button>
+                    <button type="button" class="btn btn-default" ui-sref="field.versionManagement">取消</button>
+                </div>
+            </div>
+        </form>
+    </div>
 </div>
