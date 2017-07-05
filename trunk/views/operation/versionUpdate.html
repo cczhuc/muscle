@@ -1,3 +1,67 @@
-<div class="row">
-    这是版本更新页面
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <strong>更新</strong>
+    </div>
+    <div class="panel-body">
+        <form class="form-horizontal" name="myform">
+            <div class="form-group">
+                <label class="col-md-2 control-label">APP</label>
+                <div class="col-md-8">
+                    <input class="form-control" type="text" name="f_messageTitle" ng-model="vm.params.title" maxlength="500" ng-class="{'error':myform.f_messageTitle.$invalid && myform.f_messageTitle.$touched}" disabled>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-2 control-label">平台类型</label>
+                <div class="col-md-8">
+                    <input class="form-control" type="text" name="f_messageTitle" ng-model="vm.params.title" maxlength="500" ng-class="{'error':myform.f_messageTitle.$invalid && myform.f_messageTitle.$touched}" disabled>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-2 control-label">版本名称</label>
+                <div class="col-md-8">
+                    <input class="form-control" type="text" name="f_messageTitle" ng-model="vm.params.title" maxlength="500" ng-class="{'error':myform.f_messageTitle.$invalid && myform.f_messageTitle.$touched}">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-2 control-label">版本号</label>
+                <div class="col-md-8">
+                    <input class="form-control" type="text" name="f_messageTitle" ng-model="vm.params.title" maxlength="500" ng-class="{'error':myform.f_messageTitle.$invalid && myform.f_messageTitle.$touched}">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-2 control-label">安装包URL</label>
+                <div class="col-md-8">
+                    <input class="form-control" type="text" name="f_messageTitle" ng-model="vm.params.title" maxlength="500" ng-class="{'error':myform.f_messageTitle.$invalid && myform.f_messageTitle.$touched}">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-2 control-label">版本信息</label>
+                <div>
+                    <div class="col-md-8">
+                        <input ng-repeat="x in vm.f_info" class="form-control" type="text" name="f_messageTitle" ng-model="vm.params.title" maxlength="500" ng-class="{'error':myform.f_messageTitle.$invalid && myform.f_messageTitle.$touched}">
+                    </div>
+                    <div class="col-md-2">
+                        <button>+</button>
+                        <button>-</button>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-2 control-label">强制更新</label>
+                <div class="col-md-8">
+                    <input type="radio" name="force">是 <input type="radio" name="force">否
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <div class="col-md-2"></div>
+                <div class="col-md-8">
+                    <button type="button" class="btn btn-success" ng-click="vm.f_send() " ng-disabled="!myform.$valid">发送
+                    </button>
+                    <button type="button" class="btn btn-default" ui-sref="field.versionManagement">取消</button>
+                </div>
+            </div>
+        </form>
+    </div>
 </div>

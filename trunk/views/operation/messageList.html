@@ -99,23 +99,23 @@
                 </tr>
             </thead>
             <tbody>
-                <tr ng-repeat="item in vm.approvedList track by $index">
-                    <td>{{item.approvedId}}</td>
-                    <td>
-                        <div>{{item.time|date:'yyyy-MM-dd'}}</div>
-                        <div>{{item.time|date:'HH:mm:ss'}}</div>
-                    </td>
-                    <td>{{item.telphone}}</td>
-                    <td>{{item.name}}</td>
-                    <td>{{item.number}}</td>
-                    <td class="text-red" ng-class="{'text-green':item.status==0}">{{item.status|approvedListFilter}}</td>
-                    <td>{{item.reason}}</td>
-                    <td>
-                        <a  type="button" class="btn btn-sm">医师详情</a>
-                        <a  type="button" class="btn btn-sm">审核</a>
-                        <a  type="button" class="btn btn-sm">查看</a>
-                    </td>
-                </tr>
+                <!--<tr ng-repeat="item in vm.approvedList track by $index">-->
+                    <!--<td>{{item.approvedId}}</td>-->
+                    <!--<td>-->
+                        <!--<div>{{item.time|date:'yyyy-MM-dd'}}</div>-->
+                        <!--<div>{{item.time|date:'HH:mm:ss'}}</div>-->
+                    <!--</td>-->
+                    <!--<td>{{item.telphone}}</td>-->
+                    <!--<td>{{item.name}}</td>-->
+                    <!--<td>{{item.number}}</td>-->
+                    <!--<td class="text-red" ng-class="{'text-green':item.status==0}">{{item.status|approvedListFilter}}</td>-->
+                    <!--<td>{{item.reason}}</td>-->
+                    <!--<td>-->
+                        <!--<a  type="button" class="btn btn-sm">医师详情</a>-->
+                        <!--<a  type="button" class="btn btn-sm">审核</a>-->
+                        <!--<a  type="button" class="btn btn-sm">查看</a>-->
+                    <!--</td>-->
+                <!--</tr>-->
             </tbody>
         </table>
     </div>

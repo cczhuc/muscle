@@ -23,6 +23,7 @@
             // code
         }
         vm.f_save = function(){
+            $rootScope.approvedCheck()
 
         }
     }

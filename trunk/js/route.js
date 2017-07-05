@@ -371,22 +371,22 @@ function projectRouteConfig($stateProvider, $urlRouterProvider, $ocLazyLoadProvi
             templateUrl: 'views/operation/versionManagement.html',
             controller: 'VersionManagementCtrl',
             controllerAs: 'vm',
-            // resolve: {
-            //     loadMyFile: _lazyLoad([
-            //         '',
-            //     ])
-            // }
+            resolve: {
+                loadMyFile: _lazyLoad([
+                    'js/controllers/operation/versionManagement.js',
+                ])
+            }
         })
         .state('field.versionUpdate', {
             url: '/versionUpdate',
             templateUrl: 'views/operation/versionUpdate.html',
             controller: 'VersionUpdateCtrl',
             controllerAs: 'vm',
-            // resolve: {
-            //     loadMyFile: _lazyLoad([
-            //         '',
-            //     ])
-            // }
+            resolve: {
+                loadMyFile: _lazyLoad([
+                    'js/controllers/operation/VersionUpdateCtrl.js',
+                ])
+            }
         })
         .state('field.opinionList', {
             url: '/opinionList',
