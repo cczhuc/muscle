@@ -125,7 +125,7 @@ function projectRouteConfig($stateProvider, $urlRouterProvider, $ocLazyLoadProvi
         // 业务管理开始
         //用户管理-用户管理
         .state('field.user', {
-            url: '/user',
+            url: '/user/:page/:size?&startAt&endAt&app&minAge&maxAge&freezed&phoneNumber&name',
             templateUrl: 'views/business/user.html',
             controller: 'UserListCtrl',
             controllerAs: 'vm',

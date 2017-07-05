@@ -12,7 +12,7 @@ angular.module("admin").controller('ApprovedDetailsCtrl',["$rootScope","$state",
                 $rootScope.alert(res.data.message)
             }
         });
-        // 审核
+        // 点击审核弹出模态框
         vm.check = function () {
             $rootScope.approvedCheck()
         };

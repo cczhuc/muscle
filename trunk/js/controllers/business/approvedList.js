@@ -12,6 +12,10 @@ angular.module("admin").controller('ApprovedListCtrl',["$rootScope","$state","$h
                 $rootScope.alert(res.data.message)
             }
 
-        })
+        });
+        // 审核
+        vm.check = function () {
+            $rootScope.approvedCheck()
+        };
 
 }]);

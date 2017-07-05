@@ -1,22 +1,166 @@
-<div class="panel panel-default">
-    <form class="form-horizontal">
-        <div class="panel-body">
-            <div class="row pd-bottom-20">
+<div class="form-horizontal">
+     <div class="panel panel-default">
+        <form class="form-horizontal">
+         <div class="panel-body">
+             <div class="row pd-bottom-20">
                 <div class="col-md-4">
                     <div class="form-group">
-                        <label class="control-label col-md-4">发布时间</label>
-                    </div>
-
-                    <div class="col-md-8">
-                        <input type="text" class="form-control" size="20" bs-datepicker autoclose="true"
-                               data-date-format="yyyy-MM-dd" data-date-type="number"
-                               data-max-date="{{vm.searchParams.endAt}}"
-                               ng-model="vm.searchParams.startAt">
+                        <label class="control-label col-md-4">注册日期</label>
+                        <div class="col-md-8">
+                            <input type="text" class="form-control" size="20" bs-datepicker autoclose="true"
+                                   data-date-format="yyyy-MM-dd" data-date-type="number"
+                                   data-max-date="{{vm.searchParams.endAt}}"
+                                   ng-model="vm.searchParams.startAt">
+                        </div>
                     </div>
                 </div>
 
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label class="control-label col-md-4 text-center ">—</label>
+                        <div class="col-md-8">
+                            <input type="text" class="form-control" size="20" bs-datepicker autoclose="true"
+                                   data-date-format="yyyy-MM-dd" data-date-type="number"
+                                   ng-model="vm.searchParams.endAt" data-min-date="{{vm.searchParams.startAt}}">
+                        </div>
+                    </div>
+                </div>
 
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label class="control-label col-md-4 word-spacing-25">APP&emsp;&emsp;</label>
+                        <div class="col-md-8">
+                            <select class="form-control" ng-model="vm.searchParams.app">
+                                <option value="">全部</option>
+                                <option value="0">医师版</option>
+                                <option value="1">患者版</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+             </div>
+
+             <div class="row pd-bottom-20">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label class="control-label col-md-4">年&emsp;&emsp;龄</label>
+                        <div class="col-md-8">
+                            <input class="form-control"
+                                   type="text"
+                                   ng-model="vm.searchParams.minAge">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label class="control-label col-md-4 text-center ">—</label>
+                        <div class="col-md-8">
+                            <input class="form-control"
+                                   type="text"
+                                   ng-model="vm.searchParams.maxAge">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label class="control-label col-md-4 word-spacing-25">账户状态</label>
+                        <div class="col-md-8">
+                            <select class="form-control" ng-model="vm.searchParams.freezed">
+                                <option value="">全部</option>
+                                <option value="0">正常</option>
+                                <option value="1">冻结</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+             </div>
+
+             <div class="row pd-bottom-20">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label class="control-label col-md-4">手机号码</label>
+                        <div class="col-md-8">
+                            <input class="form-control"
+                                   type="text"
+                                   ng-model="vm.searchParams.phoneNumber">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label class="control-label col-md-4">姓&emsp;&emsp;名</label>
+                        <div class="col-md-8">
+                            <input class="form-control"
+                                   type="text"
+                                   ng-model="vm.searchParams.name">
+                        </div>
+                    </div>
+                </div>
+
+             </div>
+
+            <div class="row">
+                <div class="col-md-12 text-right ">
+                    <search params="vm.searchParams"></search>
+                </div>
             </div>
+
         </div>
     </form>
+</div>
+</div>
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <strong>用户列表</strong>
+            </div>
+
+            <div class="list-replace" ng-if="vm.userList.length == 0">
+                <div class="list-replace-text">暂无任何数据</div>
+            </div>
+
+            <div class="panel-body panel-body-noMax" ng-if="vm.userList.length != 0">
+                <div class="divTable">
+                    <div class="divTableHeading">
+                        <div class="divTableHead">ID</div>
+                        <div class="divTableHead">注册日期</div>
+                        <div class="divTableHead">APP</div>
+                        <div class="divTableHead">手机号</div>
+                        <div class="divTableHead">姓名</div>
+                        <div class="divTableHead">年龄</div>
+                        <div class="divTableHead">账号状态</div>
+                        <div class="divTableHead">操作</div>
+                    </div>
+
+                    <div class="divTableBody">
+                        <div class="divTableRow" ng-repeat="user in vm.userList track by $index">
+                            <div class="divTableCell handle">{{user.id}}</div>
+                            <div class="divTableCell">{{user.time|date:'yyyy-MM-dd'}}</div>
+                            <div class="divTableCell">{{user.app|appFilter}}</div>
+                            <div class="divTableCell">{{user.phoneNum}}</div>
+                            <div class="divTableCell">{{user.name}}</div>
+                            <div class="divTableCell">{{user.age}}</div>
+                            <div class="divTableCell">{{user.freezed|freezedFilter}}</div>
+
+                            <div class="divTableCell company-tableCell-fix">
+                                <a class="text-red btn btn-sm company-a-fix" href=""
+                                   ng-click="vm.freezeUser(user.id,0,user.freezed)">
+                                    {{user.freezed|changeFreezedStatusFilter}}
+                                </a>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
