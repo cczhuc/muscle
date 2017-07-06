@@ -8,10 +8,10 @@
         .module('admin')
         .controller('MessageListCtrl', MessageListCtrl);
 
-    MessageListCtrl.$inject = ['$scope'];
+    MessageListCtrl.$inject = ['$rootScope','portService'];
 
     /* @ngInject */
-    function MessageListCtrl($scope){
+    function MessageListCtrl($rootScope,portService){
         var vm = this;
         vm.title = 'MessageListCtrl';
 
@@ -20,7 +20,10 @@
         ////////////////
 
         function activate(){
-            // code
+            portService.getMessageList().then(function(res){
+                vm.message = res.data.data.messageList;
+                console.log(vm.message)
+            })
         }
     }
 

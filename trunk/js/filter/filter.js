@@ -66,7 +66,51 @@ angular.module('admin')
                 return reason
             }
         }
-    });
+    })
+
+
+// 内容管理
+//     内容列表
+    .filter('contentListStatusFilter',function(){
+        return function(status){
+            if(status === 0){
+                return "草稿"
+            }else {return "已上线"}
+        }
+    })
+
+// 运营管理
+//     信息状态
+    .filter('messageListStatusFilter',function(){
+        return function(status){
+            switch(status){
+                case 0:
+                    return '已发送';
+                case 1:
+                    return '草稿';
+                case 2:
+                    return '即将发送'
+            }
+        }
+    })
+    // 发送人群状态
+    .filter('messagepeoplesStatusFilter',function(){
+        return function(status){
+            switch(status){
+                case 0:
+                    return '所有人';
+                case 1:
+                    return '所以患者';
+                case 2:
+                    return '所以医师';
+                case 3:
+                    return '认证医师';
+                case 4:
+                    return '未认证医师';
+            }
+        }
+    })
+;
 
 
 

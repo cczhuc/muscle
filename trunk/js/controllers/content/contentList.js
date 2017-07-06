@@ -8,10 +8,10 @@
         .module('admin')
         .controller('ContentListCtrl', ContentListCtrl);
 
-    ContentListCtrl.$inject = ['$scope'];
+    ContentListCtrl.$inject = ['portService'];
 
     /* @ngInject */
-    function ContentListCtrl($scope){
+    function ContentListCtrl(portService){
         var vm = this;
         vm.title = 'ContentListCtrl';
 
@@ -20,7 +20,10 @@
         ////////////////
 
         function activate(){
-            // code
+            portService.getContentList().then(function (res){
+                console.log(res);
+                vm.content = res.data.data.contentList;
+            })
         }
     }
 

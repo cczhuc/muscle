@@ -11,6 +11,18 @@ angular.module("admin").factory("portService",function ($http,address) {
 
         getUserList: function (data) {
             return $http.get(address.userList_url(),{params:data})
+        },
+        
+        
+        
+        // 内容管理
+        getContentList:function(param){
+            return $http.get(address.contentList_url())
+        },
+
+        // 运营管理
+        getMessageList:function(param){
+            return $http.get(address.messageList_url())
         }
     }
 });

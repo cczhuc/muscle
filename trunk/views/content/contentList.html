@@ -88,34 +88,30 @@
         <table class="table table-striped add-table-border">
             <thead>
                 <tr>
-                    <th>ID</th>
-                    <th>申请时间</th>
-                    <th>手机号</th>
-                    <th>姓名</th>
-                    <th>医师资格证号</th>
-                    <th>认证状态</th>
-                    <th>拒绝/取消理由</th>
+                    <th>序号</th>
+                    <th>标题</th>
+                    <th>作者</th>
+                    <th>状态</th>
+                    <th>创建者</th>
+                    <th>创建时间</th>
                     <th>操作</th>
                 </tr>
             </thead>
             <tbody>
-                <!--<tr ng-repeat="item in vm.approvedList track by $index">-->
-                <!--<td>{{item.approvedId}}</td>-->
-                <!--<td>-->
-                <!--<div>{{item.time|date:'yyyy-MM-dd'}}</div>-->
-                <!--<div>{{item.time|date:'HH:mm:ss'}}</div>-->
-                <!--</td>-->
-                <!--<td>{{item.telphone}}</td>-->
-                <!--<td>{{item.name}}</td>-->
-                <!--<td>{{item.number}}</td>-->
-                <!--<td class="text-red" ng-class="{'text-green':item.status==0}">{{item.status|approvedListFilter}}</td>-->
-                <!--<td>{{item.reason}}</td>-->
-                <!--<td>-->
-                <!--<a  type="button" class="btn btn-sm">医师详情</a>-->
-                <!--<a  type="button" class="btn btn-sm">审核</a>-->
-                <!--<a  type="button" class="btn btn-sm">查看</a>-->
-                <!--</td>-->
-                <!--</tr>-->
+                <tr ng-repeat="item in vm.content track by $index">
+                <td>{{item.id}}</td>
+                <td>{{item.title}}</td>
+                <td>{{item.author}}</td>
+                <td>{{item.status|contentListStatusFilter}}</td>
+                <td>{{item.createBy}}</td>
+                <td>{{item.createAt}}</td>
+                <td>
+                <a ng-if="item.status=='0'" type="button" class="btn btn-sm text-green">上线</a>
+                <a ng-if="item.status=='1'" type="button" class="btn btn-sm text-red">下线</a>
+                <a  type="button" class="btn btn-sm">编辑</a>
+                <a  type="button" class="btn btn-sm text-red">删除</a>
+                </td>
+                </tr>
             </tbody>
         </table>
     </div>

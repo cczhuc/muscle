@@ -634,6 +634,10 @@ th {
     text-align: left !important;
 }
 
+.text-right {
+    text-align: right !important;
+}
+
 .fake-button {
     border: 1px solid #ddd;
     padding: 5px 10px;
