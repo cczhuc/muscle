@@ -21,7 +21,7 @@ angular.module("admin")
                         $scope.params.county = $scope.params.address.district;
                     }
                     //end :没有地址选择器时可以删除 将获取的对象拆开传到url里
-
+                    console.log("$scope.params",$scope.params);
                     $state.go($state.current, commonUtil.querySearchParams($scope.params), {reload: true});
                 };
                 //清空

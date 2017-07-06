@@ -45,7 +45,7 @@ angular.module('admin', ['oc.lazyLoad', 'ui.router', 'ngCookies', 'mgcrea.ngStra
                 }
             });
             $rootScope.permision = {
-                creat:permision.indexOf('create')===-1?false:true,
+                create:permision.indexOf('create')===-1?false:true,
                 update:permision.indexOf('update')===-1?false:true,
                 delete:permision.indexOf('delete')===-1?false:true,
             }
@@ -144,6 +144,12 @@ angular.module('admin', ['oc.lazyLoad', 'ui.router', 'ngCookies', 'mgcrea.ngStra
                       console.log(passData);
                       // 发送请求，后端暂无接口，不知道怎么写假数据
                       typeof okFn == 'function' && okFn();
+                      if(passData.checkStatu==1) {
+                          $rootScope.alert("审核通过");
+                      }
+                      else {
+                          $rootScope.alert("审核拒绝");
+                      }
                       modal.$promise.then(modal.hide);
                   };
                   vm.cancel = function () {

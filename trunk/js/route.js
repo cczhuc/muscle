@@ -250,7 +250,7 @@ function projectRouteConfig($stateProvider, $urlRouterProvider, $ocLazyLoadProvi
         })
         // 业务管理-认证管理
         .state('field.approvedList', {
-            url: '/approvedList?page&size',
+            url: '/approvedList?page&size&telphone&name&status&startAt&endAt',
             templateUrl: 'views/business/approvedList.html',
             controller: 'ApprovedListCtrl',
             controllerAs: 'vm',
@@ -277,11 +277,12 @@ function projectRouteConfig($stateProvider, $urlRouterProvider, $ocLazyLoadProvi
             templateUrl: 'views/business/hospitalList.html',
             controller: 'HospitalListCtrl',
             controllerAs: 'vm',
-            // resolve: {
-            //     loadMyFile: _lazyLoad([
-            //         '',
-            //     ])
-            // }
+            resolve: {
+                loadMyFile: _lazyLoad([
+                    'js/controllers/business/hospitalList.js',
+                    "area-selcet"
+                ])
+            }
         })
         .state('field.hospitalEdit', {
             url: '/hospitalEdit',
