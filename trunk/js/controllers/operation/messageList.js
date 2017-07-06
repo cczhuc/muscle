@@ -22,6 +22,7 @@
         function activate(){
             portService.getMessageList().then(function(res){
                 vm.message = res.data.data.messageList;
+                vm.total = res.data.data.total;
                 console.log(vm.message)
             })
         }

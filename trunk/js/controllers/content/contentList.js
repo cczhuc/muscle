@@ -22,6 +22,7 @@
         function activate(){
             portService.getContentList().then(function (res){
                 console.log(res);
+                vm.total = res.data.data.total;
                 vm.content = res.data.data.contentList;
             })
         }

@@ -22,6 +22,10 @@ angular.module("admin").factory("address",function ($state,$http){
         // 运营管理
         messageList_url:function(){
             return "/a/u/message/search"
+        },
+        // 意见反馈
+        opinionList_url:function(){
+            return "/a/u/opinion/search"
         }
     }
 });

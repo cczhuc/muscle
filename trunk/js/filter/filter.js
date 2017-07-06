@@ -100,9 +100,9 @@ angular.module('admin')
                 case 0:
                     return '所有人';
                 case 1:
-                    return '所以患者';
+                    return '所有患者';
                 case 2:
-                    return '所以医师';
+                    return '所有医师';
                 case 3:
                     return '认证医师';
                 case 4:

@@ -8,10 +8,10 @@
         .module('admin')
         .controller('OpinionListCtrl', OpinionListCtrl);
 
-    OpinionListCtrl.$inject = ['$scope'];
+    OpinionListCtrl.$inject = ['portService'];
 
     /* @ngInject */
-    function OpinionListCtrl($scope){
+    function OpinionListCtrl(portService){
         var vm = this;
         vm.title = 'OpinionListCtrl';
 
@@ -20,7 +20,7 @@
         ////////////////
 
         function activate(){
-            // code
+            portService
         }
     }
 
