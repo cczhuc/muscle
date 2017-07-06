@@ -1,3 +1,163 @@
-<div class="row">
-    这是（医师）用户详情页面
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <strong>认证详情</strong>
+    </div>
+    <form class="form-horizontal">
+        <div class="panel-body">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <strong>个人信息</strong>
+                </div>
+                <div class="panel-body">
+                    <div class="row pd-bottom-20">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label class="control-label col-md-4 word-spacing-25 pd-right-10">ID</label>
+                                <div class="col-md-8">
+                                    <input type="text" class="form-control" ng-model="vm.data.approvedId" disabled>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label class="control-label col-md-4 word-spacing-25 pd-right-10">姓名</label>
+                                <div class="col-md-8">
+                                    <input type="text" class="form-control" ng-model="vm.data.name" disabled>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label class="control-label col-md-4 word-spacing-25 pd-right-10">身份证号</label>
+                                <div class="col-md-8">
+                                    <input type="text" class="form-control" ng-model="vm.data.IdCardNumber" disabled>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row pd-bottom-20">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label class="control-label col-md-4 word-spacing-25 pd-right-10">手机号</label>
+                                <div class="col-md-8">
+                                    <input type="text" class="form-control" ng-model="vm.data.telphone" disabled>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label class="control-label col-md-4 word-spacing-25 pd-right-10">注册时间</label>
+                                <div class="col-md-8">
+                                    <input type="text" class="form-control" ng-value="vm.data.creatAt|date:'yyyy-MM-dd'" disabled>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label class="control-label col-md-4 word-spacing-25 pd-right-10">收入</label>
+                                <div class="col-md-8">
+                                    <input type="text" class="form-control" ng-value="vm.data.creatAt|date:'yyyy-MM-dd'" disabled>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <strong>认证信息</strong>
+                </div>
+                <div class="panel-body">
+                    <div class="row pd-bottom-20">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label class="control-label col-md-4 word-spacing-25 pd-right-10">医院</label>
+                                <div class="col-md-8">
+                                    <input type="text" class="form-control" ng-model="vm.data.hospital" disabled>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label class="control-label col-md-4 word-spacing-25 pd-right-10">职称</label>
+                                <div class="col-md-8">
+                                    <select class="form-control" ng-model="vm.data.positionalTitle" ng-options="x.type as x.name for x in vm.positionalTitle" disabled>
+                                        <option value="">全部</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label class="control-label col-md-4 word-spacing-25 pd-right-10">医师资格证号</label>
+                                <div class="col-md-8">
+                                    <input type="text" class="form-control" ng-model="vm.data.number" disabled>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row pd-bottom-20">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label class="control-label col-md-4 word-spacing-25 pd-right-10">医师执业证书</label>
+                                <div class="col-md-8">
+                                    <img ng-src="{vm.data.img1}" alt="职业证书照片">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <div class="col-md-4"></div>
+                                <div class="col-md-8">
+                                    <img ng-src="{vm.data.img1}" alt="职业证书照片">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pd-left-50 pd-bottom-20">
+
+                    <button class="btn btn-warning btn-margin" ng-click="vm.back()">取消认证</button>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <strong>银行卡信息（最多绑两张卡）</strong>
+                </div>
+                <div class="panel-body">
+                    <div class="row pd-bottom-20">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label class="control-label col-md-4 word-spacing-25 pd-right-10">开户银行</label>
+                                <div class="col-md-8">
+                                    <select class="form-control" ng-model="vm.searchParams.freezed">
+                                        <option value="">全部</option>
+                                        <option value="0">正常</option>
+                                        <option value="1">冻结</option>
+                                    </select>
+                            </div>
+                        </div>
+
+                    </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label class="control-label col-md-4 word-spacing-25 pd-right-10">身份证号</label>
+                                <div class="col-md-8">
+                                    <input type="text" class="form-control" ng-model="vm.data.IdCardNumber" disabled>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+
 </div>
+
+
+
+
+
+

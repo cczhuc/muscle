@@ -4,6 +4,10 @@ angular.module("admin").factory("address",function ($state,$http){
         approvedList_url: function () {
             return "JSON/approvedList.json"
         },
+        //改变用户冻结状态
+        changeUserStatus_url: function(id,type,status) {
+            return "JSON/changeUserStatus.json"
+        },
         // 获取认证详情
         approvedDetails_url: function (id) {
             return "JSON/approvedDetails.json"

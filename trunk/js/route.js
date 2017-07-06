@@ -137,7 +137,7 @@ function projectRouteConfig($stateProvider, $urlRouterProvider, $ocLazyLoadProvi
         })
         //用户管理-患者版
         .state('field.patientDetails', {
-            url: '/patientDetails',
+            url: '/patientDetails?&userId',
             templateUrl: 'views/business/patient/patientDetails.html',
             controller: 'PatientDetailsCtrl',
             controllerAs: 'vm',
@@ -171,7 +171,7 @@ function projectRouteConfig($stateProvider, $urlRouterProvider, $ocLazyLoadProvi
         })
         // 用户管理-医师版
         .state('field.doctorDetails', {
-            url: '/doctorDetails',
+            url: '/doctorDetails?&userId',
             templateUrl: 'views/business/doctor/doctorDetails.html',
             controller: 'DoctorDetailsCtrl',
             controllerAs: 'vm',

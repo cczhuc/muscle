@@ -4,6 +4,10 @@ angular.module("admin").factory("portService",function ($http,address) {
         getApprovedList: function (data) {
             return $http.get(address.approvedList_url(),{params:data})
         },
+        //改变冻结状态接口
+        changeUserStatus: function(id,type,status) {
+            return $http.get(address.changeUserStatus_url(id,type,status))
+        },
         // 获取认证详情
         getApprovedDetails: function (id) {
             return $http.get(address.approvedDetails_url(id))
