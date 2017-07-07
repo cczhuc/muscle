@@ -135,6 +135,7 @@ function projectRouteConfig($stateProvider, $urlRouterProvider, $ocLazyLoadProvi
                 ])
             }
         })
+
         //用户管理-患者版
         .state('field.patientDetails', {
             url: '/patientDetails?&userId',
@@ -175,22 +176,22 @@ function projectRouteConfig($stateProvider, $urlRouterProvider, $ocLazyLoadProvi
             templateUrl: 'views/business/doctor/doctorDetails.html',
             controller: 'DoctorDetailsCtrl',
             controllerAs: 'vm',
-            // resolve: {
-            //     loadMyFile: _lazyLoad([
-            //         '',
-            //     ])
-            // }
+            resolve: {
+                loadMyFile: _lazyLoad([
+                    'js/controllers/business/doctor/doctorDetails.js',
+                ])
+            }
         })
         .state('field.planTemplate', {
             url: '/planTemplate',
             templateUrl: 'views/business/doctor/planTemplate.html',
             controller: 'PlanTemplateCtrl',
             controllerAs: 'vm',
-            // resolve: {
-            //     loadMyFile: _lazyLoad([
-            //         '',
-            //     ])
-            // }
+            resolve: {
+                loadMyFile: _lazyLoad([
+                    'js/controllers/business/doctor/planTemplate.js',
+                ])
+            }
         })
         .state('field.diagnosisRecord', {
             url: '/diagnosisRecord',

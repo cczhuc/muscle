@@ -20,9 +20,11 @@ angular.module('admin').controller('UserListCtrl',['$rootScope','$state','$http'
                 $rootScope.operationConfirm("冻结后该账户不可被使用", "是否执行冻结操作？",function () {
 
                     portService.changeUserStatus(id,type,1).then(function(res) {
-                        if(res.data.code === 0){
+                        if(res.data.code === undefined){
                             $state.go($state.current, {}, {reload: true});
-                            $rootScope.alert("冻结成功", function () {})
+                            $rootScope.alert("修改成功", function () {})
+                        } else {
+                            $rootScope.alert(res.data.message);
                         }
                     })
 

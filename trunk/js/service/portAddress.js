@@ -1,5 +1,9 @@
 angular.module("admin").factory("address",function ($state,$http){
     return {
+        //用户列表
+        userList_url: function() {
+            return "JSON/userList.json"
+        },
         // 获取认证列表
         approvedList_url: function () {
             return "JSON/approvedList.json"
@@ -12,11 +16,17 @@ angular.module("admin").factory("address",function ($state,$http){
         changeUserStatus_url: function(id,type,status) {
             return "JSON/changeUserStatus.json"
         },
+
+        //改变手机号码
+        changeUserMobile_url: function(id,mobile) {
+            return "JSON/changeUserStatus.json"
+        },
         // 获取认证详情
         approvedDetails_url: function (id) {
             return "JSON/approvedDetails.json"
             // +id
         },
+
         // 合作医院管理
         // 获取合作医疗医院列表
         hospitalList_url:function () {
@@ -48,8 +58,10 @@ angular.module("admin").factory("address",function ($state,$http){
             // +id
         },
 
-        userList_url: function() {
-            return "JSON/userList.json"
+
+        //医师详情
+        doctorDetails_url: function(id) {
+            return "/a/user"
         },
 
         // 内容管理

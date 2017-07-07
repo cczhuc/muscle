@@ -52,6 +52,29 @@ var opinionList = Mock.mock('/a/u/opinion/search',{
     },
     message:'success'
 });
+
+//医师详情
+var doctorDetail = Mock.mock('/a/user',{
+    "code":0,
+    "message":"success",
+    "data": {
+        "user": {
+            'id|1-100': 1,
+            'name':'@cname()',
+            "idcard" : "429548745877487518",
+            "mobile" : "15079581367",
+            "registerTime" : "@date",
+            "income|0-999999" : 500000,
+            "hospitalName" : '莆田医院',
+            "position" : "教授",
+            "qualifications" : "238293813829367892",
+            "img" : ["@image()","@image()"],
+            "bank":[{"bank" : "45454545455", "bankName" : "浦发银行"},
+                {"bank" : "45454545455", "bankName" : "瑞士银行"}]
+        }
+    }
+});
+
 // 合作医院列表
 var hospitalList = Mock.mock('/a/hospital/search',{
     code:0,
