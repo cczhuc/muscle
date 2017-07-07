@@ -217,15 +217,15 @@ function projectRouteConfig($stateProvider, $urlRouterProvider, $ocLazyLoadProvi
         })
         //医师版-患者评价
         .state('field.patientAppraisal', {
-            url: '/patientAppraisal',
+            url: '/patientAppraisal/:id',
             templateUrl: 'views/business/doctor/patientAppraisal.html',
             controller: 'PatientAppraisalCtrl',
             controllerAs: 'vm',
-            // resolve: {
-            //     loadMyFile: _lazyLoad([
-            //         '',
-            //     ])
-            // }
+            resolve: {
+                loadMyFile: _lazyLoad([
+                    'js/controllers/business/doctor/patientAppraisal.js'
+                ])
+            }
         })
         .state('field.appraisalDetails', {
             url: '/appraisalDetails',
@@ -245,7 +245,7 @@ function projectRouteConfig($stateProvider, $urlRouterProvider, $ocLazyLoadProvi
             controllerAs: 'vm',
             // resolve: {
             //     loadMyFile: _lazyLoad([
-            //         '',
+            //         ''
             //     ])
             // }
         })

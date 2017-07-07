@@ -64,6 +64,10 @@ angular.module("admin").factory("address",function ($state,$http){
             return "/a/user"
         },
 
+        patientAppraisalList_url: function (id) {
+            return "/a/PatientAppraisalLit"
+        },
+
         // 内容管理
         contentList_url:function(){
             return "/a/u/content/search"
