@@ -137,7 +137,7 @@ function projectRouteConfig($stateProvider, $urlRouterProvider, $ocLazyLoadProvi
         })
         //用户管理-患者版
         .state('field.patientDetails', {
-            url: '/patientDetails',
+            url: '/patientDetails?&userId',
             templateUrl: 'views/business/patient/patientDetails.html',
             controller: 'PatientDetailsCtrl',
             controllerAs: 'vm',
@@ -171,7 +171,7 @@ function projectRouteConfig($stateProvider, $urlRouterProvider, $ocLazyLoadProvi
         })
         // 用户管理-医师版
         .state('field.doctorDetails', {
-            url: '/doctorDetails',
+            url: '/doctorDetails?&userId',
             templateUrl: 'views/business/doctor/doctorDetails.html',
             controller: 'DoctorDetailsCtrl',
             controllerAs: 'vm',
@@ -273,7 +273,7 @@ function projectRouteConfig($stateProvider, $urlRouterProvider, $ocLazyLoadProvi
         })
         // 业务管理-合作医院管理
         .state('field.hospitalList', {
-            url: '/hospitalList',
+            url: '/hospitalList?size&name&grade&status&docNum1&docNum2&province&city',
             templateUrl: 'views/business/hospitalList.html',
             controller: 'HospitalListCtrl',
             controllerAs: 'vm',
@@ -285,26 +285,27 @@ function projectRouteConfig($stateProvider, $urlRouterProvider, $ocLazyLoadProvi
             }
         })
         .state('field.hospitalEdit', {
-            url: '/hospitalEdit',
+            url: '/hospitalEdit?id',
             templateUrl: 'views/business/hospitalEdit.html',
             controller: 'HospitalEditCtrl',
             controllerAs: 'vm',
-            // resolve: {
-            //     loadMyFile: _lazyLoad([
-            //         '',
-            //     ])
-            // }
+            resolve: {
+                loadMyFile: _lazyLoad([
+                    'js/controllers/business/hospitalEdit.js',
+                    "area-selcet"
+                ])
+            }
         })
         .state('field.hospitalDoctor', {
-            url: '/hospitalDoctor',
+            url: '/hospitalDoctor?id&page&size&name&phoneNumber&status&startAt&endAt&position',
             templateUrl: 'views/business/hospitalDoctor.html',
             controller: 'HospitalDoctorCtrl',
             controllerAs: 'vm',
-            // resolve: {
-            //     loadMyFile: _lazyLoad([
-            //         '',
-            //     ])
-            // }
+            resolve: {
+                loadMyFile: _lazyLoad([
+                    'js/controllers/business/hospitalDoctor.js'
+                ])
+            }
         })
         // 业务管理结束
 

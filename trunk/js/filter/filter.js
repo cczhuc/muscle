@@ -67,6 +67,54 @@ angular.module('admin')
             }
         }
     })
+    //合作医院管理
+    //合作医院列表状态
+    .filter('hospitalListStatusFilter', function () {
+        return function (status) {
+            switch (status) {
+                case 1:
+                    return "在用";
+                case 2:
+                    return "停用";
+            }
+        }
+    })
+    //合作医院列表等级
+    .filter('hospitalGradeFilter', function (hospitalGrade) {
+    return function (type) {
+        for (var i = 0; i < hospitalGrade.length; i++) {
+            if (type == hospitalGrade[i].type) {
+                return hospitalGrade[i].name;
+            }
+        }
+    }
+    })
+    // 合作医院列表上下线
+    .filter('changeHospitalStatusFilter', function () {
+        return function (status) {
+            switch (status) {
+                case 1:
+                    return "下线";
+                case 2:
+                    return "上线";
+            }
+        }
+    })
+    // 合作医院医生列表
+    .filter('doctorPositionFilter', function () {
+        return function (status) {
+            switch (status) {
+                case 1:
+                    return "主任医师";
+                case 2:
+                    return "副主任医师";
+                case 3:
+                    return "主治医师";
+                case 4:
+                    return "其他";
+            }
+        }
+    })
 
 
 // 内容管理

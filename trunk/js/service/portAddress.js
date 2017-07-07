@@ -4,9 +4,47 @@ angular.module("admin").factory("address",function ($state,$http){
         approvedList_url: function () {
             return "JSON/approvedList.json"
         },
+        // 取消认证
+        cancelApproved_url: function () {
+            return "JSON/changeUserStatus.json"
+        },
+        //改变用户冻结状态
+        changeUserStatus_url: function(id,type,status) {
+            return "JSON/changeUserStatus.json"
+        },
         // 获取认证详情
         approvedDetails_url: function (id) {
             return "JSON/approvedDetails.json"
+            // +id
+        },
+        // 合作医院管理
+        // 获取合作医疗医院列表
+        hospitalList_url:function () {
+            return "/a/hospital/search"
+        },
+        // 改变医院上下线
+        changeHospitalStatus_url: function(id,type,status) {
+            return "JSON/changeUserStatus.json"
+        },
+        // 获取医院详情
+        hospitalDetails_url: function(id) {
+            return "/a/hospital"
+            // +id
+        },
+        //上传图片接口
+        upload_url: function () {
+            return "/a/u/img/"
+        },
+        // 立即上线、存为草稿
+        editHospital_url: function(id) {
+            return ""+id
+        },
+        addHospital_url: function () {
+            return ""
+        },
+        // 合作医院的医师管理
+        hospitalDoctor_url: function (id) {
+            return "/a/u/hospital/doctor"
             // +id
         },
 

@@ -1,3 +1,158 @@
+<div class="form-horizontal">
+    <div class="panel panel-default">
+        <form class="form-horizontal">
+            <div class="panel-body">
+                <div class="row pd-bottom-20">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label class="control-label col-md-4">注册日期</label>
+                            <div class="col-md-8">
+                                <input type="text" class="form-control" size="20" bs-datepicker autoclose="true"
+                                       data-date-format="yyyy-MM-dd" data-date-type="number"
+                                       data-max-date="{{vm.searchParams.endAt}}"
+                                       ng-model="vm.searchParams.startAt">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label class="control-label col-md-4 text-center ">—</label>
+                            <div class="col-md-8">
+                                <input type="text" class="form-control" size="20" bs-datepicker autoclose="true"
+                                       data-date-format="yyyy-MM-dd" data-date-type="number"
+                                       ng-model="vm.searchParams.endAt" data-min-date="{{vm.searchParams.startAt}}">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label class="control-label col-md-4 word-spacing-25 pd-right-10">职称</label>
+                            <div class="col-md-8">
+                                <select class="form-control" ng-model="vm.searchParams.position">
+                                    <option value="">全部</option>
+                                    <option value="1">主任医师</option>
+                                    <option value="2">副主任医师</option>
+                                    <option value="3">主治医师</option>
+                                    <option value="4">其他</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row pd-bottom-20">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label class="control-label col-md-4">手机号码</label>
+                            <div class="col-md-8">
+                                <input class="form-control"
+                                       type="text"
+                                       ng-model="vm.searchParams.phoneNumber">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label class="control-label col-md-4">姓&emsp;&emsp;名</label>
+                            <div class="col-md-8">
+                                <input class="form-control"
+                                       type="text"
+                                       ng-model="vm.searchParams.name">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label class="control-label col-md-4 word-spacing-25">账户状态</label>
+                            <div class="col-md-8">
+                                <select class="form-control" ng-model="vm.searchParams.status">
+                                    <option value="">全部</option>
+                                    <option value="0">正常</option>
+                                    <option value="1">冻结</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12 text-right ">
+                        <search params="vm.searchParams"></search>
+                    </div>
+                </div>
+
+            </div>
+        </form>
+    </div>
+</div>
+
 <div class="row">
-    这是医师管理页面
+    <div class="col-lg-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <strong>用户列表</strong>
+            </div>
+
+            <div class="list-replace" ng-if="vm.doctorList.length == 0">
+                <div class="list-replace-text">暂无任何数据</div>
+            </div>
+
+            <div class="panel-body panel-body-noMax" ng-if="vm.doctor.length != 0">
+                <div class="divTable">
+                    <div class="divTableHeading">
+                        <div class="divTableHead">ID</div>
+                        <div class="divTableHead">注册日期</div>
+                        <div class="divTableHead">手机号</div>
+                        <div class="divTableHead">姓名</div>
+                        <div class="divTableHead">职称</div>
+                        <div class="divTableHead">收入</div>
+                        <div class="divTableHead">账号状态</div>
+                        <div class="divTableHead">操作</div>
+                    </div>
+
+                    <div class="divTableBody">
+                        <div class="divTableRow" ng-repeat="doctor in vm.doctorList track by $index">
+                            <div class="divTableCell handle">{{doctor.uuid}}</div>
+                            <div class="divTableCell">{{doctor.createAt|date:'yyyy-MM-dd'}}</div>
+                            <div class="divTableCell">{{doctor.mobile}}</div>
+                            <div class="divTableCell">{{doctor.name}}</div>
+                            <div class="divTableCell">{{doctor.position|doctorPositionFilter}}</div>
+                            <div class="divTableCell">{{doctor.income}}</div>
+                            <div class="divTableCell" ng-class="{'text-green':doctor.status==0}">{{doctor.status|freezedFilter}}</div>
+
+                            <div class="divTableCell company-tableCell-fix">
+                                <div class="row">
+                                    <a class="text-red btn btn-sm company-a-fix" href=""
+                                       ng-click="vm.freezeDoctor(doctor.id,0,doctor.status)" ng-class="{'text-green':doctor.status==1}">
+                                        {{doctor.status|changeFreezedStatusFilter}}
+                                    </a>
+                                    <a class=" btn btn-sm company-a-fix" ui-sref="field.doctorDetails({id:doctor.uuid})">
+                                        查看
+                                    </a>
+                                    <a class=" btn btn-sm company-a-fix" ui-sref="field.planTemplate({id:doctor.uuid})">
+                                        模板
+                                    </a>
+                                    <a class=" btn btn-sm company-a-fix" ui-sref="field.diagnosisRecord({id:doctor.uuid})">
+                                        记录
+                                    </a>
+                                </div>
+                                <div class="row">
+                                    <a class="text-red btn btn-sm company-a-fix" ng-click="vm.cancelApproved(doctor.id)" >
+                                        撤销认证
+                                    </a>
+                                    <a class=" btn btn-sm company-a-fix" ui-sref="field.patientAppraisal({id:doctor.uuid})">
+                                        评价
+                                    </a>
+                                    <a class=" btn btn-sm company-a-fix" ui-sref="field.transactionDetails({id:doctor.uuid})">
+                                        交易
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <pagination ng-if="vm.total" total="{{vm.total}}"></pagination>
+            </div>
+        </div>
+    </div>
 </div>

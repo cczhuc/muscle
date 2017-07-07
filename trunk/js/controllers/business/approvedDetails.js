@@ -16,9 +16,5 @@ angular.module("admin").controller('ApprovedDetailsCtrl',["$rootScope","$state",
         vm.check = function () {
             $rootScope.approvedCheck()
         };
-        // 返回
-        vm.back =function () {
-            $state.go("field.approvedList",{page:1,size:10},{reload:true})
-        }
 
     }]);

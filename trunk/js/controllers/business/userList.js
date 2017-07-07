@@ -5,37 +5,51 @@ angular.module('admin').controller('UserListCtrl',['$rootScope','$state','$http'
 
         portService.getUserList(vm.searchParams).then(function (res){
             if (res.data.code===0) {
-                console.log(res);
+                // console.log(res);
                 vm.userList = res.data.data;
+                vm.total = res.data.total;
             } else {
                 $rootScope.alert(res.data.message);
             }
-
         });
-
-
 
 
 
         vm.freezeUser = function(id,type,status) {
             if (status === 0) {
-                $rootScope.operationConfirm("冻结后改账户不可被使用", "是否执行冻结操作？",function () {
-                    /*******
-                     * 发送冻结请求
-                     * *****/
-                    $rootScope.alert("冻结成功", function () {})
+                $rootScope.operationConfirm("冻结后该账户不可被使用", "是否执行冻结操作？",function () {
+
+                    portService.changeUserStatus(id,type,1).then(function(res) {
+                        if(res.data.code === 0){
+                            $state.go($state.current, {}, {reload: true});
+                            $rootScope.alert("冻结成功", function () {})
+                        }
+                    })
+
                 });
             }
             else if (status === 1) {
-                $rootScope.operationConfirm("解冻后该公司下的信息将可继续使用。", "是否执行解冻操作？", function () {
-                      /*******
-                       * 发送解冻请求
-                       * *************/
-                    $rootScope.alert("解冻成功", function () {})
+                $rootScope.operationConfirm("解冻后该账户可继续使用。", "是否执行解冻操作？", function () {
+                    portService.changeUserStatus(id,type,0).then(function(res) {
+                        if(res.data.code === 0){
+                            $state.go($state.current, {}, {reload: true});
+                            $rootScope.alert("解冻成功", function () {})
+                        }
+                    })
+
 
                 });
             }
         };
+
+
+        vm.goUserDetail = function(userId,app) {
+            if(app === 0)
+                $state.go("field.patientDetails",{userId:userId},{reload:true});
+            else if(app===1)
+                $state.go("field.doctorDetails",{userId:userId},{reload:true});
+        }
+
 
     }
 ]);
