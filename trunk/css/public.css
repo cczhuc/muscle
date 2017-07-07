@@ -917,3 +917,22 @@ input[type="number"] {
 .text-green {
     color:#5cb85c;
 }
+/*医师认证照片*/
+.approvedImageDiv {
+    position:relative;
+    padding:15px;
+    margin:0 15px;
+    height:240px;
+    background-color:#645;
+}
+.approvedImage {
+    left:0;
+    right:0;
+    bottom:0;
+    top:0;
+    margin:auto;
+    min-height:80%;
+    max-width:100%;
+    max-height: 100%;
+    position:absolute;
+}

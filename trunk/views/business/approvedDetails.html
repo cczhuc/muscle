@@ -88,37 +88,20 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row pd-bottom-20">
-                        <div class="col-md-4">
+                    <div class="row ">
+                        <label  class="control-label col-md-2 word-spacing-25 pd-right-10"><span>医师执业证书</span></label>
+                        <div class="col-md-5" ng-repeat = "index in vm.data.image track by $index">
                             <div class="form-group">
-                                <label class="control-label col-md-4 word-spacing-25 pd-right-10">医师执业证书</label>
-                                <div class="col-md-8">
-                                    <img ng-src="{vm.data.img1}" alt="职业证书照片">
+                                <div class="approvedImageDiv">
+                                    <img class="approvedImage" ng-src = "{{index}}" alt="职业证书照片">
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-4">
-                            <div class="form-group">
-                                <div class="col-md-4"></div>
-                                <div class="col-md-8">
-                                    <img ng-src="{vm.data.img1}" alt="职业证书照片">
-                                </div>
-                            </div>
-                        </div>
-                        <!--<div class="col-md-2">-->
-                        <!--</div>-->
-                        <!--<div class="col-md-4">-->
-                            <!--<img ng-src="{vm.data.img2}" alt="职业证书照片" width="250px" height="150px">-->
-                        <!--</div>-->
                     </div>
                     <div class="row pd-bottom-20">
+                        <label class="control-label col-md-2 word-spacing-25">拒绝/取消理由</label>
                         <div class="col-md-4">
-                            <div class="form-group">
-                                <label class="control-label col-md-4 word-spacing-25 pd-right-8">拒绝/取消理由</label>
-                                <div class="col-md-8">
-                                    <textarea class="form-control" ng-model="vm.data.reason" cols="33" rows="3" disabled></textarea>
-                                </div>
-                            </div>
+                            <textarea class="form-control" ng-model="vm.data.reason" cols="33" rows="3" disabled></textarea>
                         </div>
                     </div>
                 </div>
