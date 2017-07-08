@@ -129,6 +129,21 @@ var hospitalDoctor = Mock.mock('/a/u/hospital/doctor',{
         total: 13
     },
     message:'success'
+});
 
-
+// 医师的患者评价列表
+var PatientAppraisalList = Mock.mock('/a/PatientAppraisalLit',{
+    code:0,
+    data:{
+        'list|10': [{
+        'mobile': 15969785487,
+        'name':'@cname()',
+        'rate|1-5':1,
+        'time': '@datetime'}
+        ],
+        page: 1,
+        size: 10,
+        total: 12
+    },
+    message:'success'
 });
