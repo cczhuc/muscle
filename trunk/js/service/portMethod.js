@@ -28,7 +28,7 @@ angular.module("admin")
         },
 
         //医师详情 其实应该和患者详情是同一个接口，先这样写好测假数据，等后端接口好了再改
-        getDoctorList: function(id) {
+        getDoctorDetails: function(id) {
             return $http.get(address.doctorDetails_url(id))
         },
 
