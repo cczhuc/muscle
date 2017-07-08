@@ -61,7 +61,7 @@
                             <div class="form-group">
                                 <label class="control-label col-md-4 word-spacing-25 pd-right-10">注册时间</label>
                                 <div class="col-md-8">
-                                    <input type="text" class="form-control" ng-value="vm.user.registerTime" disabled>
+                                    <input type="text" class="form-control" ng-value="vm.user.registerTime|date:'yyyy-MM-dd'" disabled>
                                 </div>
                             </div>
                         </div>
@@ -154,10 +154,8 @@
                     </div>
 
                 </div>
+            </div>
 
-            </div>
-                </div>
-            </div>
         </div>
     </form>
 

@@ -95,7 +95,7 @@
                     <div  class="divTableCell" >
                         <span>
                             <a  type="button" class="btn btn-sm" ng-if="item.status==0">医师详情</a>
-                            <a  type="button" class="btn btn-sm" ng-if="item.status==1" ng-click="vm.check()">审核</a>
+                            <a  type="button" class="btn btn-sm" ng-if="item.status==1" ng-click="vm.check(item.id)">审核</a>
                         </span>
                         <a type="button" class="btn btn-sm" ui-sref="field.approvedDetails({id:item.approvedId})">查看</a>
                     </div>

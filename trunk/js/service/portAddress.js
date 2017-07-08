@@ -57,8 +57,20 @@ angular.module("admin").factory("address",function ($state,$http){
             return "/a/u/hospital/doctor"
             // +id
         },
-
-
+        // 患者版订单记录
+        patientRecord_url: function (id,data) {
+            return "/a/u/patientRecord"
+            // +id
+        },
+        // 患者版监测数据
+        patientTestData_url: function (id,data) {
+            return "/a/u/patientTestData"
+            // +id
+        },
+        // 审核
+        approvedcheck_url: function (id) {
+            return "JSON/changeUserStatus.json"
+        },
         //医师详情
         doctorDetails_url: function(id) {
             return "/a/user"

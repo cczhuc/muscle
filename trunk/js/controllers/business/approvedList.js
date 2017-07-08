@@ -16,8 +16,27 @@ angular.module("admin").controller('ApprovedListCtrl',["$rootScope","$state","$h
             }
         });
         // 审核
-        vm.check = function () {
-            $rootScope.approvedCheck()
-        };
+        vm.refuse ={};
+        vm.check =function (id) {
+            $rootScope.approvedCheck(vm.refuse,function () {
+                console.log(vm.refuse);
+                // 发送请求审核
+                portService.Approvedcheck(id,vm.refuse).then(function (res) {
+                    if (res.data.code==0) {
+                        if(vm.refuse.checkStatu==1) {
+                            $rootScope.alert("审核通过");
+                        }
+                        else {
+                            $rootScope.alert("审核拒绝");
+                        }
+                    }
+                    else {
+                        $rootScope.alert(res.data.message);
+                    }
+                })
+
+            })
+        }
+
 
 }]);

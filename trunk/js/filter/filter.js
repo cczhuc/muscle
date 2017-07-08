@@ -53,6 +53,8 @@ angular.module('admin')
                     return "已拒绝";
                 case 3:
                     return "已撤销";
+                default :
+                    return "数据异常";
             }
         }
     })
@@ -76,6 +78,8 @@ angular.module('admin')
                     return "在用";
                 case 2:
                     return "停用";
+                default :
+                    return "数据异常";
             }
         }
     })
@@ -97,6 +101,8 @@ angular.module('admin')
                     return "下线";
                 case 2:
                     return "上线";
+                default :
+                    return "数据异常";
             }
         }
     })
@@ -112,11 +118,48 @@ angular.module('admin')
                     return "主治医师";
                 case 4:
                     return "其他";
+                default :
+                    return "数据异常";
             }
         }
     })
-
-
+    // 患者-订单记录-交易类型
+    .filter('transactionTypeFilter', function () {
+        return function (status) {
+            switch (status) {
+                case 0:
+                    return "方案支付";
+                default :
+                    return "数据异常";
+            }
+        }
+    })
+    // 患者-订单记录-交易状态
+    .filter('transactionStatusFilter', function () {
+        return function (status) {
+            switch (status) {
+                case 0:
+                    return "成功";
+                case 1:
+                    return "失败";
+                default :
+                    return "数据异常";
+            }
+        }
+    })
+    // 患者-订单记录-交易方式
+    .filter('transactionWayFilter', function () {
+        return function (status) {
+            switch (status) {
+                case 0:
+                    return "微信";
+                case 1:
+                    return "支付宝";
+                default :
+                    return "数据异常";
+            }
+        }
+    })
 // 内容管理
 //     内容列表
     .filter('contentListStatusFilter',function(){

@@ -63,7 +63,7 @@ var doctorDetail = Mock.mock('/a/user',{
             'name':'@cname()',
             "idcard" : "429548745877487518",
             "mobile" : "15079581367",
-            "registerTime" : "@date",
+            "registerTime|1499184000000-1499356800000" : 1499184000000,
             "income|0-999999" : 500000,
             "hospitalName" : '莆田医院',
             "position" : "教授",
@@ -140,6 +140,48 @@ var PatientAppraisalList = Mock.mock('/a/PatientAppraisalLit',{
         'name':'@cname()',
         'rate|1-5':1,
         'time': '@datetime'}
+        ],
+        page: 1,
+        size: 10,
+        total: 12
+    },
+    message:'success'
+});
+// 用户管理患者版-订单记录
+var patientRecord = Mock.mock('/a/u/patientRecord',{
+    code:0,
+    data:{
+        'recordList|10': [{
+            'id|1-100': 1,
+            'transaction_time|1499184000000-1499356800000':1499184000000,
+            'product':'火热活血多段控制训练',
+            'transaction_number':20171111092130213,
+            'sum|1-100.2':1,
+            'transaction_type': 0,
+            'transaction_status|0-1':0,
+            'transaction_way|0-1':0
+        }
+        ],
+        page: 1,
+        size: 10,
+        total: 12
+    },
+    message:'success'
+});
+
+// 用户管理患者版-检测数据
+var patientRecord = Mock.mock('/a/u/patientTestData',{
+    code:0,
+    data:{
+        'testDataList|10': [{
+            'training_time|1499184000000-1499356800000':1499184000000,
+            'sensitivity|20-50':20,
+            'hardness|20-50':20,
+            'blood_flow|20-50':20,
+            'duration|1-60':1,
+            'age|20-50': 20,
+            'completed_daily|0-20':0
+        }
         ],
         page: 1,
         size: 10,

@@ -62,6 +62,18 @@ angular.module("admin")
         getHospitalDoctor: function (id) {
             return $http.get(address.hospitalDoctor_url(id))
         },
+        // 患者版订单记录
+        getPatientRecord: function (id,data) {
+            return $http.get(address.patientRecord_url(id),{params:data})
+        },
+        // 患者版检测数据
+        getPatientTestData: function (id,data) {
+            return $http.get(address.patientTestData_url(id),{params:data})
+        },
+        // 审核医师的认证
+        Approvedcheck: function (id,data) {
+            return $http.get(address.approvedcheck_url(id),{params:data})
+        },
 
         // 内容管理
 

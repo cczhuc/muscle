@@ -142,33 +142,34 @@ function projectRouteConfig($stateProvider, $urlRouterProvider, $ocLazyLoadProvi
             templateUrl: 'views/business/patient/patientDetails.html',
             controller: 'PatientDetailsCtrl',
             controllerAs: 'vm',
-            // resolve: {
-            //     loadMyFile: _lazyLoad([
-            //         '',
-            //     ])
-            // }
+            resolve: {
+                loadMyFile: _lazyLoad([
+                    'js/controllers/business/patient/patientDetails.js'
+                ])
+            }
         })
         .state('field.patientRecord', {
-            url: '/patientRecord',
+            url: '/patientRecord?id&page&size&name&product&transaction_type&transaction_status&sum1&sum2&startAt&endAt',
             templateUrl: 'views/business/patient/patientRecord.html',
             controller: 'PatientRecordCtrl',
             controllerAs: 'vm',
-            // resolve: {
-            //     loadMyFile: _lazyLoad([
-            //         '',
-            //     ])
-            // }
+            resolve: {
+                loadMyFile: _lazyLoad([
+                    'js/controllers/business/patient/patientRecord.js'
+                ])
+            }
         })
         .state('field.patientTestData', {
-            url: '/patientTestData',
+            url: '/patientTestData?id&name&page&size&startAt&endAt',
+            params:{"name":""},
             templateUrl: 'views/business/patient/patientTestData.html',
             controller: 'PatientTestDataCtrl',
             controllerAs: 'vm',
-            // resolve: {
-            //     loadMyFile: _lazyLoad([
-            //         '',
-            //     ])
-            // }
+            resolve: {
+                loadMyFile: _lazyLoad([
+                    'js/controllers/business/patient/patientTestData.js'
+                ])
+            }
         })
         // 用户管理-医师版
         .state('field.doctorDetails', {

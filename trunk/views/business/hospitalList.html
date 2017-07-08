@@ -85,7 +85,10 @@
             +新增
         </button>
     </div>
-    <div class="panel-body  panel-body-noMax" ng-if="vm.approvedList.length != 0">
+    <div class="list-replace" ng-if="vm.hospitalList.length == 0">
+        <div class="list-replace-text">暂无任何数据</div>
+    </div>
+    <div class="panel-body  panel-body-noMax" ng-if="vm.hospitalList.length != 0">
         <div class="divTable">
             <div class="divTableHeading">
                 <div class="divTableHead">医院名称</div>

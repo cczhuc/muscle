@@ -15,11 +15,23 @@ angular.module("admin").controller('HospitalDoctorCtrl',["$rootScope","$state","
                 $rootScope.alert(res.data.message)
             }
         });
+        vm.refuse ={};
         // 撤销认证
         vm.cancelApproved = function (id) {
-            portService.cancelApproved(id).then(function (res) {
-                console.log(res);
-            })
+            $rootScope.cancleApproved("取消实名将删除用户身份及银行卡信息","确认取消？",vm.refuse,function () {
+                console.log(vm.refuse);
+                // 发送请求取消认证变态并删除信息
+                portService.cancelApproved(id).then(function (res) {
+                    if(res.data.code==0) {
+
+                        $rootScope.alert("取消成功")
+                    }
+                    else {
+                        $rootScope.alert("取消失败")
+                    }
+                })
+            });
+
         };
         // 冻结或者解冻
         vm.freezeDoctor = function(id,type,status) {

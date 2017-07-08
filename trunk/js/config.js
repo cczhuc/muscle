@@ -116,9 +116,34 @@ angular.module('admin', ['oc.lazyLoad', 'ui.router', 'ngCookies', 'mgcrea.ngStra
             });
             modal.$promise.then(modal.show);
         };
+        // 撤销认证
+        $rootScope.cancleApproved =function (title, content,refuse ,okFn, cancelFn) {
+            var modal = $modal({
+                html: true,
+                show: false,
+                controllerAs:'vm',
+                templateUrl: 'views/template/cancleApproved.html',
+                controller: function ($scope) {
+                    var vm=this;
+                    $scope.title = title;
+                    $scope.content = content;
+                    $scope.ok = function () {
+                        refuse.text = vm.refuse;
+                        typeof okFn == 'function' && okFn();
+                        modal.$promise.then(modal.hide);
+                    };
+                    $scope.cancel = function ($scope) {
+                        typeof cancelFn == 'function' && cancelFn();
+                        modal.$promise.then(modal.hide);
+                    };
+                }
+            });
+            modal.$promise.then(modal.show);
+        };
+
 
         //认证管理-审核认证信息
-        $rootScope.approvedCheck = function (okFn,cancelFn) {
+        $rootScope.approvedCheck = function (refuse ,okFn,cancelFn) {
           var modal = $modal({
               html:true,
               show:true,
@@ -130,26 +155,14 @@ angular.module('admin', ['oc.lazyLoad', 'ui.router', 'ngCookies', 'mgcrea.ngStra
                   vm.statusDis = true;
                   //选择通过拒绝、默认通过
                   vm.checkStatu = "1";
-                  //传到服务的交互数据
-                  var passData = {
-                      rejectReason:"",
-                      checkStatu:""
-                  };
                   vm.ok = function () {
-                      passData.rejectReason = vm.rejectReason;
-                      passData.checkStatu = vm.checkStatu;
-                      if(passData.checkStatu==1) {
-                          passData.rejectReason="";
+                      //传到服务的交互数据
+                      refuse.rejectReason = vm.rejectReason;
+                      refuse.checkStatu = vm.checkStatu;
+                      if(refuse.checkStatu==1) {
+                          refuse.rejectReason="";
                       }
-                      console.log(passData);
-                      // 发送请求，后端暂无接口，不知道怎么写假数据
                       typeof okFn == 'function' && okFn();
-                      if(passData.checkStatu==1) {
-                          $rootScope.alert("审核通过");
-                      }
-                      else {
-                          $rootScope.alert("审核拒绝");
-                      }
                       modal.$promise.then(modal.hide);
                   };
                   vm.cancel = function () {
