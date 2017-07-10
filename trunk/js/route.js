@@ -206,15 +206,15 @@ function projectRouteConfig($stateProvider, $urlRouterProvider, $ocLazyLoadProvi
             }
         })
         .state('field.diagnosisDetails', {
-            url: '/diagnosisDetails',
+            url: '/diagnosisDetails/:recordId',
             templateUrl: 'views/business/doctor/diagnosisDetails.html',
             controller: 'DiagnosisDetailsCtrl',
             controllerAs: 'vm',
-            // resolve: {
-            //     loadMyFile: _lazyLoad([
-            //         '',
-            //     ])
-            // }
+            resolve: {
+                loadMyFile: _lazyLoad([
+                    'js/controllers/business/doctor/diagnosisDetails.js',
+                ])
+            }
         })
         //医师版-患者评价
         .state('field.patientAppraisal', {

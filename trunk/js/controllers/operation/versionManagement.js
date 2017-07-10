@@ -8,10 +8,10 @@
         .module('admin')
         .controller('VersionManagementCtrl', VersionManagementCtrl);
 
-    VersionManagementCtrl.$inject = ['$scope'];
+    VersionManagementCtrl.$inject = ['portService'];
 
     /* @ngInject */
-    function VersionManagementCtrl($scope){
+    function VersionManagementCtrl(portService){
         var vm = this;
         vm.title = 'VersionManagementCtrl';
 
@@ -20,7 +20,11 @@
         ////////////////
 
         function activate(){
-            // code
+            portService.getVersionList().then(function(res){
+                vm.version = res.data.data.versionList;
+
+                console.log(vm.version)
+            })
         }
     }
 

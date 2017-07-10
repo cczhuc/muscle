@@ -26,6 +26,16 @@
                 console.log(vm.message)
             })
         }
+        vm.send = function($index){
+            $rootScope.operationConfirm('立即发送将取消定时发送并立即发送消息','确认发送？',function(){
+                $rootScope.alert('发送成功！')
+            })
+        };
+        vm.delete = function($index){
+            $rootScope.operationConfirm('删除将在前台同步删除消息','确认删除？',function(){
+                $rootScope.alert('删除成功');
+            })
+        }
     }
 
 })();

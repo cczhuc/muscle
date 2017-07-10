@@ -15,10 +15,7 @@
                     <div class="form-group">
                         <label class="control-label col-md-4">创建日期</label>
                         <div class="col-md-8">
-                            <input type="text" class="form-control" size="20" bs-datepicker autoclose="true"
-                                    data-date-format="yyyy-MM-dd" data-date-type="number"
-                                    data-max-date="{{vm.searchParams.endAt}}"
-                                    ng-model="vm.searchParams.startAt">
+                            <input type="text" class="form-control" size="20" bs-datepicker autoclose="true" data-date-format="yyyy-MM-dd" data-date-type="number" data-max-date="{{vm.searchParams.endAt}}" ng-model="vm.searchParams.startAt">
                         </div>
                     </div>
                 </div>
@@ -26,9 +23,7 @@
                     <div class="form-group">
                         <label class="control-label col-md-4 text-center ">—</label>
                         <div class="col-md-8">
-                            <input type="text" class="form-control" size="20" bs-datepicker autoclose="true"
-                                    data-date-format="yyyy-MM-dd" data-date-type="number"
-                                    ng-model="vm.searchParams.endAt" data-min-date="{{vm.searchParams.startAt}}">
+                            <input type="text" class="form-control" size="20" bs-datepicker autoclose="true" data-date-format="yyyy-MM-dd" data-date-type="number" ng-model="vm.searchParams.endAt" data-min-date="{{vm.searchParams.startAt}}">
                         </div>
                     </div>
                 </div>
@@ -47,8 +42,7 @@
                         <label class="control-label col-md-4 word-spacing-25">作&emsp;&emsp;者</label>
                         <div class="col-md-8">
                             <select class="form-control" ng-model="vm.searchParams.status">
-                                <option value="">全部</option>
-                                <option value="2">已认证</option>
+                                <option value="">全部</option> <option value="2">已认证</option>
                                 <option value="1">未认证</option>
                             </select>
                         </div>
@@ -59,8 +53,7 @@
                         <label class="control-label col-md-4 word-spacing-25">状态</label>
                         <div class="col-md-8">
                             <select class="form-control" ng-model="vm.searchParams.status">
-                                <option value="">全部</option>
-                                <option value="2">已认证</option>
+                                <option value="">全部</option> <option value="2">已认证</option>
                                 <option value="1">未认证</option>
                             </select>
                         </div>
@@ -99,18 +92,18 @@
             </thead>
             <tbody>
                 <tr ng-repeat="item in vm.content track by $index">
-                <td>{{item.id}}</td>
-                <td>{{item.title}}</td>
-                <td>{{item.author}}</td>
-                <td>{{item.status|contentListStatusFilter}}</td>
-                <td>{{item.createBy}}</td>
-                <td>{{item.createAt}}</td>
-                <td>
-                <a ng-if="item.status=='0'" type="button" class="btn btn-sm text-green">上线</a>
-                <a ng-if="item.status=='1'" type="button" class="btn btn-sm text-red">下线</a>
-                <a  type="button" class="btn btn-sm">编辑</a>
-                <a  type="button" class="btn btn-sm text-red">删除</a>
-                </td>
+                    <td>{{item.id}}</td>
+                    <td>{{item.title}}</td>
+                    <td>{{item.author}}</td>
+                    <td>{{item.status|contentListStatusFilter}}</td>
+                    <td>{{item.createBy}}</td>
+                    <td>{{item.createAt}}</td>
+                    <td>
+                        <a ng-if="item.status=='0'" type="button" class="btn btn-sm text-green" ng-click="vm.online()">上线</a>
+                        <a ng-if="item.status=='1'" type="button" class="btn btn-sm text-red" ng-click="vm.offline()">下线</a>
+                        <a type="button" class="btn btn-sm">编辑</a>
+                        <a type="button" class="btn btn-sm text-red">删除</a>
+                    </td>
                 </tr>
             </tbody>
         </table>

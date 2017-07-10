@@ -201,6 +201,14 @@ angular.module('admin')
             }
         }
     })
+    //     版本过滤
+    .filter('appVersionFilter',function(){
+        return function(status){
+            if(status === 0){
+                return "医师版"
+            }else {return "患者版"}
+        }
+    })
 ;
 
 

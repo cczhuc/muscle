@@ -20,7 +20,11 @@
         ////////////////
 
         function activate(){
-            portService
+            portService.getOpinionList().then(function(res){
+                console.log(res.data.data.opinionList);
+                vm.opinion = res.data.data.opinionList;
+                vm.total = res.data.data.total;
+            })
         }
     }
 

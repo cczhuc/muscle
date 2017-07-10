@@ -22,9 +22,11 @@
         function activate(){
             // code
         }
-        vm.f_save = function(){
-            $rootScope.approvedCheck()
 
+        vm.save = function(){
+            $rootScope.operationConfirm('', '确认保存修改？', function(){
+                $rootScope.alert('保存成功');
+            })
         }
     }
 

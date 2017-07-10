@@ -8,8 +8,8 @@ angular.module('admin').controller('DiagnosisRecordCtrl',['$rootScope','$state',
 
                 vm.diagnosisRecord = res.data.data;
                 vm.total = res.data.data.total;
-                console.log( vm.diagnosisRecord);
-                console.log(vm.total);
+                // console.log( vm.diagnosisRecord);
+                // console.log(vm.total);
             } else {
                 $rootScope.alert(res.data.message);
             }
