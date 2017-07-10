@@ -91,6 +91,11 @@ angular.module("admin").factory("address",function ($state,$http){
             return "/a/diagnosisRecord"
         },
 
+        //诊断详情
+        diagnosisDetails_url: function (recordId) {
+            return "/a/diagnosisDetails"
+        },
+
         // 内容管理
         contentList_url:function(){
             return "/a/u/content/search"

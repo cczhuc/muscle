@@ -47,6 +47,11 @@ angular.module("admin")
             return $http.get(address.diagnosisRecord_url(id))
         },
 
+        //诊断详情
+        diagnosisDetails:function (recordId) {
+            return $http.get(address.diagnosisDetails_url(recordId))
+        },
+
         // 合作医院管理
         // 医院列表
         gerHospitalList: function (data) {
