@@ -82,10 +82,10 @@ var hospitalList = Mock.mock('/a/hospital/search',{
         'hospitalList|10': [{
             'id|1-100': 1,
             'name':'北京东城中医医院',
-            'grade|1-9':1,
+            'grade|0-8':1,
             'total|1-100':1,
             'address':'@county(true)',
-            'status|1-2':1,
+            'status|0-1':1,
             'province':'@province()',
             'city':'@city'
         }],
@@ -101,10 +101,10 @@ var hospitalDetails = Mock.mock('/a/hospital',{
     data:{
         'id|1-100': 1,
         'name':'北京东城中医医院',
-        'grade|1-9':1,
+        'grade|0-8':1,
         'total|1-100':1,
         'address1':'@county(true)',
-        'status|1-2':1,
+        'status|0-1':1,
         'province':'@province()',
         'city':'@city',
         'image':'@image()'
@@ -119,7 +119,7 @@ var hospitalDoctor = Mock.mock('/a/u/hospital/doctor',{
             'uuid|1-100':1,
             'mobile|13974447000-13974447999':13974447000,
             'name':'@cname()',
-            'position|1-4':1,
+            'position|0-3':1,
             'income|0-100.2':0,
             'status|0-1':1,
             'createAt|1499184000000-1499356800000':1499184000000

@@ -157,12 +157,14 @@
                                     查看
                                 </a>
                                 <a class="text-red btn btn-sm company-a-fix"
-                                   ng-if = "user.app == 0">
+                                   ng-if = "user.app == 0"
+                                   ui-sref="field.patientTestData({id:user.id,name:user.name})">
                                     数据
                                 </a>
 
                                 <a class="text-red btn btn-sm company-a-fix"
-                                   ng-if = "user.app == 0">
+                                   ng-if = "user.app == 0"
+                                   ui-sref="field.patientRecord({id:user.id,name:user.name})">
                                     订单
                                 </a>
 
