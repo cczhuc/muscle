@@ -135,122 +135,124 @@ function projectRouteConfig($stateProvider, $urlRouterProvider, $ocLazyLoadProvi
                 ])
             }
         })
+
         //用户管理-患者版
         .state('field.patientDetails', {
-            url: '/patientDetails',
+            url: '/patientDetails?&id',
             templateUrl: 'views/business/patient/patientDetails.html',
             controller: 'PatientDetailsCtrl',
             controllerAs: 'vm',
-            // resolve: {
-            //     loadMyFile: _lazyLoad([
-            //         '',
-            //     ])
-            // }
+            resolve: {
+                loadMyFile: _lazyLoad([
+                    'js/controllers/business/patient/patientDetails.js'
+                ])
+            }
         })
         .state('field.patientRecord', {
-            url: '/patientRecord',
+            url: '/patientRecord?id&page&size&name&product&transaction_type&transaction_status&sum1&sum2&startAt&endAt',
             templateUrl: 'views/business/patient/patientRecord.html',
             controller: 'PatientRecordCtrl',
             controllerAs: 'vm',
-            // resolve: {
-            //     loadMyFile: _lazyLoad([
-            //         '',
-            //     ])
-            // }
+            resolve: {
+                loadMyFile: _lazyLoad([
+                    'js/controllers/business/patient/patientRecord.js'
+                ])
+            }
         })
         .state('field.patientTestData', {
-            url: '/patientTestData',
+            url: '/patientTestData?id&name&page&size&startAt&endAt',
+            params:{"name":""},
             templateUrl: 'views/business/patient/patientTestData.html',
             controller: 'PatientTestDataCtrl',
             controllerAs: 'vm',
-            // resolve: {
-            //     loadMyFile: _lazyLoad([
-            //         '',
-            //     ])
-            // }
+            resolve: {
+                loadMyFile: _lazyLoad([
+                    'js/controllers/business/patient/patientTestData.js'
+                ])
+            }
         })
         // 用户管理-医师版
         .state('field.doctorDetails', {
-            url: '/doctorDetails',
+            url: '/doctorDetails?&id',
             templateUrl: 'views/business/doctor/doctorDetails.html',
             controller: 'DoctorDetailsCtrl',
             controllerAs: 'vm',
-            // resolve: {
-            //     loadMyFile: _lazyLoad([
-            //         '',
-            //     ])
-            // }
+            resolve: {
+                loadMyFile: _lazyLoad([
+                    'js/controllers/business/doctor/doctorDetails.js',
+                ])
+            }
         })
         .state('field.planTemplate', {
-            url: '/planTemplate',
+            url: '/planTemplate/:id',
             templateUrl: 'views/business/doctor/planTemplate.html',
             controller: 'PlanTemplateCtrl',
             controllerAs: 'vm',
-            // resolve: {
-            //     loadMyFile: _lazyLoad([
-            //         '',
-            //     ])
-            // }
+            resolve: {
+                loadMyFile: _lazyLoad([
+                    'js/controllers/business/doctor/planTemplate.js',
+                ])
+            }
         })
         .state('field.diagnosisRecord', {
-            url: '/diagnosisRecord',
+            url: '/diagnosisRecord/:id/:page',
             templateUrl: 'views/business/doctor/diagnosisRecord.html',
             controller: 'DiagnosisRecordCtrl',
             controllerAs: 'vm',
-            // resolve: {
-            //     loadMyFile: _lazyLoad([
-            //         '',
-            //     ])
-            // }
+            resolve: {
+                loadMyFile: _lazyLoad([
+                    'js/controllers/business/doctor/diagnosisRecord.js',
+                ])
+            }
         })
         .state('field.diagnosisDetails', {
-            url: '/diagnosisDetails',
+            url: '/diagnosisDetails/:recordId',
             templateUrl: 'views/business/doctor/diagnosisDetails.html',
             controller: 'DiagnosisDetailsCtrl',
             controllerAs: 'vm',
-            // resolve: {
-            //     loadMyFile: _lazyLoad([
-            //         '',
-            //     ])
-            // }
+            resolve: {
+                loadMyFile: _lazyLoad([
+                    'js/controllers/business/doctor/diagnosisDetails.js',
+                ])
+            }
         })
         //医师版-患者评价
         .state('field.patientAppraisal', {
-            url: '/patientAppraisal',
+            url: '/patientAppraisal/:id',
             templateUrl: 'views/business/doctor/patientAppraisal.html',
             controller: 'PatientAppraisalCtrl',
             controllerAs: 'vm',
-            // resolve: {
-            //     loadMyFile: _lazyLoad([
-            //         '',
-            //     ])
-            // }
+            resolve: {
+                loadMyFile: _lazyLoad([
+                    'js/controllers/business/doctor/patientAppraisal.js'
+                ])
+            }
         })
         .state('field.appraisalDetails', {
-            url: '/appraisalDetails',
+            url: '/appraisalDetails?',
             templateUrl: 'views/business/doctor/appraisalDetails.html',
             controller: 'AppraisalDetailsCtrl',
             controllerAs: 'vm',
-            // resolve: {
-            //     loadMyFile: _lazyLoad([
-            //         '',
-            //     ])
-            // }
+            resolve: {
+                loadMyFile: _lazyLoad([
+                    'js/controllers/business/doctor/appraisalDetails.js',
+                ])
+            }
         })
         .state('field.transactionDetails', {
-            url: '/transactionDetails',
+            url: '/transactionDetails/:id',
             templateUrl: 'views/business/doctor/transactionDetails.html',
             controller: 'TransactionDetailsCtrl',
             controllerAs: 'vm',
             // resolve: {
             //     loadMyFile: _lazyLoad([
-            //         '',
+            //         ''
             //     ])
             // }
         })
         // 业务管理-认证管理
         .state('field.approvedList', {
-            url: '/approvedList?page&size',
+            url: '/approvedList?page&size&telphone&name&status&startAt&endAt',
             templateUrl: 'views/business/approvedList.html',
             controller: 'ApprovedListCtrl',
             controllerAs: 'vm',
@@ -273,37 +275,39 @@ function projectRouteConfig($stateProvider, $urlRouterProvider, $ocLazyLoadProvi
         })
         // 业务管理-合作医院管理
         .state('field.hospitalList', {
-            url: '/hospitalList',
+            url: '/hospitalList?size&name&grade&status&docNum1&docNum2&province&city',
             templateUrl: 'views/business/hospitalList.html',
             controller: 'HospitalListCtrl',
             controllerAs: 'vm',
-            // resolve: {
-            //     loadMyFile: _lazyLoad([
-            //         '',
-            //     ])
-            // }
+            resolve: {
+                loadMyFile: _lazyLoad([
+                    'js/controllers/business/hospitalList.js',
+                    "area-selcet"
+                ])
+            }
         })
         .state('field.hospitalEdit', {
-            url: '/hospitalEdit',
+            url: '/hospitalEdit?id',
             templateUrl: 'views/business/hospitalEdit.html',
             controller: 'HospitalEditCtrl',
             controllerAs: 'vm',
-            // resolve: {
-            //     loadMyFile: _lazyLoad([
-            //         '',
-            //     ])
-            // }
+            resolve: {
+                loadMyFile: _lazyLoad([
+                    'js/controllers/business/hospitalEdit.js',
+                    "area-selcet"
+                ])
+            }
         })
         .state('field.hospitalDoctor', {
-            url: '/hospitalDoctor',
+            url: '/hospitalDoctor?id&page&size&name&phoneNumber&status&startAt&endAt&position',
             templateUrl: 'views/business/hospitalDoctor.html',
             controller: 'HospitalDoctorCtrl',
             controllerAs: 'vm',
-            // resolve: {
-            //     loadMyFile: _lazyLoad([
-            //         '',
-            //     ])
-            // }
+            resolve: {
+                loadMyFile: _lazyLoad([
+                    'js/controllers/business/hospitalDoctor.js'
+                ])
+            }
         })
         // 业务管理结束
 

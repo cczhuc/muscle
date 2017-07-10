@@ -13,8 +13,7 @@
     "status":1,
     "hospital":"北京东城中医医院",
     "reason":"拒绝、取消理由",
-    "img1":"",
-    "img2":"",
+    "image":["",""],
     "positionalTitle":1
   }
 }

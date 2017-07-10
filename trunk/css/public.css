@@ -79,8 +79,14 @@
     padding-left: 10px;
 }
 
+.pd-left-15 {
+    padding-left: 15px;
+}
 .pd-left-50 {
     padding-left: 50px;
+}
+.pd-left-65 {
+    padding-left: 65px;
 }
 
 .pd-bottom-20 {
@@ -262,6 +268,10 @@
 
 .relative {
     position: relative;
+}
+
+.absolute {
+    position: absolute;
 }
 
 .text-clip {
@@ -561,8 +571,15 @@ th {
 }
 
 .margin-10 {
-    margin-left: 10px;
-    margin-right: 10px;
+    margin: 10px;
+}
+
+.margin-15 {
+    margin: 15px;
+}
+
+.margin-7 {
+    margin: 6px;
 }
 
 .pd-left-right-10 {
@@ -594,8 +611,16 @@ th {
     margin-bottom: 15px;
 }
 
+.margin-bottom-50 {
+    margin-bottom: 50px;
+}
+
 .margin-right-20 {
     margin-right: 20px;
+}
+
+.margin-right-50 {
+    margin-right: 50px;
 }
 
 .margin-left-20 {
@@ -892,5 +917,24 @@ input[type="number"] {
 
 /*认证管理*/
 .text-green {
-    color:#00ff00;
+    color:#5cb85c;
+}
+/*医师认证照片*/
+.approvedImageDiv {
+    position:relative;
+    padding:15px;
+    margin:0 15px;
+    height:240px;
+    background-color:#645;
+}
+.approvedImage {
+    left:0;
+    right:0;
+    bottom:0;
+    top:0;
+    margin:auto;
+    min-height:80%;
+    max-width:100%;
+    max-height: 100%;
+    position:absolute;
 }

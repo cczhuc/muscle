@@ -1,3 +1,168 @@
-<div class="row">
-    这是（医师）用户详情页面
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <strong>医师详情</strong>
+    </div>
+    <form class="form-horizontal">
+        <div class="panel-body">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <strong>个人信息</strong>
+                </div>
+                <div class="panel-body">
+                    <div class="row pd-bottom-20">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label class="control-label col-md-4 word-spacing-25 pd-right-10">ID</label>
+                                <div class="col-md-8">
+                                    <input type="text" class="form-control" ng-value="vm.user.id" disabled>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label class="control-label col-md-4 word-spacing-25 pd-right-10">姓名</label>
+                                <div class="col-md-8">
+                                    <input type="text" class="form-control" ng-value="vm.user.name" disabled>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label class="control-label col-md-4 word-spacing-25 pd-right-10">身份证号</label>
+                                <div class="col-md-8">
+                                    <input type="text" class="form-control" ng-value="vm.user.idcard" disabled>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row pd-bottom-20">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label class="control-label col-md-4 word-spacing-25 pd-right-10">手机号</label>
+                                <div class="phone-input-wrap">
+                                       <input type="text" class="form-control phone-input" ng-model="vm.user.mobile"  ng-disabled="vm.phoneModifyFlag">
+                                       <div class="mobile-btn-group">
+                                           <button class="btn btn-warning  phone-btn" ng-show="vm.phoneModifyFlag" ng-click="vm.modifyPhone()">修改</button>
+                                           <button class="btn btn-warning  phone-btn" ng-show="!vm.phoneModifyFlag" ng-click="vm.cancelModifyPhone()">取消</button>
+                                           <button class="btn btn-warning  phone-btn" ng-show="!vm.phoneModifyFlag" ng-click="vm.savelModifyPhone()">保存</button>
+                                       </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label class="control-label col-md-4 word-spacing-25 pd-right-10">收入</label>
+                                <div class="col-md-8">
+                                    <input type="text" class="form-control" ng-value="vm.user.income+'&nbsp;'+'(元)'" disabled>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label class="control-label col-md-4 word-spacing-25 pd-right-10">注册时间</label>
+                                <div class="col-md-8">
+                                    <input type="text" class="form-control" ng-value="vm.user.registerTime|date:'yyyy-MM-dd'" disabled>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-12 row-btn-group">
+                            <a class="btn btn-warning btn-margin margin-7 inline-block" ui-sref="field.planTemplate({id:vm.user.id})">方案模板</a>
+                            <a class="btn btn-warning btn-margin margin-7 inline-block" ui-sref="field.diagnosisRecord({id:vm.user.id})">诊断记录</a>
+                            <a class="btn btn-warning btn-margin margin-7 inline-block" ui-sref="field.patientAppraisal({id:vm.user.id})">患者评价</a>
+                            <a class="btn btn-warning btn-margin margin-7 inline-block" ui-sref="field.transactionDetails({id:vm.user.id})">交易明细</a>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <strong>认证信息</strong>
+                </div>
+                <div class="panel-body">
+                    <div class="row pd-bottom-20">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label class="control-label col-md-4 word-spacing-25 pd-right-10">医院</label>
+                                <div class="col-md-8">
+                                    <input type="text" class="form-control" ng-model="vm.user.hospitalName" disabled>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label class="control-label col-md-4 word-spacing-25 pd-right-10">职称</label>
+                                <div class="col-md-8">
+                                    <select class="form-control" ng-model="vm.data.positionalTitle" ng-options="x.type as x.name for x in vm.positionalTitle" disabled>
+                                        <option value="">全部</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label class="control-label col-md-4 word-spacing-25 pd-right-10">医师资格证号</label>
+                                <div class="col-md-8">
+                                    <input type="text" class="form-control" ng-model="vm.user.qualifications" disabled>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row ">
+                        <label  class="control-label col-md-2 word-spacing-25 pd-right-10"><span>医师执业证书</span></label>
+                        <div class="col-md-5" ng-repeat = "index in vm.user.img">
+                            <div class="form-group">
+                                <div style="height:240px; background-color:#645; position:relative; padding:15px; margin:0 15px;">
+                                    <img
+                                            style="min-height:80%; max-width:100%; max-height: 100%; position:absolute; left:0; right:0; bottom:0; top:0; margin:auto;"
+                                            ng-src = "{{index}}" alt="职业证书照片">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pd-bottom-20 relative text-right">
+                    <button class="btn btn-warning btn-margin margin-right-50" ng-click="vm.back()">取消认证</button>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <strong>银行卡信息（最多绑两张卡）</strong>
+                </div>
+                <div class="panel-body">
+                    <div class="row pd-bottom-20" ng-repeat = "index in vm.user.bank">
+                        <div class="col-md-4" >
+                            <div class="form-group">
+                                <label class="control-label col-md-4 word-spacing-25 pd-right-10">开户银行</label>
+                                <div class="col-md-8">
+                                    <input type="text" class="form-control" ng-value="index.bankName" disabled>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label class="control-label col-md-4 word-spacing-25 pd-right-10">银行卡号</label>
+                                <div class="col-md-8">
+                                    <input type="text" class="form-control" ng-model="index.bank" disabled>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <button class="btn btn-warning btn-margin" ng-click="vm.back()">解绑</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </form>
+
 </div>
+
+
+
+
+
+

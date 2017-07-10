@@ -1,3 +1,49 @@
-<div class="row">
-    这是（医师）评价详情页面
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <strong>评价详情</strong>
+    </div>
+    <form class="form-horizontal">
+        <div class="panel-body">
+
+                <div class="panel-body">
+                    <div class="row pd-bottom-20">
+                        <div class="col-md-12">
+
+                            <div class="form-group">
+                                <label class="control-label col-md-1 word-spacing-25 pd-right-10">手机号</label>
+                                <div class="col-md-11">
+                                    <input type="text" class="form-control" ng-value="vm.user.id" disabled>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-1 word-spacing-25 pd-right-10">姓名</label>
+                                <div class="col-md-11">
+                                    <input type="text" class="form-control" ng-value="vm.user.id" disabled>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-1 word-spacing-25 pd-right-10">评星</label>
+                                <div class="col-md-11">
+                                    <input type="text" class="form-control" ng-value="vm.user.id" disabled>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-1 word-spacing-25 pd-right-10">评论</label>
+                                <div class="col-md-11">
+                                    <textarea class="form-control" ng-model="vm.data.reason" cols="33" rows="12" disabled>
+
+                                    </textarea>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-md-offset-1">
+                        <button class="btn btn-info btn-margin" ng-click="vm.delete()" >删除</button>
+                        <button class="btn btn-warning btn-margin" ui-sref="field.approvedList">返回</button>
+                    </div>
+                </div>
+
+        </div>
+    </form>
 </div>

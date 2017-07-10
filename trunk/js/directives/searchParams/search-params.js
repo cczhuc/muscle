@@ -18,10 +18,10 @@ angular.module("admin")
                     if ($scope.params.address) {
                         $scope.params.province = $scope.params.address.province;
                         $scope.params.city = $scope.params.address.city;
-                        $scope.params.county = $scope.params.address.district;
+                        // $scope.params.county = $scope.params.address.district;
                     }
                     //end :没有地址选择器时可以删除 将获取的对象拆开传到url里
-
+                    console.log("$scope.params",$scope.params);
                     $state.go($state.current, commonUtil.querySearchParams($scope.params), {reload: true});
                 };
                 //清空

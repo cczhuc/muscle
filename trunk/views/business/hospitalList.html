@@ -1,3 +1,123 @@
-<div class="row">
-    这是合作医院管理页面
+<div class="panel panel-default">
+    <form class="form-horizontal">
+        <div class="panel-body">
+            <div class="row pd-bottom-20">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label class="control-label col-md-4 word-spacing-25">医院名称</label>
+                        <div class="col-md-8">
+                            <input type="text" class="form-control" ng-model="vm.searchParams.name" >
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label class="control-label col-md-4 word-spacing-25">等级</label>
+                        <div class="col-md-8">
+                            <select class="form-control" ng-model="vm.searchParams.grade">
+                            <!--ng-options="x.type as x.name for x in vm.hospitalGrade">-->
+                                <option value="">全部</option>
+                                <option value="1">三甲</option>
+                                <option value="2">二甲</option>
+                                <option value="3">一甲</option>
+                                <option value="4">三乙</option>
+                                <option value="5">二乙</option>
+                                <option value="6">一乙</option>
+                                <option value="7">三丙</option>
+                                <option value="8">二丙</option>
+                                <option value="9">一丙</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label class="control-label col-md-4 word-spacing-25">状态</label>
+                        <div class="col-md-8">
+                            <select class="form-control" ng-model="vm.searchParams.status">
+                                <option value="">全部</option>
+                                <option value="1">在用</option>
+                                <option value="2">停用</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row pd-bottom-20">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label class="control-label col-md-4">医师人数</label>
+                        <div class="col-md-8">
+                            <input type="text" class="form-control" ng-model="vm.searchParams.docNum1">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label class="control-label col-md-4 text-center ">~</label>
+                        <div class="col-md-8">
+                            <input type="text" class="form-control" ng-model="vm.searchParams.docNum2">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row pd-bottom-20">
+                <div class="col-md-8">
+                    <div class="form-group">
+                        <div class="col-md-12">
+                            <city-select select-result="vm.searchParams.address"></city-select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row pd-bottom-2">
+                <div class="col-md-4 pull-right text-right">
+                    <search params="vm.searchParams"></search>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <strong>合作医院列表</strong>
+        <button ng-if="permision.create" type="button" class="btn btn-xs btn-success pull-right margin-left-10" ui-sref="field.hospitalEdit">
+            +新增
+        </button>
+    </div>
+    <div class="list-replace" ng-if="vm.hospitalList.length == 0">
+        <div class="list-replace-text">暂无任何数据</div>
+    </div>
+    <div class="panel-body  panel-body-noMax" ng-if="vm.hospitalList.length != 0">
+        <div class="divTable">
+            <div class="divTableHeading">
+                <div class="divTableHead">医院名称</div>
+                <div class="divTableHead">省</div>
+                <div class="divTableHead">市</div>
+                <div class="divTableHead">等级</div>
+                <div class="divTableHead">医师人数</div>
+                <div class="divTableHead">地址</div>
+                <div class="divTableHead">状态</div>
+                <div class="divTableHead">操作</div>
+            </div>
+            <div class="divTableBody">
+                <div class="divTableRow" ng-repeat="item in vm.hospitalList track by $index">
+                    <div class="divTableCell">{{item.name}}</div>
+                    <div  class="divTableCell">{{item.province}}</div>
+                    <div  class="divTableCell">{{item.city}}</div>
+                    <div  class="divTableCell">{{item.grade|hospitalGradeFilter}}</div>
+                    <div  class="divTableCell">{{item.total}}</div>
+                    <div  class="divTableCell">{{item.address}}</div>
+                    <div  class="divTableCell text-red" ng-class="{'text-green':item.status==1}">{{item.status|hospitalListStatusFilter}}</div>
+                    <div  class="divTableCell">
+                        <a  type="button" class="btn btn-sm text-red" ng-class="{'text-green':item.status==2}"
+                            ng-click="vm.onOffLine(user.id,0,item.status)">{{item.status|changeHospitalStatusFilter}}</a>
+                        <a  type="button" class="btn btn-sm" ui-sref="field.hospitalEdit({id:item.id})">编辑</a>
+                        <a type="button" class="btn btn-sm" ui-sref="field.hospitalDoctor({id:item.id})">医师</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <pagination ng-if="vm.total" total="{{vm.total}}"></pagination>
 </div>

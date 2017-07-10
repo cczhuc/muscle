@@ -351,3 +351,62 @@
         padding-right: 0;
     }
 }
+
+
+/*医师详情页手机号码及按钮组*/
+    .phone-input-wrap {
+        position: relative;
+        display:inline-block;
+        padding-left: 15px;
+        padding-right: 15px;
+        width:120px;
+    }
+
+
+
+.phone-input {
+    display: inline-block;
+    width: 120px;
+}
+
+.mobile-btn-group {
+    position: absolute;
+    right: -107px;
+    top: 0;
+    width: 84px;
+}
+
+@media screen and (max-width:991px) {
+
+    .phone-input-wrap {
+    width: 100%;
+    }
+    .phone-input {
+        display: block;
+        width: calc(100% - 100px);
+    }
+
+    .mobile-btn-group {
+        right: 20px;
+    }
+
+}
+
+.phone-btn {
+    width:40px;
+    padding: 6px 5px;
+}
+
+/*详情页下面的按钮组*/
+.row-btn-group {
+    margin-left: 10.5%;
+}
+
+@media screen and (max-width:991px) {
+    .row-btn-group {
+        margin-left: -1%;
+    }
+}
+
+
+

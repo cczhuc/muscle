@@ -1,3 +1,123 @@
-<div class="row">
-    这是（患者）订单记录页面
+<div class="panel panel-default">
+    <form class="form-horizontal">
+        <div class="panel-body">
+            <div class="row pd-bottom-20">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label class="control-label col-md-4 word-spacing-25">商品名称</label>
+                        <div class="col-md-8">
+                            <input type="text" class="form-control" ng-model="vm.searchParams.product" >
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label class="control-label col-md-4 word-spacing-25">方案支付</label>
+                        <div class="col-md-8">
+                            <select class="form-control" ng-model="vm.searchParams.transaction_type">
+                                <option value="">全部</option>
+                                <option value="0">方案支付</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label class="control-label col-md-4 word-spacing-25">交易状态</label>
+                        <div class="col-md-8">
+                            <select class="form-control" ng-model="vm.searchParams.transaction_status">
+                                <option value="">全部</option>
+                                <option value="0">成功</option>
+                                <option value="1">失败</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row pd-bottom-20">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label class="control-label col-md-4">交易金额</label>
+                        <div class="col-md-8">
+                            <input type="text" class="form-control" ng-model="vm.searchParams.sum1">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label class="control-label col-md-4 text-center ">—</label>
+                        <div class="col-md-8">
+                            <input type="text" class="form-control" ng-model="vm.searchParams.sum2">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row pd-bottom-20">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label class="control-label col-md-4">交易日期</label>
+                        <div class="col-md-8">
+                            <input type="text" class="form-control" size="20" bs-datepicker autoclose="true"
+                                   data-date-format="yyyy-MM-dd" data-date-type="number"
+                                   ng-model="vm.searchParams.startAt">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label class="control-label col-md-4 text-center ">—</label>
+                        <div class="col-md-8">
+                            <input type="text" class="form-control" size="20" bs-datepicker autoclose="true"
+                                   data-date-format="yyyy-MM-dd" data-date-type="number"
+                                   ng-model="vm.searchParams.endAt" >
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row pd-bottom-2">
+                <div class="col-md-4 pull-right text-right">
+                    <search params="vm.searchParams"></search>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <strong>{{vm.searchParams.name}}的订单记录</strong>
+    </div>
+    <div class="list-replace" ng-if="vm.patientRecord.length == 0">
+        <div class="list-replace-text">暂无任何数据</div>
+    </div>
+    <div class="panel-body  panel-body-noMax" ng-if="vm.patientRecord.length != 0">
+        <div class="divTable">
+            <div class="divTableHeading">
+                <div class="divTableHead">序号</div>
+                <div class="divTableHead">交易时间</div>
+                <div class="divTableHead">交易流水</div>
+                <div class="divTableHead">商品名称</div>
+                <div class="divTableHead">交易金额（元）</div>
+                <div class="divTableHead">交易类型</div>
+                <div class="divTableHead">交易状态</div>
+                <div class="divTableHead">交易方式</div>
+            </div>
+            <div class="divTableBody">
+                <div class="divTableRow" ng-repeat="item in vm.patientRecord track by $index">
+                    <div class="divTableCell">{{$index+1}}</div>
+                    <!--<div class="divTableCell">-->
+                        <!--<div >{{item.transaction_time|date:'yyyy-MM-dd'}}</div>-->
+                        <!--<div >{{item.transaction_time|date:'HH:mm:ss'}}</div>-->
+                    <!--</div>-->
+                    <div  class="divTableCell">{{item.transaction_time|date:'yyyy-MM-dd  HH:mm:ss'}}</div>
+                    <div  class="divTableCell">{{item.transaction_number}}</div>
+                    <div  class="divTableCell">{{item.product}}方案</div>
+                    <div  class="divTableCell">{{item.sum}}</div>
+                    <div  class="divTableCell">{{item.transaction_type|transactionTypeFilter}}</div>
+                    <div  class="divTableCell text-red" ng-class="{'text-green':item.transaction_status==0}">{{item.transaction_status|transactionStatusFilter}}</div>
+                    <div class="divTableCell">{{item.transaction_way|transactionWayFilter}}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <pagination ng-if="vm.total" total="{{vm.total}}"></pagination>
 </div>

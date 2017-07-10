@@ -32,7 +32,7 @@
         "updateAt":1487179231813,
         "createAt":0
       },
-      {"id":4,
+      {"id":3,
         "icon":"fa-gear",
         "parentID":1,
         "name":"认证管理",
@@ -49,7 +49,7 @@
         "icon":"fa-gear",
         "parentID":1,
         "name":"合作医院管理",
-        "menuID":"HTGL",
+        "menuID":"",
         "url":"field.hospitalList",
         "type":"",
         "level":700,

@@ -1,3 +1,72 @@
-<div class="row">
-    这是（医师）诊断详情页面
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <strong>诊断详情</strong>
+    </div>
+    <form class="form-horizontal">
+        <div class="panel-body">
+
+            <div class="panel-body">
+                <div class="row pd-bottom-20">
+                    <div class="col-md-12">
+
+                        <div class="form-group">
+                            <label class="control-label col-md-1 word-spacing-25 pd-right-10">患者手机</label>
+                            <div class="col-md-11">
+                                <input type="text" class="form-control" ng-value="vm.diagnosisDetails.mobile" disabled>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-1 word-spacing-25 pd-right-10">方案名称</label>
+                            <div class="col-md-11">
+                                <input type="text" class="form-control" ng-value="vm.diagnosisDetails.planName" disabled>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-1 word-spacing-25 pd-right-10">疗程</label>
+                            <div class="col-md-11">
+                                <input type="text" class="form-control" ng-value="vm.diagnosisDetails.course" disabled>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-1 word-spacing-25 pd-right-10">时常</label>
+                            <div class="col-md-11">
+                                <input type="text" class="form-control" ng-value="vm.diagnosisDetails.days" disabled>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-1 word-spacing-25 pd-right-10">强度</label>
+                            <div class="col-md-11">
+                                <input type="text" class="form-control" ng-value="vm.diagnosisDetails.strength" disabled>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-1 word-spacing-25 pd-right-10">间隔</label>
+                            <div class="col-md-11">
+                                <input type="text" class="form-control" ng-value="vm.diagnosisDetails.detector" disabled>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-1 word-spacing-25 pd-right-10">探头</label>
+                            <div class="col-md-11">
+                                <input type="text" class="form-control" ng-value="vm.diagnosisDetails.interval" disabled>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-1 word-spacing-25 pd-right-10">诊断结论</label>
+                            <div class="col-md-11">
+                                    <textarea class="form-control" ng-model="vm.diagnosisDetails.result" cols="33" rows="12" disabled>
+
+                                    </textarea>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-md-offset-1">
+                    <button class="btn btn-warning btn-margin" ui-sref="field.diagnosisRecord">返回</button>
+                </div>
+            </div>
+
+        </div>
+    </form>
 </div>

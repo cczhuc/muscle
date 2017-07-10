@@ -1,0 +1,30 @@
+<div class="modal ng-scope top am-fade" tabindex="-1" style="display: block;">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <a type="button" class="close" style="font-size: 15px;padding-top: 8px" ng-click="cancel()"><span aria-hidden="true">关闭</span></a>
+                <h4 style="font-weight: normal" class="modal-title">操作提示</h4>
+            </div>
+            <div class="modal-body text-center margin-lr-10">
+                <p style="font-size: 16px;color: #999">{{title}}</p>
+                <p style="font-size: 20px">{{content}}</p>
+                <div class="row pd-bottom-20">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <div class="col-md-12">
+                                    <textarea class="form-control" cols="33" rows="3" placeholder="请填写拒绝理由"
+                                              ng-if="true" ng-model="vm.refuse" maxlength="25">
+                                    </textarea>
+                                <span class="pull-right area-span">{{vm.refuse.length||0}}/25</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-warning" type="button" ng-click="cancel()">取消</button>
+                <button class="btn btn-primary" type="button" ng-click="ok()" ng-disabled="!vm.refuse.length">确定</button>
+            </div>
+        </div>
+    </div>
+</div>
