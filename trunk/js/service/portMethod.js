@@ -32,6 +32,11 @@ angular.module("admin")
             return $http.get(address.doctorDetails_url(id))
         },
 
+        //方案模板
+        planTemplate: function(id) {
+            return $http.get(address.planTemplate_url(id))
+        },
+
         //医师的评价列表
         patientAppraisalList: function(id) {
             return $http.get(address.patientAppraisalList_url(id))
@@ -50,6 +55,11 @@ angular.module("admin")
         //诊断详情
         diagnosisDetails:function (recordId) {
             return $http.get(address.diagnosisDetails_url(recordId))
+        },
+
+        //医师交易明细
+        transactionDetails:function(id) {
+            return $http.get(address.transactionDetails_url(id))
         },
 
         // 合作医院管理

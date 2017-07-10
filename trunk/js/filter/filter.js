@@ -69,6 +69,36 @@ angular.module('admin')
             }
         }
     })
+
+    //交易类型
+    .filter('dealTypeFilter',function() {
+        return function(type) {
+            switch(type) {
+                case 0:
+                    return "提现";
+                case 1:
+                    return "方案出售";
+                default:
+                    return "type="+type+"数据异常";
+            }
+        }
+    })
+    //交易状态
+    .filter('dealStatusFilter',function() {
+        return function(status) {
+            switch(status) {
+                case 0 :
+                    return "成功";
+                case 1:
+                    return "进行中";
+                case 2:
+                    return "失败";
+                default:
+                        return "status="+status+"数据异常";
+            }
+        }
+    })
+
     //合作医院管理
     //合作医院列表状态
     .filter('hospitalListStatusFilter', function () {

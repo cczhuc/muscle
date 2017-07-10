@@ -76,6 +76,11 @@ angular.module("admin").factory("address",function ($state,$http){
             return "/a/user"
         },
 
+        //方案列表
+        planTemplate_url: function(id) {
+            return "/a/planTemplate"
+        },
+
         //医师的评价列表
         patientAppraisalList_url: function (id) {
             return "/a/PatientAppraisalLit"
@@ -94,6 +99,11 @@ angular.module("admin").factory("address",function ($state,$http){
         //诊断详情
         diagnosisDetails_url: function (recordId) {
             return "/a/diagnosisDetails"
+        },
+
+        //医师交易明细
+        transactionDetails_url: function (id) {
+            return "/a/transactionDetails"
         },
 
         // 内容管理

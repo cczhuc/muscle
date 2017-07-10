@@ -244,11 +244,11 @@ function projectRouteConfig($stateProvider, $urlRouterProvider, $ocLazyLoadProvi
             templateUrl: 'views/business/doctor/transactionDetails.html',
             controller: 'TransactionDetailsCtrl',
             controllerAs: 'vm',
-            // resolve: {
-            //     loadMyFile: _lazyLoad([
-            //         ''
-            //     ])
-            // }
+            resolve: {
+                loadMyFile: _lazyLoad([
+                    'js/controllers/business/doctor/transactionDetails.js'
+                ])
+            }
         })
         // 业务管理-认证管理
         .state('field.approvedList', {
