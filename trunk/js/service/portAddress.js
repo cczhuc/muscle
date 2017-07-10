@@ -76,9 +76,16 @@ angular.module("admin").factory("address",function ($state,$http){
             return "/a/user"
         },
 
+        //医师的评价列表
         patientAppraisalList_url: function (id) {
             return "/a/PatientAppraisalLit"
         },
+
+        //医师评价详情
+        appraisalDetails_url: function (id) {
+            return "/a/appraisalDetails"
+        },
+
 
         // 内容管理
         contentList_url:function(){

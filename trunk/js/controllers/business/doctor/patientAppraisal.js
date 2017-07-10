@@ -14,16 +14,5 @@ angular.module('admin').controller('PatientAppraisalCtrl',['$rootScope','$state'
                 $rootScope.alert(res.data.message);
             }
         });
-
-
-
-        // vm.goUserDetail = function(userId,app) {
-        //     if(app === 0)
-        //         $state.go("field.patientDetails",{userId:userId},{reload:true});
-        //     else if(app===1)
-        //         $state.go("field.doctorDetails",{userId:userId},{reload:true});
-        // }
-
-
     }
 ]);

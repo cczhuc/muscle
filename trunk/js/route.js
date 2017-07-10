@@ -229,15 +229,15 @@ function projectRouteConfig($stateProvider, $urlRouterProvider, $ocLazyLoadProvi
             }
         })
         .state('field.appraisalDetails', {
-            url: '/appraisalDetails',
+            url: '/appraisalDetails?',
             templateUrl: 'views/business/doctor/appraisalDetails.html',
             controller: 'AppraisalDetailsCtrl',
             controllerAs: 'vm',
-            // resolve: {
-            //     loadMyFile: _lazyLoad([
-            //         '',
-            //     ])
-            // }
+            resolve: {
+                loadMyFile: _lazyLoad([
+                    'js/controllers/business/doctor/appraisalDetails.js',
+                ])
+            }
         })
         .state('field.transactionDetails', {
             url: '/transactionDetails',

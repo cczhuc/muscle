@@ -37,6 +37,10 @@ angular.module("admin")
             return $http.get(address.patientAppraisalList_url(id))
         },
 
+        //获取医师评价详情
+        appraisalDetails:function(id) {
+            return $http.get(address.appraisalDetails_url(id))
+        },
 
         // 合作医院管理
         // 医院列表
