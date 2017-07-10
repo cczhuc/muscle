@@ -106,9 +106,9 @@
                     <td>{{item.createBy}}</td>
                     <td>{{item.sendAt}}</td>
                     <td class="text-right">
-                        <a ng-if="item.status=='2'" type="button" class="btn btn-sm text-green">立即发送</a>
+                        <a ng-if="item.status=='2'" type="button" class="btn btn-sm text-green" ng-click="vm.send()">立即发送</a>
                         <a ng-if="item.status !== 0" type="button" class="btn btn-sm">编辑</a>
-                        <a  type="button" class="btn btn-sm text-red">删除</a>
+                        <a  type="button" class="btn btn-sm text-red" ng-click="vm.delete()">删除</a>
                     </td>
                 </tr>
             </tbody>

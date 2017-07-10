@@ -26,6 +26,10 @@ angular.module("admin").factory("address",function ($state,$http){
         // 意见反馈
         opinionList_url:function(){
             return "/a/u/opinion/search"
+        },
+        // 版本列表
+        versionList_url:function(){
+            return "/a/u/version/search"
         }
     }
 });

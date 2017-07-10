@@ -76,34 +76,26 @@
         <table class="table table-striped add-table-border">
             <thead>
                 <tr>
-                    <th>ID</th>
-                    <th>申请时间</th>
+                    <th>序号</th>
                     <th>手机号</th>
                     <th>姓名</th>
-                    <th>医师资格证号</th>
-                    <th>认证状态</th>
-                    <th>拒绝/取消理由</th>
+                    <th>APP</th>
+                    <th>提交时间</th>
                     <th>操作</th>
                 </tr>
             </thead>
             <tbody>
-                <!--<tr ng-repeat="item in vm.approvedList track by $index">-->
-                <!--<td>{{item.approvedId}}</td>-->
-                <!--<td>-->
-                <!--<div>{{item.time|date:'yyyy-MM-dd'}}</div>-->
-                <!--<div>{{item.time|date:'HH:mm:ss'}}</div>-->
-                <!--</td>-->
-                <!--<td>{{item.telphone}}</td>-->
-                <!--<td>{{item.name}}</td>-->
-                <!--<td>{{item.number}}</td>-->
-                <!--<td class="text-red" ng-class="{'text-green':item.status==0}">{{item.status|approvedListFilter}}</td>-->
-                <!--<td>{{item.reason}}</td>-->
-                <!--<td>-->
-                <!--<a  type="button" class="btn btn-sm">医师详情</a>-->
-                <!--<a  type="button" class="btn btn-sm">审核</a>-->
-                <!--<a  type="button" class="btn btn-sm">查看</a>-->
-                <!--</td>-->
-                <!--</tr>-->
+                <tr ng-repeat="item in vm.opinion track by $index">
+                    <td>{{item.id}}</td>
+                    <td>{{item.phone}}</td>
+                    <td>{{item.name}}</td>
+                    <td>{{item.version|appVersionFilter}}</td>
+                    <td>{{item.commitAt}}</td>
+                    <td>
+                        <a  type="button" class="btn btn-sm">编辑</a>
+                        <a  type="button" class="btn btn-sm text-red">删除</a>
+                    </td>
+                </tr>
             </tbody>
         </table>
     </div>

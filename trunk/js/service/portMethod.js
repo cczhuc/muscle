@@ -29,6 +29,12 @@ angular.module("admin").factory("portService",function ($http,address) {
             return $http.get(address.messageList_url())
         },
         // 意见反馈
-
+        getOpinionList:function (){
+            return $http.get(address.opinionList_url())
+        },
+        // 版本列表
+        getVersionList:function (){
+            return $http.get(address.versionList_url())
+        }
     }
 });

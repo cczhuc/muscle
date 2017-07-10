@@ -1,6 +1,8 @@
 /**
  * Created by Free Wang on 2017/7/5.
  */
+// 内容管理
+    // 内容列表
 var contentList = Mock.mock('/a/u/content/search',{
     code:0,
     data:{
@@ -18,6 +20,9 @@ var contentList = Mock.mock('/a/u/content/search',{
     },
     message:'success'
 });
+
+// 运营管理
+    // 信息列表
 var messageList = Mock.mock('/a/u/message/search',{
     code:0,
     data:{
@@ -36,15 +41,34 @@ var messageList = Mock.mock('/a/u/message/search',{
     },
     message:'success'
 });
+    // 意见列表
 var opinionList = Mock.mock('/a/u/opinion/search',{
     code:0,
     data:{
-        'messageList|10': [{
+        'opinionList|10': [{
             'id|1-100': 1,
             'name':'@cname()',
-            'phone|6':1,
-            'APP|+1':['医师版','患者版'],
+            'phone|13345678912-18899999999':1,
+            'version|0-1':0,
             'commitAt':'@date'
+        }],
+        page: 1,
+        size: 10,
+        total: 11
+    },
+    message:'success'
+});
+    // 版本列表
+var versionList = Mock.mock('/a/u/version/search',{
+    code:0,
+    data:{
+        'versionList|10': [{
+            'id|1-100': 1,
+            'name':'@cname()',
+            'number|1-1':1,
+            'version|0-1':1,
+            'versionNumber|1.1-1.9':1,
+            'force|0-1':'0'
         }],
         page: 1,
         size: 10,
