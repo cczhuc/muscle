@@ -189,3 +189,24 @@ var patientRecord = Mock.mock('/a/u/patientTestData',{
     },
     message:'success'
 });
+
+//医师的诊断记录
+var diagnosisRecord = Mock.mock('/a/diagnosisRecord',{
+    code:0,
+    data:{
+        'diagnosisRecord|10': [{
+            'date|1499184000000-1499356800000':1499184000000,
+            'planName':'今晚打老虎',
+            'mobile':18698741557,
+            'days|20-60': 60,
+            'course|20-60':20,
+            'strength|30-100':40,
+            'interval':50,
+            'detector': 20,
+        }],
+        page: 1,
+        size: 10,
+        total: 12
+    },
+    message:'success'
+});

@@ -184,7 +184,7 @@ function projectRouteConfig($stateProvider, $urlRouterProvider, $ocLazyLoadProvi
             }
         })
         .state('field.planTemplate', {
-            url: '/planTemplate',
+            url: '/planTemplate/:id',
             templateUrl: 'views/business/doctor/planTemplate.html',
             controller: 'PlanTemplateCtrl',
             controllerAs: 'vm',
@@ -195,15 +195,15 @@ function projectRouteConfig($stateProvider, $urlRouterProvider, $ocLazyLoadProvi
             }
         })
         .state('field.diagnosisRecord', {
-            url: '/diagnosisRecord',
+            url: '/diagnosisRecord/:id/:page',
             templateUrl: 'views/business/doctor/diagnosisRecord.html',
             controller: 'DiagnosisRecordCtrl',
             controllerAs: 'vm',
-            // resolve: {
-            //     loadMyFile: _lazyLoad([
-            //         '',
-            //     ])
-            // }
+            resolve: {
+                loadMyFile: _lazyLoad([
+                    'js/controllers/business/doctor/diagnosisRecord.js',
+                ])
+            }
         })
         .state('field.diagnosisDetails', {
             url: '/diagnosisDetails',
@@ -240,7 +240,7 @@ function projectRouteConfig($stateProvider, $urlRouterProvider, $ocLazyLoadProvi
             }
         })
         .state('field.transactionDetails', {
-            url: '/transactionDetails',
+            url: '/transactionDetails/:id',
             templateUrl: 'views/business/doctor/transactionDetails.html',
             controller: 'TransactionDetailsCtrl',
             controllerAs: 'vm',

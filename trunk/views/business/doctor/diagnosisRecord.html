@@ -1,3 +1,115 @@
+<div class="form-horizontal">
+    <div class="panel panel-default">
+        <form class="form-horizontal">
+            <div class="panel-body">
+                <div class="row pd-bottom-20">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label class="control-label col-md-4">评价日期</label>
+                            <div class="col-md-8">
+                                <input type="text" class="form-control" size="20" bs-datepicker autoclose="true"
+                                       data-date-format="yyyy-MM-dd" data-date-type="number"
+                                       data-max-date="{{vm.searchParams.endAt}}"
+                                       ng-model="vm.searchParams.firstTime">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label class="control-label col-md-4 text-center ">—</label>
+                            <div class="col-md-8">
+                                <input type="text" class="form-control" size="20" bs-datepicker autoclose="true"
+                                       data-date-format="yyyy-MM-dd" data-date-type="number"
+                                       ng-model="vm.searchParams.endAt" data-min-date="{{vm.searchParams.secondTime}}">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label class="control-label col-md-4">方案名称</label>
+                            <div class="col-md-8">
+                                <input class="form-control"
+                                       type="text"
+                                       ng-model="vm.searchParams.mobile">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row pd-bottom-20">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label class="control-label col-md-4">患者手机</label>
+                            <div class="col-md-8">
+                                <input class="form-control"
+                                       type="text"
+                                       ng-model="vm.searchParams.name">
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12 text-right ">
+                        <search params="vm.searchParams"></search>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
 <div class="row">
-    这是（医师）诊断记录页面
+    <div class="col-lg-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <strong>的诊断记录</strong>
+            </div>
+
+            <div class="list-replace" ng-if="vm.userList.length == 0">
+                <div class="list-replace-text">暂无任何数据</div>
+            </div>
+
+            <div class="panel-body panel-body-noMax" ng-if="vm.userList.length != 0">
+                <div class="divTable">
+                    <div class="divTableHeading">
+                        <div class="divTableHead">发送日期</div>
+                        <div class="divTableHead">方案名称</div>
+                        <div class="divTableHead">患者手机</div>
+                        <div class="divTableHead">疗程</div>
+                        <div class="divTableHead">时长</div>
+                        <div class="divTableHead">强度</div>
+                        <div class="divTableHead">间隔</div>
+                        <div class="divTableHead">探头</div>
+                        <div class="divTableHead">操作</div>
+                    </div>
+
+                    <div class="divTableBody">
+                        <div class="divTableRow" ng-repeat="info in vm.diagnosisRecord.diagnosisRecord track by $index">
+                            <div class="divTableCell handle">{{info.date|date:'yyyy-MM-dd'}}</div>
+                            <div class="divTableCell">{{info.planName}}</div>
+                            <div class="divTableCell">{{info.mobile}}</div>
+                            <div class="divTableCell">{{info.course}}</div>
+                            <div class="divTableCell">{{info.strength}}</div>
+                            <div class="divTableCell">{{info.days}}</div>
+                            <div class="divTableCell">{{info.detector}}</div>
+                            <div class="divTableCell">{{info.interval}}</div>
+
+                            <div class="divTableCell company-tableCell-fix">
+                                <a class="text-blue btn btn-sm company-a-fix"
+                                   ui-sref="field.diagnosisDetails">
+                                    查看
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <pagination ng-if="vm.total" total="{{vm.total}}"></pagination>
+            </div>
+        </div>
+    </div>
 </div>

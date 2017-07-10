@@ -86,6 +86,10 @@ angular.module("admin").factory("address",function ($state,$http){
             return "/a/appraisalDetails"
         },
 
+        //医师的诊断记录
+        diagnosisRecord_url: function (id) {
+            return "/a/diagnosisRecord"
+        },
 
         // 内容管理
         contentList_url:function(){

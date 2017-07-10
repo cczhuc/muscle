@@ -66,10 +66,10 @@
                             </div>
                         </div>
                         <div class="col-lg-12 row-btn-group">
-                            <a class="btn btn-warning btn-margin margin-7 inline-block" ui-sref="field.planTemplate">方案模板</a>
-                            <a class="btn btn-warning btn-margin margin-7 inline-block" >诊断记录</a>
+                            <a class="btn btn-warning btn-margin margin-7 inline-block" ui-sref="field.planTemplate({id:vm.user.id})">方案模板</a>
+                            <a class="btn btn-warning btn-margin margin-7 inline-block" ui-sref="field.diagnosisRecord({id:vm.user.id})">诊断记录</a>
                             <a class="btn btn-warning btn-margin margin-7 inline-block" ui-sref="field.patientAppraisal({id:vm.user.id})">患者评价</a>
-                            <a class="btn btn-warning btn-margin margin-7 inline-block" ng-click="vm.back()">交易明细</a>
+                            <a class="btn btn-warning btn-margin margin-7 inline-block" ui-sref="field.transactionDetails({id:vm.user.id})">交易明细</a>
                         </div>
 
                     </div>
