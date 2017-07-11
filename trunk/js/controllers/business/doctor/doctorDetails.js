@@ -43,5 +43,14 @@ angular.module('admin').controller('DoctorDetailsCtrl',['$rootScope','$state','$
             });
         };
 
+        vm.notBundle = function () {
+
+                $rootScope.operationConfirm("解绑将删除该银行卡信息", "确认修改？",function () {
+                    //发送请求
+                    $rootScope.alert("解绑成功", function () {})
+                });
+
+        };
+
     }
 ]);

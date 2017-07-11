@@ -148,21 +148,41 @@
                             <div class="divTableCell">{{user.freezed|freezedFilter}}</div>
 
                             <div class="divTableCell company-tableCell-fix">
-                                <a class="text-red btn btn-sm company-a-fix" href=""
+                                <a class="btn btn-sm company-a-fix"
+                                   ng-class="{'text-red':user.freezed==0,'text-green':user.freezed==1}"
                                    ng-click="vm.freezeUser(user.id,0,user.freezed)">
                                     {{user.freezed|changeFreezedStatusFilter}}
                                 </a>
-                                <a class="text-red btn btn-sm company-a-fix"
+                                <a class="s btn btn-sm company-a-fix"
                                    ng-click = "vm.goUserDetail(user.id,user.app)">
                                     查看
                                 </a>
-                                <a class="text-red btn btn-sm company-a-fix"
+                                <a class="btn btn-sm company-a-fix"
                                    ng-if = "user.app == 0"
                                    ui-sref="field.patientTestData({id:user.id,name:user.name})">
                                     数据
                                 </a>
 
-                                <a class="text-red btn btn-sm company-a-fix"
+                                <a class="btn btn-sm company-a-fix"
+                                   ng-if = "user.app == 1 && user.freezed==0"
+                                   ui-sref="field.planTemplate({id:user.id})">
+                                    模板
+                                </a>
+
+                                <a class="btn btn-sm company-a-fix"
+                                   ng-if = "user.app == 1 && user.freezed==0"
+                                   ui-sref="field.patientAppraisal({id:user.id})">
+                                    评价
+                                </a>
+
+                                <a class="btn btn-sm company-a-fix"
+                                   ng-if = "user.app == 1 && user.freezed==0"
+                                   ui-sref="field.transactionDetails({id:user.id})">
+                                    交易
+                                </a>
+
+
+                                <a class="btn btn-sm company-a-fix"
                                    ng-if = "user.app == 0"
                                    ui-sref="field.patientRecord({id:user.id,name:user.name})">
                                     订单

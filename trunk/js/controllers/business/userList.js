@@ -44,13 +44,13 @@ angular.module('admin').controller('UserListCtrl',['$rootScope','$state','$http'
             }
         };
 
-
+        //跳到用户详情页
         vm.goUserDetail = function(id,app) {
             if(app === 0)
                 $state.go("field.patientDetails",{id:id},{reload:true});
             else if(app===1)
                 $state.go("field.doctorDetails",{id:id},{reload:true});
-        }
+        };
 
 
     }
