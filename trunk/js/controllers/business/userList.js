@@ -5,7 +5,7 @@ angular.module('admin').controller('UserListCtrl',['$rootScope','$state','$http'
 
         portService.getUserList(vm.searchParams).then(function (res){
             if (res.data.code===0) {
-                // console.log(res);
+                console.log(res);
                 vm.userList = res.data.data;
                 vm.total = res.data.total;
             } else {
@@ -52,6 +52,24 @@ angular.module('admin').controller('UserListCtrl',['$rootScope','$state','$http'
                 $state.go("field.doctorDetails",{id:id},{reload:true});
         };
 
+        //取消认证
+        vm.refuse = {}; //拒绝理由，对应的传参是refuse的引用
+        vm.cancelApproved = function (id) {
+            $rootScope.cancleApproved("取消实名将删除用户身份及银行卡信息","确认取消？",vm.refuse,function () {
+                console.log(vm.refuse);
+                // 发送请求取消认证变态并删除信息
+                portService.cancelApproved(id).then(function (res) {
+                    if(res.data.code==0) {
+
+                        $rootScope.alert("取消成功")
+                    }
+                    else {
+                        $rootScope.alert("取消失败")
+                    }
+                })
+            });
+
+        };
 
     }
 ]);
