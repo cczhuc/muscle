@@ -43,8 +43,8 @@
                                        <input type="text" class="form-control phone-input" ng-model="vm.user.mobile"  ng-disabled="vm.phoneModifyFlag">
                                        <div class="mobile-btn-group">
                                            <button class="btn btn-warning  phone-btn" ng-show="vm.phoneModifyFlag" ng-click="vm.modifyPhone()">修改</button>
-                                           <button class="btn btn-warning  phone-btn" ng-show="!vm.phoneModifyFlag" ng-click="vm.cancelModifyPhone()">取消</button>
-                                           <button class="btn btn-warning  phone-btn" ng-show="!vm.phoneModifyFlag" ng-click="vm.savelModifyPhone()">保存</button>
+                                           <button class="btn btn-danger  phone-btn" ng-show="!vm.phoneModifyFlag" ng-click="vm.cancelModifyPhone()">取消</button>
+                                           <button class="btn btn-success  phone-btn" ng-show="!vm.phoneModifyFlag" ng-click="vm.savelModifyPhone()">保存</button>
                                        </div>
                                 </div>
                             </div>
@@ -66,10 +66,10 @@
                             </div>
                         </div>
                         <div class="col-lg-12 row-btn-group">
-                            <a class="btn btn-warning btn-margin margin-7 inline-block" ui-sref="field.planTemplate({id:vm.user.id})">方案模板</a>
-                            <a class="btn btn-warning btn-margin margin-7 inline-block" ui-sref="field.diagnosisRecord({id:vm.user.id})">诊断记录</a>
-                            <a class="btn btn-warning btn-margin margin-7 inline-block" ui-sref="field.patientAppraisal({id:vm.user.id})">患者评价</a>
-                            <a class="btn btn-warning btn-margin margin-7 inline-block" ui-sref="field.transactionDetails({id:vm.user.id})">交易明细</a>
+                            <a class="btn btn-primary btn-margin margin-7 inline-block" ui-sref="field.planTemplate({id:vm.user.id})">方案模板</a>
+                            <a class="btn btn-primary btn-margin margin-7 inline-block" ui-sref="field.diagnosisRecord({id:vm.user.id})">诊断记录</a>
+                            <a class="btn btn-primary btn-margin margin-7 inline-block" ui-sref="field.patientAppraisal({id:vm.user.id})">患者评价</a>
+                            <a class="btn btn-primary btn-margin margin-7 inline-block" ui-sref="field.transactionDetails({id:vm.user.id})">交易明细</a>
                         </div>
 
                     </div>
@@ -123,7 +123,7 @@
                 </div>
 
                 <div class="pd-bottom-20 relative text-right">
-                    <button class="btn btn-warning btn-margin margin-right-50" ng-click="vm.back()">取消认证</button>
+                    <button class="btn btn-warning btn-margin margin-right-50" ng-click="vm.cancelApproved(vm.user.id)">取消认证</button>
                 </div>
             </div>
             <div class="panel panel-default">
@@ -149,7 +149,7 @@
                             </div>
                         </div>
                         <div class="col-md-2">
-                            <button class="btn btn-warning btn-margin" ng-click="vm.back()">解绑</button>
+                            <button class="btn btn-warning btn-margin" ng-click="vm.notBundle()">解绑</button>
                         </div>
                     </div>
 

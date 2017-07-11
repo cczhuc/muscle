@@ -43,5 +43,35 @@ angular.module('admin').controller('DoctorDetailsCtrl',['$rootScope','$state','$
             });
         };
 
+
+
+        //取消认证
+        vm.refuse = {}; //拒绝理由，对应的传参是refuse的引用
+        vm.cancelApproved = function (id) {
+            $rootScope.cancleApproved("取消实名将删除用户身份及银行卡信息","确认取消？",vm.refuse,function () {
+                console.log(vm.refuse);
+                // 发送请求取消认证变态并删除信息
+                portService.cancelApproved(id).then(function (res) {
+                    if(res.data.code==0) {
+
+                        $rootScope.alert("取消成功")
+                    }
+                    else {
+                        $rootScope.alert("取消失败")
+                    }
+                })
+            });
+        };
+
+        //解绑银行卡
+        vm.notBundle = function () {
+
+                $rootScope.operationConfirm("解绑将删除该银行卡信息", "确认修改？",function () {
+                    //发送请求
+                    $rootScope.alert("解绑成功", function () {})
+                });
+
+        };
+
     }
 ]);
