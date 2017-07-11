@@ -9,7 +9,7 @@
                             <div class="col-md-8">
                                 <input type="text" class="form-control" size="20" bs-datepicker autoclose="true"
                                        data-date-format="yyyy-MM-dd" data-date-type="number"
-                                       data-max-date="{{vm.searchParams.endAt}}"
+
                                        ng-model="vm.searchParams.startAt">
                             </div>
                         </div>
@@ -21,7 +21,8 @@
                             <div class="col-md-8">
                                 <input type="text" class="form-control" size="20" bs-datepicker autoclose="true"
                                        data-date-format="yyyy-MM-dd" data-date-type="number"
-                                       ng-model="vm.searchParams.endAt" data-min-date="{{vm.searchParams.startAt}}">
+                                       ng-model="vm.searchParams.endAt"
+                                       >
                             </div>
                         </div>
                     </div>
@@ -105,6 +106,10 @@
                 <div class="row">
                     <div class="col-md-12 text-right ">
                         <search params="vm.searchParams"></search>
+                        <!--<div>-->
+                            <!--<button type="button"  class="btn btn-danger" ng-click="clean()">清空</button>-->
+                            <!--<button type="button" class="btn btn-success" ng-click="search()">搜索</button>-->
+                        <!--</div>-->
                     </div>
                 </div>
 
