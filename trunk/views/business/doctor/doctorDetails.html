@@ -43,8 +43,8 @@
                                        <input type="text" class="form-control phone-input" ng-model="vm.user.mobile"  ng-disabled="vm.phoneModifyFlag">
                                        <div class="mobile-btn-group">
                                            <button class="btn btn-warning  phone-btn" ng-show="vm.phoneModifyFlag" ng-click="vm.modifyPhone()">修改</button>
-                                           <button class="btn btn-warning  phone-btn" ng-show="!vm.phoneModifyFlag" ng-click="vm.cancelModifyPhone()">取消</button>
-                                           <button class="btn btn-warning  phone-btn" ng-show="!vm.phoneModifyFlag" ng-click="vm.savelModifyPhone()">保存</button>
+                                           <button class="btn btn-danger  phone-btn" ng-show="!vm.phoneModifyFlag" ng-click="vm.cancelModifyPhone()">取消</button>
+                                           <button class="btn btn-success  phone-btn" ng-show="!vm.phoneModifyFlag" ng-click="vm.savelModifyPhone()">保存</button>
                                        </div>
                                 </div>
                             </div>
@@ -66,10 +66,10 @@
                             </div>
                         </div>
                         <div class="col-lg-12 row-btn-group">
-                            <a class="btn btn-warning btn-margin margin-7 inline-block" ui-sref="field.planTemplate({id:vm.user.id})">方案模板</a>
-                            <a class="btn btn-warning btn-margin margin-7 inline-block" ui-sref="field.diagnosisRecord({id:vm.user.id})">诊断记录</a>
-                            <a class="btn btn-warning btn-margin margin-7 inline-block" ui-sref="field.patientAppraisal({id:vm.user.id})">患者评价</a>
-                            <a class="btn btn-warning btn-margin margin-7 inline-block" ui-sref="field.transactionDetails({id:vm.user.id})">交易明细</a>
+                            <a class="btn btn-primary btn-margin margin-7 inline-block" ui-sref="field.planTemplate({id:vm.user.id})">方案模板</a>
+                            <a class="btn btn-primary btn-margin margin-7 inline-block" ui-sref="field.diagnosisRecord({id:vm.user.id})">诊断记录</a>
+                            <a class="btn btn-primary btn-margin margin-7 inline-block" ui-sref="field.patientAppraisal({id:vm.user.id})">患者评价</a>
+                            <a class="btn btn-primary btn-margin margin-7 inline-block" ui-sref="field.transactionDetails({id:vm.user.id})">交易明细</a>
                         </div>
 
                     </div>

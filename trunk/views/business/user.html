@@ -175,6 +175,11 @@
                                        ui-sref="field.diagnosisRecord({id:user.id})">
                                         记录
                                     </a>
+                                    <a class="btn btn-sm company-a-fix"
+                                       ng-if="user.app == 0"
+                                       ui-sref="field.patientRecord({id:user.id,name:user.name})">
+                                        订单
+                                    </a>
                                 </div>
                                 <div class="row">
                                     <a class="btn btn-sm company-a-fix"
@@ -198,11 +203,7 @@
                                     </a>
 
 
-                                    <a class="btn btn-sm company-a-fix"
-                                       ng-if="user.app == 0"
-                                       ui-sref="field.patientRecord({id:user.id,name:user.name})">
-                                        订单
-                                    </a>
+
                                 </div>
                             </div>
 
