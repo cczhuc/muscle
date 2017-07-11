@@ -6,13 +6,13 @@ angular.module("admin")
             replace: true,
             scope: {
                 params: '=',
-                //三期添加，点击搜索或者清空，会触发一个方法
-                addFn:"&?"
+                //点击搜索或者清空，会触发一个方法
+                changeFn:"&?"
             },
             controller: function ($state, commonUtil, $scope) {
                 //搜索
                 $scope.search = function () {
-                    $scope.addFn();
+                    $scope.changeFn();
                     //strat :没有地址选择器时可以删除 将获取的对象拆开传到url里
                     console.log($scope.params.address);
                     if ($scope.params.address) {
@@ -27,7 +27,6 @@ angular.module("admin")
                 //清空
                 $scope.clean = function () {
                     console.log($scope.params.address);
-                    $scope.addFn();
                     angular.forEach($scope.params, function (data, index) {
                         //三期添加了关于ID的选项，清除的时候不能清除ID
                         if (index !== 'size'&&index!== 'id') {

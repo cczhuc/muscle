@@ -1,8 +1,9 @@
-angular.module("admin").controller('HospitalListCtrl',["$rootScope","$state","$http","portService","hospitalGrade","commonUtil",
-    function ($rootScope,$state,$http,portService,hospitalGrade,commonUtil) {
+angular.module("admin").controller('HospitalListCtrl',["$rootScope","$scope","$state","$http","portService","hospitalGrade","commonUtil",
+    function ($rootScope,$scope,$state,$http,portService,hospitalGrade,commonUtil) {
         var vm = this;
         vm.searchParams = $state.params;
         vm.hospitalGrade = hospitalGrade;
+
         // 省市区数据转换
         vm.searchParams.address = commonUtil.areaDateTransform($state.params.province, $state.params.city, $state.params.county);
         portService.gerHospitalList(vm.searchParams).then(function (res) {
