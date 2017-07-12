@@ -125,7 +125,7 @@ function projectRouteConfig($stateProvider, $urlRouterProvider, $ocLazyLoadProvi
         // 业务管理开始
         //用户管理-用户管理
         .state('field.user', {
-            url: '/user/:page/:size?&startAt&endAt&app&minAge&maxAge&freezed&phoneNumber&name',
+            url: '/user/:page/:size?&startAt&endAt&app&minAge&maxAge&freezed&mobile&name',
             templateUrl: 'views/business/user.html',
             controller: 'UserListCtrl',
             controllerAs: 'vm',
@@ -184,7 +184,7 @@ function projectRouteConfig($stateProvider, $urlRouterProvider, $ocLazyLoadProvi
             }
         })
         .state('field.planTemplate', {
-            url: '/planTemplate/:id',
+            url: '/planTemplate/:id?minCount&maxCount&startAt&endAt&name',
             templateUrl: 'views/business/doctor/planTemplate.html',
             controller: 'PlanTemplateCtrl',
             controllerAs: 'vm',
@@ -299,7 +299,7 @@ function projectRouteConfig($stateProvider, $urlRouterProvider, $ocLazyLoadProvi
             }
         })
         .state('field.hospitalDoctor', {
-            url: '/hospitalDoctor?id&page&size&name&phoneNumber&status&startAt&endAt&position',
+            url: '/hospitalDoctor?id&page&size&name&mobile&status&startAt&endAt&position',
             templateUrl: 'views/business/hospitalDoctor.html',
             controller: 'HospitalDoctorCtrl',
             controllerAs: 'vm',

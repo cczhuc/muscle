@@ -7,10 +7,10 @@
                         <div class="form-group">
                             <label class="control-label col-md-4">注册日期</label>
                             <div class="col-md-8">
-                                <input type="text" class="form-control" size="20" bs-datepicker autoclose="true"
+                                <input type="text" class="form-control"
+                                       size="20" bs-datepicker autoclose="true"
                                        data-date-format="yyyy-MM-dd" data-date-type="number"
-
-                                       ng-model="vm.searchParams.startAt">
+                                       data-max-date="today" ng-model="vm.searchParams.startAt">
                             </div>
                         </div>
                     </div>
@@ -21,8 +21,7 @@
                             <div class="col-md-8">
                                 <input type="text" class="form-control" size="20" bs-datepicker autoclose="true"
                                        data-date-format="yyyy-MM-dd" data-date-type="number"
-                                       ng-model="vm.searchParams.endAt"
-                                       >
+                                       data-max-date="today" ng-model="vm.searchParams.endAt">
                             </div>
                         </div>
                     </div>
@@ -46,8 +45,9 @@
                         <div class="form-group">
                             <label class="control-label col-md-4">年&emsp;&emsp;龄</label>
                             <div class="col-md-8">
-                                <input class="form-control"
+                                <input numberic class="form-control"
                                        type="text"
+                                       maxlength="5"
                                        ng-model="vm.searchParams.minAge">
                             </div>
                         </div>
@@ -57,8 +57,9 @@
                         <div class="form-group">
                             <label class="control-label col-md-4 text-center ">—</label>
                             <div class="col-md-8">
-                                <input class="form-control"
+                                <input numberic class="form-control"
                                        type="text"
+                                       maxlength="5"
                                        ng-model="vm.searchParams.maxAge">
                             </div>
                         </div>
@@ -83,9 +84,10 @@
                         <div class="form-group">
                             <label class="control-label col-md-4">手机号码</label>
                             <div class="col-md-8">
-                                <input class="form-control"
+                                <input numberic class="form-control"
                                        type="text"
-                                       ng-model="vm.searchParams.phoneNumber">
+                                       maxlength="11"
+                                       ng-model="vm.searchParams.mobile">
                             </div>
                         </div>
                     </div>
@@ -104,12 +106,8 @@
                 </div>
 
                 <div class="row">
-                    <div class="col-md-12 text-right ">
+                    <div class="col-md-12 text-right">
                         <search params="vm.searchParams"></search>
-                        <!--<div>-->
-                            <!--<button type="button"  class="btn btn-danger" ng-click="clean()">清空</button>-->
-                            <!--<button type="button" class="btn btn-success" ng-click="search()">搜索</button>-->
-                        <!--</div>-->
                     </div>
                 </div>
 

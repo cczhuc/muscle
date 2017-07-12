@@ -40,7 +40,7 @@
                             <div class="form-group">
                                 <label class="control-label col-md-4 word-spacing-25 pd-right-10">手机号</label>
                                 <div class="phone-input-wrap">
-                                       <input type="text" class="form-control phone-input" ng-model="vm.user.mobile"  ng-disabled="vm.phoneModifyFlag">
+                                       <input numberic max-length="11" type="text" class="form-control phone-input" ng-model="vm.user.mobile"  ng-disabled="vm.phoneModifyFlag">
                                        <div class="mobile-btn-group">
                                            <button class="btn btn-warning  phone-btn" ng-show="vm.phoneModifyFlag" ng-click="vm.modifyPhone()">修改</button>
                                            <button class="btn btn-danger  phone-btn" ng-show="!vm.phoneModifyFlag" ng-click="vm.cancelModifyPhone()">取消</button>
@@ -155,7 +155,13 @@
 
                 </div>
             </div>
-
+        </div>
+        <div class="panel-body">
+            <div class="row  pd-bottom-20">
+                <div class="col-md-4">
+                    <button class="btn btn-warning" ui-sref="field.user">返回</button>
+                </div>
+            </div>
         </div>
     </form>
 
