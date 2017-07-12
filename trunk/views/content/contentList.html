@@ -70,43 +70,41 @@
 </div>
 <div class="panel panel-default">
     <div class="panel-heading">
-        <strong>内容管理</strong>
-        <div class="btn-group pull-right">
+        <strong>内容列表（帮助中心）</strong>
+        <div class=" pull-right">
+            <button class="btn btn-info btn-xs" ng-if="sortableOptions.disabled == true" ng-click="vm.sort()">排序</button>
+            <button class="btn btn-success btn-xs" ng-if="sortableOptions.disabled == false" ng-click="vm.save()">保存</button>
             <button class="btn btn-primary btn-xs" ui-sref="field.contentEdit" ui-sref-opts="{reload:true}" href="#/messageEdit">
                 <i class="fa fa-plus-square fa-fw"></i>新增
             </button>
         </div>
     </div>
-    <div class="panel-body table-responsive">
-        <table class="table table-striped add-table-border">
-            <thead>
-                <tr>
-                    <th>序号</th>
-                    <th>标题</th>
-                    <th>作者</th>
-                    <th>状态</th>
-                    <th>创建者</th>
-                    <th>创建时间</th>
-                    <th>操作</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr ng-repeat="item in vm.content track by $index">
-                    <td>{{item.id}}</td>
-                    <td>{{item.title}}</td>
-                    <td>{{item.author}}</td>
-                    <td>{{item.status|contentListStatusFilter}}</td>
-                    <td>{{item.createBy}}</td>
-                    <td>{{item.createAt}}</td>
-                    <td>
+    <div class="panel-body">
+        <ul class="contentrank" ui-sortable="sortableOptions" ng-model="vm.content">
+                <li>
+                    <span class="rank1">序号</span>
+                    <span class="rank4">标题</span>
+                    <span class="rank3">作者</span>
+                    <span class="rank2">状态</span>
+                    <span class="rank3">创建者</span>
+                    <span class="rank3">创建时间</span>
+                    <span class="rank4">操作</span>
+                </li>
+                <li ng-repeat="item in vm.content track by $index">
+                    <span class="rank1">{{item.id}}</span>
+                    <span class="rank4">{{item.title}}</span>
+                    <span class="rank3">{{item.author}}</span>
+                    <span class="rank2">{{item.status|contentListStatusFilter}}</span>
+                    <span class="rank3">{{item.createBy}}</span>
+                    <span class="rank3">{{item.createAt}}</span>
+                    <span class="rank4">
                         <a ng-if="item.status=='0'" type="button" class="btn btn-sm text-green" ng-click="vm.online()">上线</a>
                         <a ng-if="item.status=='1'" type="button" class="btn btn-sm text-red" ng-click="vm.offline()">下线</a>
-                        <a type="button" class="btn btn-sm">编辑</a>
-                        <a type="button" class="btn btn-sm text-red">删除</a>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+                        <a type="button" class="btn btn-sm" ui-sref="field.contentEdit({id:vm.content[$index].id})">编辑</a>
+                        <a type="button" class="btn btn-sm text-red" ng-click="vm.delete()">删除</a>
+                    </span>
+                </li>
+        </ul>
     </div>
     <pagination ng-if="vm.total" total="{{vm.total}}"></pagination>
 </div>

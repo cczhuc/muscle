@@ -330,7 +330,12 @@ function projectRouteConfig($stateProvider, $urlRouterProvider, $ocLazyLoadProvi
             controllerAs: 'vm',
             resolve: {
                 loadMyFile: _lazyLoad([
-                    'js/controllers/content/contentEdit.js',
+                    'vendor/umeditor/themes/default/css/umeditor.css',
+                    'vendor/umeditor/umeditor.config.js',
+                    'vendor/umeditor/umeditor.js',
+                    'vendor/umeditor/lang/zh-cn/zh-cn.js',
+                    'vendor/umeditor/metaUmeditor.js',
+                    'js/controllers/content/contentEdit.js'
                 ])
             }
         })
@@ -393,7 +398,7 @@ function projectRouteConfig($stateProvider, $urlRouterProvider, $ocLazyLoadProvi
             }
         })
         .state('field.opinionList', {
-            url: '/opinionList',
+            url: '/opinionList?page',
             templateUrl: 'views/operation/opinionList.html',
             controller: 'OpinionListCtrl',
             controllerAs: 'vm',

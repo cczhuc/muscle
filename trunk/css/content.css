@@ -27,3 +27,51 @@
 .f-min80 {
   min-width: 80px;
 }
+.unvisible {
+  visibility: hidden;
+}
+.visible {
+  visibility: visible;
+}
+.edui-container {
+  margin: 0 !important;
+  width: 100% !important;
+}
+.edui-body-container {
+  min-height: 200px !important;
+}
+.contentrank {
+  margin: 0;
+  padding: 0;
+  overflow: auto;
+  list-style: none;
+  line-height: 1.42857143;
+}
+.contentrank > li {
+  white-space: nowrap;
+  vertical-align: middle;
+}
+.contentrank > li > span {
+  margin-right: 10px;
+  display: inline-block;
+  text-align: center;
+}
+.contentrank > li:nth-child(2n+1) {
+  background: #f9f9f9;
+}
+.rank1 {
+  width: 7%;
+  min-width: 30px;
+}
+.rank2 {
+  width: 10%;
+  min-width: 45px;
+}
+.rank3 {
+  width: 13%;
+  min-width: 70px;
+}
+.rank4 {
+  width: 17%;
+  min-width: 150px;
+}
