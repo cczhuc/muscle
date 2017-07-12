@@ -11,6 +11,7 @@ angular.module('admin').controller('UserListCtrl',['$rootScope','$state','$http'
         //vm.tempParams是vm.searchParams的深拷贝，处理好时间和年龄的顺序后发送给后端
         //深拷贝,直接等的话是浅拷贝，在页面上显示会有问题。不这样做会导致：eg：输入年龄 55和10，点击搜索后会显示10和55
         vm.tempParams = JSON.parse(JSON.stringify(vm.searchParams));
+
         if(vm.tempParams.startAt && vm.tempParams.endAt && vm.tempParams.startAt - 1 >= vm.tempParams.endAt) {
             var tempAt = vm.tempParams.startAt;
             //搜索按钮插件会对vm.searchParams.end + 86400000 -1,如果界面所以要反向操作
