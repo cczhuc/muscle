@@ -105,9 +105,9 @@
                     <td>{{item.status|messageListStatusFilter}}</td>
                     <td>{{item.createBy}}</td>
                     <td>{{item.sendAt}}</td>
-                    <td class="text-right">
-                        <a ng-if="item.status=='2'" type="button" class="btn btn-sm text-green" ng-click="vm.send()">立即发送</a>
-                        <a ng-if="item.status !== 0" type="button" class="btn btn-sm">编辑</a>
+                    <td>
+                        <a ng-class="{'visible':item.status=='2'}" type="button" class="btn btn-sm text-green unvisible" ng-click="vm.send()">立即发送</a>
+                        <a ng-class="{'visible':item.status!==0}" type="button" class="btn btn-sm unvisible">编辑</a>
                         <a  type="button" class="btn btn-sm text-red" ng-click="vm.delete()">删除</a>
                     </td>
                 </tr>

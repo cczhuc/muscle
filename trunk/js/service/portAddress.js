@@ -110,6 +110,9 @@ angular.module("admin").factory("address",function ($state,$http){
         contentList_url:function(){
             return "/a/u/content/search"
         },
+        contentRank_url:function(rank){
+            return "/a/u/content/rank"+rank
+        },
 
         // 运营管理
         messageList_url:function(){

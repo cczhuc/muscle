@@ -22,6 +22,12 @@
         function activate(){
             // code
         }
+        $scope.$on('emitCreateDaily', function (evt, value) {
+            $scope.emitCreateDaily = value;
+        });
+        vm.send = function(){
+            alert($scope.emitCreateDaily.getPlainTxt());
+        };
     }
 
 })();

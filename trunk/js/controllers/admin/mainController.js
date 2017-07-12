@@ -1,4 +1,4 @@
-angular.module('admin').controller('MainController', ['$rootScope', MainController]);
+angular.module('admin',['ui.sortable']).controller('MainController', ['$rootScope', MainController]);
 
 function MainController($rootScope) {
     var vm = this;

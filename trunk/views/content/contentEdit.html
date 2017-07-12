@@ -30,14 +30,16 @@
             </div>
             <div class="form-group" ng-if="vm.params.type!=='4'">
                 <label class="col-md-2 control-label">正文</label>
-                <div class="col-md-8">
-                    富文本编辑器
+                <div class="col-md-8 editor">
+                    <script type="text/html" ng-model="vm.helpContent" required meta-umeditor
+                            emit-name="emitCreateDaily"
+                            meta-umeditor-placeholder='编辑日报内容...' meta-umeditor-config="vm.dailyConfig"></script>
                 </div>
             </div>
             <div class="form-group">
                 <div class="col-md-2"></div>
                 <div class="col-md-8">
-                    <button type="button" class="btn btn-success" ng-click="vm.f-send() " ng-disabled="!myform.$valid">发送
+                    <button type="button" class="btn btn-success" ng-click="vm.send() " ng-disabled="!myform.$valid">发送
                     </button>
                     <button type="button" class="btn btn-success" ng-click="vm.saveArticle()" ng-disabled="!myform.$valid">存为草稿
                     </button>
