@@ -40,7 +40,7 @@ angular.module("admin").controller('HospitalEditCtrl',["$rootScope","$state","$h
             // 立即上线
             vm.pubHospital = function () {
                 $rootScope.operationConfirm("上线将在前台展示此内容", "确认上线？",function () {
-                    vm.data.status=1;
+                    vm.data.status=0;
                     portService.editHospital(vm.data.id,vm.data).then(function (res) {
                         if (res.data.code===0) {
                             console.log(res);
@@ -55,7 +55,7 @@ angular.module("admin").controller('HospitalEditCtrl',["$rootScope","$state","$h
             };
             // 存为草稿
             vm.saveHospital = function () {
-                vm.data.status=2;
+                vm.data.status=1;
                 portService.editHospital(vm.data.id,vm.data).then(function (res) {
                     if (res.data.code===0) {
                         console.log(res);
@@ -73,7 +73,7 @@ angular.module("admin").controller('HospitalEditCtrl',["$rootScope","$state","$h
             // 立即上线
             vm.pubHospital = function () {
                 $rootScope.operationConfirm("上线将在前台展示此内容", "确认上线？",function () {
-                    vm.data.status=1;
+                    vm.data.status=0;
                     portService.addHospital(vm.data).then(function (res) {
                         if (res.data.code===0) {
                             console.log(res);
@@ -88,7 +88,7 @@ angular.module("admin").controller('HospitalEditCtrl',["$rootScope","$state","$h
             };
             // 存为草稿
             vm.saveHospital = function () {
-                vm.data.status=2;
+                vm.data.status=1;
                 portService.addHospital(vm.data).then(function (res) {
                     if (res.data.code===0) {
                         console.log(res);

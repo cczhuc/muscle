@@ -69,14 +69,44 @@ angular.module('admin')
             }
         }
     })
+
+    //交易类型
+    .filter('dealTypeFilter',function() {
+        return function(type) {
+            switch(type) {
+                case 0:
+                    return "提现";
+                case 1:
+                    return "方案出售";
+                default:
+                    return "type="+type+"数据异常";
+            }
+        }
+    })
+    //交易状态
+    .filter('dealStatusFilter',function() {
+        return function(status) {
+            switch(status) {
+                case 0 :
+                    return "成功";
+                case 1:
+                    return "进行中";
+                case 2:
+                    return "失败";
+                default:
+                        return "status="+status+"数据异常";
+            }
+        }
+    })
+
     //合作医院管理
     //合作医院列表状态
     .filter('hospitalListStatusFilter', function () {
         return function (status) {
             switch (status) {
-                case 1:
+                case 0:
                     return "在用";
-                case 2:
+                case 1:
                     return "停用";
                 default :
                     return "数据异常";
@@ -97,9 +127,9 @@ angular.module('admin')
     .filter('changeHospitalStatusFilter', function () {
         return function (status) {
             switch (status) {
-                case 1:
+                case 0:
                     return "下线";
-                case 2:
+                case 1:
                     return "上线";
                 default :
                     return "数据异常";
@@ -110,13 +140,13 @@ angular.module('admin')
     .filter('doctorPositionFilter', function () {
         return function (status) {
             switch (status) {
-                case 1:
+                case 0:
                     return "主任医师";
-                case 2:
+                case 1:
                     return "副主任医师";
-                case 3:
+                case 2:
                     return "主治医师";
-                case 4:
+                case 3:
                     return "其他";
                 default :
                     return "数据异常";

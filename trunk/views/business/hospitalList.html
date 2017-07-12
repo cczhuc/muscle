@@ -17,15 +17,15 @@
                             <select class="form-control" ng-model="vm.searchParams.grade">
                             <!--ng-options="x.type as x.name for x in vm.hospitalGrade">-->
                                 <option value="">全部</option>
-                                <option value="1">三甲</option>
-                                <option value="2">二甲</option>
-                                <option value="3">一甲</option>
-                                <option value="4">三乙</option>
-                                <option value="5">二乙</option>
-                                <option value="6">一乙</option>
-                                <option value="7">三丙</option>
-                                <option value="8">二丙</option>
-                                <option value="9">一丙</option>
+                                <option value="0">三甲</option>
+                                <option value="1">二甲</option>
+                                <option value="2">一甲</option>
+                                <option value="3">三乙</option>
+                                <option value="4">二乙</option>
+                                <option value="5">一乙</option>
+                                <option value="6">三丙</option>
+                                <option value="7">二丙</option>
+                                <option value="8">一丙</option>
                             </select>
                         </div>
                     </div>
@@ -36,8 +36,8 @@
                         <div class="col-md-8">
                             <select class="form-control" ng-model="vm.searchParams.status">
                                 <option value="">全部</option>
-                                <option value="1">在用</option>
-                                <option value="2">停用</option>
+                                <option value="0">在用</option>
+                                <option value="1">停用</option>
                             </select>
                         </div>
                     </div>
@@ -48,7 +48,7 @@
                     <div class="form-group">
                         <label class="control-label col-md-4">医师人数</label>
                         <div class="col-md-8">
-                            <input type="text" class="form-control" ng-model="vm.searchParams.docNum1">
+                            <input type="text" class="form-control" ng-model="vm.docNum1">
                         </div>
                     </div>
                 </div>
@@ -56,7 +56,7 @@
                     <div class="form-group">
                         <label class="control-label col-md-4 text-center ">~</label>
                         <div class="col-md-8">
-                            <input type="text" class="form-control" ng-model="vm.searchParams.docNum2">
+                            <input type="text" class="form-control" ng-model="vm.docNum2">
                         </div>
                     </div>
                 </div>
@@ -108,9 +108,9 @@
                     <div  class="divTableCell">{{item.grade|hospitalGradeFilter}}</div>
                     <div  class="divTableCell">{{item.total}}</div>
                     <div  class="divTableCell">{{item.address}}</div>
-                    <div  class="divTableCell text-red" ng-class="{'text-green':item.status==1}">{{item.status|hospitalListStatusFilter}}</div>
+                    <div  class="divTableCell text-red" ng-class="{'text-green':item.status==0}">{{item.status|hospitalListStatusFilter}}</div>
                     <div  class="divTableCell">
-                        <a  type="button" class="btn btn-sm text-red" ng-class="{'text-green':item.status==2}"
+                        <a  type="button" class="btn btn-sm text-red" ng-class="{'text-green':item.status==1}"
                             ng-click="vm.onOffLine(user.id,0,item.status)">{{item.status|changeHospitalStatusFilter}}</a>
                         <a  type="button" class="btn btn-sm" ui-sref="field.hospitalEdit({id:item.id})">编辑</a>
                         <a type="button" class="btn btn-sm" ui-sref="field.hospitalDoctor({id:item.id})">医师</a>

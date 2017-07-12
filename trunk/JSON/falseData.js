@@ -106,10 +106,10 @@ var hospitalList = Mock.mock('/a/hospital/search',{
         'hospitalList|10': [{
             'id|1-100': 1,
             'name':'北京东城中医医院',
-            'grade|1-9':1,
+            'grade|0-8':1,
             'total|1-100':1,
             'address':'@county(true)',
-            'status|1-2':1,
+            'status|0-1':1,
             'province':'@province()',
             'city':'@city'
         }],
@@ -125,10 +125,10 @@ var hospitalDetails = Mock.mock('/a/hospital',{
     data:{
         'id|1-100': 1,
         'name':'北京东城中医医院',
-        'grade|1-9':1,
+        'grade|0-8':1,
         'total|1-100':1,
         'address1':'@county(true)',
-        'status|1-2':1,
+        'status|0-1':1,
         'province':'@province()',
         'city':'@city',
         'image':'@image()'
@@ -143,7 +143,7 @@ var hospitalDoctor = Mock.mock('/a/u/hospital/doctor',{
             'uuid|1-100':1,
             'mobile|13974447000-13974447999':13974447000,
             'name':'@cname()',
-            'position|1-4':1,
+            'position|0-3':1,
             'income|0-100.2':0,
             'status|0-1':1,
             'createAt|1499184000000-1499356800000':1499184000000
@@ -253,16 +253,47 @@ var diagnosisRecord = Mock.mock('/a/diagnosisDetails',{
             "废了多半是废了多半是废了多半是废了多半是废了多半是废了多半是废了废了多半是废了" +
             "多半是废了多半是废了多半是废了多半是废了多半是废了废了多半是废了多半是废了多半是" +
             "废了多半是废了多半是废了多半是废了废了多是半是废了多半是废了多半是废了多半是废了多" +
-            "半是废了多半是废了废了多半是废了多半是废了多半是废了多半是废了多半是废了多半是废了" +
-            "废了多半是废了多半是废了多半是废了多半是废了多半是废了多半是废了废了多半是废了多半" +
-            "是废了多半是废了多半是废了多半是废了多半是废了废了多半是废了多半是废了多半是废了" +
-            "多半是废了多半是废了多半是废了废了多半是废了多半是废了多半是废了多半是废了多半" +
-            "是废了多半是废了废了多半是废了多半是废了多半是废了多半是废了多半是废了多半是" +
-            "废了废了多半是废了多半是废了多半是废了多半是废了多半是废了多半是废了废了多" +
-            "半是废了多半是废了多半是废了多半是废了多半是废了多半是废了废了多半是废" +
-            "了多半是废了多半是废了多半是废了多半是废了多半是废了废了多半是废了多" +
-            "半是废了多半是废了多半是废了多半是废了多半是废了废了多半是废了多" +
-            "半是废了多半是废了多半是废了多半是废了多半是废了废了多半是废了"
+            "半是废了多半是废了废了多半是废了多半是废了多半是废了多半是废了多半是废了多半是废了"
+    },
+    message:'success'
+});
+
+var transactionDetails = Mock.mock('/a/transactionDetails',{
+    code:0,
+    data:{
+        'diagnosisRecord|10': [{
+            'date|1499184000000-1499356800000':1499184000000,
+            'water|000001-300000': 2,
+            'money': 2.00,
+            'dealType|0-1':0,
+            'dealStatus|0-2':1,
+            'dealWay': "余额"
+        }],
+        page: 1,
+        size: 10,
+        total: 13
+    },
+    message:'success'
+});
+
+
+//方案列表
+var planTemplate = Mock.mock('/a/planTemplate',{
+    code:0,
+    data:{
+        'planList|10': [{
+            'date|1499184000000-1499356800000':1499184000000,
+            'planName':'@csentence(3, 5)',
+            'course|20-60':20,  //疗程
+            'days|20-60': 60,  //时常
+            'strength|30-100':40,
+            'interval':50,   //间隔
+            'detector': 20,   //探头
+            'userNum|0-999': 5
+        }],
+        page: 1,
+        size: 10,
+        total: 12
     },
     message:'success'
 });
