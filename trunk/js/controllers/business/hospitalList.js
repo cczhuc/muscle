@@ -3,10 +3,19 @@ angular.module("admin").controller('HospitalListCtrl',["$rootScope","$scope","$s
         var vm = this;
         vm.searchParams = $state.params;
         vm.hospitalGrade = hospitalGrade;
-
+        //需求：对输入范围的左边和右边的大小不限。  但是在发送数据的时候要对这些倒过来的参数进行处理
+        //vm.tempParams是vm.searchParams的深拷贝，处理好数据后发送给后端
+        //深拷贝,直接等的话是浅拷贝，在页面上显示会有问题。
+        vm.tempParams = angular.copy(vm.searchParams);
+        if(vm.tempParams.minNum>vm.tempParams.maxNum) {
+            var tempNum = vm.tempParams.minNum;
+            vm.tempParams.minNum = vm.tempParams.maxNum;
+            vm.tempParams.maxNum = tempNum;
+        }
         // 省市区数据转换
         vm.searchParams.address = commonUtil.areaDateTransform($state.params.province, $state.params.city, $state.params.county);
-        portService.gerHospitalList(vm.searchParams).then(function (res) {
+        console.log(vm.tempParams);
+        portService.gerHospitalList(vm.tempParams).then(function (res) {
                 if (res.data.code==0) {
                     console.log(res);
                     vm.hospitalList = res.data.data.hospitalList;

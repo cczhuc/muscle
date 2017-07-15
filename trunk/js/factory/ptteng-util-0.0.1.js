@@ -34,6 +34,7 @@ angular.module('admin')
                 for (var k in params) {
                     if (params[k] instanceof Date) {
                         params[k] = new Date(params[k]).getTime();
+                        console.log("params[k]",params[k]);
                     }
                     // 处理 结束时间 那天末尾
                     if ((k.toLowerCase().indexOf('end') != -1||k.toLowerCase().indexOf('to') != -1) && params[k]) {

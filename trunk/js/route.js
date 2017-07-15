@@ -149,7 +149,7 @@ function projectRouteConfig($stateProvider, $urlRouterProvider, $ocLazyLoadProvi
             }
         })
         .state('field.patientRecord', {
-            url: '/patientRecord?id&page&size&name&product&transaction_type&transaction_status&sum1&sum2&startAt&endAt',
+            url: '/patientRecord?id&page&size&name&product&transaction_type&transaction_status&minSum&maxSum&startAt&endAt',
             templateUrl: 'views/business/patient/patientRecord.html',
             controller: 'PatientRecordCtrl',
             controllerAs: 'vm',
@@ -275,7 +275,7 @@ function projectRouteConfig($stateProvider, $urlRouterProvider, $ocLazyLoadProvi
         })
         // 业务管理-合作医院管理
         .state('field.hospitalList', {
-            url: '/hospitalList?size&name&grade&status&docNum1&docNum2&province&city',
+            url: '/hospitalList?size&name&grade&status&minNum&maxNum&province&city',
             templateUrl: 'views/business/hospitalList.html',
             controller: 'HospitalListCtrl',
             controllerAs: 'vm',
