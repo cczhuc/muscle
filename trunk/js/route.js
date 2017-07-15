@@ -372,6 +372,7 @@ function projectRouteConfig($stateProvider, $urlRouterProvider, $ocLazyLoadProvi
             resolve: {
                 loadMyFile: _lazyLoad([
                     'js/controllers/operation/messageEdit.js',
+                    '//cdn.bootcss.com/checklist-model/0.11.0/checklist-model.js'
                 ])
             }
         })

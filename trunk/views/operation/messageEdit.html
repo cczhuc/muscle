@@ -1,6 +1,6 @@
 <div class="panel panel-default">
     <div class="panel-heading">
-        <strong ng-if="!vm.params.id">新增Article</strong> <strong ng-if="vm.params.id">编辑Article</strong>
+        <strong ng-if="!vm.params.id">新增消息</strong> <strong ng-if="vm.params.id">编辑消息</strong>
     </div>
     <div class="panel-body">
         <form class="form-horizontal" name="myform">
@@ -15,15 +15,15 @@
                 <div class="col-md-8">
                     <div class="row">
                         <div class="col-md-3">
-                            <label><input type="checkbox" name="f-peoples" required> 所有人</label>
+                            <label><input type="checkbox" ng-model="vm.sendAll" ng-change="vm.checkAll()" checklist-model="vm.pick" value="0" ng-checked="vm.send.length == vm.pick.length-1"> 所有人</label>
                         </div>
                         <div class="col-md-3">
-                            <label><input type="checkbox" name="f-peoples" required> 所有患者</label>
+                            <label><input type="checkbox" checklist-model="vm.pick" value="1"> 所有患者</label>
                         </div>
                         <div class="col-md-5">
-                            <label><input type="checkbox" name="f-peoples" required> 所有医师</label><br>
-                            <label class="f-indent"><input type="checkbox" name="f-peoples" required> 认证医师</label><br>
-                            <label class="f-indent"><input type="checkbox" name="f-peoples" required> 未认证医师</label>
+                            <label><input type="checkbox" ng-model="vm.allDoctor" checklist-model="vm.pick" value="2" ng-change="vm.checkDoctor()"> 所有医师</label><br>
+                            <label class="f-indent"><input type="checkbox" checklist-model="vm.pick" value="3"> 认证医师</label><br>
+                            <label class="f-indent"><input type="checkbox" checklist-model="vm.pick" value="4"> 未认证医师</label>
                         </div>
                     </div>
                 </div>
@@ -54,7 +54,7 @@
             <div class="form-group">
                 <div class="col-md-2"></div>
                 <div class="col-md-8">
-                    <button type="button" class="btn btn-success" ng-click="vm.f-send() " ng-disabled="!myform.$valid">发送
+                    <button type="button" class="btn btn-success" ng-click="vm.f_send() " ng-disabled="!myform.$valid">发送
                     </button>
                     <button type="button" class="btn btn-success" ng-click="vm.saveArticle()" ng-disabled="!myform.$valid">存为草稿
                     </button>
