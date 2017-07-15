@@ -239,17 +239,6 @@ angular.module('admin')
             }else {return "患者版"}
         }
     })
-    .filter('inTag',function () {
-    return function (option,hasOption) {
-        var inArr=false;
-        angular.forEach(hasOption,function (item) {
-            if(option.value==item.value){
-                inArr = true;
-            }
-        });
-        return inArr;
-    }
-})
 ;
 
 
