@@ -58,12 +58,12 @@ angular.module("admin").factory("address",function ($state,$http){
             // +id
         },
         // 患者版订单记录
-        patientRecord_url: function (id,data) {
+        patientRecord_url: function (id) {
             return "/a/u/patientRecord"
             // +id
         },
         // 患者版监测数据
-        patientTestData_url: function (id,data) {
+        patientTestData_url: function (id) {
             return "/a/u/patientTestData"
             // +id
         },

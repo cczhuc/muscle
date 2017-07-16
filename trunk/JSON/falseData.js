@@ -148,6 +148,7 @@ var hospitalDoctor = Mock.mock('/a/u/hospital/doctor',{
             'status|0-1':1,
             'createAt|1499184000000-1499356800000':1499184000000
         }],
+        hospitalName:'北京东城中医医院',
         page: 1,
         size: 10,
         total: 13
@@ -194,7 +195,7 @@ var patientRecord = Mock.mock('/a/u/patientRecord',{
 });
 
 // 用户管理患者版-检测数据
-var patientRecord = Mock.mock('/a/u/patientTestData',{
+var patientTestData = Mock.mock('/a/u/patientTestData',{
     code:0,
     data:{
         'testDataList|10': [{

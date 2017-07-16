@@ -19,16 +19,23 @@ angular.module("admin")
             replace: true,
             scope: {
                 selectResult: '=',
-                selectData: '='
+                selectData: '=',
+                judge:'@'//用来判断需要表单验证，如果需要，在指令中加上judge="true"属性或者!!judge为true即可
             },
             template: '<div class="row">' +
-            '<label class="control-label col-md-2 word-spacing-25">省</label>'+
+            '<label class="control-label col-md-2 word-spacing-25">'+
+            '<span class="star fl pd-left-30" ng-class={conceal:province!==undefined} ng-if="!!judge">*</span>'+
+            '省' +
+            '</label>'+
             '<div class="col-md-4">' +
             '<select required name="province" class="form-control" ng-model="province" ng-options="province.ProID as province.ProName for province in provinces">' +
             '<option value="">请选择省份</option>' +
             '</select>' +
             '</div>' +
-            '<label class="control-label col-md-2 word-spacing-25">市</label>'+
+            '<label class="control-label col-md-2 word-spacing-25">' +
+            '<span class="star fl pd-left-30" ng-class={conceal:city!==undefined} ng-if="!!judge">*</span>'+
+            '市' +
+            '</label>'+
             '<div class="col-md-4">' +
             '<select required name="city" class="form-control" ng-model="city" ng-options="city.CityID as city.CityName for city in filteredCities">' +
             '<option value="">请选择城市</option>' +
@@ -41,7 +48,7 @@ angular.module("admin")
             // '</div>' +
             '</div>',
             link: function (scope, elem, attrs) {
-
+                console.log('judge',scope.judge);
                 if (attrs.selectData) { // 如果有selectData参数
                     if (scope.selectData.$$state == 0) { // 如果是请求的数据
                         scope.$watch('selectData', function (m) {

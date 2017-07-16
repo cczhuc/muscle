@@ -8,15 +8,21 @@
             <div class="row pd-bottom-20">
                 <div class="col-md-5">
                     <div class="form-group">
-                        <label class="control-label col-md-4 word-spacing-25">医院名称</label>
+                        <label class="control-label col-md-4 word-spacing-25">
+                            <span class="star fl pd-left-30" ng-class="{'conceal':myform.name.$valid}">*</span>
+                            医院名称
+                        </label>
                         <div class="col-md-8">
-                            <input type="text" class="form-control" ng-model="vm.data.name" required>
+                            <input type="text" class="form-control" ng-model="vm.data.name" required name="name">
                         </div>
                     </div>
                 </div>
                 <div class="col-md-5">
                     <div class="form-group">
-                        <label class="control-label col-md-4 word-spacing-25">等级</label>
+                        <label class="control-label col-md-4 word-spacing-25">
+                            <span class="star fl pd-left-30" ng-class="{'conceal':(vm.data.grade!==undefined)}">*</span>
+                            等级
+                        </label>
                         <div class="col-md-8">
                             <select class="form-control" ng-model="vm.data.grade" ng-options="g.type as g.name for g in vm.hospitalGrade" required>
                                 <option value="">全部</option>
@@ -29,7 +35,7 @@
                 <div class="col-md-10">
                     <div class="form-group">
                         <div class="col-md-12">
-                            <city-select select-result="vm.data.address" required></city-select>
+                            <city-select select-result="vm.data.address" required judge=true></city-select>
                         </div>
                     </div>
                 </div>
@@ -37,9 +43,12 @@
             <div class="row pd-bottom-20">
                 <div class="col-md-10">
                     <div class="form-group">
-                        <label class="control-label col-md-2 word-spacing-25">地址</label>
+                        <label class="control-label col-md-2 word-spacing-25">
+                            <span class="star fl pd-left-30" ng-class="{'conceal':myform.address.$valid}">*</span>
+                            地&emsp;&emsp;址
+                        </label>
                         <div class="col-md-10">
-                            <input type="text" class="form-control" ng-model="vm.data.address1"
+                            <input type="text" class="form-control" name="address" ng-model="vm.data.address1"
                             maxlength="25"       required>
                         </div>
                     </div>
@@ -49,7 +58,10 @@
             <div class="row form-group">
                 <div class="col-md-10">
                     <div class="form-group">
-                        <label class="col-md-2 control-label word-spacing-25">配 图</label>
+                        <label class="col-md-2 control-label word-spacing-25">
+                            <span class="star fl pd-left-30" ng-class="{'conceal':vm.data.image!=undefined&&vm.data.image!='undefined'}">*</span>
+                            医院图片
+                        </label>
                         <div class="col-md-10 padding-0">
                             <div class="col-md-12 ">
                                 <label class="btn btn-primary" for="file2">选择文件</label>
@@ -122,6 +134,7 @@
                             ng-disabled="!myform.$valid||vm.params.img==undefined">立即上线
                     </button>
                     <button type="button" class="btn btn-success" ng-click="vm.saveHospital()"
+                            ng-disabled="!myform.$dirty"
                             >存为草稿
                     </button>
                     <!--<span class="text-red" ng-show="!vm.vaidShow">请补全信息</span>-->

@@ -18,7 +18,7 @@ angular.module('admin').controller('PatientTestDataCtrl',['$rootScope','$state',
         }
 
 
-        portService.getPatientTestData(vm.tempParams.id,vm.tempParams).then(function (res) {
+        portService.getPatientTestData(vm.tempParams.id).then(function (res) {
             if(res.data.code==0) {
                 console.log(res);
                 vm.patientTestData = res.data.data.testDataList;

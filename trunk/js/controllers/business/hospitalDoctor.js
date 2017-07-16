@@ -17,10 +17,11 @@ angular.module("admin").controller('HospitalDoctorCtrl',["$rootScope","$state","
             vm.tempParams.endAt = tempAt + 86400000 -1;
         }
 
-        portService.getHospitalDoctor(vm.tempParams.id,vm.tempParams).then(function (res) {
+        portService.getHospitalDoctor(vm.tempParams.id).then(function (res) {
             if (res.data.code==0) {
                 console.log(res);
                 vm.doctorList = res.data.data.doctorList;
+                vm.hospitalName = res.data.data.hospitalName
                 vm.total = res.data.data.total;
             }
             else {

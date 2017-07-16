@@ -1,7 +1,9 @@
 .navbar {
     margin: 0;
 }
-
+.fl {
+    float: left;
+}
 .margin-left-2 {
     margin-left: 2%;
 }
@@ -81,6 +83,9 @@
 
 .pd-left-15 {
     padding-left: 15px;
+}
+.pd-left-30 {
+    padding-left: 30px;
 }
 .pd-left-50 {
     padding-left: 50px;
@@ -938,3 +943,7 @@ input[type="number"] {
     max-height: 100%;
     position:absolute;
 }
+.conceal {
+    visibility: hidden;
+}
+
