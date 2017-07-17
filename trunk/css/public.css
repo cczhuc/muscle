@@ -7,6 +7,7 @@
 .margin-left-2 {
     margin-left: 2%;
 }
+
 .maring-left--78 {
     margin-left: -78px!important;
 }
@@ -945,5 +946,9 @@ input[type="number"] {
 }
 .conceal {
     visibility: hidden;
+}
+.refuse {
+    margin-left: 10px;
+    margin-right: -10px;
 }
 

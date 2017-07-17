@@ -134,7 +134,7 @@
                             ng-disabled="!myform.$valid||vm.params.img==undefined">立即上线
                     </button>
                     <button type="button" class="btn btn-success" ng-click="vm.saveHospital()"
-                            ng-disabled="!myform.$dirty"
+                            ng-disabled="!myform.$valid||vm.params.img==undefined"
                             >存为草稿
                     </button>
                     <!--<span class="text-red" ng-show="!vm.vaidShow">请补全信息</span>-->

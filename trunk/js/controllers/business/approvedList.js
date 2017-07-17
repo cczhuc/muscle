@@ -2,6 +2,7 @@ angular.module("admin").controller('ApprovedListCtrl',["$rootScope","$state","$h
     function ($rootScope,$state,$http,portService) {
         var vm = this;
         vm.searchParams = $state.params;
+
         // 时间格式转换
         vm.searchParams.startAt = parseInt(vm.searchParams.startAt) || undefined;
         vm.searchParams.endAt = parseInt(vm.searchParams.endAt) || undefined;
