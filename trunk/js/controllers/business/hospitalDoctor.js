@@ -21,7 +21,7 @@ angular.module("admin").controller('HospitalDoctorCtrl',["$rootScope","$state","
             if (res.data.code==0) {
                 console.log(res);
                 vm.doctorList = res.data.data.doctorList;
-                vm.hospitalName = res.data.data.hospitalName
+                vm.hospitalName = res.data.data.hospitalName;
                 vm.total = res.data.data.total;
             }
             else {
@@ -44,7 +44,6 @@ angular.module("admin").controller('HospitalDoctorCtrl',["$rootScope","$state","
                     }
                 })
             });
-
         };
         // 冻结或者解冻
         vm.freezeDoctor = function(id,type,status) {

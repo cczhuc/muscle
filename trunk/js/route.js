@@ -252,7 +252,7 @@ function projectRouteConfig($stateProvider, $urlRouterProvider, $ocLazyLoadProvi
         })
         // 业务管理-认证管理
         .state('field.approvedList', {
-            url: '/approvedList?page&size&telphone&name&status&startAt&endAt',
+            url: '/approvedList/:page/:size?telphone&name&status&startAt&endAt',
             templateUrl: 'views/business/approvedList.html',
             controller: 'ApprovedListCtrl',
             controllerAs: 'vm',

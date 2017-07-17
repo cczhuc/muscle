@@ -8,7 +8,8 @@ angular.module('admin').directive('pagination', function ($state) {
         templateUrl: 'js/directives/ptteng-paging/pagination.html',
         replace: true,
         scope: {
-            total: '@'
+            total: '@',
+            defaultPage:"=defaultPage"
         },
         link: function (scope, element, attrs) {
             //当前页
@@ -17,7 +18,8 @@ angular.module('admin').directive('pagination', function ($state) {
             scope.size = $state.params.size ? parseInt($state.params.size) : 10;
             //总页数
             var totalPage = Math.ceil(parseInt(scope.total) / scope.size);
-
+            defaultPage = scope.defaultPage||4;//默认显示多少页,在指令调用的时候可以加上这个属性进行设置，不设置默认4页
+            console.log(defaultPage);
             scope.activePage = activePage;
             scope.totalPage = totalPage;
             scope.isHaveNextPage = isHaveNextPage;
@@ -25,7 +27,6 @@ angular.module('admin').directive('pagination', function ($state) {
             scope.pageList = getPageList();
             scope.isDisabled = isDisabled;
             scope.isActive = isActive;
-
             //是否有下一页
             function isHaveNextPage() {
                 if (activePage === totalPage) {
@@ -48,7 +49,7 @@ angular.module('admin').directive('pagination', function ($state) {
 
                 //...在两边
                 if (isHavePreDot() && isHaveNextDot()) {
-                    for (var i = 0; i < 5; i++) {
+                    for (var i = 0; i < defaultPage; i++) {
                         pageList.push(activePage + i);
                     }
                     pageList.unshift("...");
@@ -57,7 +58,7 @@ angular.module('admin').directive('pagination', function ($state) {
 
                 //...在前面
                 if (isHavePreDot() && !isHaveNextDot()) {
-                    for (var i = totalPage - 4; i <= totalPage; i++) {
+                    for (var i = totalPage - (defaultPage-1); i <= totalPage; i++) {
                         pageList.push(i);
                     }
                     pageList.unshift("...");
@@ -66,8 +67,8 @@ angular.module('admin').directive('pagination', function ($state) {
                 //...在后面
                 if (!isHavePreDot() && isHaveNextDot()) {
 
-                    if (totalPage > 5) {
-                        for (var i = 0; i < 5; i++) {
+                    if (totalPage > defaultPage) {
+                        for (var i = 0; i < defaultPage; i++) {
                             pageList.push(activePage + i);
                         }
                     } else {
@@ -92,7 +93,7 @@ angular.module('admin').directive('pagination', function ($state) {
 
             //是否有前面的 ...
             function isHavePreDot() {
-                if (activePage - 1 > 4) {
+                if (activePage > defaultPage) {
                     return true;
                 }
                 return false;
@@ -100,7 +101,7 @@ angular.module('admin').directive('pagination', function ($state) {
 
             //是否有后面的 ...
             function isHaveNextDot() {
-                if (activePage < totalPage - 4) {
+                if (activePage < totalPage - (defaultPage-1)) {
                     return true;
                 }
                 return false;
