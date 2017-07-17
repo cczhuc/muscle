@@ -365,7 +365,7 @@ function projectRouteConfig($stateProvider, $urlRouterProvider, $ocLazyLoadProvi
             }
         })
         .state('field.messageList', {
-            url: '/messageList',
+            url: '/messageList/:page/:size',
             templateUrl: 'views/operation/messageList.html',
             controller: 'MessageListCtrl',
             controllerAs: 'vm',

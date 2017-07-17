@@ -8,10 +8,10 @@
         .module('admin')
         .controller('MessageListCtrl', MessageListCtrl);
 
-    MessageListCtrl.$inject = ['$rootScope','portService'];
+    MessageListCtrl.$inject = ['$rootScope','portService','$state'];
 
     /* @ngInject */
-    function MessageListCtrl($rootScope,portService){
+    function MessageListCtrl($rootScope,portService,$state){
         var vm = this;
         vm.title = 'MessageListCtrl';
 
@@ -20,6 +20,13 @@
         ////////////////
 
         function activate(){
+            vm.searchParams = {
+                startAt : $state.params.startAt || ''
+            };
+            if(vm.searchParams.startAt === vm.searchParams.endAt){
+                vm.searchParams.endAt + 86399;
+                console.log(vm.searchParams.endAt);
+            }
             portService.getMessageList().then(function(res){
                 vm.message = res.data.data.messageList;
                 vm.total = res.data.data.total;

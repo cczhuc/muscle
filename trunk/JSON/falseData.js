@@ -37,7 +37,7 @@ var messageList = Mock.mock('/a/u/message/search',{
         }],
         page: 1,
         size: 10,
-        total: 11
+        total: 111
     },
     message:'success'
 });
@@ -61,7 +61,31 @@ var opinionList = Mock.mock('/a/u/opinion/search',{
 var versionList = Mock.mock('/a/u/version/search',{
     code:0,
     data:{
-        'versionList|10': [{
+        'doctorAndroid': [{
+            'id|1-100': 1,
+            'name':'@cname()',
+            'number|1-1':1,
+            'version|0-1':1,
+            'versionNumber|1.1-1.9':1,
+            'force|0-1':'0'
+        }],
+        'doctorIos': [{
+            'id|1-100': 1,
+            'name':'@cname()',
+            'number|1-1':1,
+            'version|0-1':1,
+            'versionNumber|1.1-1.9':1,
+            'force|0-1':'0'
+        }],
+        'patientAndroid': [{
+            'id|1-100': 1,
+            'name':'@cname()',
+            'number|1-1':1,
+            'version|0-1':1,
+            'versionNumber|1.1-1.9':1,
+            'force|0-1':'0'
+        }],
+        'patientIos': [{
             'id|1-100': 1,
             'name':'@cname()',
             'number|1-1':1,

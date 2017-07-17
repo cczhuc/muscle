@@ -75,3 +75,11 @@
   width: 20%;
   min-width: 150px;
 }
+@media (max-width: 992px) {
+  .f-short {
+    width: calc(100% - 80px);;
+  }
+  .f-min80 {
+    width: 80px;
+  }
+}

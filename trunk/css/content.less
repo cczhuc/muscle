@@ -29,8 +29,8 @@
   min-width:80px;
 }
 .unvisible{
-   visibility:hidden;
- }
+  visibility:hidden;
+}
 .visible{
   visibility:visible;
 }
@@ -48,32 +48,40 @@
   .ova;
   list-style:none;
   line-height:1.42857143;
-  >li{
+  > li{
     white-space:nowrap;
     vertical-align:middle;
-    >span {
+    > span{
       .mr10;
       .dib;
       .tc;
     }
   }
-  >li:nth-child(2n+1){
+  > li:nth-child(2n+1){
     background:#f9f9f9;
   }
 }
 .rank1{
-  width: 5%;
+  width:5%;
   min-width:30px;
 }
 .rank2{
-  width: 9%;
+  width:9%;
   min-width:45px;
 }
 .rank3{
-  width: 12%;
+  width:12%;
   min-width:70px;
 }
 .rank4{
-  width: 20%;
+  width:20%;
   min-width:150px;
+}
+@media (max-width:992px){
+  .f-short{
+    width:~'calc(100% - 80px);'
+  }
+  .f-min80{
+    width:80px
+  }
 }

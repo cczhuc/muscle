@@ -108,12 +108,19 @@ angular.module("admin")
 
         // 运营管理
 
-            // 获取信息列表
-            getMessageList:function(param){
-                return $http.get(address.messageList_url())
-            }
-            // 意见反馈
+        // 获取信息列表
+        getMessageList:function(param){
+            return $http.get(address.messageList_url())
+        },
+        // 意见反馈列表
+        getOpinionList:function(param){
+            return $http.get(address.opinionList_url())
+        },
+        // 获取版本列表
+        getVersionList:function(){
+            return $http.get(address.versionList_url())
         }
+    }
     })
     .factory('uploadService', function ($http,address) {
         return {
