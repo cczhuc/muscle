@@ -8,10 +8,10 @@
                 <strong class="f-redline">价格设置</strong>
             </div>
             <div class="panel-body table-responsive grey">
-                <div class="f-marginleft">方案价格 <input type="text" class="form-control f-inputbox"> （元）</div>
+                <div class="f-marginleft">方案价格 <input type="text" class="form-control f-inputbox" ng-model="vm.currentValue"> （元）</div>
             </div>
         </div>
         <button class="btn btn-success f-btnpadding" ng-click="vm.save()">保存</button>
-        <button class="btn btn-info f-btnpadding">还原</button>
+        <button class="btn btn-info f-btnpadding" ng-click="vm.restore()">还原</button>
     </div>
 </div>
