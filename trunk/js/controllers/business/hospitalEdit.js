@@ -9,13 +9,15 @@ angular.module("admin").controller('HospitalEditCtrl',["$rootScope","$state","$h
         FileUploader.FileSelect.prototype.isEmptyAfterSelection = function () {
             return true;
         };
-        //图片上传1
+        //图片上传
         vm.uploader1 = uploadService.uploadFile(FileUploader);
         vm.uploader1.onSuccessItem = function (fileItem, response, status, headers) {
             if (status === 200) {
                 vm.data.img = response.data.url;
             }
         };
+
+
         //省市拆分
         if (vm.data.address) {
             vm.data.province = vm.data.address.province;

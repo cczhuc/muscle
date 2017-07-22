@@ -951,4 +951,26 @@ input[type="number"] {
     margin-left: 10px;
     margin-right: -10px;
 }
+.tab-wrap {
+    display: inline-block;
+    height: 40px;
+    font-size:0;
+    background-color: #E6EDF2;
+}
+.check-tab {
+    display: inline-block;
+    width: 100px;
+    height:40px;
 
+    text-align: center;
+    font-size: 16px;
+    font-weight: 600;
+    line-height:40px;
+    border-radius: 5px;
+    background-color: rgba(145, 162, 227, 0.44);
+    cursor: pointer;
+}
+.check-tab-active {
+    color: #f9d87d;
+    background-color: #3a445e;
+}

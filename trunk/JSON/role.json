@@ -24,7 +24,7 @@
         "parentID":1,
         "name":"用户管理",
         "menuID":"HTGL",
-        "url":"field.user",
+        "url":"field.patientList",
         "type":"",
         "level":700,
         "createBy":"",

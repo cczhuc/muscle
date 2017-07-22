@@ -6,12 +6,39 @@ angular.module("admin")
             replace: true,
             scope: {
                 params: '=',
+                //需要+85399999
+                timeFixArr: '=timeFixArr',
+                end: "=",
                 //点击搜索或者清空，会触发一个方法
-                changeFn:"&?"
+                changeFn: "&?"
             },
             controller: function ($state, commonUtil, $scope) {
-                //搜索
+
+
+
+                // 搜索
                 $scope.search = function () {
+
+                    //对日历插件的时间处理
+                    for (var i in $scope.params) {
+                        for (var j in $scope.timeFixArr) {
+                            if (i == $scope.timeFixArr[j]) {
+                                //取到尾数毫秒
+                                var unit = $scope.params[i]%10;
+                                if (unit != 9) {
+                                    $scope.params[i] = $scope.params[i] + 86400000 - 1;
+                                }
+                            }
+                        }
+                    }
+
+
+
+                    if ($scope.params.page) {
+                        $scope.params.page = 1;
+                    }
+
+
                     $scope.changeFn();
                     //strat :没有地址选择器时可以删除 将获取的对象拆开传到url里
                     console.log($scope.params.address);
@@ -21,20 +48,21 @@ angular.module("admin")
                         // $scope.params.county = $scope.params.address.district;
                     }
                     //end :没有地址选择器时可以删除 将获取的对象拆开传到url里
-                    console.log("$scope.params",$scope.params);
-                    $state.go($state.current, commonUtil.querySearchParams($scope.params), {reload: true});
+                    // 这里的commonUtil.querySearchParams写的贼垃圾，不用了，直接在指令里面处理日期插件的终止时间
+                    // $state.go($state.current, commonUtil.querySearchParams($scope.params), {reload: true});
+                    $state.go($state.current, $scope.params, {reload: true});
                 };
                 //清空
                 $scope.clean = function () {
                     console.log($scope.params.address);
                     angular.forEach($scope.params, function (data, index) {
                         //三期添加了关于ID的选项，清除的时候不能清除ID
-                        if (index !== 'size'&&index!== 'id') {
+                        if (index !== 'size' && index !== 'id') {
                             $scope.params[index] = '';
                         }
                     });
-                    $state.go($state.current, commonUtil.querySearchParams($scope.params), {reload: true});
-
+                    // $state.go($state.current, commonUtil.querySearchParams($scope.params), {reload: true});
+                    $state.go($state.current, $scope.params, {reload: true});
                 }
             }
         }

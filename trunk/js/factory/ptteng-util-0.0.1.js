@@ -29,7 +29,7 @@ angular.module('admin')
                 }
             },
 
-            //时间戳处理
+            // 时间戳处理
             querySearchParams: function (params) {
                 for (var k in params) {
                     if (params[k] instanceof Date) {
@@ -43,6 +43,7 @@ angular.module('admin')
                         if (str != '9') {
                             params[k] = params[k] + 86400000 - 1;
                         }
+
                     }
                     if (k === 'page') {
                         params[k] = 1;

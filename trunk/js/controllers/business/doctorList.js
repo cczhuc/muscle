@@ -1,27 +1,31 @@
-angular.module('admin').controller('UserListCtrl',['$rootScope','$state','$http','portService',
+angular.module('admin').controller('DoctorListCtrl',['$rootScope','$state','$http','portService',
     function($rootScope,$state,$http,portService) {
         var vm = this;
+        //把需要日历插件需要+86399999的参数的名字以字符串放进来，写在html日期插件的属性里，给search插件去处理
+        vm.timeFixArr = ["registerTo"];
+
         vm.searchParams = $state.params;
 
-        vm.searchParams.startAt = parseInt(vm.searchParams.startAt) || undefined;
-        vm.searchParams.endAt = parseInt(vm.searchParams.endAt) || undefined;
+        vm.searchParams.registerFrom = parseInt(vm.searchParams.registerFrom) || undefined;
+        vm.searchParams.registerTo = parseInt(vm.searchParams.registerTo) || undefined;
+
         /***需求：对输入范围的左边和右边的大小不限。但是在发送数据的时候要对这些倒过来的参数进行处理
-        //vm.tempParams是vm.searchParams的深拷贝，处理好时间和年龄的顺序后发送给后端
-        //要深拷贝,直接等的话是浅拷贝，在页面上显示会有问题。不这样做会导致：eg：输入年龄 55和10，点击搜索后会显示10和55***/
+         //vm.tempParams是vm.searchParams的深拷贝，处理好时间和年龄的顺序后发送给后端
+         //要深拷贝,直接等的话是浅拷贝，在页面上显示会有问题。不这样做会导致：eg：输入年龄 55和10，点击搜索后会显示10和55***/
         vm.tempParams = angular.copy(vm.searchParams);
         // vm.tempParams = JSON.parse(JSON.stringify(vm.searchParams)); //这样写也能深拷贝，但只能复制属性，不能复制方法
         //对时间范围的处理
-        if(vm.tempParams.startAt - 1 >= vm.tempParams.endAt) {
-            var tempAt = vm.tempParams.startAt;
+        if(vm.tempParams.registerFrom - 1 >= vm.tempParams.registerTo) {
+            var tempAt = vm.tempParams.registerFrom;
             //搜索按钮指令会对vm.searchParams.end + 86400000 -1,所以要反向操作
-            vm.tempParams.startAt = vm.tempParams.endAt - 86400000 + 1;
-            vm.tempParams.endAt = tempAt + 86400000 -1;
+            vm.tempParams.registerFrom = vm.tempParams.registerTo - 86400000 + 1;
+            vm.tempParams.registerTo = tempAt + 86400000 -1;
         }
         //对年龄的处理
-        if(vm.tempParams.minAge>vm.tempParams.maxAge) {
-            var tempAge = vm.tempParams.minAge;
-            vm.tempParams.minAge = vm.tempParams.maxAge;
-            vm.tempParams.maxAge = tempAge;
+        if(vm.tempParams.ageFrom>vm.tempParams.ageTo) {
+            var tempAge = vm.tempParams.ageFrom;
+            vm.tempParams.ageFrom = vm.tempParams.ageTo;
+            vm.tempParams.ageTo = tempAge;
         }
 
         // console.log("vm.tempParams",vm.tempParams);
@@ -92,6 +96,5 @@ angular.module('admin').controller('UserListCtrl',['$rootScope','$state','$http'
             });
 
         };
-
     }
 ]);

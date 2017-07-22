@@ -18,7 +18,7 @@ angular.module('admin').controller('PlanTemplateCtrl',['$rootScope','$state','$h
         }
 
         if(vm.tempParams.minCount>vm.tempParams.maxCount) {
-            var tempAge = vm.tempParams.minAge;
+            var tempAge = vm.tempParams.ageFrom;
             vm.tempParams.minCount = vm.tempParams.maxCount;
             vm.tempParams.maxCount = tempAge;
         }

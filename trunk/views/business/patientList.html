@@ -12,6 +12,7 @@
                                        data-date-format="yyyy-MM-dd" data-date-type="number"
                                        data-max-date="today" ng-model="vm.searchParams.startAt">
                             </div>
+
                         </div>
                     </div>
 
@@ -28,13 +29,12 @@
 
                     <div class="col-md-4">
                         <div class="form-group">
-                            <label class="control-label col-md-4 word-spacing-25">APP&emsp;&emsp;</label>
+                            <label class="control-label col-md-4">手机号码</label>
                             <div class="col-md-8">
-                                <select class="form-control" ng-model="vm.searchParams.app">
-                                    <option value="">全部</option>
-                                    <option value="0">医师版</option>
-                                    <option value="1">患者版</option>
-                                </select>
+                                <input numberic class="form-control"
+                                       type="text"
+                                       maxlength="11"
+                                       ng-model="vm.searchParams.mobile">
                             </div>
                         </div>
                     </div>
@@ -48,7 +48,7 @@
                                 <input numberic class="form-control"
                                        type="text"
                                        maxlength="5"
-                                       ng-model="vm.searchParams.minAge">
+                                       ng-model="vm.searchParams.ageFrom">
                             </div>
                         </div>
                     </div>
@@ -60,7 +60,7 @@
                                 <input numberic class="form-control"
                                        type="text"
                                        maxlength="5"
-                                       ng-model="vm.searchParams.maxAge">
+                                       ng-model="vm.searchParams.ageTo">
                             </div>
                         </div>
                     </div>
@@ -80,17 +80,7 @@
                 </div>
 
                 <div class="row pd-bottom-20">
-                    <div class="col-md-4">
-                        <div class="form-group">
-                            <label class="control-label col-md-4">手机号码</label>
-                            <div class="col-md-8">
-                                <input numberic class="form-control"
-                                       type="text"
-                                       maxlength="11"
-                                       ng-model="vm.searchParams.mobile">
-                            </div>
-                        </div>
-                    </div>
+
 
                     <div class="col-md-4">
                         <div class="form-group">
@@ -128,11 +118,16 @@
             </div>
 
             <div class="panel-body panel-body-noMax" ng-if="vm.userList.length != 0">
+                <div class="tab-wrap">
+                    <div class="check-tab" ui-sref-active="check-tab-active" ui-sref="field.patientList">患者用户</div>
+                    <div class="check-tab" ui-sref-active="check-tab-active" ui-sref="field.doctorList">医师用户</div>
+                </div>
+
                 <div class="divTable">
                     <div class="divTableHeading">
                         <div class="divTableHead">ID</div>
                         <div class="divTableHead">注册日期</div>
-                        <div class="divTableHead">APP</div>
+                        <!--<div class="divTableHead">APP</div>-->
                         <div class="divTableHead">手机号</div>
                         <div class="divTableHead">姓名</div>
                         <div class="divTableHead">年龄</div>
@@ -144,7 +139,7 @@
                         <div class="divTableRow" ng-repeat="user in vm.userList track by $index">
                             <div class="divTableCell handle">{{user.id}}</div>
                             <div class="divTableCell">{{user.time|date:'yyyy-MM-dd'}}</div>
-                            <div class="divTableCell">{{user.app|appFilter}}</div>
+                            <!--<div class="divTableCell">{{user.app|appFilter}}</div>-->
                             <div class="divTableCell">{{user.phoneNum}}</div>
                             <div class="divTableCell">{{user.name}}</div>
                             <div class="divTableCell">{{user.age}}</div>
@@ -166,7 +161,6 @@
                                        ui-sref="field.patientTestData({id:user.id,name:user.name})">
                                         数据
                                     </a>
-
                                     <a class="btn btn-sm company-a-fix"
                                        ng-if="user.app == 1 && user.freezed==0"
                                        ui-sref="field.planTemplate({id:user.id})">
@@ -190,33 +184,25 @@
                                        ui-sref="field.patientAppraisal({id:user.id})">
                                         评价
                                     </a>
-
-
                                     <a class="btn btn-sm company-a-fix"
                                        ng-if="user.app == 1 && user.freezed==0"
                                        ng-click="vm.cancelApproved()">
                                         撤销认证
                                     </a>
-
-
                                     <a class="btn btn-sm company-a-fix"
                                        ng-if="user.app == 1 && user.freezed==0"
                                        ui-sref="field.transactionDetails({id:user.id})">
                                         交易
                                     </a>
 
-
-
                                 </div>
                             </div>
-
-
                         </div>
                     </div>
 
 
                 </div>
-                <pagination ng-if="vm.total" total="{{vm.total}}"></pagination>
+                <pagination ng-if="vm.total"  total="{{vm.total}}"></pagination>
             </div>
         </div>
     </div>

@@ -1,0 +1,209 @@
+<div class="form-horizontal">
+    <div class="panel panel-default">
+        <form class="form-horizontal">
+            <div class="panel-body">
+                <div class="row pd-bottom-20">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label class="control-label col-md-4">注册日期</label>
+                            <div class="col-md-8">
+                                <input type="text" class="form-control"
+                                       size="20" bs-datepicker autoclose="true"
+                                       data-date-format="yyyy-MM-dd" data-date-type="number"
+                                       data-max-date="today" ng-model="vm.searchParams.registerFrom">
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label class="control-label col-md-4 text-center ">—</label>
+                            <div class="col-md-8">
+                                <input type="text" class="form-control" size="20" bs-datepicker autoclose="true"
+                                       data-date-format="yyyy-MM-dd" data-date-type="number"
+                                       data-max-date="today" ng-model="vm.searchParams.registerTo">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label class="control-label col-md-4">手机号码</label>
+                            <div class="col-md-8">
+                                <input numberic class="form-control"
+                                       type="text"
+                                       maxlength="11"
+                                       ng-model="vm.searchParams.mobile">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row pd-bottom-20">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label class="control-label col-md-4">年&emsp;&emsp;龄</label>
+                            <div class="col-md-8">
+                                <input numberic class="form-control"
+                                       type="text"
+                                       maxlength="5"
+                                       ng-model="vm.searchParams.ageFrom">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label class="control-label col-md-4 text-center ">—</label>
+                            <div class="col-md-8">
+                                <input numberic class="form-control"
+                                       type="text"
+                                       maxlength="5"
+                                       ng-model="vm.searchParams.ageTo">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label class="control-label col-md-4 word-spacing-25">账户状态</label>
+                            <div class="col-md-8">
+                                <select class="form-control" ng-model="vm.searchParams.freezed">
+                                    <option value="">全部</option>
+                                    <option value="0">正常</option>
+                                    <option value="1">冻结</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row pd-bottom-20">
+
+
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label class="control-label col-md-4">姓&emsp;&emsp;名</label>
+                            <div class="col-md-8">
+                                <input class="form-control"
+                                       type="text"
+                                       ng-model="vm.searchParams.name">
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12 text-right">
+                        <search params="vm.searchParams" time-fix-arr="vm.timeFixArr"></search>
+                    </div>
+                </div>
+
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <strong>用户列表</strong>
+            </div>
+
+            <div class="list-replace" ng-if="vm.userList.length == 0">
+                <div class="list-replace-text">暂无任何数据</div>
+            </div>
+
+            <div class="panel-body panel-body-noMax" ng-if="vm.userList.length != 0">
+                <div class="tab-wrap">
+                    <div class="check-tab" ui-sref-active="check-tab-active" ui-sref="field.patientList">患者用户</div>
+                    <div class="check-tab" ui-sref-active="check-tab-active" ui-sref="field.doctorList">医师用户</div>
+                </div>
+
+                <div class="divTable">
+                    <div class="divTableHeading">
+                        <div class="divTableHead">ID</div>
+                        <div class="divTableHead">注册日期</div>
+                        <!--<div class="divTableHead">APP</div>-->
+                        <div class="divTableHead">手机号</div>
+                        <div class="divTableHead">姓名</div>
+                        <div class="divTableHead">年龄</div>
+                        <div class="divTableHead">账号状态</div>
+                        <div class="divTableHead">操作</div>
+                    </div>
+
+                    <div class="divTableBody">
+                        <div class="divTableRow" ng-repeat="user in vm.userList track by $index">
+                            <div class="divTableCell handle">{{user.id}}</div>
+                            <div class="divTableCell">{{user.time|date:'yyyy-MM-dd'}}</div>
+                            <!--<div class="divTableCell">{{user.app|appFilter}}</div>-->
+                            <div class="divTableCell">{{user.phoneNum}}</div>
+                            <div class="divTableCell">{{user.name}}</div>
+                            <div class="divTableCell">{{user.age}}</div>
+                            <div class="divTableCell">{{user.freezed|freezedFilter}}</div>
+
+                            <div class="divTableCell company-tableCell-fix">
+                                <div class="row">
+                                    <a class="btn btn-sm company-a-fix"
+                                       ng-class="{'text-red':user.freezed==0,'text-green':user.freezed==1}"
+                                       ng-click="vm.freezeUser(user.id,0,user.freezed)">
+                                        {{user.freezed|changeFreezedStatusFilter}}
+                                    </a>
+                                    <a class="s btn btn-sm company-a-fix"
+                                       ng-click="vm.goUserDetail(user.id,user.app)">
+                                        查看
+                                    </a>
+                                    <a class="btn btn-sm company-a-fix"
+                                       ng-if="user.app == 0"
+                                       ui-sref="field.patientTestData({id:user.id,name:user.name})">
+                                        数据
+                                    </a>
+                                    <a class="btn btn-sm company-a-fix"
+                                       ng-if="user.app == 1 && user.freezed==0"
+                                       ui-sref="field.planTemplate({id:user.id})">
+                                        模板
+                                    </a>
+
+                                    <a class="btn btn-sm company-a-fix"
+                                       ng-if="user.app == 1 && user.freezed==0"
+                                       ui-sref="field.diagnosisRecord({id:user.id})">
+                                        记录
+                                    </a>
+                                    <a class="btn btn-sm company-a-fix"
+                                       ng-if="user.app == 0"
+                                       ui-sref="field.patientRecord({id:user.id,name:user.name})">
+                                        订单
+                                    </a>
+                                </div>
+                                <div class="row">
+                                    <a class="btn btn-sm company-a-fix"
+                                       ng-if="user.app == 1 && user.freezed==0"
+                                       ui-sref="field.patientAppraisal({id:user.id})">
+                                        评价
+                                    </a>
+                                    <a class="btn btn-sm company-a-fix"
+                                       ng-if="user.app == 1 && user.freezed==0"
+                                       ng-click="vm.cancelApproved()">
+                                        撤销认证
+                                    </a>
+                                    <a class="btn btn-sm company-a-fix"
+                                       ng-if="user.app == 1 && user.freezed==0"
+                                       ui-sref="field.transactionDetails({id:user.id})">
+                                        交易
+                                    </a>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+                <pagination ng-if="vm.total"  total="{{vm.total}}"></pagination>
+            </div>
+        </div>
+    </div>
+</div>
