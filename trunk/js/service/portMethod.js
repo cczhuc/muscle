@@ -107,6 +107,7 @@ angular.module("admin")
         },
 
         // 运营管理
+        // 参数设置
 
         // 获取信息列表
         getMessageList:function(param){

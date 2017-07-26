@@ -116,6 +116,8 @@ angular.module("admin").factory("address",function ($state,$http){
         },
 
         // 运营管理
+        // 参数设置
+
         messageList_url:function(){
             return "/a/u/message/search"
         },
