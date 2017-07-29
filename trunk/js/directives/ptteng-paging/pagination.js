@@ -19,7 +19,6 @@ angular.module('admin').directive('pagination', function ($state) {
             //总页数
             var totalPage = Math.ceil(parseInt(scope.total) / scope.size);
             defaultPage = scope.defaultPage||4;//默认显示多少页,在指令调用的时候可以加上这个属性进行设置，不设置默认4页
-            console.log(defaultPage);
             scope.activePage = activePage;
             scope.totalPage = totalPage;
             scope.isHaveNextPage = isHaveNextPage;

@@ -319,7 +319,3 @@ function recordCookies($cookies) {
 
     }
 }
-
-
-
-

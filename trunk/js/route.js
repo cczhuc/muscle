@@ -123,15 +123,30 @@ function projectRouteConfig($stateProvider, $urlRouterProvider, $ocLazyLoadProvi
 
 
         // 业务管理开始
-        //用户管理-用户管理
-        .state('field.user', {
-            url: '/user/:page/:size?&startAt&endAt&app&minAge&maxAge&freezed&mobile&name',
-            templateUrl: 'views/business/user.html',
-            controller: 'UserListCtrl',
+
+
+        //患者列表页
+        .state('field.patientList', {
+            url: '/patientList/:page/:size?&registerFrom&registerTo&ageFrom&ageTo&freezed&mobile&name',
+            templateUrl: 'views/business/patientList.html',
+            controller: 'PatientListCtrl',
             controllerAs: 'vm',
             resolve: {
                 loadMyFile: _lazyLoad([
-                    'js/controllers/business/userList.js'
+                    'js/controllers/business/patientList.js'
+                ])
+            }
+        })
+
+        //医师列表页
+        .state('field.doctorList', {
+            url: '/doctorList/:page/:size?&registerFrom&registerTo&ageFrom&ageTo&freezed&mobile&name',
+            templateUrl: 'views/business/doctorList.html',
+            controller: 'DoctorListCtrl',
+            controllerAs: 'vm',
+            resolve: {
+                loadMyFile: _lazyLoad([
+                    'js/controllers/business/doctorList.js'
                 ])
             }
         })
