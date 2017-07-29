@@ -39,7 +39,9 @@ angular.module('admin')
                     // 处理 结束时间 那天末尾
                     if ((k.toLowerCase().indexOf('end') != -1||k.toLowerCase().indexOf('to') != -1) && params[k]) {
                         var timeString = String(params[k]);
+                        console.log('timeString',timeString);
                         var str = timeString.substring(timeString.length - 1, timeString.length);
+                        console.log('str',str);
                         if (str != '9') {
                             params[k] = params[k] + 86400000 - 1;
                         }

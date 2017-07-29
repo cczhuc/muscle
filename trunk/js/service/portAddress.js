@@ -6,7 +6,8 @@ angular.module("admin").factory("address",function ($state,$http){
         },
         // 获取认证列表
         approvedList_url: function () {
-            return "JSON/approvedList.json"
+            return "/a/u/search/certification"
+            // return "JSON/approvedList.json"
         },
         // 取消认证
         cancelApproved_url: function (id) {
@@ -24,18 +25,17 @@ angular.module("admin").factory("address",function ($state,$http){
         },
         // 获取认证详情
         approvedDetails_url: function (id) {
-            return "JSON/approvedDetails.json"
-            // +id
+            return "/a/u/certification/"+id
         },
 
         // 合作医院管理
         // 获取合作医疗医院列表
         hospitalList_url:function () {
-            return "/a/hospital/search"
+            return "/a/u/search/hospital"
         },
         // 改变医院上下线
         changeHospitalStatus_url: function(id,type,status) {
-            return "JSON/changeUserStatus.json"
+            return "/a/u/hospital/"+id+"/"+status
         },
         // 获取医院详情
         hospitalDetails_url: function(id) {
@@ -48,25 +48,26 @@ angular.module("admin").factory("address",function ($state,$http){
         },
         // 立即上线、存为草稿
         editHospital_url: function(id) {
-            return ""+id
+            return "/a/u/hospital"+id
         },
         addHospital_url: function () {
-            return ""
+            return "/a/u/hospital"
         },
         // 合作医院的医师管理
-        hospitalDoctor_url: function (id) {
-            return "/a/u/hospital/doctor"
-            // +id
+        hospitalDoctor_url: function () {
+            return "/a/u/certification/list"
         },
         // 患者版订单记录
         patientRecord_url: function (id) {
-            return "/a/u/patientRecord"
-            // +id
+            return "/a/u/order/list"
+                // +id
+
         },
-        // 患者版监测数据
+        // 患者版检测数据
         patientTestData_url: function (id) {
-            return "/a/u/patientTestData"
-            // +id
+            return "/a/u/train/search"
+                // +id
+
         },
         // 审核
         approvedcheck_url: function (id) {

@@ -9,7 +9,7 @@
                             <div class="col-md-8">
                                 <input type="text" class="form-control" size="20" bs-datepicker autoclose="true"
                                        data-date-format="yyyy-MM-dd" data-date-type="number"
-                                       ng-model="vm.searchParams.startAt">
+                                       ng-model="vm.searchParams.createFrom">
                             </div>
                         </div>
                     </div>
@@ -19,7 +19,7 @@
                             <div class="col-md-8">
                                 <input type="text" class="form-control" size="20" bs-datepicker autoclose="true"
                                        data-date-format="yyyy-MM-dd" data-date-type="number"
-                                       ng-model="vm.searchParams.endAt">
+                                       ng-model="vm.searchParams.createTo">
                             </div>
                         </div>
                     </div>
@@ -29,10 +29,10 @@
                             <div class="col-md-8">
                                 <select class="form-control" ng-model="vm.searchParams.position">
                                     <option value="">全部</option>
-                                    <option value="1">主任医师</option>
-                                    <option value="2">副主任医师</option>
-                                    <option value="3">主治医师</option>
-                                    <option value="4">其他</option>
+                                    <option value="主任医师">主任医师</option>
+                                    <option value="副主任医师">副主任医师</option>
+                                    <option value="主治医师">主治医师</option>
+                                    <option value="其他">其他</option>
                                 </select>
                             </div>
                         </div>
@@ -46,7 +46,7 @@
                             <div class="col-md-8">
                                 <input class="form-control"
                                        type="text"
-                                       ng-model="vm.searchParams.mobile">
+                                       ng-model="vm.searchParams.mobile" numberic maxlength="11">
                             </div>
                         </div>
                     </div>
@@ -64,7 +64,7 @@
                         <div class="form-group">
                             <label class="control-label col-md-4 word-spacing-25">账户状态</label>
                             <div class="col-md-8">
-                                <select class="form-control" ng-model="vm.searchParams.status">
+                                <select class="form-control" ng-model="vm.searchParams.accountStatus">
                                     <option value="">全部</option>
                                     <option value="0">正常</option>
                                     <option value="1">冻结</option>
@@ -110,28 +110,28 @@
                     </div>
 
                     <div class="divTableBody">
-                        <div class="divTableRow" ng-repeat="doctor in vm.doctorList track by $index">
-                            <div class="divTableCell handle">{{doctor.uuid}}</div>
+                        <div class="divTableRow" ng-repeat="doctor in vm.doctor track by $index">
+                            <div class="divTableCell handle">{{doctor.id}}</div>
                             <div class="divTableCell">{{doctor.createAt|date:'yyyy-MM-dd'}}</div>
                             <div class="divTableCell">{{doctor.mobile}}</div>
                             <div class="divTableCell">{{doctor.name}}</div>
-                            <div class="divTableCell">{{doctor.position|doctorPositionFilter}}</div>
+                            <div class="divTableCell">{{doctor.position}}</div>
                             <div class="divTableCell">{{doctor.income}}</div>
                             <div class="divTableCell" ng-class="{'text-green':doctor.status==0}">{{doctor.status|freezedFilter}}</div>
 
                             <div class="divTableCell company-tableCell-fix">
                                 <div class="row">
                                     <a class="text-red btn btn-sm company-a-fix" href=""
-                                       ng-click="vm.freezeDoctor(doctor.id,0,doctor.status)" ng-class="{'text-green':doctor.status==1}">
+                                       ng-click="vm.freezeDoctor(doctor.id,0,doctor.accountStatus)" ng-class="{'text-green':doctor.status==1}">
                                         {{doctor.status|changeFreezedStatusFilter}}
                                     </a>
-                                    <a class=" btn btn-sm company-a-fix" ui-sref="field.doctorDetails({id:doctor.uuid})">
+                                    <a class=" btn btn-sm company-a-fix" ui-sref="field.doctorDetails({id:doctor.id})">
                                         查看
                                     </a>
-                                    <a class=" btn btn-sm company-a-fix" ui-sref="field.planTemplate({id:doctor.uuid})">
+                                    <a class=" btn btn-sm company-a-fix" ui-sref="field.planTemplate({id:doctor.id})">
                                         模板
                                     </a>
-                                    <a class=" btn btn-sm company-a-fix" ui-sref="field.diagnosisRecord({id:doctor.uuid})">
+                                    <a class=" btn btn-sm company-a-fix" ui-sref="field.diagnosisRecord({id:doctor.id})">
                                         记录
                                     </a>
                                 </div>

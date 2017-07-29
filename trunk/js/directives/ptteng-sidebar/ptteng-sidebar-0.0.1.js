@@ -10,7 +10,6 @@ angular.module('admin')
             controller: function ($http, $scope, $rootScope, $state, $location, roleService, managerService, moduleService, recordCookies, commonUtil) {
 
                 var self = managerService.getSelfDetail();
-                // console.log("self",self);
                 if (self == undefined) {
                     $rootScope.alert("您还未登录", function () {
                         $state.go("login");
@@ -19,13 +18,10 @@ angular.module('admin')
                 } else {
                     $rootScope.uid = self.role.id;
                 }
-
+                console.log(self.role.id);
                 roleService.getRole(self.role.id).then(function (res) {
-                    // console.log(res);
                     if (res.data.code == 0) {
                         var moduleIDs = Object.keys(res.data.data.role.permissionsSet);
-                        // console.log("moduleIDs",moduleIDs);
-                        // console.log("save permission set");
                         localStorage["permissionsSet"] = JSON.stringify(res.data.data.role.permissionsSet);
                         $rootScope.permissionsSet = JSON.parse(localStorage["permissionsSet"]);
 

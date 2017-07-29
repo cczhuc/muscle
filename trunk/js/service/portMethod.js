@@ -69,7 +69,7 @@ angular.module("admin")
         },
         //改变医院上下线状态
         changeHospitalStatus: function(id,type,status) {
-            return $http.get(address.changeHospitalStatus_url(id,type,status))
+            return $http.put(address.changeHospitalStatus_url(id,type,status))
         },
         // 获取医院详情
         getHospitalDetails: function (id) {
@@ -83,8 +83,8 @@ angular.module("admin")
             return $http.post(address.addHospital_url(),{params:data})
         },
         // 合作医院医师管理
-        getHospitalDoctor: function (id,data) {
-            return $http.get(address.hospitalDoctor_url(id),{params:data})
+        getHospitalDoctor: function (data) {
+            return $http.get(address.hospitalDoctor_url(),{params:data})
         },
         // 患者版订单记录
         getPatientRecord: function (id,data) {

@@ -149,7 +149,7 @@ function projectRouteConfig($stateProvider, $urlRouterProvider, $ocLazyLoadProvi
             }
         })
         .state('field.patientRecord', {
-            url: '/patientRecord?id&page&size&name&product&transaction_type&transaction_status&minSum&maxSum&startAt&endAt',
+            url: '/patientRecord?id&page&size&name&product&type&status&amountStart&amountEnd&payStartAt&payEndAt',
             templateUrl: 'views/business/patient/patientRecord.html',
             controller: 'PatientRecordCtrl',
             controllerAs: 'vm',
@@ -252,7 +252,7 @@ function projectRouteConfig($stateProvider, $urlRouterProvider, $ocLazyLoadProvi
         })
         // 业务管理-认证管理
         .state('field.approvedList', {
-            url: '/approvedList/:page/:size?telphone&name&status&startAt&endAt',
+            url: '/approvedList/:page/:size?mobile&name&status&applyFrom&applyTo',
             templateUrl: 'views/business/approvedList.html',
             controller: 'ApprovedListCtrl',
             controllerAs: 'vm',
@@ -275,7 +275,7 @@ function projectRouteConfig($stateProvider, $urlRouterProvider, $ocLazyLoadProvi
         })
         // 业务管理-合作医院管理
         .state('field.hospitalList', {
-            url: '/hospitalList?size&name&grade&status&minNum&maxNum&province&city',
+            url: '/hospitalList/:page/:size?name&grade&status&totalFrom&totalTo&province&city',
             templateUrl: 'views/business/hospitalList.html',
             controller: 'HospitalListCtrl',
             controllerAs: 'vm',
@@ -299,7 +299,7 @@ function projectRouteConfig($stateProvider, $urlRouterProvider, $ocLazyLoadProvi
             }
         })
         .state('field.hospitalDoctor', {
-            url: '/hospitalDoctor?id&page&size&name&mobile&status&startAt&endAt&position',
+            url: '/hospitalDoctor?hid&page&size&name&mobile&accountStatus&createFrom&createTo&position',
             templateUrl: 'views/business/hospitalDoctor.html',
             controller: 'HospitalDoctorCtrl',
             controllerAs: 'vm',

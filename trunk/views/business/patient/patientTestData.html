@@ -51,14 +51,14 @@
             <div class="divTableBody">
                 <div class="divTableRow" ng-repeat="item in vm.patientTestData track by $index">
                     <!--<div class="divTableCell">-->
-                    <!--<div >{{item.training_time|date:'yyyy-MM-dd'}}</div>-->
-                    <!--<div >{{item.training_time|date:'HH:mm:ss'}}</div>-->
+                    <!--<div >{{item.trainAt|date:'yyyy-MM-dd'}}</div>-->
+                    <!--<div >{{item.trainAt|date:'HH:mm:ss'}}</div>-->
                     <!--</div>-->
-                    <div  class="divTableCell">{{item.training_time|date:'yyyy-MM-dd  HH:mm:ss'}}</div>
-                    <div  class="divTableCell">{{item.age}}</div>
+                    <div  class="divTableCell">{{item.trainAt|date:'yyyy-MM-dd  HH:mm:ss'}}</div>
+                    <div  class="divTableCell">{{item.birth}}</div>
                     <div  class="divTableCell">{{item.sensitivity}}</div>
                     <div  class="divTableCell">{{item.hardness}}</div>
-                    <div  class="divTableCell">{{item.blood_flow}}</div>
+                    <div  class="divTableCell">{{item.bloodFlow}}</div>
                     <div class="divTableCell">{{item.duration}}</div>
                 </div>
             </div>

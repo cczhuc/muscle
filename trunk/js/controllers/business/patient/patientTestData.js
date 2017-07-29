@@ -17,12 +17,11 @@ angular.module('admin').controller('PatientTestDataCtrl',['$rootScope','$state',
             vm.tempParams.endAt = tempAt + 86400000 -1;
         }
 
-
         portService.getPatientTestData(vm.tempParams.id).then(function (res) {
             if(res.data.code==0) {
                 console.log(res);
-                vm.patientTestData = res.data.data.testDataList;
-                vm.total = res.data.data.total;
+                vm.patientTestData = res.data.data;
+                vm.total = res.data.total;
             }
             else {
                 $rootScope.alert(res.data.message)

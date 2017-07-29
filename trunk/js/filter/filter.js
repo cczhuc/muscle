@@ -158,7 +158,7 @@ angular.module('admin')
         return function (status) {
             switch (status) {
                 case 0:
-                    return "方案支付";
+                    return "方案购买";
                 default :
                     return "数据异常";
             }
@@ -168,10 +168,14 @@ angular.module('admin')
     .filter('transactionStatusFilter', function () {
         return function (status) {
             switch (status) {
+                case -1:
+                    return "订单失效";
                 case 0:
-                    return "成功";
+                    return "付款失败";
                 case 1:
-                    return "失败";
+                    return "付款成功";
+                case 2:
+                    return "待付款";
                 default :
                     return "数据异常";
             }

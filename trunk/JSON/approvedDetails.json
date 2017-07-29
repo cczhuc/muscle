@@ -5,16 +5,17 @@
     "id":"U2017011112",
     "approvedId":1710000001,
     "time":"1498965071000",
-    "creatAt":"1498965041000",
-    "telphone":"13000000001",
-    "IdCardNumber":"430822199308110011",
+    "apply":"1498965041000",
+    "mobile":"13000000001",
+    "idcard":"430822199308110011",
     "name":"刘德华",
-    "number":"238293813829367892",
+    "qualifications":"238293813829367892",
     "status":1,
     "hospital":"北京东城中医医院",
-    "reason":"拒绝、取消理由",
-    "image":["",""],
-    "positionalTitle":1
+    "refuse":"拒绝、取消理由",
+    "certificate":"",
+    "certificateBack":"",
+    "position":1
   }
 }
 
