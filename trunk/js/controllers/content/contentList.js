@@ -8,24 +8,34 @@
         .module('admin')
         .controller('ContentListCtrl', ContentListCtrl);
 
-    ContentListCtrl.$inject = ['$scope', 'portService', '$rootScope', '$timeout','$state'];
+    ContentListCtrl.$inject = ['$scope', 'portService', '$rootScope', '$timeout', '$state'];
 
     /* @ngInject */
-    function ContentListCtrl($scope, portService, $rootScope, $timeout,$state){
+    function ContentListCtrl($scope, portService, $rootScope, $timeout, $state){
         var vm = this;
         vm.title = 'ContentListCtrl';
+        vm.searchParams = $state.params;
+        // vm.timeFixArr = ["applyTo"];
+        vm.searchParams.startAt = parseInt(vm.searchParams.startAt) || undefined;
+        vm.searchParams.endAt = parseInt(vm.searchParams.endAt) || undefined;
 
-        vm.search(vm.data);
+        //vm.tempParams = angular.copy(vm.searchParams);
 
-        ////////////////
-        vm.data = $state.params;
-        vm.search = function (data){
-            portService.getContentList(data).then(function(res){
-                vm.total = res.data.data.total;
-                vm.content = res.data.data.articleList;
-                console.log(vm.content)
-            })
-        };
+        // if(vm.tempParams.startAt - 1 >= vm.tempParams.endAt){
+        //     var tempAt = vm.tempParams.applyFrom;
+        //     //搜索按钮插件会对vm.searchParams.end + 86400000 -1,如果界面所以要反向操作
+        //     vm.tempParams.applyFrom = vm.tempParams.applyTo - 86400000 + 1;
+        //     vm.tempParams.applyTo = tempAt + 86400000 - 1;
+        // }
+        // if(vm.searchParams.startAt === vm.searchParams.endAt){
+        //     vm.searchParams.endAt = vm.searchParams.endAt + 86399999;
+        // }
+        console.log(vm.searchParams.endAt);
+        portService.getContentList(vm.searchParams).then(function(res){
+            vm.total = res.data.data.total;
+            vm.content = res.data.data.articleList;
+            console.log(vm.content)
+        });
 
         // 拖动部分
         vm.sort = function(){
@@ -64,9 +74,9 @@
         // 操作部分
         vm.offline = function($index){
             $rootScope.operationConfirm('下线将使前台不再展示此内容', '确认下线？', function(){
-                portService.putContentStatus(vm.content[$index].id,{status:2}).then(function(res){
+                portService.putContentStatus(vm.content[$index].id, {status : 2}).then(function(res){
                     if(res.data.code == 0){
-                        $state.go($state.current, vm.params, {reload : true})
+                        $state.go($state.current, vm.searchParams, {reload : true})
                     } else {
                         $rootScope.alert(res.data.message)
                     }
@@ -75,18 +85,24 @@
         };
         vm.online = function($index){
             $rootScope.operationConfirm('上线将在前台展示此内容', '确认上线？', function(){
-                portService.putContentStatus(vm.content[$index].id,{status:1}).then(function(res){
+                portService.putContentStatus(vm.content[$index].id, {status : 1}).then(function(res){
                     if(res.data.code == 0){
-                        $state.go($state.current,vm.params,{reload:true})
+                        $state.go($state.current, vm.searchParams, {reload : true})
                     } else {
                         $rootScope.alert(res.data.message)
                     }
                 });
             })
         };
-        vm.delete = function(){
+        vm.delete = function($index){
             $rootScope.operationConfirm('删除将自动下线此内容', '确认删除？', function(){
-                $rootScope.alert('删除成功');
+                portService.deleteContent(vm.content[$index].id).then(function(res){
+                    if(res.data.code == 0){
+                        $state.go($state.current, vm.searchParams, {reload : true})
+                    } else {
+                        $rootScope.alert(res.data.message)
+                    }
+                })
             })
         };
     }

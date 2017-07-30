@@ -332,7 +332,7 @@ function projectRouteConfig($stateProvider, $urlRouterProvider, $ocLazyLoadProvi
 
         // 内容管理开始
         .state('field.contentListPatient', {
-            url: '/contentList',
+            url: '/contentList/:page/:size?title&startAt&endAt&createBy&createByName&status',
             templateUrl: 'views/content/contentList.html',
             controller: 'ContentListCtrl',
             controllerAs: 'vm',
@@ -343,7 +343,7 @@ function projectRouteConfig($stateProvider, $urlRouterProvider, $ocLazyLoadProvi
             }
         })
         .state('field.contentListDoctor', {
-            url: '/contentList',
+            url: '/contentList/:page/:size?title&startAt&endAt&createBy&createByName&status',
             templateUrl: 'views/content/contentList.html',
             controller: 'ContentListCtrl',
             controllerAs: 'vm',

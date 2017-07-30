@@ -208,9 +208,9 @@ angular.module('admin')
 //     内容列表
     .filter('contentListStatusFilter',function(){
         return function(status){
-            if(status === 0){
-                return "草稿"
-            }else {return "已上线"}
+            if(status === 1){
+                return "已上线"
+            }else {return "草稿"}
         }
     })
 

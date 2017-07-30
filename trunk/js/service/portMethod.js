@@ -116,11 +116,15 @@ angular.module("admin")
 
         // 获取内容列表
         getContentList:function(param){
-            return $http.get(address.contentList_url())
+            return $http.get(address.contentList_url(),{params:param})
         },
         // 修改content状态
         putContentStatus:function(id,params){
-            return $http.put(address.articleUpDown_url(id))
+            return $http.post(address.articleUpDown_url(id))
+        },
+        // 删除content
+        deleteContent:function(id){
+            return $http.delete(address.articleDelete_url(id))
         },
         // 拖动
         putSort:function(data){

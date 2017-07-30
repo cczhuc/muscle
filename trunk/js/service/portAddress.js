@@ -129,6 +129,10 @@ angular.module("admin").factory("address",function ($state,$http){
         articleUpDown_url:function(id){
             return "/a/u/article/"+id+"/status"
         },
+        // 删除
+        articleDelete_url:function(id){
+            return "/a/u/article/"+id
+        },
 
         // 运营管理
         // 参数设置
