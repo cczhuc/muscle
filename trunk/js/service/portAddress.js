@@ -1,24 +1,29 @@
 angular.module("admin").factory("address",function ($state,$http){
     return {
-        //用户列表
-        userList_url: function() {
-            return "JSON/userList.json"
+        //患者列表
+        patientList_url:function() {
+          return "/a/u/search/patient"
+        },
+        //医师列表
+        doctorList_url: function() {
+            return "/a/u/search/doctor"
         },
         // 获取认证列表
         approvedList_url: function () {
             return "/a/u/search/certification"
-            // return "JSON/approvedList.json"
         },
-        // 取消认证
-        cancelApproved_url: function (id) {
-            return "JSON/changeUserStatus.json"
-            // +id
+        // 认证/取消认证
+        cancelApproved_url: function (id,data) {
+            var params = $.param(data);
+            return "/a/u/"+ id + "/certification?" + params
         },
         //改变用户冻结状态
-        changeUserStatus_url: function(id,type,status) {
-            return "JSON/changeUserStatus.json"
+        changePatientStatus_url: function(id) {
+            return "/a/u/patient/"+id +"/status";
         },
-
+        changeDoctorStatus_url: function(id,status) {
+            return "/a/u/doctor/"+id +"/status";
+        },
         //改变手机号码
         changeUserMobile_url: function(id,mobile) {
             return "JSON/changeUserStatus.json"
@@ -78,29 +83,33 @@ angular.module("admin").factory("address",function ($state,$http){
             return "/a/user"
         },
 
-        //方案列表
-        planTemplate_url: function(id) {
-            return "/a/planTemplate"
+        //方案模板
+        planTemplate_url: function() {
+            return "/a/u/search/template"
         },
 
         //医师的评价列表
-        patientAppraisalList_url: function (id) {
-            return "/a/PatientAppraisalLit"
+        patientAppraisalList_url: function () {
+            return "/a/u/search/comment"
+        },
+
+        deleteComment_url: function(id) {
+            return "/a/u/comment/" + id
         },
 
         //医师评价详情
         appraisalDetails_url: function (id) {
-            return "/a/appraisalDetails"
+            return "/a/u/comment/" + id
         },
 
         //医师的诊断记录
         diagnosisRecord_url: function (id) {
-            return "/a/diagnosisRecord"
+            return "/a/u/diagnosis"
         },
 
         //诊断详情
-        diagnosisDetails_url: function (recordId) {
-            return "/a/diagnosisDetails"
+        diagnosisDetails_url: function (id) {
+            return "/a/u/diagnosis/"+id
         },
 
         //医师交易明细

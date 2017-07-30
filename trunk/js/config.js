@@ -128,7 +128,7 @@ angular.module('admin', ['oc.lazyLoad', 'ui.router', 'ngCookies', 'mgcrea.ngStra
                     $scope.title = title;
                     $scope.content = content;
                     $scope.ok = function () {
-                        refuse.text = vm.refuse;
+                        refuse.refuse = vm.refuse;
                         typeof okFn == 'function' && okFn();
                         modal.$promise.then(modal.hide);
                     };
@@ -291,7 +291,6 @@ function httpConfig($httpProvider) {
         }
         return $.param(data);
     };
-
 
 }
 

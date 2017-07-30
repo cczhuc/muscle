@@ -31,7 +31,8 @@
                         <div class="form-group">
                             <label class="control-label col-md-4">手机号码</label>
                             <div class="col-md-8">
-                                <input numberic class="form-control"
+                                <input numberic
+                                       class="form-control"
                                        type="text"
                                        maxlength="11"
                                        ng-model="vm.searchParams.mobile">
@@ -69,7 +70,7 @@
                         <div class="form-group">
                             <label class="control-label col-md-4 word-spacing-25">账户状态</label>
                             <div class="col-md-8">
-                                <select class="form-control" ng-model="vm.searchParams.freezed">
+                                <select class="form-control" ng-model="vm.searchParams.accountStatus">
                                     <option value="">全部</option>
                                     <option value="0">正常</option>
                                     <option value="1">冻结</option>
@@ -127,7 +128,6 @@
                     <div class="divTableHeading">
                         <div class="divTableHead">ID</div>
                         <div class="divTableHead">注册日期</div>
-                        <!--<div class="divTableHead">APP</div>-->
                         <div class="divTableHead">手机号</div>
                         <div class="divTableHead">姓名</div>
                         <div class="divTableHead">年龄</div>
@@ -136,62 +136,54 @@
                     </div>
 
                     <div class="divTableBody">
-                        <div class="divTableRow" ng-repeat="user in vm.userList track by $index">
-                            <div class="divTableCell handle">{{user.id}}</div>
-                            <div class="divTableCell">{{user.time|date:'yyyy-MM-dd'}}</div>
-                            <!--<div class="divTableCell">{{user.app|appFilter}}</div>-->
-                            <div class="divTableCell">{{user.phoneNum}}</div>
-                            <div class="divTableCell">{{user.name}}</div>
-                            <div class="divTableCell">{{user.age}}</div>
-                            <div class="divTableCell">{{user.freezed|freezedFilter}}</div>
+                        <div class="divTableRow" ng-repeat="doctor in vm.doctorList track by $index">
+                            <div class="divTableCell handle">{{doctor.id}}</div>
+                            <div class="divTableCell">{{doctor.createAt|date:'yyyy-MM-dd'}}</div>
+                            <div class="divTableCell"> {{vm.userList[doctor.id].mobile}}</div>
+                            <div class="divTableCell">{{doctor.name}}</div>
+                            <div class="divTableCell">{{(vm.serviceTime - doctor.birth)|ageFilter}}</div>
+                            <div class="divTableCell">{{doctor.status|freezedStatusFilter}}</div>
 
                             <div class="divTableCell company-tableCell-fix">
                                 <div class="row">
                                     <a class="btn btn-sm company-a-fix"
-                                       ng-class="{'text-red':user.freezed==0,'text-green':user.freezed==1}"
-                                       ng-click="vm.freezeUser(user.id,0,user.freezed)">
-                                        {{user.freezed|changeFreezedStatusFilter}}
+                                       ng-class="{'text-red':doctor.status==0,'text-green':doctor.status==1}"
+                                       ng-click="vm.freezeUser(doctor.id,doctor.status)">
+                                        {{doctor.status|changeFreezedStatusFilter}}
                                     </a>
                                     <a class="s btn btn-sm company-a-fix"
-                                       ng-click="vm.goUserDetail(user.id,user.app)">
+                                       ui-sref="field.doctorDetails({id:doctor.idF})"
+                                       ui-sref-opts="{reload:true}">
                                         查看
                                     </a>
+
                                     <a class="btn btn-sm company-a-fix"
-                                       ng-if="user.app == 0"
-                                       ui-sref="field.patientTestData({id:user.id,name:user.name})">
-                                        数据
-                                    </a>
-                                    <a class="btn btn-sm company-a-fix"
-                                       ng-if="user.app == 1 && user.freezed==0"
-                                       ui-sref="field.planTemplate({id:user.id})">
+                                       ng-if="doctor.status == 0"
+                                       ui-sref="field.planTemplate({did:doctor.id,dName:doctor.name})">
                                         模板
                                     </a>
 
                                     <a class="btn btn-sm company-a-fix"
-                                       ng-if="user.app == 1 && user.freezed==0"
-                                       ui-sref="field.diagnosisRecord({id:user.id})">
+                                       ng-if="doctor.status == 0"
+                                       ui-sref="field.diagnosisRecord({did:doctor.id,dName:doctor.name})">
                                         记录
                                     </a>
-                                    <a class="btn btn-sm company-a-fix"
-                                       ng-if="user.app == 0"
-                                       ui-sref="field.patientRecord({id:user.id,name:user.name})">
-                                        订单
-                                    </a>
+
                                 </div>
                                 <div class="row">
                                     <a class="btn btn-sm company-a-fix"
-                                       ng-if="user.app == 1 && user.freezed==0"
-                                       ui-sref="field.patientAppraisal({id:user.id})">
+                                       ng-if="doctor.status == 0"
+                                       ui-sref="field.patientAppraisal({did:doctor.id,dName:doctor.name})">
                                         评价
                                     </a>
                                     <a class="btn btn-sm company-a-fix"
-                                       ng-if="user.app == 1 && user.freezed==0"
-                                       ng-click="vm.cancelApproved()">
+                                       ng-if="doctor.status == 0"
+                                       ng-click="vm.cancelApproved(doctor.id)">
                                         撤销认证
                                     </a>
                                     <a class="btn btn-sm company-a-fix"
-                                       ng-if="user.app == 1 && user.freezed==0"
-                                       ui-sref="field.transactionDetails({id:user.id})">
+                                       ng-if="doctor.status == 0"
+                                       ui-sref="field.transactionDetails({id:doctor.id})">
                                         交易
                                     </a>
 

@@ -127,7 +127,7 @@ function projectRouteConfig($stateProvider, $urlRouterProvider, $ocLazyLoadProvi
 
         //患者列表页
         .state('field.patientList', {
-            url: '/patientList/:page/:size?&registerFrom&registerTo&ageFrom&ageTo&freezed&mobile&name',
+            url: '/patientList/:page/:size?&registerFrom&registerTo&ageFrom&ageTo&accountStatus&mobile&name',
             templateUrl: 'views/business/patientList.html',
             controller: 'PatientListCtrl',
             controllerAs: 'vm',
@@ -140,7 +140,7 @@ function projectRouteConfig($stateProvider, $urlRouterProvider, $ocLazyLoadProvi
 
         //医师列表页
         .state('field.doctorList', {
-            url: '/doctorList/:page/:size?&registerFrom&registerTo&ageFrom&ageTo&freezed&mobile&name',
+            url: '/doctorList/:page/:size?&registerFrom&registerTo&ageFrom&ageTo&accountStatus&mobile&name',
             templateUrl: 'views/business/doctorList.html',
             controller: 'DoctorListCtrl',
             controllerAs: 'vm',
@@ -186,7 +186,7 @@ function projectRouteConfig($stateProvider, $urlRouterProvider, $ocLazyLoadProvi
                 ])
             }
         })
-        // 用户管理-医师版
+        //用户管理-医师版
         .state('field.doctorDetails', {
             url: '/doctorDetails?&id',
             templateUrl: 'views/business/doctor/doctorDetails.html',
@@ -194,46 +194,49 @@ function projectRouteConfig($stateProvider, $urlRouterProvider, $ocLazyLoadProvi
             controllerAs: 'vm',
             resolve: {
                 loadMyFile: _lazyLoad([
-                    'js/controllers/business/doctor/doctorDetails.js',
+                    'js/controllers/business/doctor/doctorDetails.js'
                 ])
             }
         })
+        //方案模板
         .state('field.planTemplate', {
-            url: '/planTemplate/:id?minCount&maxCount&startAt&endAt&name',
+            url: '/planTemplate/:page/:size?did?name&createFrom&createTo&countFrom&countTo&dName',
             templateUrl: 'views/business/doctor/planTemplate.html',
             controller: 'PlanTemplateCtrl',
             controllerAs: 'vm',
             resolve: {
                 loadMyFile: _lazyLoad([
-                    'js/controllers/business/doctor/planTemplate.js',
+                    'js/controllers/business/doctor/planTemplate.js'
                 ])
             }
         })
+        //诊断记录
         .state('field.diagnosisRecord', {
-            url: '/diagnosisRecord/:id/:page',
+            url: '/diagnosisRecord/:page:size?did&dName&name&createFrom&createTo&mobile',
             templateUrl: 'views/business/doctor/diagnosisRecord.html',
             controller: 'DiagnosisRecordCtrl',
             controllerAs: 'vm',
             resolve: {
                 loadMyFile: _lazyLoad([
-                    'js/controllers/business/doctor/diagnosisRecord.js',
+                    'js/controllers/business/doctor/diagnosisRecord.js'
                 ])
             }
         })
+        //诊断详情
         .state('field.diagnosisDetails', {
-            url: '/diagnosisDetails/:recordId',
+            url: '/diagnosisDetails/:id',
             templateUrl: 'views/business/doctor/diagnosisDetails.html',
             controller: 'DiagnosisDetailsCtrl',
             controllerAs: 'vm',
             resolve: {
                 loadMyFile: _lazyLoad([
-                    'js/controllers/business/doctor/diagnosisDetails.js',
+                    'js/controllers/business/doctor/diagnosisDetails.js'
                 ])
             }
         })
         //医师版-患者评价
         .state('field.patientAppraisal', {
-            url: '/patientAppraisal/:id',
+            url: '/patientAppraisal/:page:size?did&dName&createFrom&createTo&mobile&name&star',
             templateUrl: 'views/business/doctor/patientAppraisal.html',
             controller: 'PatientAppraisalCtrl',
             controllerAs: 'vm',
@@ -243,8 +246,9 @@ function projectRouteConfig($stateProvider, $urlRouterProvider, $ocLazyLoadProvi
                 ])
             }
         })
+        //评价详情
         .state('field.appraisalDetails', {
-            url: '/appraisalDetails?',
+            url: '/appraisalDetails?id',
             templateUrl: 'views/business/doctor/appraisalDetails.html',
             controller: 'AppraisalDetailsCtrl',
             controllerAs: 'vm',

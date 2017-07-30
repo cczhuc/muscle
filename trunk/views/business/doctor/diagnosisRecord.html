@@ -5,12 +5,14 @@
                 <div class="row pd-bottom-20">
                     <div class="col-md-4">
                         <div class="form-group">
-                            <label class="control-label col-md-4">评价日期</label>
+                            <label class="control-label col-md-4">发送日期</label>
                             <div class="col-md-8">
-                                <input type="text" class="form-control" size="20" bs-datepicker autoclose="true"
+                                <input type="text" class="form-control"
+                                       size="20" bs-datepicker autoclose="true"
                                        data-date-format="yyyy-MM-dd" data-date-type="number"
-                                       data-max-date="{{vm.searchParams.endAt}}"
-                                       ng-model="vm.searchParams.firstTime">
+                                       data-max-date="today"
+                                       ng-model="vm.searchParams.createFrom">
+
                             </div>
                         </div>
                     </div>
@@ -21,7 +23,8 @@
                             <div class="col-md-8">
                                 <input type="text" class="form-control" size="20" bs-datepicker autoclose="true"
                                        data-date-format="yyyy-MM-dd" data-date-type="number"
-                                       ng-model="vm.searchParams.endAt" data-min-date="{{vm.searchParams.secondTime}}">
+                                       data-max-date="today"
+                                       ng-model="vm.searchParams.createTo">
                             </div>
                         </div>
                     </div>
@@ -32,7 +35,7 @@
                             <div class="col-md-8">
                                 <input class="form-control"
                                        type="text"
-                                       ng-model="vm.searchParams.mobile">
+                                       ng-model="vm.searchParams.name">
                             </div>
                         </div>
                     </div>
@@ -43,9 +46,11 @@
                         <div class="form-group">
                             <label class="control-label col-md-4">患者手机</label>
                             <div class="col-md-8">
-                                <input class="form-control"
+                                <input numberic
+                                       class="form-control"
                                        type="text"
-                                       ng-model="vm.searchParams.name">
+                                       maxlength="11"
+                                       ng-model="vm.searchParams.mobile">
                             </div>
                         </div>
                     </div>
@@ -54,7 +59,7 @@
 
                 <div class="row">
                     <div class="col-md-12 text-right ">
-                        <search params="vm.searchParams"></search>
+                        <search params="vm.searchParams" time-fix-arr="vm.timeFixArr"></search>
                     </div>
                 </div>
             </div>
@@ -66,7 +71,7 @@
     <div class="col-lg-12">
         <div class="panel panel-default">
             <div class="panel-heading">
-                <strong>的诊断记录</strong>
+                <strong>{{vm.searchParams.dName}}的诊断记录</strong>
             </div>
 
             <div class="list-replace" ng-if="vm.userList.length == 0">
@@ -88,19 +93,19 @@
                     </div>
 
                     <div class="divTableBody">
-                        <div class="divTableRow" ng-repeat="info in vm.diagnosisRecord.diagnosisRecord track by $index">
-                            <div class="divTableCell handle">{{info.date|date:'yyyy-MM-dd'}}</div>
-                            <div class="divTableCell">{{info.planName}}</div>
-                            <div class="divTableCell">{{info.mobile}}</div>
-                            <div class="divTableCell">{{info.course}}</div>
+                        <div class="divTableRow" ng-repeat="info in vm.programRelationList track by $index">
+                            <div class="divTableCell handle">{{info.createAt|date:'yyyy-MM-dd'}}</div>
+                            <div class="divTableCell">{{info.name}}</div>
+                            <div class="divTableCell">{{vm.patient[info.pid].mobile}}</div>
+                            <div class="divTableCell">{{info.treatment}}</div>
+                            <div class="divTableCell">{{info.duration}}</div>
                             <div class="divTableCell">{{info.strength}}</div>
-                            <div class="divTableCell">{{info.days}}</div>
-                            <div class="divTableCell">{{info.detector}}</div>
                             <div class="divTableCell">{{info.interval}}</div>
+                            <div class="divTableCell">{{info.probe}}</div>
 
                             <div class="divTableCell company-tableCell-fix">
                                 <a class="text-blue btn btn-sm company-a-fix"
-                                   ui-sref="field.diagnosisDetails({recordId:info.recordId})">
+                                   ui-sref="field.diagnosisDetails({id:info.id})">
                                     查看
                                 </a>
                             </div>

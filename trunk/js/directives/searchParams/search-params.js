@@ -14,8 +14,6 @@ angular.module("admin")
             },
             controller: function ($state, commonUtil, $scope) {
 
-
-
                 // 搜索
                 $scope.search = function () {
 
@@ -31,9 +29,13 @@ angular.module("admin")
                             }
                         }
                     }
+
+                    //对page的处理
                     if ($scope.params.page) {
                         $scope.params.page = 1;
                     }
+
+
                     $scope.changeFn();
                     //strat :没有地址选择器时可以删除 将获取的对象拆开传到url里
                     console.log($scope.params.address);
@@ -52,7 +54,7 @@ angular.module("admin")
                     console.log($scope.params.address);
                     angular.forEach($scope.params, function (data, index) {
                         //三期添加了关于ID的选项，清除的时候不能清除ID
-                        if (index !== 'size' && index !== 'id') {
+                        if (index !== 'size' && index !== 'id' && index !=='dName' ) {
                             $scope.params[index] = '';
                         }
                     });
