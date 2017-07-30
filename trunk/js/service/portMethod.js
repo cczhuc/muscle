@@ -105,13 +105,34 @@ angular.module("admin")
         getContentList:function(param){
             return $http.get(address.contentList_url())
         },
-
+        // 修改content状态
+        putContentStatus:function(id,params){
+            return $http.put(address.articleUpDown_url(id))
+        },
+        // 拖动
+        putSort:function(data){
+            return $http({
+                url:address.articleSort_url(),
+                method:"POST",
+                headers: {'Content-Type': 'application/json;charset=UTF-8'},
+                data: JSON.stringify(data),
+                transformRequest: function (data, headersGetter) {
+                    return data;
+                }
+            })
+        },
         // 运营管理
         // 参数设置
-
+        putParam:function(prince){
+            return $http.put(address.paramSetting_url(prince))
+        },
         // 获取信息列表
         getMessageList:function(param){
             return $http.get(address.messageList_url())
+        },
+        // 新增信息
+        postMessage:function(data){
+            return $http.post(address.newMessage_url(),data)
         },
         // 意见反馈列表
         getOpinionList:function(param){

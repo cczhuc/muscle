@@ -8,10 +8,10 @@
         .module('admin')
         .controller('ParameterSettingCtrl', ParameterSettingCtrl);
 
-    ParameterSettingCtrl.$inject = ['$rootScope','$filter'];
+    ParameterSettingCtrl.$inject = ['$rootScope','$filter','portService'];
 
     /* @ngInject */
-    function ParameterSettingCtrl($rootScope,$filter){
+    function ParameterSettingCtrl($rootScope,$filter,portService){
         var vm = this;
         vm.title = 'ParameterSettingCtrl';
 
@@ -29,7 +29,13 @@
         };
         vm.save = function(){
             $rootScope.operationConfirm('', '确认保存修改？', function(){
-                $rootScope.alert('保存成功');
+                portService.putParam(vm.currentValue).then(function(res){
+                    if(res.data.code === 0){
+                        $rootScope.alert('保存成功');
+                    } else {
+                        $rootScope.alert(res.data.message);
+                    }
+                })
             })
         }
     }

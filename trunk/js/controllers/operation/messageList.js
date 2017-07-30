@@ -28,7 +28,7 @@
                 console.log(vm.searchParams.endAt);
             }
             portService.getMessageList().then(function(res){
-                vm.message = res.data.data.messageList;
+                vm.message = res.data.data.data;
                 vm.total = res.data.data.total;
                 console.log(vm.message)
             })

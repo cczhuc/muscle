@@ -4,9 +4,9 @@ angular.module('admin')
         return {
             //login
             // login: "/a/login",
-            login: "JSON/login.json",
+            login: "/a/login",
             // logout: "/a/logout",
-            logout: "JSON/logout.json",
+            logout: "/a/logout",
             //manager
             manager: function (mid) {
                 if (mid == undefined || mid == "") {
@@ -78,7 +78,7 @@ angular.module('admin')
     .factory('loginService', function ($http, path) {
         return {
             login: function (params) {
-                return $http.get(path.login, params);
+                return $http.post(path.login, params);
             },
             logout: function () {
                 return $http.get(path.logout);

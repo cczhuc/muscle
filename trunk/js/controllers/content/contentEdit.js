@@ -13,7 +13,6 @@
     /* @ngInject */
     function ContentEditCtrl($scope,FileUploader,uploadService){
         var vm = this;
-        vm.title = 'ContentEditCtrl';
 
         activate();
 
@@ -22,6 +21,7 @@
         function activate(){
             // code
         }
+        // 获取富文本内容
         $scope.$on('emitCreateDaily', function (evt, value) {
             $scope.emitCreateDaily = value;
         });

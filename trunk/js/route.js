@@ -350,7 +350,7 @@ function projectRouteConfig($stateProvider, $urlRouterProvider, $ocLazyLoadProvi
             }
         })
         .state('field.contentEdit', {
-            url: '/contentEdit',
+            url: '/contentEdit/:id',
             templateUrl: 'views/content/contentEdit.html',
             controller: 'ContentEditCtrl',
             controllerAs: 'vm',
@@ -391,7 +391,7 @@ function projectRouteConfig($stateProvider, $urlRouterProvider, $ocLazyLoadProvi
             }
         })
         .state('field.messageEdit', {
-            url: '/messageEdit',
+            url: '/messageEdit/:id',
             templateUrl: 'views/operation/messageEdit.html',
             controller: 'MessageEditCtrl',
             controllerAs: 'vm',

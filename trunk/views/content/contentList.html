@@ -83,23 +83,23 @@
         <ul class="contentrank" ui-sortable="sortableOptions" ng-model="vm.content">
                 <li>
                     <span class="rank1">序号</span>
-                    <span class="rank4">标题</span>
+                    <span class="rank3">标题</span>
                     <span class="rank3">作者</span>
                     <span class="rank2">状态</span>
                     <span class="rank3">创建者</span>
-                    <span class="rank3">创建时间</span>
+                    <span class="rank4">创建时间</span>
                     <span class="rank4">操作</span>
                 </li>
                 <li ng-repeat="item in vm.content track by $index">
                     <span class="rank1">{{item.id}}</span>
-                    <span class="rank4">{{item.title}}</span>
+                    <span class="rank3">{{item.title}}</span>
                     <span class="rank3">{{item.author}}</span>
                     <span class="rank2">{{item.status|contentListStatusFilter}}</span>
                     <span class="rank3">{{item.createBy}}</span>
-                    <span class="rank3">{{item.createAt}}</span>
+                    <span class="rank4">{{item.createAt|date:"yyyy-MM-dd HH:mm:ss"}}</span>
                     <span class="rank4">
-                        <a ng-if="item.status=='0'" type="button" class="btn btn-sm text-green" ng-click="vm.online()">上线</a>
-                        <a ng-if="item.status=='1'" type="button" class="btn btn-sm text-red" ng-click="vm.offline()">下线</a>
+                        <a ng-if="item.status!==1" type="button" class="btn btn-sm text-green" ng-click="vm.online($index)">上线</a>
+                        <a ng-if="item.status=='1'" type="button" class="btn btn-sm text-red" ng-click="vm.offline($index)">下线</a>
                         <a type="button" class="btn btn-sm" ui-sref="field.contentEdit({id:vm.content[$index].id})">编辑</a>
                         <a type="button" class="btn btn-sm text-red" ng-click="vm.delete()">删除</a>
                     </span>

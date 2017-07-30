@@ -109,17 +109,29 @@ angular.module("admin").factory("address",function ($state,$http){
 
         // 内容管理
         contentList_url:function(){
-            return "/a/u/content/search"
+            return "/a/u/article/search"
         },
-        contentRank_url:function(rank){
-            return "/a/u/content/rank"+rank
+        // 排序
+        articleSort_url:function(){
+            return "/a/u/article/sort"
+        },
+        // 上下线
+        articleUpDown_url:function(id){
+            return "/a/u/article/"+id+"/status"
         },
 
         // 运营管理
         // 参数设置
-
+        paramSetting_url:function(prince){
+            return "/a/u/param?prince="+prince
+        },
+        // 消息列表
         messageList_url:function(){
-            return "/a/u/message/search"
+            return "/a/message/search"
+        },
+        // 新增消息
+        newMessage_url:function (){
+            return "/a/u/message"
         },
         // 意见反馈
         opinionList_url:function(){
