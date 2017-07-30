@@ -3,9 +3,7 @@ angular.module('admin')
     .factory('path', function (commonUtil) {
         return {
             //login
-            // login: "/a/login",
             login: "/a/login",
-            // logout: "/a/logout",
             logout: "/a/logout",
             //manager
             manager: function (mid) {
@@ -78,7 +76,7 @@ angular.module('admin')
     .factory('loginService', function ($http, path) {
         return {
             login: function (params) {
-                return $http.post(path.login, params);
+                return $http.get(path.login, params);
             },
             logout: function () {
                 return $http.get(path.logout);

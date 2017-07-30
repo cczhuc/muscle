@@ -2,6 +2,8 @@ angular.module('admin').controller('PatientTestDataCtrl',['$rootScope','$state',
     function ($rootScope,$state,$http,portService) {
         var vm = this;
         vm.searchParams = $state.params;
+        //把需要日历插件需要+86399999的参数的名字以字符串放进来，写在html日期插件的属性里，给search插件去处理
+        vm.timeFixArr = ["endAt"];
         // 时间格式转换
         vm.searchParams.startAt = parseInt(vm.searchParams.startAt) || undefined;
         vm.searchParams.endAt = parseInt(vm.searchParams.endAt) || undefined;
@@ -17,12 +19,11 @@ angular.module('admin').controller('PatientTestDataCtrl',['$rootScope','$state',
             vm.tempParams.endAt = tempAt + 86400000 -1;
         }
 
-
         portService.getPatientTestData(vm.tempParams.id).then(function (res) {
             if(res.data.code==0) {
                 console.log(res);
-                vm.patientTestData = res.data.data.testDataList;
-                vm.total = res.data.data.total;
+                vm.patientTestData = res.data.data;
+                vm.total = res.data.total;
             }
             else {
                 $rootScope.alert(res.data.message)

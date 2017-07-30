@@ -39,7 +39,9 @@ angular.module('admin')
                     // 处理 结束时间 那天末尾
                     if ((k.toLowerCase().indexOf('end') != -1||k.toLowerCase().indexOf('to') != -1) && params[k]) {
                         var timeString = String(params[k]);
+                        console.log('timeString',timeString);
                         var str = timeString.substring(timeString.length - 1, timeString.length);
+                        console.log('str',str);
                         if (str != '9') {
                             params[k] = params[k] + 86400000 - 1;
                         }
@@ -603,6 +605,33 @@ angular.module('admin')
 
                 return [root];
             },
+
+            // 获取服务器时间戳
+            getServerTime: function() {
+                var p = new Promise(function (resolve, reject) {
+                    var req = new XMLHttpRequest();
+                    //用异步请求
+                    req.open('GET', "/" ,true);
+                    req.send(null);
+                    //监听XMLHttpRequest 的状态
+                    req.onreadystatechange = function() {
+                        //请求已接收
+                        if (req.readyState === 2) {
+                            //得到响应头里面的字符串形式的时间
+                            var time = req.getResponseHeader("Date");
+                            // edge浏览器上有问题，获取不到时间。获取不到就用本地时间。
+                            if(!time) {
+                                time = new Date();
+                            }
+                            //code作为校验码，0为成功获取到时间戳
+                            resolve(
+                                Date.parse(new Date(time))
+                            );
+                        }
+                    };
+                });
+                return p;
+            }
         }
     })
 

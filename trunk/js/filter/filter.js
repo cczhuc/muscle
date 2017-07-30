@@ -14,10 +14,18 @@ angular.module('admin')
         }
     })
 
-    .filter('freezedFilter',function() {
+    //把毫秒转为年，用于根据出生日期时间戳算年龄
+    .filter('ageFilter',["commonUtil",function (commonUtil) {
+        return function(time) {
+            var age = parseInt(time/24/60/60/1000/365);
+            return age;
+        }
+    }])
+
+    .filter('freezedStatusFilter',function() {
         return function(freezed) {
             switch(freezed) {
-                case 0 :
+                case 0:
                     return "正常";
                 case 1:
                     return "冻结";
@@ -29,8 +37,9 @@ angular.module('admin')
 
     .filter('changeFreezedStatusFilter',function() {
         return function(freezed) {
+            freezed = parseInt(freezed);
             switch(freezed) {
-                case 0 :
+                case 0:
                     return "冻结";
                 case 1:
                     return "解冻";
@@ -85,6 +94,7 @@ angular.module('admin')
     })
     //交易状态
     .filter('dealStatusFilter',function() {
+
         return function(status) {
             switch(status) {
                 case 0 :
@@ -158,7 +168,7 @@ angular.module('admin')
         return function (status) {
             switch (status) {
                 case 0:
-                    return "方案支付";
+                    return "方案购买";
                 default :
                     return "数据异常";
             }
@@ -168,10 +178,14 @@ angular.module('admin')
     .filter('transactionStatusFilter', function () {
         return function (status) {
             switch (status) {
+                case -1:
+                    return "订单失效";
                 case 0:
-                    return "成功";
+                    return "付款失败";
                 case 1:
-                    return "失败";
+                    return "付款成功";
+                case 2:
+                    return "待付款";
                 default :
                     return "数据异常";
             }

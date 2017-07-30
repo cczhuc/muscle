@@ -12,25 +12,25 @@
                         <div class="form-group">
                             <label class="control-label col-md-1 word-spacing-25 pd-right-10">患者手机</label>
                             <div class="col-md-11">
-                                <input type="text" class="form-control" ng-value="vm.diagnosisDetails.mobile" disabled>
+                                <input type="text" class="form-control" ng-value="vm.patient.mobile" disabled>
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="control-label col-md-1 word-spacing-25 pd-right-10">方案名称</label>
                             <div class="col-md-11">
-                                <input type="text" class="form-control" ng-value="vm.diagnosisDetails.planName" disabled>
+                                <input type="text" class="form-control" ng-value="vm.diagnosisDetails.name" disabled>
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="control-label col-md-1 word-spacing-25 pd-right-10">疗程</label>
                             <div class="col-md-11">
-                                <input type="text" class="form-control" ng-value="vm.diagnosisDetails.course" disabled>
+                                <input type="text" class="form-control" ng-value="vm.diagnosisDetails.treatment" disabled>
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="control-label col-md-1 word-spacing-25 pd-right-10">时常</label>
                             <div class="col-md-11">
-                                <input type="text" class="form-control" ng-value="vm.diagnosisDetails.days" disabled>
+                                <input type="text" class="form-control" ng-value="vm.diagnosisDetails.duration" disabled>
                             </div>
                         </div>
                         <div class="form-group">
@@ -42,19 +42,19 @@
                         <div class="form-group">
                             <label class="control-label col-md-1 word-spacing-25 pd-right-10">间隔</label>
                             <div class="col-md-11">
-                                <input type="text" class="form-control" ng-value="vm.diagnosisDetails.detector" disabled>
+                                <input type="text" class="form-control" ng-value="vm.diagnosisDetails.interval" disabled>
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="control-label col-md-1 word-spacing-25 pd-right-10">探头</label>
                             <div class="col-md-11">
-                                <input type="text" class="form-control" ng-value="vm.diagnosisDetails.interval" disabled>
+                                <input type="text" class="form-control" ng-value="vm.diagnosisDetails.probe" disabled>
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="control-label col-md-1 word-spacing-25 pd-right-10">诊断结论</label>
                             <div class="col-md-11">
-                                    <textarea class="form-control" ng-model="vm.diagnosisDetails.result" cols="33" rows="12" disabled>
+                                    <textarea class="form-control" ng-model="vm.diagnosisDetails.conclusion" cols="33" rows="12" disabled>
 
                                     </textarea>
                             </div>
@@ -63,7 +63,9 @@
 
                 </div>
                 <div class="col-md-offset-1">
-                    <button class="btn btn-warning btn-margin" ui-sref="field.diagnosisRecord">返回</button>
+                    <button class="btn btn-warning btn-margin" onclick="javascript:{window.history.go(-1);}">
+                        返回
+                    </button>
                 </div>
             </div>
 

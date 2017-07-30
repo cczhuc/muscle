@@ -10,21 +10,29 @@ angular.module("admin")
             return $http.get(address.approvedDetails_url(id))
         },
         // 取消认证
-        cancelApproved: function (id) {
-            return $http.get(address.cancelApproved_url(id))
+        cancelApproved: function (id,data) {
+            return $http.put(address.cancelApproved_url(id,data))
         },
-        //改变冻结状态接口
-        changeUserStatus: function(id,type,status) {
-            return $http.get(address.changeUserStatus_url(id,type,status))
+        //改变患者冻结状态接口
+        changePatientStatus: function(id) {
+            return $http.put(address.changePatientStatus_url(id))
+        },
+        //改变医师冻结状态接口
+        changeDoctorStatus: function(id) {
+            return $http.put(address.changeDoctorStatus_url(id))
         },
         //改变用户手机号
         changeUserMobile: function(id,Mobile) {
             return $http.get(address.changeUserMobile_url(id,Mobile))
         },
 
-        //用户列表
-        getUserList: function (data) {
-            return $http.get(address.userList_url(),{params:data})
+        //患者列表
+        getPatientList: function (data) {
+            return $http.get(address.patientList_url(),{params:data})
+        },
+        //医师列表
+        getDoctorList: function (data) {
+            return $http.get(address.doctorList_url(),{params:data})
         },
 
         //医师详情 其实应该和患者详情是同一个接口，先这样写好测假数据，等后端接口好了再改
@@ -33,13 +41,18 @@ angular.module("admin")
         },
 
         //方案模板
-        planTemplate: function(id) {
-            return $http.get(address.planTemplate_url(id))
+        planTemplate: function(data) {
+            return $http.get(address.planTemplate_url(),{params:data})
         },
 
         //医师的评价列表
-        patientAppraisalList: function(id) {
-            return $http.get(address.patientAppraisalList_url(id))
+        patientAppraisalList: function(data) {
+            return $http.get(address.patientAppraisalList_url(),{params:data})
+        },
+
+        //删除评价
+        deleteComment: function(id) {
+            return $http.delete(address.deleteComment_url(id))
         },
 
         //获取医师评价详情
@@ -53,8 +66,8 @@ angular.module("admin")
         },
 
         //诊断详情
-        diagnosisDetails:function (recordId) {
-            return $http.get(address.diagnosisDetails_url(recordId))
+        diagnosisDetails:function (id) {
+            return $http.get(address.diagnosisDetails_url(id))
         },
 
         //医师交易明细
@@ -69,7 +82,7 @@ angular.module("admin")
         },
         //改变医院上下线状态
         changeHospitalStatus: function(id,type,status) {
-            return $http.get(address.changeHospitalStatus_url(id,type,status))
+            return $http.put(address.changeHospitalStatus_url(id,type,status))
         },
         // 获取医院详情
         getHospitalDetails: function (id) {
@@ -83,8 +96,8 @@ angular.module("admin")
             return $http.post(address.addHospital_url(),{params:data})
         },
         // 合作医院医师管理
-        getHospitalDoctor: function (id,data) {
-            return $http.get(address.hospitalDoctor_url(id),{params:data})
+        getHospitalDoctor: function (data) {
+            return $http.get(address.hospitalDoctor_url(),{params:data})
         },
         // 患者版订单记录
         getPatientRecord: function (id,data) {

@@ -48,7 +48,7 @@
                     <div class="form-group">
                         <label class="control-label col-md-4">医师人数</label>
                         <div class="col-md-8">
-                            <input type="text" class="form-control" ng-model="vm.searchParams.minNum">
+                            <input type="text" class="form-control" ng-model="vm.searchParams.totalFrom" numberic>
                         </div>
                     </div>
                 </div>
@@ -56,7 +56,7 @@
                     <div class="form-group">
                         <label class="control-label col-md-4 text-center ">~</label>
                         <div class="col-md-8">
-                            <input type="text" class="form-control" ng-model="vm.searchParams.maxNum">
+                            <input type="text" class="form-control" ng-model="vm.searchParams.totalTo" numberic>
                         </div>
                     </div>
                 </div>
@@ -107,13 +107,13 @@
                     <div  class="divTableCell">{{item.city}}</div>
                     <div  class="divTableCell">{{item.grade|hospitalGradeFilter}}</div>
                     <div  class="divTableCell">{{item.total}}</div>
-                    <div  class="divTableCell">{{item.address}}</div>
+                    <div  class="divTableCell" style="max-lines: 2;max-width: 204px">{{item.address}}</div>
                     <div  class="divTableCell text-red" ng-class="{'text-green':item.status==0}">{{item.status|hospitalListStatusFilter}}</div>
                     <div  class="divTableCell">
                         <a  type="button" class="btn btn-sm text-red" ng-class="{'text-green':item.status==1}"
-                            ng-click="vm.onOffLine(user.id,0,item.status)">{{item.status|changeHospitalStatusFilter}}</a>
+                            ng-click="vm.onOffLine(item.id,0,item.status)">{{item.status|changeHospitalStatusFilter}}</a>
                         <a  type="button" class="btn btn-sm" ui-sref="field.hospitalEdit({id:item.id})">编辑</a>
-                        <a type="button" class="btn btn-sm" ui-sref="field.hospitalDoctor({id:item.id})">医师</a>
+                        <a type="button" class="btn btn-sm" ui-sref="field.hospitalDoctor({hid:item.id})">医师</a>
                     </div>
                 </div>
             </div>

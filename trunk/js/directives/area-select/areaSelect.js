@@ -33,7 +33,7 @@ angular.module("admin")
             '</select>' +
             '</div>' +
             '<label class="control-label col-md-2 word-spacing-25">' +
-            '<span class="star fl pd-left-30" ng-class={conceal:city!==undefined} ng-if="!!judge">*</span>'+
+            '<span class="star fl pd-left-30" ng-class={conceal:city!=undefined} ng-if="!!judge">*</span>'+
             '市' +
             '</label>'+
             '<div class="col-md-4">' +
@@ -48,7 +48,6 @@ angular.module("admin")
             // '</div>' +
             '</div>',
             link: function (scope, elem, attrs) {
-                console.log('judge',scope.judge);
                 if (attrs.selectData) { // 如果有selectData参数
                     if (scope.selectData.$$state == 0) { // 如果是请求的数据
                         scope.$watch('selectData', function (m) {

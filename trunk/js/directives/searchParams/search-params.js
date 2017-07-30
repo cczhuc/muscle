@@ -14,8 +14,6 @@ angular.module("admin")
             },
             controller: function ($state, commonUtil, $scope) {
 
-
-
                 // 搜索
                 $scope.search = function () {
 
@@ -32,8 +30,7 @@ angular.module("admin")
                         }
                     }
 
-
-
+                    //对page的处理
                     if ($scope.params.page) {
                         $scope.params.page = 1;
                     }
@@ -57,7 +54,7 @@ angular.module("admin")
                     console.log($scope.params.address);
                     angular.forEach($scope.params, function (data, index) {
                         //三期添加了关于ID的选项，清除的时候不能清除ID
-                        if (index !== 'size' && index !== 'id') {
+                        if (index !== 'size' && index !== 'id' && index !=='dName' ) {
                             $scope.params[index] = '';
                         }
                     });

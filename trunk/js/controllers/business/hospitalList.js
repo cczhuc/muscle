@@ -7,29 +7,30 @@ angular.module("admin").controller('HospitalListCtrl',["$rootScope","$scope","$s
         //vm.tempParams是vm.searchParams的深拷贝，处理好数据后发送给后端
         //深拷贝,直接等的话是浅拷贝，在页面上显示会有问题。
         vm.tempParams = angular.copy(vm.searchParams);
-        if(vm.tempParams.minNum>vm.tempParams.maxNum) {
-            var tempNum = vm.tempParams.minNum;
-            vm.tempParams.minNum = vm.tempParams.maxNum;
-            vm.tempParams.maxNum = tempNum;
+        if(vm.tempParams.totalFrom>vm.tempParams.totalTo) {
+            var tempNum = vm.tempParams.totalFrom;
+            vm.tempParams.totalFrom = vm.tempParams.totalTo;
+            vm.tempParams.totalTo = tempNum;
         }
         // 省市区数据转换
         vm.searchParams.address = commonUtil.areaDateTransform($state.params.province, $state.params.city, $state.params.county);
-        console.log(vm.tempParams);
+
         portService.gerHospitalList(vm.tempParams).then(function (res) {
-                if (res.data.code==0) {
-                    console.log(res);
-                    vm.hospitalList = res.data.data.hospitalList;
-                    vm.total = res.data.data.total;
-                }
-                else {
-                    $rootScope.alert(res.data.message)
-                }
+            console.log(res);
+            if (res.data.code==0) {
+                console.log(res);
+                vm.hospitalList = res.data.data;
+                vm.total = res.data.total;
+            }
+            else {
+                $rootScope.alert(res.data.message)
+            }
         });
         // 上下线
         vm.onOffLine = function(id,type,status) {
             if (status === 0) {
                 $rootScope.operationConfirm("下线将使前台不再展示此医院", "确认下线？",function () {
-                    portService.changeHospitalStatus(id,type,2).then(function(res) {
+                    portService.changeHospitalStatus(id,type,1).then(function(res) {
                         if(res.data.code === 0){
                             $state.go($state.current, {}, {reload: true});
                             $rootScope.alert("下线成功")
@@ -40,7 +41,7 @@ angular.module("admin").controller('HospitalListCtrl',["$rootScope","$scope","$s
             }
             else if (status === 1) {
                 $rootScope.operationConfirm("上线将在前台展示此医院", "确认上线？", function () {
-                    portService.changeHospitalStatus(id,type,1).then(function(res) {
+                    portService.changeHospitalStatus(id,type,0).then(function(res) {
                         if(res.data.code === 0){
                             $state.go($state.current, {}, {reload: true});
                             $rootScope.alert("上线成功")

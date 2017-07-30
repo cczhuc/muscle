@@ -35,7 +35,7 @@ angular.module("admin").controller('HospitalEditCtrl',["$rootScope","$state","$h
                     vm.data = res.data.data;
                 }
                 else {
-                    $rootScope(res.data.message)
+                    $rootScope.alert(res.data.message)
                 }
 
             });
@@ -50,7 +50,7 @@ angular.module("admin").controller('HospitalEditCtrl',["$rootScope","$state","$h
                             $rootScope.alert("上线成功")
                         }
                         else {
-                            $rootScope(res.data.message)
+                            $rootScope.alert(res.data.message)
                         }
                     });
                 });
@@ -65,7 +65,7 @@ angular.module("admin").controller('HospitalEditCtrl',["$rootScope","$state","$h
                         $rootScope.alert("编辑成功")
                     }
                     else {
-                        $rootScope(res.data.message)
+                        $rootScope.alert(res.data.message)
                     }
                 })
             }
@@ -77,13 +77,13 @@ angular.module("admin").controller('HospitalEditCtrl',["$rootScope","$state","$h
                 $rootScope.operationConfirm("上线将在前台展示此内容", "确认上线？",function () {
                     vm.data.status=0;
                     portService.addHospital(vm.data).then(function (res) {
+                        console.log(res);
                         if (res.data.code===0) {
-                            console.log(res);
                             $state.go("field.hospitalList", {reload: true});
                             $rootScope.alert("上线成功")
                         }
                         else {
-                            $rootScope(res.data.message)
+                            $rootScope.alert(res.data.message)
                         }
                     });
                 });
@@ -98,7 +98,7 @@ angular.module("admin").controller('HospitalEditCtrl',["$rootScope","$state","$h
                         $rootScope.alert("编辑成功")
                     }
                     else {
-                        $rootScope(res.data.message)
+                        $rootScope.alert(res.data.message)
                     }
                 })
             }
