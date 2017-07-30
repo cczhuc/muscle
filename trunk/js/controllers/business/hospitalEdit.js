@@ -17,15 +17,14 @@ angular.module("admin").controller('HospitalEditCtrl',["$rootScope","$state","$h
             }
         };
 
-
         //省市拆分
-        if (vm.data.address) {
+        if (vm.data.address1) {
             vm.data.province = vm.data.address.province;
             vm.data.city = vm.data.address.city;
             // vm.data.county = vm.data.address.district;
         }
         // 省市区数据转换
-        vm.data.address = commonUtil.areaDateTransform(vm.data.province, vm.data.city, vm.data.county);
+        vm.data.address1 = commonUtil.areaDateTransform(vm.data.province, vm.data.city, vm.data.county);
         // 编辑
         if (vm.data.id) {
             //获取数据

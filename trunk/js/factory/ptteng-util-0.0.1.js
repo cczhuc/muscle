@@ -232,13 +232,13 @@ angular.module('admin')
             // 省市区地址数据处理
             areaDateTransform: function (province, city, county) {
                 if (province || city || county) {
-                    var address = {};
-                    address.province = province || "";
-                    address.city = city || "";
-                    address.district = county || "";
+                    var address1 = {};
+                    address1.province = province || "";
+                    address1.city = city || "";
+                    address1.district = county || "";
                 } else {
                 }
-                return address
+                return address1
             },
 
             //上下架转换
