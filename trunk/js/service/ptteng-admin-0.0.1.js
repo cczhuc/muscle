@@ -8,13 +8,13 @@ angular.module('admin')
             //manager
             manager: function (mid) {
                 if (mid == undefined || mid == "") {
-                    return "/a/u/manager";
+                    return "/a/u/manager/list";
                 } else {
-                    return "/a/u/manager/" + mid;
+                    return "/a/u/manager/list/" + mid;
                 }
 
             },
-            manager_list: "/a/u/manager/",
+            manager_list: "/a/u/manager/list/",
             manager_multi_detail: function (params) {
                 return "/a/u/multi/manager" + commonUtil.concactArrayParam("ids", params);
 
@@ -76,10 +76,10 @@ angular.module('admin')
     .factory('loginService', function ($http, path) {
         return {
             login: function (params) {
-                return $http.get(path.login, params);
+                return $http.post(path.login, params);
             },
             logout: function () {
-                return $http.get(path.logout);
+                return $http.post(path.logout);
             },
             changePwd: function (params) {
                 // params: id|password

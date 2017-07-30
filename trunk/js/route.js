@@ -164,7 +164,7 @@ function projectRouteConfig($stateProvider, $urlRouterProvider, $ocLazyLoadProvi
             }
         })
         .state('field.patientRecord', {
-            url: '/patientRecord?id&page&size&name&product&type&status&amountStart&amountEnd&payStartAt&payEndAt',
+            url: '/patientRecord?id&name&page&size&product&type&status&amountStart&amountEnd&payStartAt&payEndAt',
             templateUrl: 'views/business/patient/patientRecord.html',
             controller: 'PatientRecordCtrl',
             controllerAs: 'vm',
@@ -176,7 +176,6 @@ function projectRouteConfig($stateProvider, $urlRouterProvider, $ocLazyLoadProvi
         })
         .state('field.patientTestData', {
             url: '/patientTestData?id&name&page&size&startAt&endAt',
-            params:{"name":""},
             templateUrl: 'views/business/patient/patientTestData.html',
             controller: 'PatientTestDataCtrl',
             controllerAs: 'vm',
@@ -318,7 +317,7 @@ function projectRouteConfig($stateProvider, $urlRouterProvider, $ocLazyLoadProvi
             }
         })
         .state('field.hospitalDoctor', {
-            url: '/hospitalDoctor?hid&page&size&name&mobile&accountStatus&createFrom&createTo&position',
+            url: '/hospitalDoctor?hid&hName&page&size&name&mobile&accountStatus&createFrom&createTo&position',
             templateUrl: 'views/business/hospitalDoctor.html',
             controller: 'HospitalDoctorCtrl',
             controllerAs: 'vm',

@@ -40,12 +40,12 @@ angular.module("admin").factory("address",function ($state,$http){
         },
         // 改变医院上下线
         changeHospitalStatus_url: function(id,type,status) {
-            return "/a/u/hospital/"+id+"/"+status
+            return "/a/u/hospital/"+id+"/status"
         },
         // 获取医院详情
         hospitalDetails_url: function(id) {
-            return "/a/hospital"
-            // +id
+            return "/a/u/hospital/"+id
+
         },
         //上传图片接口
         upload_url: function () {

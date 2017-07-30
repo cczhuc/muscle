@@ -8,7 +8,7 @@
                         <div class="col-md-8">
                             <input type="text" class="form-control" size="20" bs-datepicker autoclose="true"
                                    data-date-format="yyyy-MM-dd" data-date-type="number"
-                                   ng-model="vm.searchParams.startAt">
+                                   ng-model="vm.searchParams.startAt" data-max-date="today">
                         </div>
                     </div>
                 </div>
@@ -18,7 +18,7 @@
                         <div class="col-md-8">
                             <input type="text" class="form-control" size="20" bs-datepicker autoclose="true"
                                    data-date-format="yyyy-MM-dd" data-date-type="number"
-                                   ng-model="vm.searchParams.endAt" >
+                                   ng-model="vm.searchParams.endAt" data-max-date="today">
                         </div>
                     </div>
                 </div>
@@ -43,10 +43,14 @@
             <div class="divTableHeading">
                 <div class="divTableHead">训练时间</div>
                 <div class="divTableHead">年龄</div>
-                <div class="divTableHead">敏感度（）</div>
-                <div class="divTableHead">硬度（）</div>
-                <div class="divTableHead">血流（）</div>
-                <div class="divTableHead">时长（min）</div>
+                <div class="divTableHead">硬度RAU</div>
+                <div class="divTableHead">硬度TAU</div>
+                <div class="divTableHead">敏感度<br>冷觉AVG</div>
+                <div class="divTableHead">敏感度<br>冷痛AVG</div>
+                <div class="divTableHead">敏感度<br>热觉AVG</div>
+                <div class="divTableHead">敏感度<br>热痛AVG</div>
+                <div class="divTableHead">血流PFI</div>
+                <div class="divTableHead">操作</div>
             </div>
             <div class="divTableBody">
                 <div class="divTableRow" ng-repeat="item in vm.patientTestData track by $index">
@@ -60,6 +64,12 @@
                     <div  class="divTableCell">{{item.hardness}}</div>
                     <div  class="divTableCell">{{item.bloodFlow}}</div>
                     <div class="divTableCell">{{item.duration}}</div>
+                    <div class="divTableCell">{{item.duration}}</div>
+                    <div class="divTableCell">{{item.duration}}</div>
+                    <div class="divTableCell">{{item.duration}}</div>
+                    <div class="divTableCell">
+                        <a type="button" class="btn btn-sm">报告详情</a>
+                    </div>
                 </div>
             </div>
         </div>

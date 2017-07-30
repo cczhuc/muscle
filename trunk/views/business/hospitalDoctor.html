@@ -9,7 +9,7 @@
                             <div class="col-md-8">
                                 <input type="text" class="form-control" size="20" bs-datepicker autoclose="true"
                                        data-date-format="yyyy-MM-dd" data-date-type="number"
-                                       ng-model="vm.searchParams.createFrom">
+                                       ng-model="vm.searchParams.createFrom" data-max-date="today">
                             </div>
                         </div>
                     </div>
@@ -19,7 +19,7 @@
                             <div class="col-md-8">
                                 <input type="text" class="form-control" size="20" bs-datepicker autoclose="true"
                                        data-date-format="yyyy-MM-dd" data-date-type="number"
-                                       ng-model="vm.searchParams.createTo">
+                                       ng-model="vm.searchParams.createTo" data-max-date="today">
                             </div>
                         </div>
                     </div>
@@ -73,13 +73,11 @@
                         </div>
                     </div>
                 </div>
-
                 <div class="row">
                     <div class="col-md-12 text-right ">
                         <search params="vm.searchParams" time-fix-arr="vm.timeFixArr"></search>
                     </div>
                 </div>
-
             </div>
         </form>
     </div>
@@ -89,7 +87,7 @@
     <div class="col-lg-12">
         <div class="panel panel-default">
             <div class="panel-heading">
-                <strong>{{vm.hospitalName}}医师列表</strong>
+                <strong>{{vm.searchParams.hName}}医师列表</strong>
             </div>
 
             <div class="list-replace" ng-if="vm.doctorList.length == 0">
@@ -117,7 +115,7 @@
                             <div class="divTableCell">{{doctor.name}}</div>
                             <div class="divTableCell">{{doctor.position}}</div>
                             <div class="divTableCell">{{doctor.income}}</div>
-                            <div class="divTableCell" ng-class="{'text-green':doctor.status==0}">{{doctor.status|freezedFilter}}</div>
+                            <div class="divTableCell" ng-class="{'text-green':doctor.status==0}">{{doctor.status|freezedStatusFilter}}</div>
 
                             <div class="divTableCell company-tableCell-fix">
                                 <div class="row">

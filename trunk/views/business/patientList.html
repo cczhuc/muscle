@@ -130,11 +130,6 @@
             </div>
 
             <div class="panel-body panel-body-noMax" ng-if="vm.userList.length != 0">
-                <div class="tab-wrap">
-                    <div class="check-tab" ui-sref-active="check-tab-active" ui-sref="field.patientList">患者用户</div>
-                    <div class="check-tab" ui-sref-active="check-tab-active" ui-sref="field.doctorList">医师用户</div>
-                </div>
-
                 <div class="divTable">
                     <div class="divTableHeading">
                         <div class="divTableHead">ID</div>
@@ -172,7 +167,7 @@
                                     </a>
                                     <!--ng-click="vm.goUserDetail(user.id)"-->
                                     <a class="s btn btn-sm company-a-fix"
-                                       ui-sref="field.patientRecord({id:user.id,name:user.name})">
+                                       ui-sref="field.patientDetails({id:user.id,name:user.name})">
                                         查看
                                     </a>
                                     <a class="btn btn-sm company-a-fix"

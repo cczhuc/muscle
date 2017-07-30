@@ -13,10 +13,9 @@ angular.module("admin").controller('HospitalListCtrl',["$rootScope","$scope","$s
             vm.tempParams.totalTo = tempNum;
         }
         // 省市区数据转换
-        vm.searchParams.address = commonUtil.areaDateTransform($state.params.province, $state.params.city, $state.params.county);
+        vm.searchParams.address1 = commonUtil.areaDateTransform($state.params.province, $state.params.city, $state.params.county);
 
         portService.gerHospitalList(vm.tempParams).then(function (res) {
-            console.log(res);
             if (res.data.code==0) {
                 console.log(res);
                 vm.hospitalList = res.data.data;

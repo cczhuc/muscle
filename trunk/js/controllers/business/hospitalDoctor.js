@@ -6,7 +6,7 @@ angular.module("admin").controller('HospitalDoctorCtrl',["$rootScope","$scope","
         vm.timeFixArr = ["createTo"];
         // 时间格式转换
         vm.searchParams.createFrom = parseInt(vm.searchParams.createFrom) || undefined;
-        vm.searchParams.endAt = parseInt(vm.searchParams.createTo) || undefined;
+        vm.searchParams.createTo = parseInt(vm.searchParams.createTo) || undefined;
         //需求：对输入范围的左边和右边的大小不限。  但是在发送数据的时候要对这些倒过来的参数进行处理
         //vm.tempParams是vm.searchParams的深拷贝，处理好数据后发送给后端
         //深拷贝,直接等的话是浅拷贝，在页面上显示会有问题。

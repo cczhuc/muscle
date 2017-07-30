@@ -38,10 +38,10 @@ angular.module("admin")
 
                     $scope.changeFn();
                     //strat :没有地址选择器时可以删除 将获取的对象拆开传到url里
-                    console.log($scope.params.address);
-                    if ($scope.params.address) {
-                        $scope.params.province = $scope.params.address.province;
-                        $scope.params.city = $scope.params.address.city;
+                    console.log($scope.params.address1);
+                    if ($scope.params.address1) {
+                        $scope.params.province = $scope.params.address1.province;
+                        $scope.params.city = $scope.params.address1.city;
                         // $scope.params.county = $scope.params.address.district;
                     }
                     //end :没有地址选择器时可以删除 将获取的对象拆开传到url里
@@ -51,10 +51,10 @@ angular.module("admin")
                 };
                 //清空
                 $scope.clean = function () {
-                    console.log($scope.params.address);
+                    console.log($scope.params.address1);
                     angular.forEach($scope.params, function (data, index) {
                         //三期添加了关于ID的选项，清除的时候不能清除ID
-                        if (index !== 'size' && index !== 'id' && index !=='dName' ) {
+                        if (index !== 'size' && index !== 'id' && index !== 'hid' && index !=='dName' && index !=='hName' ) {
                             $scope.params[index] = '';
                         }
                     });
