@@ -24,9 +24,9 @@ angular.module("admin").factory("address",function ($state,$http){
         changeDoctorStatus_url: function(id,status) {
             return "/a/u/doctor/"+id +"/status";
         },
-        //改变手机号码
-        changeUserMobile_url: function(id,mobile) {
-            return "JSON/changeUserStatus.json"
+        //改变患者手机号码
+        changePatientMobile_url: function(id,mobile) {
+            return "/a/u/patient/mobile/"+id+'?mobile='+mobile
         },
         // 获取认证详情
         approvedDetails_url: function (id) {
@@ -73,10 +73,6 @@ angular.module("admin").factory("address",function ($state,$http){
             return "/a/u/train/search"
                 // +id
 
-        },
-        // 审核
-        approvedcheck_url: function (id) {
-            return "JSON/changeUserStatus.json"
         },
         //医师详情
         doctorDetails_url: function(id) {

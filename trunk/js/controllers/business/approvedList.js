@@ -38,9 +38,9 @@ angular.module("admin").controller('ApprovedListCtrl',["$rootScope","$state","$h
             $rootScope.approvedCheck(vm.refuse,function () {
                 console.log(vm.refuse);
                 // 发送请求审核
-                portService.Approvedcheck(id,vm.refuse).then(function (res) {
-                    if (res.data.code==0) {
-                        if(vm.refuse.checkStatu==1) {
+                portService.cancelApproved(id,vm.refuse).then(function (res) {
+                    if (res.data.code===0) {
+                        if(vm.refuse.status===0) {
                             $rootScope.alert("审核通过");
                         }
                         else {

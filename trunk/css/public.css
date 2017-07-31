@@ -974,3 +974,13 @@ input[type="number"] {
     color: #f9d87d;
     background-color: #3a445e;
 }
+/*无数据时显示*/
+.list-replace {
+    height: 120px;
+}
+
+.list-replace-text {
+    text-align: center;
+    color: #a9a9a9;
+    line-height: 120px;
+}

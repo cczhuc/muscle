@@ -21,9 +21,9 @@ angular.module("admin")
         changeDoctorStatus: function(id) {
             return $http.put(address.changeDoctorStatus_url(id))
         },
-        //改变用户手机号
-        changeUserMobile: function(id,Mobile) {
-            return $http.get(address.changeUserMobile_url(id,Mobile))
+        //改变患者手机号
+        changePatientMobile: function(id,Mobile) {
+            return $http.put(address.changePatientMobile_url(id,Mobile))
         },
 
         //患者列表
@@ -106,10 +106,6 @@ angular.module("admin")
         // 患者版检测数据
         getPatientTestData: function (id,data) {
             return $http.get(address.patientTestData_url(id),{params:data})
-        },
-        // 审核医师的认证
-        Approvedcheck: function (id,data) {
-            return $http.get(address.approvedcheck_url(id),{params:data})
         },
 
         // 内容管理
