@@ -13,17 +13,13 @@ angular.module("admin")
         cancelApproved: function (id,data) {
             return $http.put(address.cancelApproved_url(id,data))
         },
-        //改变患者冻结状态接口
-        changePatientStatus: function(id) {
-            return $http.put(address.changePatientStatus_url(id))
+        //改变用户冻结状态接口
+        changeUserStatus: function(id) {
+            return $http.put(address.changeUserStatus_url(id))
         },
-        //改变医师冻结状态接口
-        changeDoctorStatus: function(id) {
-            return $http.put(address.changeDoctorStatus_url(id))
-        },
-        //改变患者手机号
-        changePatientMobile: function(id,Mobile) {
-            return $http.put(address.changePatientMobile_url(id,Mobile))
+        //改变手机号
+        changeUserMobile: function(id,Mobile) {
+            return $http.put(address.changeUserMobile_url(id,Mobile))
         },
 
         //患者列表
@@ -34,8 +30,11 @@ angular.module("admin")
         getDoctorList: function (data) {
             return $http.get(address.doctorList_url(),{params:data})
         },
-
-        //医师详情 其实应该和患者详情是同一个接口，先这样写好测假数据，等后端接口好了再改
+        //患者详情
+        getPatientDetails: function(id) {
+            return $http.get(address.patientDetails_url(id))
+        },
+        //医师详情
         getDoctorDetails: function(id) {
             return $http.get(address.doctorDetails_url(id))
         },

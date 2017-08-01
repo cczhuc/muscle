@@ -90,11 +90,11 @@
                     <div  class="divTableCell">{{item.mobile}}</div>
                     <div  class="divTableCell">{{item.name}}</div>
                     <div  class="divTableCell">{{item.qualifications}}</div>
-                    <div class="text-red divTableCell" ng-class="{'text-green':item.status==0}">{{item.status|approvedListStatusFilter}}</div>
+                    <div class="text-red divTableCell" ng-class="{'text-green':item.status==2}">{{item.status|approvedListStatusFilter}}</div>
                     <div class="divTableCell">{{item.refuse|approvedListReasonFilter}}</div>
                     <div  class="divTableCell" >
                         <span>
-                            <a  type="button" class="btn btn-sm" ng-if="item.status==0" ui-sref="field.doctorDetails({id:item.id})">医师详情</a>
+                            <a  type="button" class="btn btn-sm" ng-if="item.status==2" ui-sref="field.doctorDetails({id:item.id})">医师详情</a>
                             <a  type="button" class="btn btn-sm" ng-if="item.status==1" ng-click="vm.check(item.id)">审核</a>
                         </span>
                         <a type="button" class="btn btn-sm" ui-sref="field.approvedDetails({id:item.id})">查看</a>

@@ -26,7 +26,7 @@ angular.module("admin").controller('ApprovedListCtrl',["$rootScope","$state","$h
                 // }
                 vm.approvedList = res.data.data.doctorList;
                 console.log(vm.approvedList);
-                vm.total = res.data.data.total;
+                vm.total = res.data.total;
             }
             else {
                 $rootScope.alert(res.data.message)
@@ -40,7 +40,7 @@ angular.module("admin").controller('ApprovedListCtrl',["$rootScope","$state","$h
                 // 发送请求审核
                 portService.cancelApproved(id,vm.refuse).then(function (res) {
                     if (res.data.code===0) {
-                        if(vm.refuse.status===0) {
+                        if(vm.refuse.status==0) {
                             $rootScope.alert("审核通过");
                         }
                         else {

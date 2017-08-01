@@ -187,7 +187,7 @@ function projectRouteConfig($stateProvider, $urlRouterProvider, $ocLazyLoadProvi
         })
         //用户管理-医师版
         .state('field.doctorDetails', {
-            url: '/doctorDetails?&id',
+            url: '/doctorDetails?id',
             templateUrl: 'views/business/doctor/doctorDetails.html',
             controller: 'DoctorDetailsCtrl',
             controllerAs: 'vm',

@@ -120,7 +120,7 @@
                             <div class="divTableCell company-tableCell-fix">
                                 <div class="row">
                                     <a class="text-red btn btn-sm company-a-fix" href=""
-                                       ng-click="vm.freezeDoctor(doctor.id,0,doctor.accountStatus)" ng-class="{'text-green':doctor.status==1}">
+                                       ng-click="vm.freezeDoctor(doctor.id,0,doctor.status)" ng-class="{'text-green':doctor.status==1}">
                                         {{doctor.status|changeFreezedStatusFilter}}
                                     </a>
                                     <a class=" btn btn-sm company-a-fix" ui-sref="field.doctorDetails({id:doctor.id})">
@@ -137,10 +137,10 @@
                                     <a class="text-red btn btn-sm company-a-fix" ng-click="vm.cancelApproved(doctor.id)" >
                                         撤销认证
                                     </a>
-                                    <a class=" btn btn-sm company-a-fix" ui-sref="field.patientAppraisal({id:doctor.uuid})">
+                                    <a class=" btn btn-sm company-a-fix" ui-sref="field.patientAppraisal({id:doctor.id})">
                                         评价
                                     </a>
-                                    <a class=" btn btn-sm company-a-fix" ui-sref="field.transactionDetails({id:doctor.uuid})">
+                                    <a class=" btn btn-sm company-a-fix" ui-sref="field.transactionDetails({id:doctor.id})">
                                         交易
                                     </a>
                                 </div>

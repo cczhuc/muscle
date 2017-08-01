@@ -20,11 +20,12 @@ angular.module("admin").controller('HospitalDoctorCtrl',["$rootScope","$scope","
         }
         portService.getHospitalDoctor(vm.tempParams).then(function (res) {
             if (res.data.code==0) {
-                for (var i=0;i<res.data.data.userList.length;i++) {
-                    Object.assign(res.data.data.userList[i],res.data.data.doctorList[i])
+                console.log('res',res);
+                for (var i=0;i<res.data.data.doctorList.length;i++) {
+                    Object.assign(res.data.data.doctorList[i],res.data.data.userList[res.data.data.doctorList[i].id])
                 }
-                vm.doctor = res.data.data.userList;
-                console.log(res.data.data.userList);
+                vm.doctor = res.data.data.doctorList;
+                console.log(vm.doctor);
                 vm.total = res.data.total;
             }
             else {
@@ -50,7 +51,7 @@ angular.module("admin").controller('HospitalDoctorCtrl',["$rootScope","$scope","
         };
         // 冻结或者解冻
         vm.freezeDoctor = function(id,type,status) {
-            if (status === 0) {
+            if (status == 0) {
                 $rootScope.operationConfirm("冻结后将禁止用户登录App", "确认冻结?",function () {
                     portService.changeUserStatus(id,type,1).then(function(res) {
                         if(res.data.code === 0){
@@ -61,7 +62,7 @@ angular.module("admin").controller('HospitalDoctorCtrl',["$rootScope","$scope","
 
                 });
             }
-            else if (status === 1) {
+            else if (status == 1) {
                 $rootScope.operationConfirm("解冻后将恢复用户登录权限", "确认解冻？", function () {
                     portService.changeUserStatus(id,type,0).then(function(res) {
                         if(res.data.code === 0){

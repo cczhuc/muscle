@@ -54,13 +54,13 @@ angular.module('admin')
     .filter('approvedListStatusFilter', function () {
         return function (status) {
             switch (status) {
-                case 0:
-                    return "已认证";
                 case 1:
                     return "未认证";
                 case 2:
-                    return "已拒绝";
+                    return "已认证";
                 case 3:
+                    return "已拒绝";
+                case 4:
                     return "已撤销";
                 default :
                     return "数据异常";
