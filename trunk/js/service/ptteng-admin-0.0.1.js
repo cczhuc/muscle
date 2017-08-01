@@ -8,11 +8,10 @@ angular.module('admin')
             //manager
             manager: function (mid) {
                 if (mid == undefined || mid == "") {
-                    return "/a/u/manager/list";
+                    return "/a/u/manager";
                 } else {
                     return "/a/u/manager/list/" + mid;
                 }
-
             },
             manager_list: "/a/u/manager/list/",
             manager_multi_detail: function (params) {
