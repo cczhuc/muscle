@@ -1,25 +1,25 @@
 <div class="panel panel-default">
     <div class="panel-heading">
-        <strong ng-if="!vm.params.id">新增</strong> <strong ng-if="vm.params.id">编辑</strong>
+        <strong ng-if="!vm.data.id">新增</strong> <strong ng-if="vm.data.id">编辑</strong>
     </div>
     <div class="panel-body">
         <form class="form-horizontal" name="myform">
             <div class="form-group">
                 <label class="col-md-2 control-label">标题名称</label>
                 <div class="col-md-8">
-                    <input class="form-control" type="text" name="f-messageTitle" ng-model="vm.data.title" maxlength="25" ng-class="{'error':myform.f-messageTitle.$invalid && myform.f-messageTitle.$touched}" required>
+                    <input class="form-control" type="text" name="content" ng-model="vm.data.title" maxlength="25" ng-class="{'error':myform.content.$invalid && myform.content.$touched}" required>
                 </div>
             </div>
             <div class="form-group">
                 <label class="col-md-2 control-label word-spacing-25">作者</label>
                 <div class="col-md-8">
-                    <input class="form-control" type="text" name="f-messageTitle" ng-model="vm.params.title" maxlength="14" ng-class="{'error':myform.f-messageTitle.$invalid && myform.f-messageTitle.$touched}" required>
+                    <input class="form-control" type="text" name="content" ng-model="vm.data.author" maxlength="14" ng-class="{'error':myform.content.$invalid && myform.content.$touched}" required>
                 </div>
             </div>
             <div class="form-group">
                 <label class="col-md-2 control-label word-spacing-25">URL</label>
                 <div class="col-md-8">
-                    <input class="form-control" type="text" name="f-messageTitle" ng-model="vm.params.title" maxlength="500" ng-class="{'error':myform.f-messageTitle.$invalid && myform.f-messageTitle.$touched}" required>
+                    <input class="form-control" type="text" name="content" ng-model="vm.data.url" maxlength="500" ng-class="{'error':myform.content.$invalid && myform.content.$touched}" required>
                 </div>
             </div>
             <div class="form-group">
@@ -36,7 +36,7 @@
                         />
                     </div>
                     <div class="col-md-12">
-                        <img ng-src="{{vm.data.image}}" alt="配图预览" class="img-responsive">
+                        <img ng-src="{{vm.data.img}}" alt="配图预览" class="img-responsive">
                     </div>
                     <div class="col-md-12">
                         <div class="table-responsive col-md-12 padding-0">
@@ -89,25 +89,26 @@
             <div class="form-group">
                 <label class="col-md-2 control-label word-spacing-25">摘要</label>
                 <div class="col-md-8">
-                    <textarea class="form-control" type="text" ng-model="vm.params.content" maxlength="25" name="f-message" ng-class="{'error':myform.f-message.$invalid && myform.f-message.$touched}" required></textarea>
+                    <textarea class="form-control" type="text" ng-model="vm.data.summary" maxlength="25" name="content" ng-class="{'error':myform.content.$invalid && myform.content.$touched}" required></textarea>
                 </div>
             </div>
-            <div class="form-group" ng-if="vm.params.type!=='4'">
+            <div class="form-group" ng-if="vm.data.type!=='4'">
                 <label class="col-md-2 control-label">正文</label>
                 <div class="col-md-8 editor">
-                    <script type="text/html" ng-model="vm.helpContent" required meta-umeditor
-                            emit-name="emitCreateDaily"
+                    <script type="text/html" ng-model="vm.data.content" required meta-umeditor
+                            emit-name="emitCreateDaily" id="myEditor"
                             meta-umeditor-placeholder='编辑日报内容...' meta-umeditor-config="vm.dailyConfig"></script>
+
                 </div>
             </div>
             <div class="form-group">
                 <div class="col-md-2"></div>
                 <div class="col-md-8">
-                    <button type="button" class="btn btn-success" ng-click="vm.send() " ng-disabled="!myform.$valid">发送
+                    <button type="button" class="btn btn-success" ng-click="vm.send(1) " ng-disabled="!myform.$valid">发送
                     </button>
-                    <button type="button" class="btn btn-success" ng-click="vm.saveArticle()" ng-disabled="!myform.$valid">存为草稿
+                    <button type="button" class="btn btn-success" ng-click="vm.send(2)" ng-disabled="!myform.$valid">存为草稿
                     </button>
-                    <button type="button" class="btn btn-default pull-right" ui-sref="field.messageList">取消</button>
+                    <button type="button" class="btn btn-default pull-right" ui-sref="field.contentListDoctor">取消</button>
                 </div>
             </div>
         </form>

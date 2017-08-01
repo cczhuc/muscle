@@ -120,16 +120,28 @@ angular.module("admin")
         },
         // 修改content状态
         putContentStatus:function(id,params){
-            return $http.post(address.articleUpDown_url(id))
+            return $http.post(address.contentUpDown_url(id))
         },
         // 删除content
         deleteContent:function(id){
-            return $http.delete(address.articleDelete_url(id))
+            return $http.delete(address.contentDelete_url(id))
+        },
+        // 新增content
+        postContent:function(params){
+            return $http.post(address.contentPost_url(),params)
+        },
+        // 编辑content
+        putContent:function(id,params){
+            return $http.post(address.contentDelete_url(id),params)
+        },
+        // 获取单条信息
+        getContentSlice:function(id){
+            return $http.get(address.contentDelete_url(id))
         },
         // 拖动
         putSort:function(data){
             return $http({
-                url:address.articleSort_url(),
+                url:address.contentSort_url(),
                 method:"POST",
                 headers: {'Content-Type': 'application/json;charset=UTF-8'},
                 data: JSON.stringify(data),
@@ -145,11 +157,15 @@ angular.module("admin")
         },
         // 获取信息列表
         getMessageList:function(param){
-            return $http.get(address.messageList_url())
+            return $http.get(address.messageList_url(),{params:param})
         },
         // 新增信息
         postMessage:function(data){
             return $http.post(address.newMessage_url(),data)
+        },
+        // 删除信息
+        deleteMessage:function(id){
+            return $http.delete(address.deleteMessage_url(id))
         },
         // 意见反馈列表
         getOpinionList:function(param){

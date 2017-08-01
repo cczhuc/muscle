@@ -14,17 +14,14 @@
                 <label class="col-md-2 control-label word-spacing-25">*发送人群</label>
                 <div class="col-md-8">
                     <div class="row">
-                        <div class="col-md-3">
-                            <label><input type="checkbox" ng-model="vm.sendAll" ng-change="vm.checkAll()" checklist-model="vm.pick" value="0" ng-checked="vm.grade.length-1 == vm.pick.length"> 所有人</label>
+                        <div class="col-md-12">
+                            <label class="rank4"><input ng-model="vm.data.personType" type="radio" value="0" name="personType"> 所有人</label>
+                            <label class="rank4"><input ng-model="vm.data.personType" type="radio" value="1" name="personType"> 所有患者</label>
+                            <label class="rank4"><input ng-model="vm.data.personType" type="radio" value="2" name="personType"> 所有医师</label>
+                            <label class="rank4"><input ng-model="vm.data.personType" type="radio" value="3" name="personType"> 认证医师</label>
+                            <label class="rank4"><input ng-model="vm.data.personType" type="radio" value="4" name="personType"> 未认证医师</label>
                         </div>
-                        <div class="col-md-3">
-                            <label><input type="checkbox" checklist-model="vm.pick" value="1"> 所有患者</label>
-                        </div>
-                        <div class="col-md-5">
-                            <label><input type="checkbox" ng-model="vm.allDoctor" checklist-model="vm.pick" value="2" ng-change="vm.checkDoctor()"> 所有医师</label><br>
-                            <label class="f-indent"><input type="checkbox" checklist-model="vm.pick" value="3"> 认证医师</label><br>
-                            <label class="f-indent"><input type="checkbox" checklist-model="vm.pick" value="4"> 未认证医师</label>
-                        </div>
+
                     </div>
                 </div>
             </div>
@@ -37,7 +34,9 @@
             <div class="form-group">
                 <label class="col-md-2 control-label">定时发送</label>
                 <div class="col-md-8">
-                    <label><input type="checkbox" ng-model="vm.data.personType">
+                    <label><input type="checkbox" ng-model="vm.data.type">
+                    </label>
+                    <label>
                         <input type="text" size="10" data-date-format="yyyy/MM/dd" class="form-control f-inputbox" ng-model="vm.publishDate" data-autoclose="1" placeholder="日期" bs-datepicker> 日期
                     </label>
                     <label>
@@ -56,9 +55,9 @@
             <div class="form-group">
                 <div class="col-md-2"></div>
                 <div class="col-md-8">
-                    <button type="button" class="btn btn-success" ng-click="vm.send() " ng-disabled="!myform.$valid">发送
+                    <button type="button" class="btn btn-success" ng-click="vm.send(0) " ng-disabled="!myform.$valid">发送
                     </button>
-                    <button type="button" class="btn btn-success" ng-click="vm.saveArticle()" ng-disabled="!myform.$valid">存为草稿
+                    <button type="button" class="btn btn-success" ng-click="vm.send(1)" ng-disabled="!myform.$valid">存为草稿
                     </button>
                     <button type="button" class="btn btn-default pull-right" ui-sref="field.messageList">取消</button>
                 </div>

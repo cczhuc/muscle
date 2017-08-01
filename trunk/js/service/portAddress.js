@@ -122,16 +122,20 @@ angular.module("admin").factory("address",function ($state,$http){
             return "/a/u/article/search"
         },
         // 排序
-        articleSort_url:function(){
+        contentSort_url:function(){
             return "/a/u/article/sort"
         },
         // 上下线
-        articleUpDown_url:function(id){
+        contentUpDown_url:function(id){
             return "/a/u/article/"+id+"/status"
         },
         // 删除
-        articleDelete_url:function(id){
+        contentDelete_url:function(id){
             return "/a/u/article/"+id
+        },
+        // 新增
+        contentPost_url:function(){
+            return "/a/u/article/"
         },
 
         // 运营管理
@@ -146,6 +150,10 @@ angular.module("admin").factory("address",function ($state,$http){
         // 新增消息
         newMessage_url:function (){
             return "/a/u/message"
+        },
+        // 删除消息
+        deleteMessage_url:function (id){
+            return "/a/u/message/"+id
         },
         // 意见反馈
         opinionList_url:function(){

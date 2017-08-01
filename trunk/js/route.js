@@ -331,10 +331,11 @@ function projectRouteConfig($stateProvider, $urlRouterProvider, $ocLazyLoadProvi
 
         // 内容管理开始
         .state('field.contentListPatient', {
-            url: '/contentList/:page/:size?title&startAt&endAt&createBy&createByName&status',
+            url: '/contentList/:page/:size?title&startAt&endAt&createBy&createByName&status&app',
             templateUrl: 'views/content/contentList.html',
             controller: 'ContentListCtrl',
             controllerAs: 'vm',
+            params:{app:'0'},
             resolve: {
                 loadMyFile: _lazyLoad([
                     'js/controllers/content/contentList.js',
@@ -342,10 +343,11 @@ function projectRouteConfig($stateProvider, $urlRouterProvider, $ocLazyLoadProvi
             }
         })
         .state('field.contentListDoctor', {
-            url: '/contentList/:page/:size?title&startAt&endAt&createBy&createByName&status',
+            url: '/contentList/:page/:size?title&startAt&endAt&createBy&createByName&status&app',
             templateUrl: 'views/content/contentList.html',
             controller: 'ContentListCtrl',
             controllerAs: 'vm',
+            params:{app:'1'},
             resolve: {
                 loadMyFile: _lazyLoad([
                     'js/controllers/content/contentList.js',
@@ -382,8 +384,19 @@ function projectRouteConfig($stateProvider, $urlRouterProvider, $ocLazyLoadProvi
                 ])
             }
         })
+        .state('field.parameterSettingEdit', {
+            url: '/parameterSetting',
+            templateUrl: 'views/operation/parameterSettingEdit.html',
+            controller: 'ParameterSettingEditCtrl',
+            controllerAs: 'vm',
+            resolve: {
+                loadMyFile: _lazyLoad([
+                    'js/controllers/operation/paranmeterSettingEdit.js',
+                ])
+            }
+        })
         .state('field.messageList', {
-            url: '/messageList/:page/:size',
+            url: '/messageList/:page/:size?title&createByName&status&startAt&endAt&personType',
             templateUrl: 'views/operation/messageList.html',
             controller: 'MessageListCtrl',
             controllerAs: 'vm',
