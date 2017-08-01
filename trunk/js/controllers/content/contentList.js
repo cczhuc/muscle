@@ -18,7 +18,6 @@
         vm.timeFixArr = ['endAt'];
         vm.searchParams.startAt = parseInt(vm.searchParams.startAt)  || undefined;
         vm.searchParams.endAt = parseInt(vm.searchParams.endAt)  || undefined;
-        // vm.searchParams.app = 0;
         vm.tempParams = angular.copy(vm.searchParams);
 
         if(vm.tempParams.startAt - 1 >= vm.tempParams.endAt){
@@ -27,12 +26,13 @@
             vm.tempParams.applyFrom = vm.tempParams.applyTo - 86400000 + 1;
             vm.tempParams.applyTo = tempAt + 86400000 - 1;
         }
-        // if(vm.searchParams.startAt === vm.searchParams.endAt){
-        //     vm.searchParams.endAt = vm.searchParams.endAt + 86399999;
-        // }
         portService.getContentList(vm.tempParams).then(function(res){
-            vm.total = res.data.data.total;
-            vm.content = res.data.data.articleList;
+            if(res.data.code === 0){
+                vm.total = res.data.data.total;
+                vm.content = res.data.data.articleList;
+            }else{
+                $rootScope.alert(res.data.message);
+            }
         });
 
         // 拖动部分
