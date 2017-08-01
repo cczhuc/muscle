@@ -35,11 +35,11 @@ angular.module("admin").controller('HospitalDoctorCtrl',["$rootScope","$scope","
         // 撤销认证
         vm.cancelApproved = function (id) {
             $rootScope.cancleApproved("取消实名将删除用户身份及银行卡信息","确认取消？",vm.refuse,function () {
+                vm.refuse.status = 2;
                 console.log(vm.refuse);
                 // 发送请求取消认证变态并删除信息
-                portService.cancelApproved(id).then(function (res) {
+                portService.cancelApproved(id,vm.refuse).then(function (res) {
                     if(res.data.code==0) {
-
                         $rootScope.alert("取消成功")
                     }
                     else {
