@@ -12,7 +12,7 @@ function projectRouteConfig($stateProvider, $urlRouterProvider, $ocLazyLoadProvi
         events: true
     });
 
-    //更改url格式配置为html5，去掉#号
+    // 更改url格式配置为html5，去掉#号
     // $locationProvider.html5Mode(true);
 
     $urlRouterProvider.otherwise('/dashboard');
@@ -185,7 +185,7 @@ function projectRouteConfig($stateProvider, $urlRouterProvider, $ocLazyLoadProvi
                 ])
             }
         })
-        //用户管理-医师版
+        //医师详情
         .state('field.doctorDetails', {
             url: '/doctorDetails?id',
             templateUrl: 'views/business/doctor/doctorDetails.html',

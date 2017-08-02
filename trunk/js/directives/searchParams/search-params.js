@@ -22,6 +22,7 @@ angular.module("admin")
                         for (var j in $scope.timeFixArr) {
                             if (i == $scope.timeFixArr[j]) {
                                 //取到尾数毫秒
+                                // console.log("ewew",$scope.params[i]);
                                 var unit = $scope.params[i]%10;
                                 if (unit != 9) {
                                     $scope.params[i] = $scope.params[i] + 86400000 - 1;
@@ -51,7 +52,7 @@ angular.module("admin")
                 };
                 //清空
                 $scope.clean = function () {
-                    console.log($scope.params.address1);
+                    // console.log($scope.params.address1);
                     angular.forEach($scope.params, function (data, index) {
                         //三期添加了关于ID的选项，清除的时候不能清除ID
                         if (index !== 'size' && index !== 'id' && index !== 'hid' && index !=='dName' && index !=='hName' ) {

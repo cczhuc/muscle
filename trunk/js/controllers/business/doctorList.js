@@ -14,7 +14,7 @@ angular.module('admin').controller('DoctorListCtrl',['$rootScope','$state','$htt
 
         /***需求：对输入范围的左边和右边的大小不限。但是在发送数据的时候要对这些倒过来的参数进行处理
         vm.tempParams是vm.searchParams的深拷贝，处理好时间和年龄的顺序后发送给后端***/
-        (function () {
+
             vm.tempParams = angular.copy(vm.searchParams);
             if(vm.tempParams.registerFrom - 1 >= vm.tempParams.registerTo) {
                 var tempAt = vm.tempParams.registerFrom;
@@ -28,14 +28,15 @@ angular.module('admin').controller('DoctorListCtrl',['$rootScope','$state','$htt
                 vm.tempParams.ageFrom = vm.tempParams.ageTo;
                 vm.tempParams.ageTo = tempAge;
             }
-        }());
+
         // console.log("vm.tempParams.registerFrom",vm.tempParams.registerFrom);
         // console.log("vm.tempParams.registerTo",vm.tempParams.registerTo);
         // 请求用户数据,不要用vm.searchParams，用中间层vm.tempParams
         portService.getDoctorList(vm.tempParams).then(function (res){
             if (res.data.code===0) {
-                vm.doctorList = res.data.data.doctorList;
-                vm.userList = res.data.data.userList;
+                vm.doctorList = res.data.data;
+                // vm.doctorList = res.data.data.doctorList;
+                // vm.userList = res.data.data.userList;
                 // console.log("vm.doctorList",vm.doctorList);
                 // console.log("vm.userList",res.data.data.doctorList);
                 vm.total = res.data.total;
@@ -47,7 +48,7 @@ angular.module('admin').controller('DoctorListCtrl',['$rootScope','$state','$htt
         vm.freezeUser = function(id,status) {
             if (status === 0) {
                 $rootScope.operationConfirm("冻结后该账户不可被使用", "是否执行冻结操作？",function () {
-                    portService.changeDoctorStatus(id).then(function(res) {
+                    portService.changeUserStatus(id).then(function(res) {
                         if(res.data.code === 0){
                             $state.go($state.current, {}, {reload: true});
                             $rootScope.alert("修改成功", function () {})
@@ -58,7 +59,7 @@ angular.module('admin').controller('DoctorListCtrl',['$rootScope','$state','$htt
                 });
             } else if (status === 1) {
                 $rootScope.operationConfirm("解冻后该账户可继续使用。", "是否执行解冻操作？", function () {
-                    portService.changeDoctorStatus(id).then(function(res) {
+                    portService.changeUserStatus(id).then(function(res) {
                         if(res.data.code === 0){
                             $state.go($state.current, {}, {reload: true});
                             $rootScope.alert("解冻成功", function () {})
@@ -76,13 +77,10 @@ angular.module('admin').controller('DoctorListCtrl',['$rootScope','$state','$htt
         vm.refuse = {}; //拒绝理由，对应的传参是refuse的引用
         vm.cancelApproved = function (id) {
             $rootScope.cancleApproved("取消实名将删除用户身份及银行卡信息","确认取消？",vm.refuse,function () {
-                var data = {
-                    "refuse" : "拒绝",
-                    "status" : 2
-                };
-                console.log(data);
+                vm.refuse.status = 2;
+                // console.log(vm.refuse);
                 // 发送请求取消认证变态并删除信息
-                portService.cancelApproved(id,data).then(function (res) {
+                portService.cancelApproved(id,vm.refuse).then(function (res) {
                     if(res.data.code==0) {
                         $rootScope.alert("撤销认证成功")
                     }

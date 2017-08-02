@@ -145,7 +145,7 @@
                         <div class="divTableRow" ng-repeat="user in vm.userList track by $index">
                             <div class="divTableCell handle">{{user.id}}</div>
                             <div class="divTableCell">
-                                {{vm.parseInt(user.createAt)|date:"yy-MM-dd"}}
+                                {{user.create|date:"yyyy-MM-dd"}}
                                 <!--{{834579347598|date:'yyyy-MM-dd'}}-->
                             </div>
                             <div class="divTableCell">{{user.mobile}}</div>

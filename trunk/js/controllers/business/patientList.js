@@ -35,9 +35,8 @@ angular.module('admin').controller('PatientListCtrl', ['$rootScope','$scope', '$
 
         // 请求用户数据,不要用vm.searchParams，用中间层vm.tempParams
         portService.getPatientList(vm.tempParams).then(function (res) {
-            res.data.code = 0; //////////////////////数据好删除
             if (res.data.code === 0) {
-                vm.userList = res.data.data.userList;
+                vm.userList = res.data.data;
                 console.log("vm.userList",vm.userList);
                 /*后端给的数据格式有问题*/
                 // $scope.user = vm.userList; //等数据好了删掉
@@ -51,7 +50,7 @@ angular.module('admin').controller('PatientListCtrl', ['$rootScope','$scope', '$
         vm.freezeUser = function (id,status) {
             if (status === 0) {
                 $rootScope.operationConfirm("冻结后该账户不可被使用", "是否执行冻结操作？", function () {
-                    portService.changePatientStatus(id).then(function (res) {
+                    portService.changeUserStatus(id).then(function (res) {
                         if (res.data.code === 0) {
                             $state.go($state.current, {}, {reload: true});
                             $rootScope.alert("修改成功", function () {
@@ -64,7 +63,7 @@ angular.module('admin').controller('PatientListCtrl', ['$rootScope','$scope', '$
                 });
             } else if (status === 1) {
                 $rootScope.operationConfirm("解冻后该账户可继续使用。", "是否执行解冻操作？", function () {
-                    portService.changePatientStatus(id).then(function (res) {
+                    portService.changeUserStatus(id).then(function (res) {
                         if (res.data.code === 0) {
                             $state.go($state.current, {}, {reload: true});
                             $rootScope.alert("解冻成功", function () {

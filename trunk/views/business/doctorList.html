@@ -133,8 +133,8 @@
                     <div class="divTableBody">
                         <div class="divTableRow" ng-repeat="doctor in vm.doctorList track by $index">
                             <div class="divTableCell handle">{{doctor.id}}</div>
-                            <div class="divTableCell">{{doctor.createAt|date:'yyyy-MM-dd'}}</div>
-                            <div class="divTableCell"> {{vm.userList[doctor.id].mobile}}</div>
+                            <div class="divTableCell">{{doctor.create|date:'yyyy-MM-dd'}}</div>
+                            <div class="divTableCell"> {{doctor.mobile}}</div>
                             <div class="divTableCell">{{doctor.name}}</div>
                             <div class="divTableCell">{{(vm.serviceTime - doctor.birth)|ageFilter}}</div>
                             <div class="divTableCell">{{doctor.status|freezedStatusFilter}}</div>
@@ -147,19 +147,19 @@
                                         {{doctor.status|changeFreezedStatusFilter}}
                                     </a>
                                     <a class="s btn btn-sm company-a-fix"
-                                       ui-sref="field.doctorDetails({id:doctor.idF})"
+                                       ui-sref="field.doctorDetails({id:doctor.id})"
                                        ui-sref-opts="{reload:true}">
                                         查看
                                     </a>
 
                                     <a class="btn btn-sm company-a-fix"
-                                       ng-if="doctor.status == 0"
+
                                        ui-sref="field.planTemplate({did:doctor.id,dName:doctor.name})">
                                         模板
                                     </a>
 
                                     <a class="btn btn-sm company-a-fix"
-                                       ng-if="doctor.status == 0"
+
                                        ui-sref="field.diagnosisRecord({did:doctor.id,dName:doctor.name})">
                                         记录
                                     </a>
@@ -167,17 +167,17 @@
                                 </div>
                                 <div class="row">
                                     <a class="btn btn-sm company-a-fix"
-                                       ng-if="doctor.status == 0"
+
                                        ui-sref="field.patientAppraisal({did:doctor.id,dName:doctor.name})">
                                         评价
                                     </a>
                                     <a class="btn btn-sm company-a-fix"
-                                       ng-if="doctor.status == 0"
+
                                        ng-click="vm.cancelApproved(doctor.id)">
                                         撤销认证
                                     </a>
                                     <a class="btn btn-sm company-a-fix"
-                                       ng-if="doctor.status == 0"
+
                                        ui-sref="field.transactionDetails({id:doctor.id})">
                                         交易
                                     </a>
