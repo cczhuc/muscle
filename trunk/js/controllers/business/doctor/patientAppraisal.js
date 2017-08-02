@@ -23,8 +23,8 @@ angular.module('admin').controller('PatientAppraisalCtrl',['$rootScope','$state'
 
         portService.patientAppraisalList(vm.tempParams).then(function (res){
             if (res.data.code===0) {
-                vm.commentList = res.data.data[0];
-                vm.userList = res.data.data[1];
+                vm.commentList = res.data.data.commentList;
+                vm.userList = res.data.data.userList;
                 vm.total = res.data.data.total;
                 // console.log( vm.commentList);
                 // console.log( vm.userList);

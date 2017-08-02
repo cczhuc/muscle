@@ -9,7 +9,8 @@
                             <div class="col-md-8">
                                 <input type="text" class="form-control" size="20" bs-datepicker autoclose="true"
                                        data-date-format="yyyy-MM-dd" data-date-type="number"
-                                       ng-model="vm.searchParams.createFrom">
+                                       ng-model="vm.searchParams.createFrom"
+                                       data-max-date="today">
                             </div>
                         </div>
                     </div>
@@ -20,6 +21,7 @@
                             <div class="col-md-8">
                                 <input type="text" class="form-control" size="20" bs-datepicker autoclose="true"
                                        data-date-format="yyyy-MM-dd" data-date-type="number"
+                                       data-max-date="today"
                                        ng-model="vm.searchParams.createTo" >
                             </div>
                         </div>

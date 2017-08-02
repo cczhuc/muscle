@@ -235,7 +235,7 @@ function projectRouteConfig($stateProvider, $urlRouterProvider, $ocLazyLoadProvi
         })
         //医师版-患者评价
         .state('field.patientAppraisal', {
-            url: '/patientAppraisal/:page:size?did&dName&createFrom&createTo&mobile&name&star',
+            url: '/patientAppraisal/:page/:size?did&dName&createFrom&createTo&mobile&name&star',
             templateUrl: 'views/business/doctor/patientAppraisal.html',
             controller: 'PatientAppraisalCtrl',
             controllerAs: 'vm',
