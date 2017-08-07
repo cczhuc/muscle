@@ -257,8 +257,9 @@ function projectRouteConfig($stateProvider, $urlRouterProvider, $ocLazyLoadProvi
                 ])
             }
         })
+        //交易明细
         .state('field.transactionDetails', {
-            url: '/transactionDetails/:id',
+            url: '/transactionDetails?did',
             templateUrl: 'views/business/doctor/transactionDetails.html',
             controller: 'TransactionDetailsCtrl',
             controllerAs: 'vm',
@@ -402,7 +403,7 @@ function projectRouteConfig($stateProvider, $urlRouterProvider, $ocLazyLoadProvi
             controllerAs: 'vm',
             resolve: {
                 loadMyFile: _lazyLoad([
-                    'js/controllers/operation/messageList.js',
+                    'js/controllers/operation/messageList.js'
                 ])
             }
         })

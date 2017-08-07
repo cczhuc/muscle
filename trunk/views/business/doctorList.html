@@ -131,20 +131,20 @@
                     </div>
 
                     <div class="divTableBody">
-                        <div class="divTableRow" ng-repeat="doctor in vm.doctorList track by $index">
-                            <div class="divTableCell handle">{{doctor.id}}</div>
-                            <div class="divTableCell">{{doctor.create|date:'yyyy-MM-dd'}}</div>
-                            <div class="divTableCell"> {{doctor.mobile}}</div>
-                            <div class="divTableCell">{{doctor.name}}</div>
-                            <div class="divTableCell">{{(vm.serviceTime - doctor.birth)|ageFilter}}</div>
-                            <div class="divTableCell">{{doctor.status|freezedStatusFilter}}</div>
+                        <div class="divTableRow" ng-repeat="user in vm.userList track by $index">
+                            <div class="divTableCell handle">{{user.id}}</div>
+                            <div class="divTableCell">{{user.create|date:'yyyy-MM-dd'}}</div>
+                            <div class="divTableCell"> {{user.mobile}}</div>
+                            <div class="divTableCell">{{user.name}}</div>
+                            <div class="divTableCell">{{(vm.serviceTime - user.birth)|ageFilter}}</div>
+                            <div class="divTableCell">{{user.accountStatus|freezedStatusFilter}}</div>
 
                             <div class="divTableCell company-tableCell-fix">
                                 <div class="row">
                                     <a class="btn btn-sm company-a-fix"
-                                       ng-class="{'text-red':doctor.status==0,'text-green':doctor.status==1}"
-                                       ng-click="vm.freezeUser(doctor.id,doctor.status)">
-                                        {{doctor.status|changeFreezedStatusFilter}}
+                                       ng-class="{'text-red':user.accountStatus==0,'text-green':user.accountStatus==1}"
+                                       ng-click="vm.freezeUser(user.id,user.accountStatus)">
+                                        {{user.accountStatus|changeFreezedStatusFilter}}
                                     </a>
                                     <a class="s btn btn-sm company-a-fix"
                                        ui-sref="field.doctorDetails({id:doctor.id})"
@@ -154,13 +154,13 @@
 
                                     <a class="btn btn-sm company-a-fix"
 
-                                       ui-sref="field.planTemplate({did:doctor.id,dName:doctor.name})">
+                                       ui-sref="field.planTemplate({did:user.id,dName:user.name})">
                                         模板
                                     </a>
 
                                     <a class="btn btn-sm company-a-fix"
 
-                                       ui-sref="field.diagnosisRecord({did:doctor.id,dName:doctor.name})">
+                                       ui-sref="field.diagnosisRecord({did:user.id,dName:user.name})">
                                         记录
                                     </a>
 
@@ -168,17 +168,17 @@
                                 <div class="row">
                                     <a class="btn btn-sm company-a-fix"
 
-                                       ui-sref="field.patientAppraisal({did:doctor.id,dName:doctor.name})">
+                                       ui-sref="field.patientAppraisal({did:user.id,dName:user.name})">
                                         评价
                                     </a>
                                     <a class="btn btn-sm company-a-fix"
-
-                                       ng-click="vm.cancelApproved(doctor.id)">
+                                        ng-if="user[doctor.id].status == 1"
+                                       ng-click="vm.cancelApproved(user.id)">
                                         撤销认证
                                     </a>
                                     <a class="btn btn-sm company-a-fix"
 
-                                       ui-sref="field.transactionDetails({id:doctor.id})">
+                                       ui-sref="field.transactionDetails({did:user.id})">
                                         交易
                                     </a>
 
@@ -194,3 +194,5 @@
         </div>
     </div>
 </div>
+
+

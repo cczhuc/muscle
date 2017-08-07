@@ -115,15 +115,15 @@
                     </div>
 
                     <div class="divTableBody">
-                        <div class="divTableRow" ng-repeat="deal in vm.transactionDetails.diagnosisRecord track by $index">
+                        <div class="divTableRow" ng-repeat="deal in vm.transactionDetails track by $index">
                             <div class="divTableCell handle">{{$index}}</div>
-                            <div class="divTableCell">{{deal.date|date:'yyyy-MM-dd'}}</div>
-                            <div class="divTableCell">{{deal.water}}</div>
+                            <div class="divTableCell">{{deal.orderAt|date:'yyyy-MM-dd'}}</div>
+                            <div class="divTableCell">{{deal.orderNo}}</div>
                             <!--保留两位小数-->
-                            <div class="divTableCell">{{deal.money.toFixed(2)}}</div>
-                            <div class="divTableCell">{{deal.dealType|dealTypeFilter}}</div>
-                            <div class="divTableCell">{{deal.dealStatus|dealStatusFilter}}</div>
-                            <div class="divTableCell">{{deal.dealWay}}</div>
+                            <div class="divTableCell">{{deal.amount.toFixed(2)}}</div>
+                            <div class="divTableCell">{{deal.type|dealTypeFilter}}</div>
+                            <div class="divTableCell">{{deal.status|dealStatusFilter}}</div>
+                            <div class="divTableCell">{{deal.way}}</div>
 
                         </div>
                     </div>

@@ -10,19 +10,19 @@ angular.module('admin').controller('PlanTemplateCtrl',['$rootScope','$state','$h
 
         /***需求：对输入范围的左边和右边的大小不限。但是在发送数据的时候要对这些倒过来的参数进行处理
          vm.tempParams是vm.searchParams的深拷贝，处理好时间和年龄的顺序后发送给后端***/
-        // vm.tempParams = angular.copy(vm.searchParams);
-        // if(vm.tempParams.createFrom - 1 >= vm.tempParams.createTo) {
-        //     var tempAt = vm.tempParams.createFrom;
-        //     //搜索按钮插件会对vm.searchParams.end + 86400000 -1,所以要反向操作
-        //     vm.tempParams.createFrom = vm.tempParams.createTo - 86400000 + 1;
-        //     vm.tempParams.createTo = tempAt + 86400000 -1;
-        // }
-        //
-        // if(vm.tempParams.countFrom>vm.tempParams.countTo) {
-        //     var tempAge = vm.tempParams.ageFrom;
-        //     vm.tempParams.countFrom = vm.tempParams.countTo;
-        //     vm.tempParams.countTo = tempAge;
-        // }
+        vm.tempParams = angular.copy(vm.searchParams);
+        if(vm.tempParams.createFrom - 1 >= vm.tempParams.createTo) {
+            var tempAt = vm.tempParams.createFrom;
+            //搜索按钮插件会对vm.searchParams.end + 86400000 -1,所以要反向操作
+            vm.tempParams.createFrom = vm.tempParams.createTo - 86400000 + 1;
+            vm.tempParams.createTo = tempAt + 86400000 -1;
+        }
+
+        if(vm.tempParams.countFrom>vm.tempParams.countTo) {
+            var tempAge = vm.tempParams.ageFrom;
+            vm.tempParams.countFrom = vm.tempParams.countTo;
+            vm.tempParams.countTo = tempAge;
+        }
 
 
 
@@ -50,23 +50,23 @@ angular.module('admin').controller('PlanTemplateCtrl',['$rootScope','$state','$h
         };
 
 
-        vm.tempParams = angular.copy(vm.searchParams);
-        if(vm.tempParams.createFrom - 1 >= vm.tempParams.createTo && vm.tempParams.createTo) {
-            var tempAt = vm.tempParams.createFrom;
-            //搜索按钮插件会对vm.searchParams.end + 86400000 -1,所以要反向操作
-            vm.tempParams.createFrom = vm.tempParams.createTo;
-            vm.tempParams.createTo = tempAt + 86400000 -1;
-        }
-
-        if(vm.tempParams.countFrom>vm.tempParams.countTo && vm.tempParams.countFrom && vm.tempParams.countTo) {
-            var tempAge = vm.tempParams.countFrom;
-            vm.tempParams.countFrom = vm.tempParams.countTo;
-            vm.tempParams.countTo = tempAge;
-            vm.tempParams.countFrom= parseInt( vm.tempParams.countFrom);
-            vm.tempParams.countTo= parseInt( vm.tempParams.countTo);
-            console.log("vm.tempParams.countFrom",vm.tempParams.countFrom);
-            console.log("vm.tempParams.countTo",vm.tempParams.countTo);
-        }
+        // vm.tempParams = angular.copy(vm.searchParams);
+        // if(vm.tempParams.createFrom - 1 >= vm.tempParams.createTo && vm.tempParams.createTo) {
+        //     var tempAt = vm.tempParams.createFrom;
+        //     //搜索按钮插件会对vm.searchParams.end + 86400000 -1,所以要反向操作
+        //     vm.tempParams.createFrom = vm.tempParams.createTo;
+        //     vm.tempParams.createTo = tempAt + 86400000 -1;
+        // }
+        //
+        // if(vm.tempParams.countFrom>vm.tempParams.countTo && vm.tempParams.countFrom || vm.tempParams.countTo) {
+        //     var tempAge = vm.tempParams.countFrom;
+        //     vm.tempParams.countFrom = vm.tempParams.countTo;
+        //     vm.tempParams.countTo = tempAge;
+        //     vm.tempParams.countFrom= parseInt( vm.tempParams.countFrom);
+        //     vm.tempParams.countTo= parseInt( vm.tempParams.countTo);
+        //     console.log("vm.tempParams.countFrom",vm.tempParams.countFrom);
+        //     console.log("vm.tempParams.countTo",vm.tempParams.countTo);
+        // }
         portService.planTemplate(vm.tempParams).then(function(res) {
             console.log("vm.tempParams",vm.tempParams);
             if(res.data.code === 0) {

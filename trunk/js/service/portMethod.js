@@ -60,8 +60,8 @@ angular.module("admin")
         },
 
         //医师的诊断记录
-        diagnosisRecord:function(id) {
-            return $http.get(address.diagnosisRecord_url(id))
+        diagnosisRecord:function(params) {
+            return $http.get(address.diagnosisRecord_url(),{params:params})
         },
 
         //诊断详情
@@ -70,8 +70,8 @@ angular.module("admin")
         },
 
         //医师交易明细
-        transactionDetails:function(id) {
-            return $http.get(address.transactionDetails_url(id))
+        transactionDetails:function(params) {
+            return $http.get(address.transactionDetails_url(),{params:params})
         },
 
         // 合作医院管理

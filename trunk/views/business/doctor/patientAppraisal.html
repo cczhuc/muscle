@@ -9,7 +9,7 @@
                             <div class="col-md-8">
                                 <input type="text" class="form-control" size="20" bs-datepicker autoclose="true"
                                        data-date-format="yyyy-MM-dd" data-date-type="number"
-                                       data-max-date="{{vm.searchParams.endAt}}"
+                                       data-max-date="today"
                                        ng-model="vm.searchParams.createFrom">
                             </div>
                         </div>
@@ -21,7 +21,7 @@
                             <div class="col-md-8">
                                 <input type="text" class="form-control" size="20" bs-datepicker autoclose="true"
                                        data-date-format="yyyy-MM-dd" data-date-type="number"
-                                       ng-model="vm.searchParams.endAt" data-min-date="{{vm.searchParams.createTo}}">
+                                       ng-model="vm.searchParams.createTo" data-max-date="today">
                             </div>
                         </div>
                     </div>
@@ -68,7 +68,7 @@
 
                 <div class="row">
                     <div class="col-md-12 text-right ">
-                        <search params="vm.searchParams" ></search>
+                        <search params="vm.searchParams" time-fix-arr="vm.timeFixArr" ></search>
                     </div>
                 </div>
             </div>

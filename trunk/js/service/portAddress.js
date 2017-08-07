@@ -100,7 +100,7 @@ angular.module("admin").factory("address",function ($state,$http){
         },
 
         //医师的诊断记录
-        diagnosisRecord_url: function (id) {
+        diagnosisRecord_url: function () {
             return "/a/u/diagnosis"
         },
 
@@ -110,8 +110,8 @@ angular.module("admin").factory("address",function ($state,$http){
         },
 
         //医师交易明细
-        transactionDetails_url: function (id) {
-            return "/a/transactionDetails"
+        transactionDetails_url: function () {
+            return "/a/u/order/list"
         },
 
         // 内容管理
