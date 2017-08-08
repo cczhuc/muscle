@@ -175,13 +175,24 @@ function projectRouteConfig($stateProvider, $urlRouterProvider, $ocLazyLoadProvi
             }
         })
         .state('field.patientTestData', {
-            url: '/patientTestData?id&name&page&size&startAt&endAt',
+            url: '/patientTestData?pid&page&size&startAt&endAt',
             templateUrl: 'views/business/patient/patientTestData.html',
             controller: 'PatientTestDataCtrl',
             controllerAs: 'vm',
             resolve: {
                 loadMyFile: _lazyLoad([
                     'js/controllers/business/patient/patientTestData.js'
+                ])
+            }
+        })
+        .state('field.patientReportDetails', {
+            url: '/patientReportDetails?id',
+            templateUrl: 'views/business/patient/patientReportDetails.html',
+            controller: 'PatientReportDetailsCtrl',
+            controllerAs: 'vm',
+            resolve: {
+                loadMyFile: _lazyLoad([
+                    'js/controllers/business/patient/patientReportDetails.js'
                 ])
             }
         })

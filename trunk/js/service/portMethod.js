@@ -103,8 +103,8 @@ angular.module("admin")
             return $http.get(address.patientRecord_url(id),{params:data})
         },
         // 患者版检测数据
-        getPatientTestData: function (id,data) {
-            return $http.get(address.patientTestData_url(id),{params:data})
+        getPatientTestData: function (data) {
+            return $http.get(address.patientTestData_url(),{params:data})
         },
 
         // 内容管理

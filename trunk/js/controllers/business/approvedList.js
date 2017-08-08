@@ -21,9 +21,9 @@ angular.module("admin").controller('ApprovedListCtrl',["$rootScope","$state","$h
 
         portService.getApprovedList(vm.tempParams).then(function (res){
             if (res.data.code===0) {
-                // for (var i=0;i<res.data.data.doctorList.length;i++) {
-                //     Object.assign(res.data.data.doctorList[i],res.data.data.userList[res.data.data.doctorList[i].id])
-                // }
+                for (var i=0;i<res.data.data.doctorList.length;i++) {
+                    Object.assign(res.data.data.doctorList[i],res.data.data.userList[res.data.data.doctorList[i].id])
+                }
                 vm.approvedList = res.data.data.doctorList;
                 console.log(vm.approvedList);
                 vm.total = res.data.total;
@@ -40,7 +40,7 @@ angular.module("admin").controller('ApprovedListCtrl',["$rootScope","$state","$h
                 // 发送请求审核
                 portService.cancelApproved(id,vm.refuse).then(function (res) {
                     if (res.data.code===0) {
-                        if(vm.refuse.status==0) {
+                        if(vm.refuse.status==2) {
                             $rootScope.alert("审核通过");
                         }
                         else {

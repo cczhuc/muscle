@@ -154,12 +154,12 @@ angular.module('admin', ['oc.lazyLoad', 'ui.router', 'ngCookies', 'mgcrea.ngStra
                   //提交按钮禁用状态
                   vm.statusDis = true;
                   //选择通过拒绝、默认通过
-                  vm.checkStatu = "0";
+                  vm.checkStatu = "2";
                   vm.ok = function () {
                       //传到服务的交互数据
                       refuse.refuse = vm.rejectReason;
                       refuse.status = vm.checkStatu;
-                      if(refuse.status==0) {
+                      if(refuse.status==2) {
                           refuse.refuse="";
                       }
                       typeof okFn == 'function' && okFn();

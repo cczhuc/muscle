@@ -36,24 +36,27 @@ angular.module("admin").controller('HospitalDoctorCtrl',["$rootScope","$scope","
         // 撤销认证
         vm.cancelApproved = function (id) {
             $rootScope.cancleApproved("取消实名将删除用户身份及银行卡信息","确认取消？",vm.refuse,function () {
-                vm.refuse.status = 2;
+                vm.refuse.status = 4;
                 console.log(vm.refuse);
                 // 发送请求取消认证变态并删除信息
                 portService.cancelApproved(id,vm.refuse).then(function (res) {
+                    console.log(res);
                     if(res.data.code==0) {
+                        $state.go($state.current, {}, {reload: true});
                         $rootScope.alert("取消成功")
                     }
                     else {
+                        $state.go($state.current, {}, {reload: true});
                         $rootScope.alert("取消失败")
                     }
                 })
             });
         };
         // 冻结或者解冻
-        vm.freezeDoctor = function(id,type,status) {
+        vm.freezeDoctor = function(id,status) {
             if (status == 0) {
                 $rootScope.operationConfirm("冻结后将禁止用户登录App", "确认冻结?",function () {
-                    portService.changeUserStatus(id,type,1).then(function(res) {
+                    portService.changeUserStatus(id,1).then(function(res) {
                         if(res.data.code === 0){
                             $state.go($state.current, {}, {reload: true});
                             $rootScope.alert("冻结成功", function () {})
@@ -64,7 +67,7 @@ angular.module("admin").controller('HospitalDoctorCtrl',["$rootScope","$scope","
             }
             else if (status == 1) {
                 $rootScope.operationConfirm("解冻后将恢复用户登录权限", "确认解冻？", function () {
-                    portService.changeUserStatus(id,type,0).then(function(res) {
+                    portService.changeUserStatus(id,0).then(function(res) {
                         if(res.data.code === 0){
                             $state.go($state.current, {}, {reload: true});
                             $rootScope.alert("解冻成功", function () {})

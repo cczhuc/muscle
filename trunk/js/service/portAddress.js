@@ -46,11 +46,11 @@ angular.module("admin").factory("address",function ($state,$http){
         },
         //上传图片接口
         upload_url: function () {
-            return "/a/u/img/"
+            return "/a/u/img/thumb"
         },
         // 立即上线、存为草稿
         editHospital_url: function(id) {
-            return "/a/u/hospital"+id
+            return "/a/u/hospital/"+id
         },
         addHospital_url: function () {
             return "/a/u/hospital"
@@ -66,10 +66,8 @@ angular.module("admin").factory("address",function ($state,$http){
 
         },
         // 患者版检测数据
-        patientTestData_url: function (id) {
+        patientTestData_url: function () {
             return "/a/u/train/search"
-                // +id
-
         },
         //患者详情
         patientDetails_url: function(id) {
