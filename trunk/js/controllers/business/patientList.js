@@ -3,10 +3,6 @@ angular.module('admin').controller('PatientListCtrl', ['$rootScope', '$scope', '
         var vm = this;
         vm.timeFixArr = ["registerTo"]; //把需要日历插件需要+86399999的参数的名字以字符串放进来，写在html中search指令的属性里，给search指令去处理
         vm.searchParams = $state.params;
-        vm.parseInt = function (a) {
-            return parseInt(a);
-        };
-
 
         /***需求：对输入范围的左边和右边的大小不限。但是在发送数据的时候要对这些倒过来的参数进行处理
          vm.tempParams是vm.searchParams的深拷贝，处理好时间和年龄的顺序后发送给后端***/
@@ -22,7 +18,6 @@ angular.module('admin').controller('PatientListCtrl', ['$rootScope', '$scope', '
                 vm.tempParams.registerFrom = vm.tempParams.registerTo - 86400000 + 1;
                 vm.tempParams.registerTo = tempAt + 86400000 - 1;
             }
-
         }());
 
 
@@ -45,7 +40,7 @@ angular.module('admin').controller('PatientListCtrl', ['$rootScope', '$scope', '
             var agetemp = vm.tempParams.ageFrom;
             vm.tempParams.ageFrom = vm.tempParams.ageTo;
             vm.tempParams.ageTo = agetemp;
-
+            //获取医师列表请求需要ageFrom、ageTo字段，所以得写在获取服务器时间的异步请求的then里面
             portService.getPatientList(vm.tempParams).then(function (res) {
                 if (res.data.code === 0) {
                     vm.userList = res.data.data.userList;
@@ -56,11 +51,6 @@ angular.module('admin').controller('PatientListCtrl', ['$rootScope', '$scope', '
                 }
             });
         });
-
-
-
-        // 请求用户数据,不要用vm.searchParams，用中间层vm.tempParams
-
 
         //冻结解冻患者
         vm.freezeUser = function (id, status) {
@@ -92,14 +82,6 @@ angular.module('admin').controller('PatientListCtrl', ['$rootScope', '$scope', '
                 $rootScope.alert("status=" + status);
             }
         };
-
-        // //跳到用户详情页
-        // vm.goUserDetail = function (id, app) {
-        //     if (app === 0)
-        //         $state.go("field.patientDetails", {id: id}, {reload: true});
-        //     else if (app === 1)
-        //         $state.go("field.doctorDetails", {id: id}, {reload: true});
-        // };
 
         //取消认证
         vm.refuse = {}; //拒绝理由，对应的传参是refuse的引用

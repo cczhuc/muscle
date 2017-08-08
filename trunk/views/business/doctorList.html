@@ -147,7 +147,7 @@
                                         {{user.accountStatus|changeFreezedStatusFilter}}
                                     </a>
                                     <a class="s btn btn-sm company-a-fix"
-                                       ui-sref="field.doctorDetails({id:doctor.id})"
+                                       ui-sref="field.doctorDetails({id:user.id})"
                                        ui-sref-opts="{reload:true}">
                                         查看
                                     </a>
@@ -172,7 +172,7 @@
                                         评价
                                     </a>
                                     <a class="btn btn-sm company-a-fix"
-                                        ng-if="user[doctor.id].status == 1"
+                                       ng-if="vm.doctorList[user.id].status == 2"
                                        ng-click="vm.cancelApproved(user.id)">
                                         撤销认证
                                     </a>

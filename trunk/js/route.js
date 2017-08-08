@@ -259,7 +259,7 @@ function projectRouteConfig($stateProvider, $urlRouterProvider, $ocLazyLoadProvi
         })
         //交易明细
         .state('field.transactionDetails', {
-            url: '/transactionDetails?did',
+            url: '/transactionDetails/:page/:size?did?payStartAt?payEndAt?amountStart?amountEnd?status?type',
             templateUrl: 'views/business/doctor/transactionDetails.html',
             controller: 'TransactionDetailsCtrl',
             controllerAs: 'vm',
