@@ -60,11 +60,9 @@ angular.module("admin").factory("address",function ($state,$http){
             return "/a/u/certification/list"
         },
         // 患者版订单记录
-        patientRecord_url: function (id) {
+        patientRecord_url: function () {
             return "/a/u/order/list"
-                // +id
-
-        },
+         },
         // 患者版检测数据
         patientTestData_url: function () {
             return "/a/u/train/search"

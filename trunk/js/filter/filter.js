@@ -54,8 +54,10 @@ angular.module('admin')
     .filter('approvedListStatusFilter', function () {
         return function (status) {
             switch (status) {
-                case 1:
+                case 0:
                     return "未认证";
+                case 1:
+                    return "认证中";
                 case 2:
                     return "已认证";
                 case 3:
@@ -84,9 +86,9 @@ angular.module('admin')
         return function(type) {
             switch(type) {
                 case 0:
-                    return "提现";
-                case 1:
                     return "方案出售";
+                case 1:
+                    return "提现";
                 default:
                     return "type="+type+"数据异常";
             }

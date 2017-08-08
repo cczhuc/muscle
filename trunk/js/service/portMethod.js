@@ -89,18 +89,18 @@ angular.module("admin")
         },
         // 立即上线、存为草稿
         editHospital: function (id,data) {
-            return $http.put(address.editHospital_url(id),{params:data})
+            return $http.put(address.editHospital_url(id),data)
         },
         addHospital: function (data) {
-            return $http.post(address.addHospital_url(),{params:data})
+            return $http.post(address.addHospital_url(),data)
         },
         // 合作医院医师管理
         getHospitalDoctor: function (data) {
             return $http.get(address.hospitalDoctor_url(),{params:data})
         },
         // 患者版订单记录
-        getPatientRecord: function (id,data) {
-            return $http.get(address.patientRecord_url(id),{params:data})
+        getPatientRecord: function (data) {
+            return $http.get(address.patientRecord_url(),{params:data})
         },
         // 患者版检测数据
         getPatientTestData: function (data) {
