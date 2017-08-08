@@ -142,6 +142,10 @@ angular.module("admin").factory("address",function ($state,$http){
         messageList_url:function(){
             return "/a/u/message/list"
         },
+        // 消息详情
+        messageDetails_url:function(id){
+            return "/a/u/message/"+id
+        },
         // 新增消息
         newMessage_url:function (){
             return "/a/u/message"

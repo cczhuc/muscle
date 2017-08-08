@@ -16,8 +16,8 @@
         vm.title = 'MessageEditCtrl';
         vm.id = $state.params.id;
         if(vm.id !== ''){
-            portService.getMessage().then(function(res){
-                vm.data = res;
+            portService.getMessageDetails(vm.id).then(function(res){
+                vm.data = res.data.data;
             })
         }
         vm.save = function(){
@@ -32,18 +32,18 @@
                 if(vm.publishDate === undefined || vm.publishTime === undefined){
                     $rootScope.alert('请选择发送时间')
                 }
-                vm.data.type = 2;
+                vm.data.type = 1;
                 vm.data.publishAt = vm.publishDate.valueOf() + vm.publishTime.valueOf() + 28800000;
                 console.log(vm.data.publishAt, vm.publishDate.valueOf(), vm.publishTime.valueOf(), vm.publishTime.valueOf() + 28800000)
             } else {
-                vm.data.type = 1;
+                vm.data.type = 0;
                 delete vm.data.publishAt;
             }
-            if(vm.data.status === true){
-                vm.data.status = 2;
-            } else {
+            // if(vm.data.status === true){
+            //     vm.data.status = 2;
+            // } else {
                 vm.data.status = status;
-            }
+            // }
             if(vm.id===undefined){
                 newMessage();
             }else {

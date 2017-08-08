@@ -154,6 +154,10 @@ angular.module("admin")
         getMessageList:function(param){
             return $http.get(address.messageList_url(),{params:param})
         },
+        // 获取信息列表
+        getMessageDetails:function(id){
+            return $http.get(address.messageDetails_url(id))
+        },
         // 新增信息
         postMessage:function(data){
             return $http.post(address.newMessage_url(),data)
