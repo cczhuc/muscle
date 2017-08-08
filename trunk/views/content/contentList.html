@@ -15,7 +15,7 @@
                     <div class="form-group">
                         <label class="control-label col-md-4 word-spacing-25">创&ensp;建&ensp;者</label>
                         <div class="col-md-8">
-                            <input type="text" class="form-control" ng-model="vm.searchParams.createBy">
+                            <input type="text" class="form-control" ng-model="vm.searchParams.createByName">
                         </div>
                     </div>
                 </div>
@@ -92,9 +92,9 @@
                 <li ng-repeat="item in vm.content track by $index">
                     <span class="rank1">{{item.id}}</span>
                     <span class="rank3">{{item.title}}</span>
-                    <span class="rank3">{{item.createByName}}</span>
+                    <span class="rank3">{{item.author}}</span>
                     <span class="rank2">{{item.status|contentListStatusFilter}}</span>
-                    <span class="rank3">{{item.createBy}}</span>
+                    <span class="rank3">{{item.createByName}}</span>
                     <span class="rank4">{{item.createAt|date:"yyyy-MM-dd HH:mm:ss"}}</span>
                     <span class="rank4">
                         <a ng-if="item.status!==1" type="button" class="btn btn-sm text-green" ng-click="vm.online($index)">上线</a>

@@ -4,7 +4,6 @@
   width: 200px;
   vertical-align: middle;
 }
-
 .f-redline {
   padding-left: 10px;
   border-left: 3px solid red;
@@ -83,4 +82,7 @@
   .f-min80 {
     width: 80px;
   }
+}
+.middle {
+  vertical-align: middle;
 }

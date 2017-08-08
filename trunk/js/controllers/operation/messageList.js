@@ -22,8 +22,8 @@
         vm.searchParams.startAt = parseInt(vm.searchParams.startAt) || undefined;
         vm.searchParams.endAt = parseInt(vm.searchParams.endAt) || undefined;
         portService.getMessageList(vm.searchParams).then(function(res){
-            vm.message = res.data.data.data;
-            vm.total = res.data.data.total;
+            vm.message = res.data.data;
+            vm.total = res.data.total;
             console.log(vm.message);
         });
         vm.send = function($index){

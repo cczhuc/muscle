@@ -140,7 +140,7 @@ angular.module("admin").factory("address",function ($state,$http){
         },
         // 消息列表
         messageList_url:function(){
-            return "/a/message/search"
+            return "/a/u/message/list"
         },
         // 新增消息
         newMessage_url:function (){

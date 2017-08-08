@@ -40,7 +40,6 @@
             // vm.data.content = $scope.emitCreateDaily.getPlainTxt();
             vm.data.content = $scope.emitCreateDaily.getContent();
             vm.data.status = status;
-            vm.data.img = "asdfa.jpg";
             if(vm.id){
                 portService.putContent(vm.id,vm.data).then(function(res){
                     if(res.data.code === 0){
@@ -75,6 +74,9 @@
             if (status === 200) {
                 vm.data.img = response.data.url;
             }
+        };
+        vm.clearImg = function(){
+            delete vm.data.img;
         };
         vm.cancel = function (){
             if(vm.data.type == 0){

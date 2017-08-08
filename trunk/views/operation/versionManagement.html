@@ -17,13 +17,17 @@
             </div>
             <div class="divTableBody">
                 <div class="divTableRow" ng-repeat="item in vm.patient track by $index">
-                    <div class="divTableCell handle">{{item.platform}}</div>
-                    <div  class="divTableCell">{{item.versionName}}</div>
-                    <div  class="divTableCell">{{item.versionId}}</div>
-                    <div  class="divTableCell">{{item.forceUpdate}}</div>
-                    <div  class="divTableCell">{{item.url}}</div>
-                    <div  class="divTableCell">{{item.info}}</div>
-                    <div  class="divTableCell">
+                    <div class="divTableCell handle middle">{{item.platform}}</div>
+                    <div  class="divTableCell middle">{{item.versionName}}</div>
+                    <div  class="divTableCell middle">{{item.versionId}}</div>
+                    <div  class="divTableCell middle">{{item.forceUpdate}}</div>
+                    <div  class="divTableCell middle">{{item.url}}</div>
+                    <div  class="divTableCell middle">
+                        <ul middle>
+                            <li ng-repeat="x in vm.f_info">{{x}}</li>
+                        </ul>
+                    </div>
+                    <div  class="divTableCell middle">
                         <a type="button" class="btn btn-sm" ui-sref="field.versionUpdate({id:vm.patient[$index].id})">更新</a>
                     </div>
                 </div>
@@ -42,13 +46,13 @@
             </div>
             <div class="divTableBody">
                 <div class="divTableRow" ng-repeat="item in vm.doctor track by $index">
-                    <div class="divTableCell handle">{{item.platform}}</div>
-                    <div  class="divTableCell">{{item.versionName}}</div>
-                    <div  class="divTableCell">{{item.versionId}}</div>
-                    <div  class="divTableCell">{{item.forceUpdate}}</div>
-                    <div  class="divTableCell">{{item.url}}</div>
-                    <div  class="divTableCell">{{item.info}}</div>
-                    <div  class="divTableCell">
+                    <div class="divTableCell handle middle">{{item.platform}}</div>
+                    <div  class="divTableCell middle">{{item.versionName}}</div>
+                    <div  class="divTableCell middle">{{item.versionId}}</div>
+                    <div  class="divTableCell middle">{{item.forceUpdate}}</div>
+                    <div  class="divTableCell middle">{{item.url}}</div>
+                    <div  class="divTableCell middle">{{item.info}}</div>
+                    <div  class="divTableCell middle">
                         <a type="button" class="btn btn-sm" ui-sref="field.versionUpdate({id:vm.doctor[$index].id})">更新</a>
                     </div>
                 </div>
