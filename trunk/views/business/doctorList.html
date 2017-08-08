@@ -136,7 +136,12 @@
                             <div class="divTableCell">{{user.create|date:'yyyy-MM-dd'}}</div>
                             <div class="divTableCell"> {{user.mobile}}</div>
                             <div class="divTableCell">{{user.name}}</div>
-                            <div class="divTableCell">{{(vm.serviceTime - user.birth)|ageFilter}}</div>
+                            <div class="divTableCell">
+                                <!--生日为undefined时不显示年龄-->
+                                <span ng-if="user.birth ===0 || user.birth">
+                                    {{(vm.serviceTime - user.birth)|ageFilter}}
+                                </span>
+                            </div>
                             <div class="divTableCell">{{user.accountStatus|freezedStatusFilter}}</div>
 
                             <div class="divTableCell company-tableCell-fix">
@@ -189,7 +194,7 @@
 
 
                 </div>
-                <pagination ng-if="vm.total"  total="{{vm.total}}"></pagination>
+                <pagination ng-if="vm.total" total="{{vm.total}}"></pagination>
             </div>
         </div>
     </div>

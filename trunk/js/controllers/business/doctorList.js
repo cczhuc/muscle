@@ -4,7 +4,6 @@ angular.module('admin').controller('DoctorListCtrl',['$rootScope','$state','$htt
         //把需要日历插件+86399999的参数的名字以字符串放进来，写在html中search指令的属性里，给search指令去处理
         vm.timeFixArr = ["registerTo"];
         vm.searchParams = $state.params;
-
         vm.searchParams.registerFrom = parseInt(vm.searchParams.registerFrom) || undefined;
         vm.searchParams.registerTo = parseInt(vm.searchParams.registerTo) || undefined;
 
@@ -95,7 +94,6 @@ angular.module('admin').controller('DoctorListCtrl',['$rootScope','$state','$htt
                     }
                 })
             });
-
         };
     }
 ]);
