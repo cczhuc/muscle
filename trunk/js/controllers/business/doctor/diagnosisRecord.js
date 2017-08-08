@@ -16,21 +16,26 @@ angular.module('admin').controller('DiagnosisRecordCtrl',['$rootScope','$state',
                 //搜索按钮指令会对vm.searchParams.end + 86400000 -1,所以要反向操作
                 vm.tempParams.createFrom = vm.tempParams.createTo - 86400000 + 1;
                 vm.tempParams.createTo = tempAt + 86400000 -1;
-                console.log("vm.tempParams.createFrom",vm.tempParams.createFrom);
-                console.log("vm.tempParams.createTo",vm.tempParams.createTo);
             }
         }());
 
+        //获取诊断记录
         portService.diagnosisRecord(vm.tempParams).then(function (res){
             if (res.data.code===0) {
-                // console.log("res",res);
-                // vm.programRelationList = res.data.data.programRelationList;
+
                 vm.programRelationList = res.data.data.program;
-                vm.patient = res.data.data.patient;
-                console.log(" vm.patient", vm.patient);
+                vm.patient = res.data.data.patientList;
+                console.log(" vm.patient", res.data);
                 vm.total = res.data.data.total;
-                // console.log( vm.diagnosisRecord);
-                // console.log(vm.total);
+            } else {
+                $rootScope.alert(res.data.message);
+            }
+        });
+
+        //通过医师详情接口获取姓名
+        portService.getDoctorDetails(vm.searchParams.did).then(function (res){
+            if(res.data.code === 0) {
+                vm.detailData = res.data.data;
             } else {
                 $rootScope.alert(res.data.message);
             }

@@ -1,10 +1,9 @@
 angular.module('admin').controller('DoctorListCtrl',['$rootScope','$state','$http','portService','commonUtil',
     function($rootScope,$state,$http,portService,commonUtil) {
         var vm = this;
-        //把需要日历插件需要+86399999的参数的名字以字符串放进来，写在html中search指令的属性里，给search指令去处理
+        //把需要日历插件+86399999的参数的名字以字符串放进来，写在html中search指令的属性里，给search指令去处理
         vm.timeFixArr = ["registerTo"];
         vm.searchParams = $state.params;
-
 
         vm.searchParams.registerFrom = parseInt(vm.searchParams.registerFrom) || undefined;
         vm.searchParams.registerTo = parseInt(vm.searchParams.registerTo) || undefined;
@@ -19,12 +18,6 @@ angular.module('admin').controller('DoctorListCtrl',['$rootScope','$state','$htt
                 vm.tempParams.registerFrom = vm.tempParams.registerTo - 86400000 + 1;
                 vm.tempParams.registerTo = tempAt + 86400000 -1;
             }
-            //对年龄的处理
-            // if(vm.tempParams.ageFrom>vm.tempParams.ageTo) {
-            //     var tempAge = vm.tempParams.ageFrom;
-            //     vm.tempParams.ageFrom = vm.tempParams.ageTo;
-            //     vm.tempParams.ageTo = tempAge;
-            // }
 
         //获取服务器时间
         commonUtil.getServerTime().then(function (res) {
@@ -50,21 +43,12 @@ angular.module('admin').controller('DoctorListCtrl',['$rootScope','$state','$htt
                 if (res.data.code===0) {
                     vm.userList = res.data.data.userList;
                     vm.doctorList = res.data.data.doctorList;
-                    // vm.userList = res.data.data.userList;
-                    // console.log("vm.doctorList",vm.doctorList);
-                    // console.log("vm.userList",res.data.data.doctorList);
                     vm.total = res.data.total;
                 } else {
                     $rootScope.alert(res.data.message);
                 }
             });
         });
-
-
-        // console.log("vm.tempParams.registerFrom",vm.tempParams.registerFrom);
-        // console.log("vm.tempParams.registerTo",vm.tempParams.registerTo);
-        // 请求用户数据,不要用vm.searchParams，用中间层vm.tempParams
-
 
         vm.freezeUser = function(id,status) {
             if (status === 0) {

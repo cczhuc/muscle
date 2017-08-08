@@ -30,7 +30,7 @@
                             <div class="form-group">
                                 <label class="control-label col-md-4 word-spacing-25 pd-right-10">身份证号</label>
                                 <div class="col-md-8">
-                                    <input type="text" class="form-control" ng-value="vm.user.idNo" disabled>
+                                    <input type="text" class="form-control" ng-value="vm.data.idNo" disabled>
                                 </div>
                             </div>
                         </div>
@@ -61,7 +61,7 @@
                                 <label class="control-label col-md-4 word-spacing-25 pd-right-10">收入</label>
                                 <div class="col-md-8">
                                     <input type="text" class="form-control"
-                                           ng-value="vm.user.income+'&nbsp;'+'(元)'" disabled>
+                                           ng-value="vm.data.income + '&nbsp;' + '(元)' " disabled>
                                 </div>
                             </div>
                         </div>
@@ -88,7 +88,7 @@
                     </div>
                 </div>
             </div>
-            <div class="panel panel-default">
+            <div class="panel panel-default" ng-if = 'vm.data.status == 2'>
                 <div class="panel-heading">
                     <strong>认证信息</strong>
                 </div>
@@ -106,7 +106,7 @@
                             <div class="form-group">
                                 <label class="control-label col-md-4 word-spacing-25 pd-right-10">职称</label>
                                 <div class="col-md-8">
-                                    <input type="text" class="form-control" ng-model="vm.user.position"
+                                    <input type="text" class="form-control" ng-model="vm.data.position"
                                            disabled>
                                 </div>
                             </div>
@@ -115,7 +115,7 @@
                             <div class="form-group">
                                 <label class="control-label col-md-4 word-spacing-25 pd-right-10">医师资格证号</label>
                                 <div class="col-md-8">
-                                    <input type="text" class="form-control" ng-model="vm.doctorDetail.qualifications"
+                                    <input type="text" class="form-control" ng-model="vm.data.qualifications"
                                            disabled>
                                 </div>
                             </div>
@@ -128,7 +128,7 @@
                                 <div style="height:240px; background-color:rgba(100,213,198,0.53); position:relative; padding:15px; margin:0 15px;">
                                     <img
                                             style="min-height:80%; max-width:100%; max-height: 100%; position:absolute; left:0; right:0; bottom:0; top:0; margin:auto;"
-                                            ng-src="{{vm.doctorDetail.certificate}}" alt="医师资格证照片">
+                                            ng-src="{{vm.data.certificate}}" alt="医师资格证照片">
                                 </div>
                             </div>
                         </div>
@@ -137,7 +137,7 @@
                                 <div style="height:240px; background-color:rgba(100,213,198,0.53); position:relative; padding:15px; margin:0 15px;">
                                     <img
                                             style="min-height:80%; max-width:100%; max-height: 100%; position:absolute; left:0; right:0; bottom:0; top:0; margin:auto;"
-                                            ng-src="{{vm.doctorDetail.certificate}}" alt="医师资格证照片背面">
+                                            ng-src="{{vm.data.certificateBack}}" alt="医师资格证照片背面">
                                 </div>
                             </div>
                         </div>
@@ -150,35 +150,35 @@
                     </button>
                 </div>
             </div>
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <strong>银行卡信息（最多绑两张卡）</strong>
-                </div>
-                <div class="panel-body">
-                    <div class="row pd-bottom-20" ng-repeat="index in vm.user.bank">
-                        <div class="col-md-4">
-                            <div class="form-group">
-                                <label class="control-label col-md-4 word-spacing-25 pd-right-10">开户银行</label>
-                                <div class="col-md-8">
-                                    <input type="text" class="form-control" ng-value="index.bankName" disabled>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="form-group">
-                                <label class="control-label col-md-4 word-spacing-25 pd-right-10">银行卡号</label>
-                                <div class="col-md-8">
-                                    <input type="text" class="form-control" ng-model="index.bank" disabled>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-2">
-                            <button class="btn btn-warning btn-margin" ng-click="vm.notBundle()">解绑</button>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
+            <!--银行卡相关，第一期先不做-->
+            <!--<div class="panel panel-default">-->
+                <!--<div class="panel-heading">-->
+                    <!--<strong>银行卡信息（最多绑两张卡）</strong>-->
+                <!--</div>-->
+                <!--<div class="panel-body">-->
+                    <!--<div class="row pd-bottom-20" ng-repeat="index in vm.user.bank">-->
+                        <!--<div class="col-md-4">-->
+                            <!--<div class="form-group">-->
+                                <!--<label class="control-label col-md-4 word-spacing-25 pd-right-10">开户银行</label>-->
+                                <!--<div class="col-md-8">-->
+                                    <!--<input type="text" class="form-control" ng-value="index.bankName" disabled>-->
+                                <!--</div>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                        <!--<div class="col-md-4">-->
+                            <!--<div class="form-group">-->
+                                <!--<label class="control-label col-md-4 word-spacing-25 pd-right-10">银行卡号</label>-->
+                                <!--<div class="col-md-8">-->
+                                    <!--<input type="text" class="form-control" ng-model="index.bank" disabled>-->
+                                <!--</div>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                        <!--&lt;!&ndash;<div class="col-md-2">&ndash;&gt;-->
+                            <!--&lt;!&ndash;<button class="btn btn-warning btn-margin" ng-click="vm.notBundle()">解绑</button>&ndash;&gt;-->
+                        <!--&lt;!&ndash;</div>&ndash;&gt;-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
         </div>
         <div class="panel-body">
             <div class="row  pd-bottom-20">

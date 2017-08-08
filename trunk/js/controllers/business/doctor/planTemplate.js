@@ -24,6 +24,15 @@ angular.module('admin').controller('PlanTemplateCtrl',['$rootScope','$state','$h
             vm.tempParams.countTo = tempAge;
         }
 
+        //通过医师详情接口获取姓名
+        portService.getDoctorDetails(vm.searchParams.did).then(function (res){
+            if(res.data.code === 0) {
+                vm.detailData = res.data.data;
+            } else {
+                $rootScope.alert(res.data.message);
+            }
+        });
+
 
 
         // 清空搜索

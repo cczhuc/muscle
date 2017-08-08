@@ -28,6 +28,7 @@ angular.module('admin').controller('TransactionDetailsCtrl',['$rootScope','$stat
 
         }());
 
+        //获取交易记录
         portService.transactionDetails(vm.tempParams).then(function(res) {
             if(res.data.code === 0) {
                 vm.transactionDetails = res.data.data;
@@ -37,6 +38,15 @@ angular.module('admin').controller('TransactionDetailsCtrl',['$rootScope','$stat
                 $rootScope.alert(res.data.message);
             }
         })
+
+        //通过医师详情接口获取姓名
+        portService.getDoctorDetails(vm.searchParams.did).then(function (res){
+            if(res.data.code === 0) {
+                vm.detailData = res.data.data;
+            } else {
+                $rootScope.alert(res.data.message);
+            }
+        });
     }
 ]);
 

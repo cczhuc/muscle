@@ -6,8 +6,9 @@ angular.module('admin').controller('DoctorDetailsCtrl',['$rootScope','$state','$
         console.log("vm.params.id",vm.params.id);
         portService.getDoctorDetails(vm.params.id).then(function (res){
             if(res.data.code === 0) {
+                vm.data = res.data.data;
                 vm.user = res.data.data.user[vm.params.id];
-                vm.hospital = res.data.data.user[vm.params.id];
+                vm.hospital = res.data.data.hospital[vm.params.id];
                 vm.MobileCopy =  vm.user.mobile; //复制一份手机号码，用于修改手机号时，点击取消按钮的还原
                 console.info(res.data.data)
             } else {
@@ -64,15 +65,16 @@ angular.module('admin').controller('DoctorDetailsCtrl',['$rootScope','$state','$
             });
         };
 
+        <!--银行卡相关，第一期先不做-->
         //解绑银行卡
-        vm.notBundle = function () {
-
-                $rootScope.operationConfirm("解绑将删除该银行卡信息", "确认修改？",function () {
-                    //发送请求
-                    $rootScope.alert("解绑成功", function () {})
-                });
-
-        };
+        // vm.notBundle = function () {
+        //
+        //         $rootScope.operationConfirm("解绑将删除该银行卡信息", "确认修改？",function () {
+        //             //发送请求
+        //             $rootScope.alert("解绑成功", function () {})
+        //         });
+        //
+        // };
 
     }
 ]);
