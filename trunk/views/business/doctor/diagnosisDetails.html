@@ -63,7 +63,11 @@
 
                 </div>
                 <div class="col-md-offset-1">
-                    <button class="btn btn-warning btn-margin" onclick="javascript:{window.history.go(-1);}">
+
+
+                    <!--<button class="btn btn-warning btn-margin" onclick="javascript:{window.history.go(-1);}">-->
+                    <button class="btn btn-warning btn-margin"
+                            ui-sref="field.diagnosisRecord({did:vm.searchParams.did})" ui-sref-opts="{reload:true}">
                         返回
                     </button>
                 </div>

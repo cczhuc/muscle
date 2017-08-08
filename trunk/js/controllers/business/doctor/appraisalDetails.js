@@ -1,9 +1,9 @@
 angular.module('admin').controller('AppraisalDetailsCtrl',['$rootScope','$state','$http','portService',
     function ($rootScope,$state,$http,portService) {
         var vm = this;
-        vm.Params = $state.params;
+        vm.searchParams = $state.params;
 
-        portService.appraisalDetails(vm.Params.id).then(function (res){
+        portService.appraisalDetails(vm.searchParams.id).then(function (res){
             if(res.data.code === 0) {
                 // console.log("res",res);
                 vm.comment = res.data.data;
@@ -17,7 +17,7 @@ angular.module('admin').controller('AppraisalDetailsCtrl',['$rootScope','$state'
 
         vm.deleteComment = function() {
             $rootScope.operationConfirm("删除将同时在前台删除此条评论","确认删除？",function () {
-                portService.deleteComment(vm.Params.id).then(function(res) {
+                portService.deleteComment(vm.searchParams.id).then(function(res) {
                     if(res.data.code === 0){
                         $state.go("field.patientAppraisal", {}, {reload: true});
                         $rootScope.alert("删除成功", function () {});

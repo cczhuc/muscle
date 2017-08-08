@@ -234,7 +234,7 @@ function projectRouteConfig($stateProvider, $urlRouterProvider, $ocLazyLoadProvi
         })
         //诊断详情
         .state('field.diagnosisDetails', {
-            url: '/diagnosisDetails/:id',
+            url: '/diagnosisDetails?id&did',
             templateUrl: 'views/business/doctor/diagnosisDetails.html',
             controller: 'DiagnosisDetailsCtrl',
             controllerAs: 'vm',
@@ -258,7 +258,7 @@ function projectRouteConfig($stateProvider, $urlRouterProvider, $ocLazyLoadProvi
         })
         //评价详情
         .state('field.appraisalDetails', {
-            url: '/appraisalDetails?id',
+            url: '/appraisalDetails?id&did',
             templateUrl: 'views/business/doctor/appraisalDetails.html',
             controller: 'AppraisalDetailsCtrl',
             controllerAs: 'vm',

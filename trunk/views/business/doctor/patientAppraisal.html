@@ -109,7 +109,8 @@
                             <div class="divTableCell company-tableCell-fix">
 
                                 <a class="btn btn-sm company-a-fix"
-                                   ui-sref="field.appraisalDetails({id:info.id})">
+                                   ui-sref="field.appraisalDetails({id:info.id,did:vm.searchParams.did})"
+                                   ui-sref-opts="{reload:true}">
                                     查看
                                 </a>
 
