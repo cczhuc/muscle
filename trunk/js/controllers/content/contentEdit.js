@@ -17,13 +17,20 @@
         // 判断编辑还是新增
         if(vm.id){
             activate(vm.id);
+        }else {
+            vm.data = {
+                type : $state.params.type
+            };
         }
         function activate(id){
             portService.getContentSlice(id).then(function(res){
-                vm.data = res.data.data.article;
+                if(res.data.code === 0){
+                    vm.data = res.data.data.article;
+                }else{
+                    $rootScope.alert(res.data.message)
+                }
             })
         }
-
         // 获取富文本内容
         $scope.$on('emitCreateDaily', function (evt, value) {
             $scope.emitCreateDaily = value;
@@ -33,13 +40,16 @@
             // vm.data.content = $scope.emitCreateDaily.getPlainTxt();
             vm.data.content = $scope.emitCreateDaily.getContent();
             vm.data.status = status;
-            // vm.data.type = 1;
             vm.data.img = "asdfa.jpg";
             if(vm.id){
                 portService.putContent(vm.id,vm.data).then(function(res){
                     if(res.data.code === 0){
                         $rootScope.alert("发送成功");
-                        $state.go('field.contentListDoctor', {}, {reload : true});
+                        if(vm.data.type == 0){
+                            $state.go('field.contentListDoctor', {type:0}, {reload : true});
+                        }else{
+                            $state.go('field.contentListPatient', {type:1}, {reload : true});
+                        }
                     } else {
                         $rootScope.alert(res.data.message);
                     }
@@ -48,7 +58,11 @@
                 portService.postContent(vm.data).then(function(res){
                     if(res.data.code === 0){
                         $rootScope.alert("发送成功");
-                        $state.go('field.contentListDoctor', {}, {reload : true});
+                        if(vm.data.type == 0){
+                            $state.go('field.contentListDoctor', {type:0}, {reload : true});
+                        }else{
+                            $state.go('field.contentListPatient', {type:1}, {reload : true});
+                        }
                     } else {
                         $rootScope.alert(res.data.message);
                     }
@@ -62,6 +76,13 @@
                 vm.data.img = response.data.url;
             }
         };
+        vm.cancel = function (){
+            if(vm.data.type == 0){
+                $state.go('field.contentListDoctor');
+            }else{
+                $state.go('field.contentListPatient');
+            }
+        }
     }
 })();
 

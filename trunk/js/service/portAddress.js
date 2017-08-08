@@ -131,7 +131,7 @@ angular.module("admin").factory("address",function ($state,$http){
         },
         // 新增
         contentPost_url:function(){
-            return "/a/u/article/"
+            return "/a/u/article"
         },
 
         // 运营管理
@@ -151,13 +151,25 @@ angular.module("admin").factory("address",function ($state,$http){
         deleteMessage_url:function (id){
             return "/a/u/message/"+id
         },
-        // 意见反馈
+        // 意见反馈列表
         opinionList_url:function(){
-            return "/a/u/opinion/search"
+            return "/a/feedback/search"
+        },
+        // 意见反馈详情
+        opinionDetails_url:function(id){
+            return "/a/feedback/"+id
+        },
+        // 删除意见反馈
+        opinionDelete_url:function(id){
+            return "/a/u/feedback/"+id
         },
         // 版本列表
         versionList_url:function(){
-            return "/a/u/version/search"
+            return "/a/u/version/list"
+        },
+        // 版本详情
+        versionDetails_url:function(id){
+            return "/a/u/version/"+id
         }
     }
 });

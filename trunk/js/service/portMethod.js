@@ -165,11 +165,23 @@ angular.module("admin")
         },
         // 意见反馈列表
         getOpinionList:function(param){
-            return $http.get(address.opinionList_url())
+            return $http.get(address.opinionList_url(),{params:param})
+        },
+        // 意见反馈列表
+        getOpinionDetails:function(id){
+            return $http.get(address.opinionDetails_url(id))
+        },
+        // 删除意见
+        OpinionDelete:function(id){
+            return $http.delete(address.opinionDelete_url(id))
         },
         // 获取版本列表
         getVersionList:function(){
             return $http.get(address.versionList_url())
+        },
+        // 获取版本详情
+        getVersionDetails:function(id){
+            return $http.get(address.versionDetails_url(id))
         }
     }
     })

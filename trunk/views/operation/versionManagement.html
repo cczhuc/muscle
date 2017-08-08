@@ -16,21 +16,18 @@
                 <div class="divTableHead">操作</div>
             </div>
             <div class="divTableBody">
-                <!--<div class="divTableRow" ng-repeat="item in vm.approvedList track by $index">-->
-                    <!--<div class="divTableCell handle">{{item.approvedId}}</div>-->
-                    <div class="divTableCell">
-                        <!--<div >{{item.time|date:'yyyy-MM-dd'}}</div>-->
-                        <!--<div >{{item.time|date:'HH:mm:ss'}}</div>-->
-                    </div>
-                    <!--<div  class="divTableCell">{{item.telphone}}</div>-->
-                    <!--<div  class="divTableCell">{{item.name}}</div>-->
-                    <!--<div  class="divTableCell">{{item.number}}</div>-->
-                    <!--<div class="text-red divTableCell" ng-class="{'text-green':item.status==0}">{{item.status|approvedListStatusFilter}}</div>-->
+                <div class="divTableRow" ng-repeat="item in vm.patient track by $index">
+                    <div class="divTableCell handle">{{item.platform}}</div>
+                    <div  class="divTableCell">{{item.versionName}}</div>
+                    <div  class="divTableCell">{{item.versionId}}</div>
+                    <div  class="divTableCell">{{item.forceUpdate}}</div>
+                    <div  class="divTableCell">{{item.url}}</div>
+                    <div  class="divTableCell">{{item.info}}</div>
                     <div  class="divTableCell">
-                        <a type="button" class="btn btn-sm" ui-sref="field.versionUpdate">更新</a>
+                        <a type="button" class="btn btn-sm" ui-sref="field.versionUpdate({id:vm.patient[$index].id})">更新</a>
                     </div>
-                <!--</div>-->
-            <!--</div>-->
+                </div>
+            </div>
         </div>
         <strong>医师端</strong>
         <div class="divTable">
@@ -43,26 +40,19 @@
                 <div class="divTableHead">版本信息</div>
                 <div class="divTableHead">操作</div>
             </div>
-            <!--<div class="divTableBody">-->
-                <!--<div class="divTableRow" ng-repeat="item in vm.approvedList track by $index">-->
-                    <!--<div class="divTableCell handle">{{item.approvedId}}</div>-->
-                    <!--<div class="divTableCell">-->
-                        <!--<div >{{item.time|date:'yyyy-MM-dd'}}</div>-->
-                        <!--<div >{{item.time|date:'HH:mm:ss'}}</div>-->
-                    <!--</div>-->
-                    <!--<div  class="divTableCell">{{item.telphone}}</div>-->
-                    <!--<div  class="divTableCell">{{item.name}}</div>-->
-                    <!--<div  class="divTableCell">{{item.number}}</div>-->
-                    <!--<div class="text-red divTableCell" ng-class="{'text-green':item.status==0}">{{item.status|approvedListStatusFilter}}</div>-->
-                    <!--<div  class="divTableCell">-->
-                        <!--<span>-->
-                            <!--<a  type="button" class="btn btn-sm" ng-if="item.status==0">医师详情</a>-->
-                            <!--<a  type="button" class="btn btn-sm" ng-if="item.status==1">审核</a>-->
-                        <!--</span>-->
-                        <!--<a type="button" class="btn btn-sm" ui-sref="field.approvedDetails({id:item.approvedId})">查看</a>-->
-                    <!--</div>-->
-                <!--</div>-->
-            <!--</div>-->
+            <div class="divTableBody">
+                <div class="divTableRow" ng-repeat="item in vm.doctor track by $index">
+                    <div class="divTableCell handle">{{item.platform}}</div>
+                    <div  class="divTableCell">{{item.versionName}}</div>
+                    <div  class="divTableCell">{{item.versionId}}</div>
+                    <div  class="divTableCell">{{item.forceUpdate}}</div>
+                    <div  class="divTableCell">{{item.url}}</div>
+                    <div  class="divTableCell">{{item.info}}</div>
+                    <div  class="divTableCell">
+                        <a type="button" class="btn btn-sm" ui-sref="field.versionUpdate({id:vm.doctor[$index].id})">更新</a>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
     <pagination ng-if="vm.total" total="{{vm.total}}"></pagination>

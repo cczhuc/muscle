@@ -23,7 +23,7 @@
                     <div class="form-group">
                         <label class="control-label col-md-4 word-spacing-25">作&emsp;&emsp;者</label>
                         <div class="col-md-8">
-                            <input type="text" class="form-control" ng-model="vm.searchParams.createByName">
+                            <input type="text" class="form-control" ng-model="vm.searchParams.author">
                         </div>
                     </div>
                 </div>
@@ -73,7 +73,7 @@
         <div class=" pull-right">
             <button class="btn btn-info btn-xs" ng-if="sortableOptions.disabled == true" ng-click="vm.sort()">排序</button>
             <button class="btn btn-success btn-xs" ng-if="sortableOptions.disabled == false" ng-click="vm.save()">保存</button>
-            <button class="btn btn-primary btn-xs" ui-sref="field.contentEdit" ui-sref-opts="{reload:true}" href="#/messageEdit">
+            <button class="btn btn-primary btn-xs" ui-sref="field.contentEdit({type:vm.searchParams.type})" ui-sref-opts="{reload:true}" href="#/messageEdit">
                 <i class="fa fa-plus-square fa-fw"></i>新增
             </button>
         </div>

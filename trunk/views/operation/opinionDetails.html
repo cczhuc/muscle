@@ -7,31 +7,31 @@
             <div class="form-group">
                 <label class="col-md-2 control-label">手&ensp;机&ensp;号</label>
                 <div class="col-md-8">
-                    <input class="form-control" type="text" name="f-messageTitle" ng-model="vm.params.title" maxlength="500" ng-class="{'error':myform.f-messageTitle.$invalid && myform.f-messageTitle.$touched}" disabled>
+                    <input class="form-control" type="text" name="f-messageTitle" ng-model="vm.data.mobile" maxlength="500" ng-class="{'error':myform.f-messageTitle.$invalid && myform.f-messageTitle.$touched}" disabled>
                 </div>
             </div>
             <div class="form-group">
                 <label class="col-md-2 control-label">姓&emsp;&emsp;名</label>
                 <div class="col-md-8">
-                    <input class="form-control" type="text" name="f-messageTitle" ng-model="vm.params.title" maxlength="500" ng-class="{'error':myform.f-messageTitle.$invalid && myform.f-messageTitle.$touched}" disabled>
+                    <input class="form-control" type="text" name="f-messageTitle" ng-model="vm.data.name" maxlength="500" ng-class="{'error':myform.f-messageTitle.$invalid && myform.f-messageTitle.$touched}" disabled>
                 </div>
             </div>
             <div class="form-group">
                 <label class="col-md-2 control-label">应&emsp;&emsp;用</label>
                 <div class="col-md-8">
-                    <input class="form-control" type="text" name="f-messageTitle" ng-model="vm.params.title" maxlength="500" ng-class="{'error':myform.f-messageTitle.$invalid && myform.f-messageTitle.$touched}" disabled>
+                    <input class="form-control" type="text" name="f-messageTitle" ng-value="vm.data.type|appVersionFilter" maxlength="500" ng-class="{'error':myform.f-messageTitle.$invalid && myform.f-messageTitle.$touched}" disabled>
                 </div>
             </div>
             <div class="form-group">
                 <label class="col-md-2 control-label">意见反馈</label>
                 <div class="col-md-8">
-                    <textarea class="form-control" type="text" name="f-messageTitle" ng-model="vm.params.title" maxlength="500" ng-class="{'error':myform.f-messageTitle.$invalid && myform.f-messageTitle.$touched}" disabled></textarea>
+                    <textarea class="form-control" type="text" name="f-messageTitle" ng-model="vm.data.opinion" maxlength="500" ng-class="{'error':myform.f-messageTitle.$invalid && myform.f-messageTitle.$touched}" disabled></textarea>
                 </div>
             </div>
             <div class="form-group">
                 <div class="col-md-2"></div>
                 <div class="col-md-8">
-                    <button type="button" class="btn btn-success" ng-click="vm.f-send() " ng-disabled="!myform.$valid">发送
+                    <button type="button" class="btn btn-danger" ng-click="vm.delete() ">删除
                     </button>
                     <button type="button" class="btn btn-default" ui-sref="field.opinionList">取消</button>
                 </div>

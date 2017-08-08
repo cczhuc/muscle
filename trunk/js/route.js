@@ -331,11 +331,11 @@ function projectRouteConfig($stateProvider, $urlRouterProvider, $ocLazyLoadProvi
 
         // 内容管理开始
         .state('field.contentListPatient', {
-            url: '/contentList/:page/:size?title&startAt&endAt&createBy&createByName&status&app',
+            url: '/contentListPatient/:page/:size/:type?title&startAt&endAt&createBy&status&author',
             templateUrl: 'views/content/contentList.html',
             controller: 'ContentListCtrl',
             controllerAs: 'vm',
-            params:{app:'0'},
+            params:{type:'1'},
             resolve: {
                 loadMyFile: _lazyLoad([
                     'js/controllers/content/contentList.js',
@@ -343,11 +343,11 @@ function projectRouteConfig($stateProvider, $urlRouterProvider, $ocLazyLoadProvi
             }
         })
         .state('field.contentListDoctor', {
-            url: '/contentList/:page/:size?title&startAt&endAt&createBy&createByName&status&app',
+            url: '/contentListDoctor/:page/:size/:type?title&startAt&endAt&createBy&status&author',
             templateUrl: 'views/content/contentList.html',
             controller: 'ContentListCtrl',
             controllerAs: 'vm',
-            params:{app:'1'},
+            params:{type:'0'},
             resolve: {
                 loadMyFile: _lazyLoad([
                     'js/controllers/content/contentList.js',
@@ -355,7 +355,7 @@ function projectRouteConfig($stateProvider, $urlRouterProvider, $ocLazyLoadProvi
             }
         })
         .state('field.contentEdit', {
-            url: '/contentEdit/:id',
+            url: '/contentEdit/:id/:type',
             templateUrl: 'views/content/contentEdit.html',
             controller: 'ContentEditCtrl',
             controllerAs: 'vm',
@@ -430,7 +430,7 @@ function projectRouteConfig($stateProvider, $urlRouterProvider, $ocLazyLoadProvi
             }
         })
         .state('field.versionUpdate', {
-            url: '/versionUpdate',
+            url: '/versionUpdate?id',
             templateUrl: 'views/operation/versionUpdate.html',
             controller: 'VersionUpdateCtrl',
             controllerAs: 'vm',
@@ -441,7 +441,7 @@ function projectRouteConfig($stateProvider, $urlRouterProvider, $ocLazyLoadProvi
             }
         })
         .state('field.opinionList', {
-            url: '/opinionList?page',
+            url: '/opinionList/:page/:size?name&type&mobile&startAt&endAt&title',
             templateUrl: 'views/operation/opinionList.html',
             controller: 'OpinionListCtrl',
             controllerAs: 'vm',
@@ -452,7 +452,7 @@ function projectRouteConfig($stateProvider, $urlRouterProvider, $ocLazyLoadProvi
             }
         })
         .state('field.opinionDetails', {
-            url: '/opinionDetails',
+            url: '/opinionDetails?id',
             templateUrl: 'views/operation/opinionDetails.html',
             controller: 'OpinionDetailsCtrl',
             controllerAs: 'vm',

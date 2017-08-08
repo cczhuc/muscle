@@ -7,31 +7,31 @@
             <div class="form-group">
                 <label class="col-md-2 control-label">APP</label>
                 <div class="col-md-8">
-                    <input class="form-control" type="text" name="f-messageTitle" ng-model="vm.params.title" maxlength="500" ng-class="{'error':myform.f-messageTitle.$invalid && myform.f-messageTitle.$touched}" disabled>
+                    <input class="form-control" type="text" name="f-messageTitle" ng-model="vm.data.app" maxlength="500" ng-class="{'error':myform.f-messageTitle.$invalid && myform.f-messageTitle.$touched}" disabled>
                 </div>
             </div>
             <div class="form-group">
                 <label class="col-md-2 control-label">平台类型</label>
                 <div class="col-md-8">
-                    <input class="form-control" type="text" name="f-messageTitle" ng-model="vm.params.title" maxlength="500" ng-class="{'error':myform.f-messageTitle.$invalid && myform.f-messageTitle.$touched}" disabled>
+                    <input class="form-control" type="text" name="f-messageTitle" ng-model="vm.data.platform" maxlength="500" ng-class="{'error':myform.f-messageTitle.$invalid && myform.f-messageTitle.$touched}" disabled>
                 </div>
             </div>
             <div class="form-group">
                 <label class="col-md-2 control-label">版本名称</label>
                 <div class="col-md-8">
-                    <input class="form-control" type="text" name="f-messageTitle" ng-model="vm.params.title" maxlength="500" ng-class="{'error':myform.f-messageTitle.$invalid && myform.f-messageTitle.$touched}">
+                    <input class="form-control" type="text" name="f-messageTitle" ng-model="vm.data.versionName" maxlength="500" ng-class="{'error':myform.f-messageTitle.$invalid && myform.f-messageTitle.$touched}">
                 </div>
             </div>
             <div class="form-group">
                 <label class="col-md-2 control-label">版本号</label>
                 <div class="col-md-8">
-                    <input class="form-control" type="text" name="f-messageTitle" ng-model="vm.params.title" maxlength="500" ng-class="{'error':myform.f-messageTitle.$invalid && myform.f-messageTitle.$touched}">
+                    <input class="form-control" type="text" name="f-messageTitle" ng-model="vm.data.versionId" maxlength="500" ng-class="{'error':myform.f-messageTitle.$invalid && myform.f-messageTitle.$touched}">
                 </div>
             </div>
             <div class="form-group">
                 <label class="col-md-2 control-label">安装包URL</label>
                 <div class="col-md-8">
-                    <input class="form-control" type="text" name="f-messageTitle" ng-model="vm.params.title" maxlength="500" ng-class="{'error':myform.f-messageTitle.$invalid && myform.f-messageTitle.$touched}">
+                    <input class="form-control" type="text" name="f-messageTitle" ng-model="vm.data.url" maxlength="500" ng-class="{'error':myform.f-messageTitle.$invalid && myform.f-messageTitle.$touched}">
                 </div>
             </div>
             <div class="form-group">
@@ -40,7 +40,7 @@
                     <div class="col-md-10">
                         <div class="row form-group" ng-repeat="x in vm.f_info track by $index">
                             <div class="col-md-10 col-xs-10 f-short">
-                                <input class="form-control" type="text" name="f-messageTitle" ng-model="vm.params.title" maxlength="500" ng-class="{'error':myform.f-messageTitle.$invalid && myform.f-messageTitle.$touched}">
+                                <input class="form-control" type="text" name="f-messageTitle" maxlength="500" ng-class="{'error':myform.f-messageTitle.$invalid && myform.f-messageTitle.$touched}">
                             </div>
                             <div class="col-md-2 col-xs-2 f-min80">
                                 <button ng-click="vm.addTag()">+</button>
@@ -58,8 +58,6 @@
                     <input type="radio" name="force">是 <input type="radio" name="force">否
                 </div>
             </div>
-
-
             <div class="form-group">
                 <div class="col-md-2"></div>
                 <div class="col-md-8">
