@@ -1,12 +1,13 @@
 angular.module('admin').controller('DoctorDetailsCtrl',['$rootScope','$state','$http','portService',
     function ($rootScope,$state,$http,portService) {
         var vm = this;
-        vm.Params = $state.params;
+        vm.params = $state.params;
         vm.phoneModifyFlag = true; //手机号码ng-disable的flag标志位
-        portService.getDoctorDetails().then(function (res){
+        console.log("vm.params.id",vm.params.id);
+        portService.getDoctorDetails(vm.params.id).then(function (res){
             if(res.data.code === 0) {
-                vm.doctorDetail = res.data.data;
-                vm.user = vm.doctorDetail.user;
+                vm.user = res.data.data.user[vm.params.id];
+                vm.hospital = res.data.data.user[vm.params.id];
                 vm.MobileCopy =  vm.user.mobile; //复制一份手机号码，用于修改手机号时，点击取消按钮的还原
                 console.info(res.data.data)
             } else {

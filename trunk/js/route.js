@@ -12,7 +12,7 @@ function projectRouteConfig($stateProvider, $urlRouterProvider, $ocLazyLoadProvi
         events: true
     });
 
-    //更改url格式配置为html5，去掉#号
+    // 更改url格式配置为html5，去掉#号
     // $locationProvider.html5Mode(true);
 
     $urlRouterProvider.otherwise('/dashboard');
@@ -175,7 +175,7 @@ function projectRouteConfig($stateProvider, $urlRouterProvider, $ocLazyLoadProvi
             }
         })
         .state('field.patientTestData', {
-            url: '/patientTestData?id&name&page&size&startAt&endAt',
+            url: '/patientTestData?pid&page&size&startAt&endAt',
             templateUrl: 'views/business/patient/patientTestData.html',
             controller: 'PatientTestDataCtrl',
             controllerAs: 'vm',
@@ -185,9 +185,20 @@ function projectRouteConfig($stateProvider, $urlRouterProvider, $ocLazyLoadProvi
                 ])
             }
         })
-        //用户管理-医师版
+        .state('field.patientReportDetails', {
+            url: '/patientReportDetails?id',
+            templateUrl: 'views/business/patient/patientReportDetails.html',
+            controller: 'PatientReportDetailsCtrl',
+            controllerAs: 'vm',
+            resolve: {
+                loadMyFile: _lazyLoad([
+                    'js/controllers/business/patient/patientReportDetails.js'
+                ])
+            }
+        })
+        //医师详情
         .state('field.doctorDetails', {
-            url: '/doctorDetails?&id',
+            url: '/doctorDetails?id',
             templateUrl: 'views/business/doctor/doctorDetails.html',
             controller: 'DoctorDetailsCtrl',
             controllerAs: 'vm',
@@ -235,7 +246,7 @@ function projectRouteConfig($stateProvider, $urlRouterProvider, $ocLazyLoadProvi
         })
         //医师版-患者评价
         .state('field.patientAppraisal', {
-            url: '/patientAppraisal/:page:size?did&dName&createFrom&createTo&mobile&name&star',
+            url: '/patientAppraisal/:page/:size?did&dName&createFrom&createTo&mobile&name&star',
             templateUrl: 'views/business/doctor/patientAppraisal.html',
             controller: 'PatientAppraisalCtrl',
             controllerAs: 'vm',
@@ -257,8 +268,9 @@ function projectRouteConfig($stateProvider, $urlRouterProvider, $ocLazyLoadProvi
                 ])
             }
         })
+        //交易明细
         .state('field.transactionDetails', {
-            url: '/transactionDetails/:id',
+            url: '/transactionDetails/:page/:size?did?payStartAt?payEndAt?amountStart?amountEnd?status?type',
             templateUrl: 'views/business/doctor/transactionDetails.html',
             controller: 'TransactionDetailsCtrl',
             controllerAs: 'vm',
@@ -402,7 +414,7 @@ function projectRouteConfig($stateProvider, $urlRouterProvider, $ocLazyLoadProvi
             controllerAs: 'vm',
             resolve: {
                 loadMyFile: _lazyLoad([
-                    'js/controllers/operation/messageList.js',
+                    'js/controllers/operation/messageList.js'
                 ])
             }
         })

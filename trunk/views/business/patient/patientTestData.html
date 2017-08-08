@@ -33,7 +33,7 @@
 </div>
 <div class="panel panel-default">
     <div class="panel-heading">
-        <strong>{{vm.searchParams.name}}的检测数据</strong>
+        <strong>{{vm.user.name}}的检测数据</strong>
     </div>
     <div class="list-replace" ng-if="vm.patientTestData.length == 0">
         <div class="list-replace-text">暂无任何数据</div>
@@ -59,7 +59,7 @@
                     <!--<div >{{item.trainAt|date:'HH:mm:ss'}}</div>-->
                     <!--</div>-->
                     <div  class="divTableCell">{{item.trainAt|date:'yyyy-MM-dd  HH:mm:ss'}}</div>
-                    <div  class="divTableCell">{{item.birth}}</div>
+                    <div  class="divTableCell">{{(vm.serviceTime - vm.user.birth)|ageFilter}}</div>
                     <div  class="divTableCell">{{item.sensitivity}}</div>
                     <div  class="divTableCell">{{item.hardness}}</div>
                     <div  class="divTableCell">{{item.bloodFlow}}</div>
@@ -68,7 +68,7 @@
                     <div class="divTableCell">{{item.duration}}</div>
                     <div class="divTableCell">{{item.duration}}</div>
                     <div class="divTableCell">
-                        <a type="button" class="btn btn-sm">报告详情</a>
+                        <a type="button" class="btn btn-sm" ui-sref="field.patientReportDetails({id:item.pid})">报告详情</a>
                     </div>
                 </div>
             </div>

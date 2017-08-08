@@ -12,8 +12,11 @@ angular.module("admin").controller('HospitalEditCtrl',["$rootScope","$state","$h
         //图片上传
         vm.uploader1 = uploadService.uploadFile(FileUploader);
         vm.uploader1.onSuccessItem = function (fileItem, response, status, headers) {
+            console.log(response);
             if (status === 200) {
-                vm.data.img = response.data.url;
+                console.log(status);
+                console.log(response);
+                // vm.data.img = response.data.url;
             }
         };
 

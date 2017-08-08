@@ -1,0 +1,46 @@
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <strong>报告详情</strong>
+    </div>
+    <div class="panel-body  panel-body-noMax">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <span class="report-line" ng-class="{'report-line-active':vm.judgeHead==1}"></span>
+                <span class="report-title" ng-class="{'report-title-active':vm.judgeHead==1}" ng-click="vm.changeHead(1)">硬度报告</span>
+                <span class="report-line" ng-class="{'report-line-active':vm.judgeHead==2}"></span>
+                <span class="report-title" ng-class="{'report-title-active':vm.judgeHead==2}" ng-click="vm.changeHead(2)">敏感度报告</span>
+                <span class="report-line" ng-class="{'report-line-active':vm.judgeHead==3}"></span>
+                <span class="report-title" ng-class="{'report-title-active':vm.judgeHead==3}" ng-click="vm.changeHead(3)">血流报告</span>
+            </div>
+            <div class="panel-body  panel-body-noMax" ng-show="vm.judgeHead==1">
+                <div id="hardness-head1" class="pd-bottom-20" ng-show="vm.judgeFoot==1" style="width: 600px;height:400px;">
+
+                </div>
+                <div class="">
+                    头部Rig图
+                </div>
+                <div id="hardness-head2" class="pd-bottom-20" ng-show="vm.judgeFoot==1" style="width: 600px;height:400px;">
+
+                </div>
+                <div class="">
+                    头部Tum图
+                </div>
+                <div id="hardness-foot" class="pd-bottom-20" ng-show="vm.judgeFoot==2" style="width: 600px;height:400px;">
+                    根部数据
+                </div>
+                <span class="report-foot" ng-class="{'report-foot-active':vm.judgeFoot==1}" ng-click="vm.changeFoot(1)">头部</span>
+                <span>|</span>
+                <span class="report-foot" ng-class="{'report-foot-active':vm.judgeFoot==2}" ng-click="vm.changeFoot(2)">根部</span>
+            </div>
+            <div class="panel-body  panel-body-noMax" ng-show="vm.judgeHead==2">
+                <div id="sensitivity" class="" style="width: 600px;height:400px;">敏感度报告</div>
+            </div>
+            <div class="panel-body  panel-body-noMax" ng-show="vm.judgeHead==3">
+                <div id="bloodFlow" class="" style="width: 600px;height:400px;">血流报告</div>
+            </div>
+        </div>
+        <div>
+            <button class="btn btn-warning btn-margin" ui-sref="field.patientTestData">返回</button>
+        </div>
+    </div>
+</div>

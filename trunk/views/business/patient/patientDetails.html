@@ -30,7 +30,7 @@
                             <div class="form-group">
                                 <label class="control-label col-md-4 word-spacing-25 pd-right-10">身份证号</label>
                                 <div class="col-md-8">
-                                    <input type="text" class="form-control" ng-value="vm.user.idcard" disabled>
+                                    <input type="text" class="form-control" ng-value="vm.user.idNo" disabled>
                                 </div>
                             </div>
                         </div>
@@ -53,12 +53,12 @@
                             <div class="form-group">
                                 <label class="control-label col-md-4 word-spacing-25 pd-right-10">注册时间</label>
                                 <div class="col-md-8">
-                                    <input type="text" class="form-control" ng-value="vm.user.registerTime|date:'yyyy-MM-dd'" disabled>
+                                    <input type="text" class="form-control" ng-value="vm.user.createAt|date:'yyyy-MM-dd'" disabled>
                                 </div>
                             </div>
                         </div>
                         <div class="col-lg-12 row-btn-group">
-                            <a class="btn btn-primary btn-margin margin-7 inline-block" ui-sref="field.patientTestData({id:vm.user.id,name:vm.user.name})">检测数据</a>
+                            <a class="btn btn-primary btn-margin margin-7 inline-block" ui-sref="field.patientTestData({pid:vm.user.id})">检测数据</a>
                             <a class="btn btn-primary btn-margin margin-7 inline-block" ui-sref="field.patientRecord({id:vm.user.id,name:vm.user.name})">订单记录</a>
                         </div>
                     </div>

@@ -18,15 +18,12 @@ angular.module("admin").factory("address",function ($state,$http){
             return "/a/u/"+ id + "/certification?" + params
         },
         //改变用户冻结状态
-        changePatientStatus_url: function(id) {
-            return "/a/u/patient/"+id +"/status";
+        changeUserStatus_url: function(id) {
+            return "/a/u/user/"+id +"/status";
         },
-        changeDoctorStatus_url: function(id,status) {
-            return "/a/u/doctor/"+id +"/status";
-        },
-        //改变患者手机号码
-        changePatientMobile_url: function(id,mobile) {
-            return "/a/u/patient/mobile/"+id+'?mobile='+mobile
+        //改变手机号码
+        changeUserMobile_url: function(id,mobile) {
+            return "/a/u/user/mobile/"+id+'?mobile='+mobile
         },
         // 获取认证详情
         approvedDetails_url: function (id) {
@@ -49,11 +46,11 @@ angular.module("admin").factory("address",function ($state,$http){
         },
         //上传图片接口
         upload_url: function () {
-            return "/a/u/img/"
+            return "/a/u/img/thumb"
         },
         // 立即上线、存为草稿
         editHospital_url: function(id) {
-            return "/a/u/hospital"+id
+            return "/a/u/hospital/"+id
         },
         addHospital_url: function () {
             return "/a/u/hospital"
@@ -69,14 +66,16 @@ angular.module("admin").factory("address",function ($state,$http){
 
         },
         // 患者版检测数据
-        patientTestData_url: function (id) {
+        patientTestData_url: function () {
             return "/a/u/train/search"
-                // +id
-
+        },
+        //患者详情
+        patientDetails_url: function(id) {
+            return "/a/u/user/"+id
         },
         //医师详情
         doctorDetails_url: function(id) {
-            return "/a/user"
+            return "/a/u/doctor/"+id
         },
 
         //方案模板
@@ -99,7 +98,7 @@ angular.module("admin").factory("address",function ($state,$http){
         },
 
         //医师的诊断记录
-        diagnosisRecord_url: function (id) {
+        diagnosisRecord_url: function () {
             return "/a/u/diagnosis"
         },
 
@@ -109,8 +108,8 @@ angular.module("admin").factory("address",function ($state,$http){
         },
 
         //医师交易明细
-        transactionDetails_url: function (id) {
-            return "/a/transactionDetails"
+        transactionDetails_url: function () {
+            return "/a/u/order/list"
         },
 
         // 内容管理

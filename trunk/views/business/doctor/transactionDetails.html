@@ -9,8 +9,8 @@
                             <div class="col-md-8">
                                 <input type="text" class="form-control" size="20" bs-datepicker autoclose="true"
                                        data-date-format="yyyy-MM-dd" data-date-type="number"
-                                       data-max-date="{{vm.searchParams.endAt}}"
-                                       ng-model="vm.searchParams.startAt">
+                                       data-max-date="today"
+                                       ng-model="vm.searchParams.payStartAt">
                             </div>
                         </div>
                     </div>
@@ -21,7 +21,7 @@
                             <div class="col-md-8">
                                 <input type="text" class="form-control" size="20" bs-datepicker autoclose="true"
                                        data-date-format="yyyy-MM-dd" data-date-type="number"
-                                       ng-model="vm.searchParams.endAt" data-min-date="{{vm.searchParams.startAt}}">
+                                       ng-model="vm.searchParams.payEndAt" data-max-date="today">
                             </div>
                         </div>
                     </div>
@@ -30,11 +30,12 @@
                         <div class="form-group">
                             <label class="control-label col-md-4 word-spacing-25">交易状态</label>
                             <div class="col-md-8">
-                                <select class="form-control" ng-model="vm.searchParams.app">
+                                <select class="form-control" ng-model="vm.searchParams.status">
                                     <option value="">全部</option>
-                                    <option value="0">成功</option>
-                                    <option value="1">失败</option>
-                                    <option value="2">进行中</option>
+                                    <option value="-1">订单失效</option>
+                                    <option value="0">付款失败</option>
+                                    <option value="1">付款成功</option>
+                                    <option value="2">待付款</option>
                                 </select>
                             </div>
                         </div>
@@ -48,7 +49,7 @@
                             <div class="col-md-8">
                                 <input class="form-control"
                                        type="text"
-                                       ng-model="vm.searchParams.ageFrom">
+                                       ng-model="vm.searchParams.amountStart">
                             </div>
                         </div>
                     </div>
@@ -59,7 +60,7 @@
                             <div class="col-md-8">
                                 <input class="form-control"
                                        type="text"
-                                       ng-model="vm.searchParams.ageTo">
+                                       ng-model="vm.searchParams.amountEnd">
                             </div>
                         </div>
                     </div>
@@ -68,9 +69,9 @@
                         <div class="form-group">
                             <label class="control-label col-md-4 word-spacing-25">交易类型</label>
                             <div class="col-md-8">
-                                <select class="form-control" ng-model="vm.searchParams.app">
+                                <select class="form-control" ng-model="vm.searchParams.type">
                                     <option value="">全部</option>
-                                    <option value="0">方体现</option>
+                                    <option value="0">方案提现</option>
                                     <option value="1">方案出售</option>
                                 </select>
                             </div>
@@ -82,7 +83,7 @@
 
                 <div class="row">
                     <div class="col-md-12 text-right ">
-                        <search params="vm.searchParams" ></search>
+                        <search params="vm.searchParams" time-fix-arr="vm.timeFixArr"></search>
                     </div>
                 </div>
 
@@ -98,11 +99,11 @@
                 <strong>的交易明细</strong>
             </div>
 
-            <div class="list-replace" ng-if="vm.userList.length == 0">
+            <div class="list-replace" ng-if="vm.transactionDetails.length == 0">
                 <div class="list-replace-text">暂无任何数据</div>
             </div>
 
-            <div class="panel-body panel-body-noMax" ng-if="vm.userList.length != 0">
+            <div class="panel-body panel-body-noMax" ng-if="vm.transactionDetails.length != 0">
                 <div class="divTable">
                     <div class="divTableHeading">
                         <div class="divTableHead">序号</div>
@@ -115,15 +116,15 @@
                     </div>
 
                     <div class="divTableBody">
-                        <div class="divTableRow" ng-repeat="deal in vm.transactionDetails.diagnosisRecord track by $index">
+                        <div class="divTableRow" ng-repeat="deal in vm.transactionDetails track by $index">
                             <div class="divTableCell handle">{{$index}}</div>
-                            <div class="divTableCell">{{deal.date|date:'yyyy-MM-dd'}}</div>
-                            <div class="divTableCell">{{deal.water}}</div>
+                            <div class="divTableCell">{{deal.orderAt|date:'yyyy-MM-dd'}}</div>
+                            <div class="divTableCell">{{deal.orderNo}}</div>
                             <!--保留两位小数-->
-                            <div class="divTableCell">{{deal.money.toFixed(2)}}</div>
-                            <div class="divTableCell">{{deal.dealType|dealTypeFilter}}</div>
-                            <div class="divTableCell">{{deal.dealStatus|dealStatusFilter}}</div>
-                            <div class="divTableCell">{{deal.dealWay}}</div>
+                            <div class="divTableCell">{{deal.amount.toFixed(2)}}</div>
+                            <div class="divTableCell">{{deal.type|dealTypeFilter}}</div>
+                            <div class="divTableCell">{{deal.status|dealStatusFilter}}</div>
+                            <div class="divTableCell">{{deal.way}}</div>
 
                         </div>
                     </div>

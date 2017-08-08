@@ -14,7 +14,7 @@
                             <div class="form-group">
                                 <label class="control-label col-md-4 word-spacing-25 pd-right-10">ID</label>
                                 <div class="col-md-8">
-                                    <input type="text" class="form-control" ng-model="vm.data.doctor.id" disabled>
+                                    <input type="text" class="form-control" ng-model="vm.data.id" disabled>
                                 </div>
                             </div>
                         </div>
@@ -22,7 +22,7 @@
                             <div class="form-group">
                                 <label class="control-label col-md-4 word-spacing-25 pd-right-10">姓&emsp;&emsp;名</label>
                                 <div class="col-md-8">
-                                    <input type="text" class="form-control" ng-model="vm.data.doctor.name" disabled>
+                                    <input type="text" class="form-control" ng-model="vm.data.name" disabled>
                                 </div>
                             </div>
                         </div>
@@ -30,7 +30,7 @@
                             <div class="form-group">
                                 <label class="control-label col-md-4 word-spacing-25 pd-right-10">身份证号</label>
                                 <div class="col-md-8">
-                                    <input type="text" class="form-control" ng-model="vm.data.doctor.idNo" disabled>
+                                    <input type="text" class="form-control" ng-model="vm.data.idNo" disabled>
                                 </div>
                             </div>
                         </div>
@@ -40,7 +40,7 @@
                             <div class="form-group">
                                 <label class="control-label col-md-4 word-spacing-25 pd-right-10">手机号</label>
                                 <div class="col-md-8">
-                                    <input type="text" class="form-control" ng-model="vm.data.user.mobile" disabled>
+                                    <input type="text" class="form-control" ng-model="vm.data.user[vm.data.id].mobile" disabled>
                                 </div>
                             </div>
                         </div>
@@ -48,7 +48,7 @@
                             <div class="form-group">
                                 <label class="control-label col-md-4 word-spacing-25 pd-right-10">注册时间</label>
                                 <div class="col-md-8">
-                                    <input type="text" class="form-control" ng-value="vm.data.doctor.apply|date:'yyyy-MM-dd'" disabled>
+                                    <input type="text" class="form-control" ng-value="vm.data.user[vm.data.id].createAt|date:'yyyy-MM-dd'" disabled>
                                 </div>
                             </div>
                         </div>
@@ -65,7 +65,7 @@
                             <div class="form-group">
                                 <label class="control-label col-md-4 word-spacing-25 pd-right-10">医院</label>
                                 <div class="col-md-8">
-                                    <input type="text" class="form-control" ng-model="vm.data.hospital.name" disabled>
+                                    <input type="text" class="form-control" ng-model="vm.data.hospital[vm.data.hid].name" disabled>
                                 </div>
                             </div>
                         </div>
@@ -73,7 +73,7 @@
                             <div class="form-group">
                                 <label class="control-label col-md-4 word-spacing-25 pd-right-10">职称</label>
                                 <div class="col-md-8">
-                                    <select class="form-control" ng-model="vm.data.doctor.position" ng-options="x.name as x.name for x in vm.positionalTitle" disabled>
+                                    <select class="form-control" ng-model="vm.data.position" ng-options="x.name as x.name for x in vm.positionalTitle" disabled>
                                         <option value="">全部</option>
                                     </select>
                                 </div>
@@ -83,7 +83,7 @@
                             <div class="form-group">
                                 <label class="control-label col-md-4 word-spacing-25 pd-right-10">医师资格证号</label>
                                 <div class="col-md-8">
-                                    <input type="text" class="form-control" ng-model="vm.data.doctor.qualifications" disabled>
+                                    <input type="text" class="form-control" ng-model="vm.data.qualifications" disabled>
                                 </div>
                             </div>
                         </div>
@@ -93,14 +93,14 @@
                         <div class="col-md-5" >
                             <div class="form-group">
                                 <div class="approvedImageDiv">
-                                    <img class="approvedImage" ng-src = "{{vm.data.doctor.certificate}}" alt="职业证书照片正面">
+                                    <img class="approvedImage" ng-src = "{{vm.data.certificate}}" alt="职业证书照片正面">
                                 </div>
                             </div>
                         </div>
                         <div class="col-md-5">
                             <div class="form-group">
                                 <div class="approvedImageDiv">
-                                    <img class="approvedImage" ng-src = "{{vm.data.doctor.certificateBack}}" alt="职业证书照片背面">
+                                    <img class="approvedImage" ng-src = "{{vm.data.certificateBack}}" alt="职业证书照片背面">
                                 </div>
                             </div>
                         </div>
@@ -108,7 +108,7 @@
                     <div class="row pd-bottom-20">
                         <label class="control-label col-md-2 word-spacing-25 refuse">拒绝/取消理由</label>
                         <div class="col-md-4">
-                            <textarea class="form-control" ng-model="vm.data.doctor.refuse" cols="33" rows="3" disabled></textarea>
+                            <textarea class="form-control" ng-model="vm.data.refuse" cols="33" rows="3" disabled></textarea>
                         </div>
                     </div>
                 </div>

@@ -6,8 +6,8 @@ angular.module('admin').controller('AppraisalDetailsCtrl',['$rootScope','$state'
         portService.appraisalDetails(vm.Params.id).then(function (res){
             if(res.data.code === 0) {
                 // console.log("res",res);
-                vm.comment = res.data.data.comment;
-                vm.user = res.data.data.user[vm.comment.uid];
+                vm.comment = res.data.data;
+                vm.user = res.data.user[vm.comment.pid];
                 console.log(vm.comment);
                 console.log(vm.user);
             } else {

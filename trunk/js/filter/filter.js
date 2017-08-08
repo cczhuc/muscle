@@ -54,13 +54,13 @@ angular.module('admin')
     .filter('approvedListStatusFilter', function () {
         return function (status) {
             switch (status) {
-                case 0:
-                    return "已认证";
                 case 1:
                     return "未认证";
                 case 2:
-                    return "已拒绝";
+                    return "已认证";
                 case 3:
+                    return "已拒绝";
+                case 4:
                     return "已撤销";
                 default :
                     return "数据异常";
@@ -94,15 +94,16 @@ angular.module('admin')
     })
     //交易状态
     .filter('dealStatusFilter',function() {
-
         return function(status) {
             switch(status) {
+                case -1:
+                    return "订单失效";
                 case 0 :
-                    return "成功";
+                    return "付款失败";
                 case 1:
-                    return "进行中";
+                    return "付款成功";
                 case 2:
-                    return "失败";
+                    return "待付款";
                 default:
                         return "status="+status+"数据异常";
             }
