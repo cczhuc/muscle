@@ -16,7 +16,8 @@
                         <div class="col-md-8">
                             <select class="form-control" ng-model="vm.searchParams.type">
                                 <option value="">全部</option>
-                                <option value="0">方案支付</option>
+                                <option value="0">方案购买</option>
+                                <!--<option value="1">提现</option>-->
                             </select>
                         </div>
                     </div>
@@ -27,8 +28,10 @@
                         <div class="col-md-8">
                             <select class="form-control" ng-model="vm.searchParams.status">
                                 <option value="">全部</option>
-                                <option value="0">成功</option>
-                                <option value="1">失败</option>
+                                <option value="-1">订单失效</option>
+                                <option value="0">付款失败</option>
+                                <option value="1">付款成功</option>
+                                <option value="2">待付款</option>
                             </select>
                         </div>
                     </div>
@@ -84,7 +87,7 @@
 </div>
 <div class="panel panel-default">
     <div class="panel-heading">
-        <strong>{{vm.searchParams.name}}的订单记录</strong>
+        <strong>{{vm.patientRecord[0].patientName}}的订单记录</strong>
     </div>
     <div class="list-replace" ng-if="vm.patientRecord.length == 0">
         <div class="list-replace-text">暂无任何数据</div>

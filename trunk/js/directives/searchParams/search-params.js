@@ -55,7 +55,7 @@ angular.module("admin")
                     // console.log($scope.params.address1);
                     angular.forEach($scope.params, function (data, index) {
                         //三期添加了关于ID的选项，清除的时候不能清除ID
-                        if (index !== 'size' && index !== 'id' && index !== 'hid' && index !=='dName' && index !=='hName' && index !=='did' ) {
+                        if (index !== 'size' && index !== 'id' && index !== 'hid' && index !== 'pid' && index !=='dName' && index !=='hName' && index !=='did' ) {
                             $scope.params[index] = '';
                         }
                     });

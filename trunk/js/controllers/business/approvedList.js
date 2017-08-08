@@ -43,7 +43,7 @@ angular.module("admin").controller('ApprovedListCtrl',["$rootScope","$state","$h
                         if(vm.refuse.status==2) {
                             $rootScope.alert("审核通过");
                         }
-                        else {
+                        else if(vm.refuse.status==3) {
                             $rootScope.alert("审核拒绝");
                         }
                     }

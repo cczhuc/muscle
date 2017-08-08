@@ -164,7 +164,7 @@ function projectRouteConfig($stateProvider, $urlRouterProvider, $ocLazyLoadProvi
             }
         })
         .state('field.patientRecord', {
-            url: '/patientRecord?id&name&page&size&product&type&status&amountStart&amountEnd&payStartAt&payEndAt',
+            url: '/patientRecord?pid&page&size&product&type&status&amountStart&amountEnd&payStartAt&payEndAt',
             templateUrl: 'views/business/patient/patientRecord.html',
             controller: 'PatientRecordCtrl',
             controllerAs: 'vm',

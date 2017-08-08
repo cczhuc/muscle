@@ -25,7 +25,7 @@ angular.module('admin').controller('PatientRecordCtrl',['$rootScope','$state','$
             vm.tempParams.amountEnd = tempSum;
         }
 
-        portService.getPatientRecord(vm.tempParams.id).then(function (res) {
+        portService.getPatientRecord(vm.tempParams).then(function (res) {
             if(res.data.code==0) {
                 console.log(res);
                 vm.patientRecord = res.data.data;
