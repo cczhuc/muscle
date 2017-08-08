@@ -33,6 +33,15 @@ angular.module('admin').controller('PatientAppraisalCtrl', ['$rootScope', '$stat
             }
         });
 
+        //通过医师详情接口获取姓名
+        portService.getDoctorDetails(vm.searchParams.did).then(function (res){
+            if(res.data.code === 0) {
+                vm.detailData = res.data.data;
+            } else {
+                $rootScope.alert(res.data.message);
+            }
+        });
+
         vm.deleteComment = function (id) {
             $rootScope.operationConfirm("删除将同时在前台删除此条评论", "确认删除？", function () {
                 portService.deleteComment(id).then(function (res) {

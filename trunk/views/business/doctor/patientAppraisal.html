@@ -51,7 +51,7 @@
                     </div>
                     <div class="col-md-4">
                         <div class="form-group">
-                            <label class="control-label col-md-4 word-spacing-25">评星</label>
+                            <label class="control-label col-md-4 word-spacing-25">评&emsp;&emsp;星</label>
                             <div class="col-md-8">
                                 <select class="form-control" ng-model="vm.searchParams.star">
                                     <option value="">全部</option>
@@ -80,7 +80,7 @@
     <div class="col-lg-12">
         <div class="panel panel-default">
             <div class="panel-heading">
-                <strong>{{vm.searchParams.dName}}的患者评价</strong>
+                <strong>{{vm.detailData.name}}的患者评价</strong>
             </div>
 
             <div class="list-replace" ng-if="vm.commentList.length == 0">
@@ -109,7 +109,8 @@
                             <div class="divTableCell company-tableCell-fix">
 
                                 <a class="btn btn-sm company-a-fix"
-                                   ui-sref="field.appraisalDetails({id:info.id})">
+                                   ui-sref="field.appraisalDetails({id:info.id,did:vm.searchParams.did})"
+                                   ui-sref-opts="{reload:true}">
                                     查看
                                 </a>
 

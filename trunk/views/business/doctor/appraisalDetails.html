@@ -40,8 +40,9 @@
                     </div>
                     <div class="col-md-offset-1">
                         <button class="btn btn-info btn-margin" ng-click="vm.deleteComment()" >删除</button>
-                        <!--<button class="btn btn-warning btn-margin" ui-sref="field.approvedList">返回</button>-->
-                        <button class="btn btn-warning btn-margin" onclick="javascript:{window.history.go(-1);}">
+                        <button class="btn btn-warning btn-margin"
+                                ui-sref="field.patientAppraisal({did:vm.searchParams.did})"
+                                ui-sref-opts="{reload:true}">
                             返回
                         </button>
                     </div>

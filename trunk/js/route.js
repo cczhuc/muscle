@@ -210,7 +210,7 @@ function projectRouteConfig($stateProvider, $urlRouterProvider, $ocLazyLoadProvi
         })
         //方案模板
         .state('field.planTemplate', {
-            url: '/planTemplate/:page/:size?did?name&createFrom&createTo&countFrom&countTo&dName',
+            url: '/planTemplate/:page/:size?did?name&createFrom&createTo&countFrom&countTo',
             templateUrl: 'views/business/doctor/planTemplate.html',
             controller: 'PlanTemplateCtrl',
             controllerAs: 'vm',
@@ -222,7 +222,7 @@ function projectRouteConfig($stateProvider, $urlRouterProvider, $ocLazyLoadProvi
         })
         //诊断记录
         .state('field.diagnosisRecord', {
-            url: '/diagnosisRecord/:page:size?did&dName&name&createFrom&createTo&mobile',
+            url: '/diagnosisRecord/:page/:size?did&name&createFrom&createTo&mobile',
             templateUrl: 'views/business/doctor/diagnosisRecord.html',
             controller: 'DiagnosisRecordCtrl',
             controllerAs: 'vm',
@@ -234,7 +234,7 @@ function projectRouteConfig($stateProvider, $urlRouterProvider, $ocLazyLoadProvi
         })
         //诊断详情
         .state('field.diagnosisDetails', {
-            url: '/diagnosisDetails/:id',
+            url: '/diagnosisDetails?id&did',
             templateUrl: 'views/business/doctor/diagnosisDetails.html',
             controller: 'DiagnosisDetailsCtrl',
             controllerAs: 'vm',
@@ -246,7 +246,7 @@ function projectRouteConfig($stateProvider, $urlRouterProvider, $ocLazyLoadProvi
         })
         //医师版-患者评价
         .state('field.patientAppraisal', {
-            url: '/patientAppraisal/:page/:size?did&dName&createFrom&createTo&mobile&name&star',
+            url: '/patientAppraisal/:page/:size?did&createFrom&createTo&mobile&name&star',
             templateUrl: 'views/business/doctor/patientAppraisal.html',
             controller: 'PatientAppraisalCtrl',
             controllerAs: 'vm',
@@ -258,7 +258,7 @@ function projectRouteConfig($stateProvider, $urlRouterProvider, $ocLazyLoadProvi
         })
         //评价详情
         .state('field.appraisalDetails', {
-            url: '/appraisalDetails?id',
+            url: '/appraisalDetails?id&did',
             templateUrl: 'views/business/doctor/appraisalDetails.html',
             controller: 'AppraisalDetailsCtrl',
             controllerAs: 'vm',
