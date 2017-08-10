@@ -55,17 +55,17 @@ angular.module('admin').controller('DoctorDetailsCtrl', ['$rootScope', '$state',
         vm.refuse = {}; //拒绝理由，对应的传参是refuse的引用
         //取消认证
         vm.cancelApproved = function (id) {
-            $rootScope.cancleApproved("取消实名将删除用户身份及银行卡信息","确认取消？",vm.refuse,function () {
+            $rootScope.cancleApproved("取消实名将删除用户身份及银行卡信息", "确认取消？", vm.refuse, function () {
                 vm.refuse.status = 4;
                 // console.log(vm.refuse);
                 // 发送请求取消认证变态并删除信息
-                portService.cancelApproved(id,vm.refuse).then(function (res) {
-                    $state.go($state.current,{},{reload:true});
-                    if(res.data.code==0) {
+                portService.cancelApproved(id, vm.refuse).then(function (res) {
+                    $state.go($state.current, {}, {reload: true});
+                    if (res.data.code == 0) {
                         $rootScope.alert("撤销认证成功")
                     }
                     else {
-                        $rootScope.alert('取消认证失败,code='+code)
+                        $rootScope.alert('取消认证失败,code=' + code)
                     }
                 })
             });

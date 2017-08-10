@@ -78,7 +78,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-12 row-btn-group">
+                        <div class="col-lg-12 row-btn-group" ng-if='vm.data.status == 2'>
                             <a class="btn btn-primary btn-margin margin-7 inline-block"
                                ui-sref="field.planTemplate({did:vm.user.id})">方案模板</a>
                             <a class="btn btn-primary btn-margin margin-7 inline-block"
@@ -129,7 +129,7 @@
                         <label class="control-label col-md-2 word-spacing-25 pd-right-10"><span>医师执业证书</span></label>
                         <div class="col-md-5">
                             <div class="form-group">
-                                <div style="height:240px; background-color:rgba(100,213,198,0.53); position:relative; padding:15px; margin:0 15px;">
+                                <div style="height:240px; position:relative; padding:15px; margin:0 15px;">
                                     <img
                                             style="min-height:80%; max-width:100%; max-height: 100%; position:absolute; left:0; right:0; bottom:0; top:0; margin:auto;"
                                             ng-src="{{vm.data.certificate}}" alt="医师资格证照片">
@@ -138,7 +138,7 @@
                         </div>
                         <div class="col-md-5">
                             <div class="form-group">
-                                <div style="height:240px; background-color:rgba(100,213,198,0.53); position:relative; padding:15px; margin:0 15px;">
+                                <div style="height:240px; position:relative; padding:15px; margin:0 15px;">
                                     <img
                                             style="min-height:80%; max-width:100%; max-height: 100%; position:absolute; left:0; right:0; bottom:0; top:0; margin:auto;"
                                             ng-src="{{vm.data.certificateBack}}" alt="医师资格证照片背面">
