@@ -6,7 +6,7 @@ angular.module('admin')
 
 
         roleService.getRoleList().then(function(res) {
-
+            console.log(res);
 
             if (res.data.code == 0) {
                 vm.page = {
@@ -17,7 +17,7 @@ angular.module('admin')
                 };
 
                 roleService.batchGetRole(res.data.data.ids).then(function(res) {
-
+                    console.log(res);
 
                     if (res.data.code == 0) {
 

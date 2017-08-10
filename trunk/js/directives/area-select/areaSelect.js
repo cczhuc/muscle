@@ -48,6 +48,7 @@ angular.module("admin")
             // '</div>' +
             '</div>',
             link: function (scope, elem, attrs) {
+                console.log(attrs);
                 if (attrs.selectData) { // 如果有selectData参数
                     if (scope.selectData.$$state == 0) { // 如果是请求的数据
                         scope.$watch('selectData', function (m) {

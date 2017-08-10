@@ -25,7 +25,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row pd-bottom-20" ng-if="vm.checkStatu==2">
+                    <div class="row pd-bottom-20" ng-if="vm.checkStatu==3">
                         <div class="col-md-12">
                             <div class="form-group">
                                 <div class="col-md-12">
@@ -41,7 +41,7 @@
             </div>
             <div class="modal-footer">
                 <button class="btn btn-warning" type="button" ng-click="vm.cancel()">取消</button>
-                <button class="btn btn-primary" type="button" ng-click="vm.ok()" ng-disabled="vm.checkStatu==2&&!vm.rejectReason.length">确认</button>
+                <button class="btn btn-primary" type="button" ng-click="vm.ok()" ng-disabled="vm.checkStatu==3&&!vm.rejectReason.length">确认</button>
             </div>
         </div>
     </div>

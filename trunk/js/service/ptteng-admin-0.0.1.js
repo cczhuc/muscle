@@ -10,7 +10,7 @@ angular.module('admin')
                 if (mid == undefined || mid == "") {
                     return "/a/u/manager";
                 } else {
-                    return "/a/u/manager/list/" + mid;
+                    return "/a/u/manager/" + mid;
                 }
             },
             manager_list: "/a/u/manager/list/",
