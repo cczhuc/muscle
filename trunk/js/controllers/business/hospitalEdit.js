@@ -2,6 +2,11 @@ angular.module("admin").controller('HospitalEditCtrl',["$rootScope","$state","$h
 "hospitalGrade","commonUtil","FileUploader","uploadService",
     function ($rootScope,$state,$http,portService,hospitalGrade,commonUtil,FileUploader,uploadService) {
         var vm = this;
+        /**获取常量表数据**/
+        var data ={size:""};
+        data.size=1000;
+        vm.selectData = portService.getParamList(data);
+
         vm.data = $state.params;
         vm.hospitalGrade = hospitalGrade;
         //上传图片
@@ -13,19 +18,9 @@ angular.module("admin").controller('HospitalEditCtrl',["$rootScope","$state","$h
         vm.uploader1 = uploadService.uploadFile(FileUploader);
         vm.uploader1.onSuccessItem = function (fileItem, response, status, headers) {
             if (status === 200) {
-                console.log(response);
                 vm.data.img = response.data.url;
             }
         };
-
-        //省市拆分
-        if (vm.data.address1) {
-            vm.data.province = vm.data.address.province;
-            vm.data.city = vm.data.address.city;
-            // vm.data.county = vm.data.address.district;
-        }
-        // 省市区数据转换
-        vm.data.address1 = commonUtil.areaDateTransform(vm.data.province, vm.data.city, vm.data.county);
         // 编辑
         if (vm.data.id) {
             //获取数据
@@ -33,16 +28,23 @@ angular.module("admin").controller('HospitalEditCtrl',["$rootScope","$state","$h
                 if (res.data.code==0) {
                     console.log(res);
                     vm.data = res.data.data;
+                    // 省市区数据转换
+                    vm.address1 = commonUtil.areaDateTransform(vm.data.province, vm.data.city, vm.data.county);
                 }
                 else {
                     $rootScope.alert(res.data.message)
                 }
-
             });
             // 立即上线
             vm.pubHospital = function () {
+                //省市拆分
+                if (vm.address1) {
+                    vm.data.province = vm.address1.province;
+                    vm.data.city = vm.address1.city;
+                }
                 $rootScope.operationConfirm("上线将在前台展示此内容", "确认上线？",function () {
-                    vm.data.status=0;
+                    vm.data.status = 0;
+                    vm.data.cid = vm.data.city;
                     portService.editHospital(vm.data.id,vm.data).then(function (res) {
                         if (res.data.code===0) {
                             console.log(res);
@@ -58,6 +60,12 @@ angular.module("admin").controller('HospitalEditCtrl',["$rootScope","$state","$h
             // 存为草稿
             vm.saveHospital = function () {
                 vm.data.status=1;
+                //省市拆分
+                if (vm.address1) {
+                    vm.data.province = vm.address1.province;
+                    vm.data.city = vm.address1.city;
+                }
+                vm.data.cid = vm.data.city;
                 portService.editHospital(vm.data.id,vm.data).then(function (res) {
                     if (res.data.code===0) {
                         console.log(res);
@@ -74,8 +82,14 @@ angular.module("admin").controller('HospitalEditCtrl',["$rootScope","$state","$h
         else {
             // 立即上线
             vm.pubHospital = function () {
+                //省市拆分
+                if (vm.address1) {
+                    vm.data.province = vm.address1.province;
+                    vm.data.city = vm.address1.city;
+                }
                 $rootScope.operationConfirm("上线将在前台展示此内容", "确认上线？",function () {
                     vm.data.status=0;
+                    vm.data.cid = vm.data.city;
                     portService.addHospital(vm.data).then(function (res) {
                         console.log(res);
                         if (res.data.code===0) {
@@ -91,6 +105,12 @@ angular.module("admin").controller('HospitalEditCtrl',["$rootScope","$state","$h
             // 存为草稿
             vm.saveHospital = function () {
                 vm.data.status=1;
+                //省市拆分
+                if (vm.address1) {
+                    vm.data.province = vm.address1.province;
+                    vm.data.city = vm.address1.city;
+                }
+                vm.data.cid = vm.data.city;
                 portService.addHospital(vm.data).then(function (res) {
                     if (res.data.code===0) {
                         console.log(res);

@@ -49,8 +49,9 @@ angular.module("admin").factory("address",function ($state,$http){
             return "/a/u/img/thumb"
         },
         // 立即上线、存为草稿
-        editHospital_url: function(id) {
-            return "/a/u/hospital/"+id
+        editHospital_url: function(id,data) {
+            var params = $.param(data);
+            return "/a/u/hospital/"+id+"?"+params
         },
         addHospital_url: function () {
             return "/a/u/hospital"

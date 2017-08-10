@@ -1,6 +1,11 @@
 angular.module("admin").controller('HospitalListCtrl',["$rootScope","$scope","$state","$http","portService","hospitalGrade","commonUtil",
     function ($rootScope,$scope,$state,$http,portService,hospitalGrade,commonUtil) {
         var vm = this;
+        /**获取常量表数据**/
+        var data ={size:""};
+        data.size=1000;
+        vm.selectData = portService.getParamList(data);
+
         vm.searchParams = $state.params;
         vm.hospitalGrade = hospitalGrade;
         //需求：对输入范围的左边和右边的大小不限。  但是在发送数据的时候要对这些倒过来的参数进行处理
@@ -14,17 +19,42 @@ angular.module("admin").controller('HospitalListCtrl',["$rootScope","$scope","$s
         }
         // 省市区数据转换
         vm.searchParams.address1 = commonUtil.areaDateTransform($state.params.province, $state.params.city, $state.params.county);
-
-        portService.gerHospitalList(vm.tempParams).then(function (res) {
+        // 获取常量表
+        portService.getParamList(data).then(function (res) {
             if (res.data.code==0) {
-                console.log(res);
-                vm.hospitalList = res.data.data;
-                vm.total = res.data.total;
+                var areaData = commonUtil.areaDataFilter(res.data.data);
+                // 获取常量数据并将省、市过滤
+                portService.gerHospitalList(vm.tempParams).then(function (res) {
+                    if (res.data.code==0) {
+                        vm.hospitalList = res.data.data;
+                        vm.total = res.data.total;
+                        angular.forEach(areaData.provinces, function (item) {
+                            for (var i=0;i<vm.hospitalList.length;i++) {
+                                if (item.id == vm.hospitalList[i].province) {
+                                    vm.hospitalList[i].province = item.name;
+                                }
+                            }
+                        });
+                        angular.forEach(areaData.cities, function (item) {
+                            for (var i=0;i<vm.hospitalList.length;i++) {
+                                if (item.id == vm.hospitalList[i].city) {
+                                    vm.hospitalList[i].city = item.name;
+                                }
+                            }
+                        });
+                    }
+                    else {
+                        $rootScope.alert(res.data.message)
+                    }
+                });
             }
             else {
                 $rootScope.alert(res.data.message)
             }
         });
+
+
+
         // 上下线
         vm.onOffLine = function(id,type,status) {
             if (status === 0) {

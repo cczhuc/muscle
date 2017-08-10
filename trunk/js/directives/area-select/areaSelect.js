@@ -12,7 +12,7 @@
  * <city-select select-data="vm.areaData" select-result="vm.selectArea"></city-select>
  * */
 angular.module("admin")
-    .directive('citySelect', function (areaData) {
+    .directive('citySelect', function (areaData,commonUtil) {
         return {
             priority: 1,
             restrict: 'EA',
@@ -28,7 +28,7 @@ angular.module("admin")
             '省' +
             '</label>'+
             '<div class="col-md-4">' +
-            '<select required name="province" class="form-control" ng-model="province" ng-options="province.ProID as province.ProName for province in provinces">' +
+            '<select required name="province" class="form-control" ng-model="province" ng-options="province.id as province.name for province in provinces">' +
             '<option value="">请选择省份</option>' +
             '</select>' +
             '</div>' +
@@ -37,7 +37,7 @@ angular.module("admin")
             '市' +
             '</label>'+
             '<div class="col-md-4">' +
-            '<select required name="city" class="form-control" ng-model="city" ng-options="city.CityID as city.CityName for city in filteredCities">' +
+            '<select required name="city" class="form-control" ng-model="city" ng-options="city.id as city.name for city in filteredCities">' +
             '<option value="">请选择城市</option>' +
             '</select>' +
             '</div>' +
@@ -48,13 +48,13 @@ angular.module("admin")
             // '</div>' +
             '</div>',
             link: function (scope, elem, attrs) {
-                console.log(attrs);
                 if (attrs.selectData) { // 如果有selectData参数
-                    if (scope.selectData.$$state == 0) { // 如果是请求的数据
+                    if (scope.selectData.$$state) { // 如果是请求的数据
                         scope.$watch('selectData', function (m) {
                             if (m && m.then) {
                                 m.then(function (res) {
-                                    fillData(res);
+                                    areaData = commonUtil.areaDataFilter(res.data.data);
+                                    fillData(areaData);
                                 })
                             }
                         });
@@ -64,7 +64,6 @@ angular.module("admin")
                 } else { // 如果根本没传入参数
                     fillData(areaData);
                 }
-
 
                 function fillData(res) {
                     var areaData = res;
@@ -101,7 +100,7 @@ angular.module("admin")
                         scope.filteredDistricts.length = 0;
                         if (value) {
                             scope.filteredCities = areaData.cities.filter(function (city) {
-                                return city.ProID === value;
+                                return city.value == value;
                             });
                         } else {
                             scope.filteredCities.length = 0;
@@ -111,26 +110,32 @@ angular.module("admin")
                             updateResult();
                         }
                     });
-
                     scope.$watch('city', function (value, oldVal) {
-                        if (value) {
-                            scope.filteredDistricts = areaData.districts.filter(function (district) {
-                                return district.CityID === value;
-                            });
-                        } else {
-                            scope.filteredDistricts.length = 0;
-                        }
                         if (value != oldVal) {
-                            scope.district = null;
                             updateResult();
                         }
                     });
 
-                    scope.$watch('district', function (value, oldVal) {
-                        if (value != oldVal) {
-                            updateResult();
-                        }
-                    });
+
+                    // scope.$watch('city', function (value, oldVal) {
+                    //     if (value) {
+                    //         scope.filteredDistricts = areaData.districts.filter(function (district) {
+                    //             return district.value === value;
+                    //         });
+                    //     } else {
+                    //         scope.filteredDistricts.length = 0;
+                    //     }
+                    //     if (value != oldVal) {
+                    //         scope.district = null;
+                    //         updateResult();
+                    //     }
+                    // });
+
+                    // scope.$watch('district', function (value, oldVal) {
+                    //     if (value != oldVal) {
+                    //         updateResult();
+                    //     }
+                    // });
                 }
 
 

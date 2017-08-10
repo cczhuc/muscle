@@ -164,6 +164,7 @@ angular.module('admin')
             }
         }
     })
+
     // 患者-订单记录-交易类型
     .filter('transactionTypeFilter', function () {
         return function (status) {

@@ -89,7 +89,7 @@ angular.module("admin")
         },
         // 立即上线、存为草稿
         editHospital: function (id,data) {
-            return $http.put(address.editHospital_url(id),data)
+            return $http.put(address.editHospital_url(id,data))
         },
         addHospital: function (data) {
             return $http.post(address.addHospital_url(),data)

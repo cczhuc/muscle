@@ -631,7 +631,27 @@ angular.module('admin')
                     };
                 });
                 return p;
+            },
+            // 将常量表数据进行处理,使得符合指令需要的数据
+
+            areaDataFilter:function (res) {
+                var areaData ={};
+                areaData.provinces = [];
+                areaData.cities = [];
+                areaData.provinces = res.filter(function (item) {
+                    if (item.value=='0' && item.type=='city') {
+                        return item;
+                    }
+                });
+                areaData.cities = res.filter(function (item) {
+                    if (item.type=='city' && item.value!='0') {
+                        return item;
+                    }
+                });
+                return areaData;
             }
+
+
         }
     })
 
