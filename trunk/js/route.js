@@ -386,7 +386,7 @@ function projectRouteConfig($stateProvider, $urlRouterProvider, $ocLazyLoadProvi
 
         // 运营管理开始
         .state('field.parameterSetting', {
-            url: '/parameterSetting',
+            url: '/parameterSetting/:page/:size?type&value&name&startAt&endAt',
             templateUrl: 'views/operation/parameterSetting.html',
             controller: 'ParameterSettingCtrl',
             controllerAs: 'vm',
@@ -397,7 +397,7 @@ function projectRouteConfig($stateProvider, $urlRouterProvider, $ocLazyLoadProvi
             }
         })
         .state('field.parameterSettingEdit', {
-            url: '/parameterSetting',
+            url: '/parameterSettingEdit/:id',
             templateUrl: 'views/operation/parameterSettingEdit.html',
             controller: 'ParameterSettingEditCtrl',
             controllerAs: 'vm',

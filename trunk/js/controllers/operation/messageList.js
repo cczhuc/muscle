@@ -22,9 +22,12 @@
         vm.searchParams.startAt = parseInt(vm.searchParams.startAt) || undefined;
         vm.searchParams.endAt = parseInt(vm.searchParams.endAt) || undefined;
         portService.getMessageList(vm.searchParams).then(function(res){
-            vm.message = res.data.data;
-            vm.total = res.data.total;
-            console.log(vm.message);
+            if(res.data.code === 0){
+                vm.message = res.data.data;
+                vm.total = res.data.total;
+            } else {
+                $rootScope.alert(res.data.message);
+            }
         });
         vm.send = function($index){
             $rootScope.operationConfirm('立即发送将取消定时发送并立即发送消息', '确认发送？', function(){

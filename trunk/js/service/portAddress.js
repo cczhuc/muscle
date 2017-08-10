@@ -132,9 +132,17 @@ angular.module("admin").factory("address",function ($state,$http){
         },
 
         // 运营管理
-        // 参数设置
-        paramSetting_url:function(prince){
-            return "/a/u/param?prince="+prince
+        // 参数设置列表
+        paramList_url:function(){
+            return "/a/u/constant/search"
+        },
+        // 参数设置详情
+        paramDetail_url:function(cid){
+            return "/a/u/constant/"+cid
+        },
+        // 参数设置详情
+        addParam_url:function(){
+            return "/a/u/constant/"
         },
         // 消息列表
         messageList_url:function(){
@@ -147,6 +155,10 @@ angular.module("admin").factory("address",function ($state,$http){
         // 新增消息
         newMessage_url:function (){
             return "/a/u/message"
+        },
+        // 编辑消息
+        putMessage_url:function (id){
+            return "/a/u/message/"+id
         },
         // 删除消息
         deleteMessage_url:function (id){

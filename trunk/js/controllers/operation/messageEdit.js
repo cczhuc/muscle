@@ -39,12 +39,8 @@
                 vm.data.type = 0;
                 delete vm.data.publishAt;
             }
-            // if(vm.data.status === true){
-            //     vm.data.status = 2;
-            // } else {
-                vm.data.status = status;
-            // }
-            if(vm.id===undefined){
+            vm.data.status = status;
+            if(vm.id==''){
                 newMessage();
             }else {
                 editMessage()
@@ -63,7 +59,7 @@
         }
         // 编辑信息请求
         function editMessage(){
-            portService.postMessage(vm.data).then(function(res){
+            portService.postMessage(vm.id,vm.data).then(function(res){
                 if(res.data.code === 0){
                     $rootScope.alert("发送成功");
                     $state.go($state.current, {}, {reload : true});

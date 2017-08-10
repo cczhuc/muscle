@@ -85,7 +85,7 @@
                     <td>{{item.id}}</td>
                     <td>{{item.mobile}}</td>
                     <td>{{item.name}}</td>
-                    <td>{{item.APP|appVersionFilter}}</td>
+                    <td>{{item.type|appVersionFilter}}</td>
                     <td>{{item.createAt|date:"yyyy-MM-dd HH:mm:ss"}}</td>
                     <td>
                         <a  type="button" class="btn btn-sm" ui-sref="field.opinionDetails({id:vm.data[$index].id})">查看</a>

@@ -23,9 +23,11 @@
                     <div  class="divTableCell middle">{{item.forceUpdate}}</div>
                     <div  class="divTableCell middle">{{item.url}}</div>
                     <div  class="divTableCell middle">
-                        <ul middle>
-                            <li ng-repeat="x in vm.f_info">{{x}}</li>
-                        </ul>
+                        <div class="inline-block">
+                            <ul class="middle serviceUl">
+                                <li class="text-left" ng-repeat="x in item.info">{{x}}</li>
+                            </ul>
+                        </div>
                     </div>
                     <div  class="divTableCell middle">
                         <a type="button" class="btn btn-sm" ui-sref="field.versionUpdate({id:vm.patient[$index].id})">更新</a>
@@ -51,7 +53,13 @@
                     <div  class="divTableCell middle">{{item.versionId}}</div>
                     <div  class="divTableCell middle">{{item.forceUpdate}}</div>
                     <div  class="divTableCell middle">{{item.url}}</div>
-                    <div  class="divTableCell middle">{{item.info}}</div>
+                    <div  class="divTableCell middle">
+                        <div class="inline-block">
+                            <ul class="middle serviceUl">
+                                <li class="text-left" ng-repeat="x in item.info">{{x}}</li>
+                            </ul>
+                        </div>
+                    </div>
                     <div  class="divTableCell middle">
                         <a type="button" class="btn btn-sm" ui-sref="field.versionUpdate({id:vm.doctor[$index].id})">更新</a>
                     </div>

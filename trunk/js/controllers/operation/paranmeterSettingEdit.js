@@ -8,34 +8,52 @@
         .module('admin')
         .controller('ParameterSettingEditCtrl', ParameterSettingEditCtrl);
 
-    ParameterSettingEditCtrl.$inject = ['$rootScope','$filter','portService'];
+    ParameterSettingEditCtrl.$inject = ['$rootScope', '$filter', 'portService', '$state'];
 
     /* @ngInject */
-    function ParameterSettingEditCtrl($rootScope,$filter,portService){
+    function ParameterSettingEditCtrl($rootScope, $filter, portService, $state){
         var vm = this;
         vm.title = 'ParameterSettingEditCtrl';
-
-        activate();
-
-        ////////////////
-
+        vm.id = $state.params.id;
         function activate(){
-            // code
+            portService.getParamDetail(vm.id).then(function(res){
+                if(res.data.code == 0){
+                    vm.data = res.data.data;
+                    vm.total = res.data.total;
+                } else {
+                    $rootScope.alert(res.data.message)
+                }
+            })
         }
-        vm.params = 2;
-        vm.currentValue = $filter('number')(vm.params,2);
-        vm.restore = function(){
-            vm.currentValue = $filter('number')(vm.params,2);
-        };
+
+        if(vm.id !== ''){
+            activate();
+        }
         vm.save = function(){
-            $rootScope.operationConfirm('', '确认保存修改？', function(){
-                portService.putParam(vm.currentValue).then(function(res){
-                    if(res.data.code === 0){
-                        $rootScope.alert('保存成功');
-                    } else {
-                        $rootScope.alert(res.data.message);
-                    }
-                })
+            if(vm.id !== ''){
+                editData()
+            }else{
+                newData()
+            }
+        };
+        function editData(){
+            portService.putParamDetail(vm.id, vm.data).then(function(res){
+                if(res.data.code === 0){
+                    $rootScope.alert(res.data.message);
+                    $state.go('field.parameterSetting');
+                } else {
+                    $rootScope.alert(res.data.message);
+                }
+            })
+        }
+        function newData(){
+            portService.postParamDetail(vm.data).then(function(res){
+                if(res.data.code === 0){
+                    $rootScope.alert(res.data.message);
+                    $state.go('field.parameterSetting');
+                } else {
+                    $rootScope.alert(res.data.message);
+                }
             })
         }
     }

@@ -6,7 +6,7 @@
                     <div class="form-group">
                         <label class="control-label col-md-4 word-spacing-25">类别</label>
                         <div class="col-md-8">
-                            <input type="text" class="form-control" numberic ng-model="vm.searchParams.mobile" maxlength="11" >
+                            <input type="text" class="form-control" ng-model="vm.searchParams.type" maxlength="11" >
                         </div>
                     </div>
                 </div>
@@ -22,11 +22,7 @@
                     <div class="form-group">
                         <label class="control-label col-md-4 word-spacing-25">值</label>
                         <div class="col-md-8">
-                            <select class="form-control" ng-model="vm.searchParams.status">
-                                <option value="">全部</option>
-                                <option value="2">已认证</option>
-                                <option value="1">未认证</option>
-                            </select>
+                            <input type="text" class="form-control" ng-model="vm.searchParams.value">
                         </div>
                     </div>
                 </div>
@@ -38,7 +34,7 @@
                         <div class="col-md-8">
                             <input type="text" class="form-control" size="20" bs-datepicker autoclose="true"
                                     data-date-format="yyyy-MM-dd" data-date-type="number"
-                                    ng-model="vm.searchParams.applyFrom" data-max-date="today">
+                                    ng-model="vm.searchParams.startAt" data-max-date="{{vm.searchParams.endAt}}">
                         </div>
                     </div>
                 </div>
@@ -48,7 +44,7 @@
                         <div class="col-md-8">
                             <input type="text" class="form-control" size="20" bs-datepicker autoclose="true"
                                     data-date-format="yyyy-MM-dd" data-date-type="number"
-                                    ng-model="vm.searchParams.applyTo" data-max-date="today">
+                                    ng-model="vm.searchParams.endAt" data-min-date="{{vm.searchParams.startAt}}">
                         </div>
                     </div>
                 </div>
@@ -63,15 +59,15 @@
 </div>
 <div class="panel panel-default">
     <div class="panel-heading">
-        <strong>认证列表</strong>
+        <strong>常量表</strong>
         <button type="button" class="btn btn-xs btn-success pull-right margin-left-10" ui-sref="field.parameterSettingEdit({})">
             +新增
         </button>
     </div>
-    <div class="list-replace" ng-if="vm.approvedList.length == 0">
+    <div class="list-replace" ng-if="vm.data.length == 0">
         <div class="list-replace-text">暂无任何数据</div>
     </div>
-    <div class="panel-body  panel-body-noMax" ng-if="vm.approvedList.length != 0">
+    <div class="panel-body  panel-body-noMax" ng-if="vm.data.length != 0">
         <div class="divTable">
             <div class="divTableHeading">
                 <div class="divTableHead">序号</div>
@@ -83,16 +79,13 @@
                 <div class="divTableHead">操作</div>
             </div>
             <div class="divTableBody">
-                <div class="divTableRow" ng-repeat="item in vm.approvedList track by $index">
-                    <div class="divTableCell handle">{{item.id}}</div>
-                    <div class="divTableCell">
-                        <div >{{item.apply|date:'yyyy-MM-dd'}}</div>
-                        <div >{{item.apply|date:'HH:mm:ss'}}</div>
-                    </div>
-                    <div  class="divTableCell">{{item.mobile}}</div>
+                <div class="divTableRow" ng-repeat="item in vm.data track by $index">
+                    <div  class="divTableCell handle">{{item.id}}</div>
+                    <div  class="divTableCell">{{item.type}}</div>
                     <div  class="divTableCell">{{item.name}}</div>
-                    <div  class="divTableCell">{{item.qualifications}}</div>
-                    <div class="text-red divTableCell" ng-class="{'text-green':item.status==0}">{{item.status|approvedListStatusFilter}}</div>
+                    <div  class="divTableCell">{{item.value}}</div>
+                    <div  class="divTableCell">{{item.updateAt|date:"yyyy-MM-dd HH:mm:ss"}}</div>
+                    <div  class="divTableCell">{{item.comment}}</div>
                     <div  class="divTableCell" >
                         <a type="button" class="btn btn-sm" ui-sref="field.parameterSettingEdit({id:item.id})">编辑</a>
                     </div>

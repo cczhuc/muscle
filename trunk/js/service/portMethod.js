@@ -146,9 +146,21 @@ angular.module("admin")
             })
         },
         // 运营管理
-        // 参数设置
-        putParam:function(prince){
-            return $http.put(address.paramSetting_url(prince))
+        // 参数设置列表
+        getParamList:function(param){
+            return $http.get(address.paramList_url(),{params:param})
+        },
+        // 参数设置详情
+        getParamDetail:function(id){
+            return $http.get(address.paramDetail_url(id))
+        },
+        // 修改设置详情
+        putParamDetail:function(id,data){
+            return $http.put(address.paramDetail_url(id),data)
+        },
+        // 新增常量
+        postParamDetail:function(data){
+            return $http.post(address.addParam_url(),data)
         },
         // 获取信息列表
         getMessageList:function(param){
@@ -161,6 +173,10 @@ angular.module("admin")
         // 新增信息
         postMessage:function(data){
             return $http.post(address.newMessage_url(),data)
+        },
+        // 编辑信息
+        putMessage:function(id,data){
+            return $http.post(address.newMessage_url(id),data)
         },
         // 删除信息
         deleteMessage:function(id){
@@ -185,6 +201,10 @@ angular.module("admin")
         // 获取版本详情
         getVersionDetails:function(id){
             return $http.get(address.versionDetails_url(id))
+        },
+        // 更新版本
+        putVersionDetails:function(id,data){
+            return $http.put(address.versionDetails_url(id),data)
         }
     }
     })

@@ -38,9 +38,9 @@
                 <label class="col-md-2 control-label">版本信息</label>
                 <div>
                     <div class="col-md-10">
-                        <div class="row form-group" ng-repeat="x in vm.f_info track by $index">
+                        <div class="row form-group" ng-repeat="x in vm.data.info track by $index">
                             <div class="col-md-10 col-xs-10 f-short">
-                                <input class="form-control" type="text" name="f-messageTitle" maxlength="500" ng-class="{'error':myform.f-messageTitle.$invalid && myform.f-messageTitle.$touched}">
+                                <input class="form-control" type="text" name="f-messageTitle" ng-model="vm.data.info[$index]" maxlength="500" ng-class="{'error':myform.f-messageTitle.$invalid && myform.f-messageTitle.$touched}">
                             </div>
                             <div class="col-md-2 col-xs-2 f-min80">
                                 <button ng-click="vm.addTag()">+</button>
@@ -55,13 +55,13 @@
             <div class="form-group">
                 <label class="col-md-2 control-label">强制更新</label>
                 <div class="col-md-8">
-                    <input type="radio" name="force">是 <input type="radio" name="force">否
+                    <input type="radio" name="force" value="1" ng-model="vm.data.forceUpdate">是 <input type="radio" name="force" ng-model="vm.data.forceUpdate" value="0">否
                 </div>
             </div>
             <div class="form-group">
                 <div class="col-md-2"></div>
                 <div class="col-md-8">
-                    <button type="button" class="btn btn-success" ng-click="vm.f-send() " ng-disabled="!myform.$valid">发送
+                    <button type="button" class="btn btn-success" ng-click="vm.send() " ng-disabled="!myform.$valid">发送
                     </button>
                     <button type="button" class="btn btn-default" ui-sref="field.versionManagement">取消</button>
                 </div>
