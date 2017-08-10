@@ -58,11 +58,15 @@
                     <!--<div >{{item.trainAt|date:'yyyy-MM-dd'}}</div>-->
                     <!--<div >{{item.trainAt|date:'HH:mm:ss'}}</div>-->
                     <!--</div>-->
-                    <div  class="divTableCell">{{item.trainAt|date:'yyyy-MM-dd  HH:mm:ss'}}</div>
-                    <div  class="divTableCell">{{(vm.serviceTime - vm.user.birth)|ageFilter}}</div>
-                    <div  class="divTableCell">{{item.sensitivity}}</div>
-                    <div  class="divTableCell">{{item.hardness}}</div>
-                    <div  class="divTableCell">{{item.bloodFlow}}</div>
+                    <div class="divTableCell">{{item.trainAt|date:'yyyy-MM-dd HH:mm:ss'}}</div>
+                    <div class="divTableCell">
+                        <span ng-if="vm.user.birth ===0 || vm.user.birth">
+                            {{(vm.serviceTime - vm.user.birth)|ageFilter}}
+                        </span>
+                    </div>
+                    <div class="divTableCell">{{item.sensitivity}}</div>
+                    <div class="divTableCell">{{item.hardness}}</div>
+                    <div class="divTableCell">{{item.bloodFlow}}</div>
                     <div class="divTableCell">{{item.duration}}</div>
                     <div class="divTableCell">{{item.duration}}</div>
                     <div class="divTableCell">{{item.duration}}</div>

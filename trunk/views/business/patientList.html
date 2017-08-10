@@ -150,7 +150,9 @@
                             <div class="divTableCell">{{user.mobile}}</div>
                             <div class="divTableCell">{{user.name}}</div>
                             <div class="divTableCell">
-                                {{(vm.serviceTime - user.birth)|ageFilter}}
+                                <span ng-if="user.birth === 0 || user.birth">
+                                    {{(vm.serviceTime - user.birth)|ageFilter}}
+                                </span>
                             </div>
                             <div class="divTableCell">
                                 {{user.accountStatus|freezedStatusFilter}}

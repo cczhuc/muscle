@@ -54,10 +54,8 @@ angular.module('admin')
     .filter('approvedListStatusFilter', function () {
         return function (status) {
             switch (status) {
-                case 0:
-                    return "未认证";
                 case 1:
-                    return "认证中";
+                    return "未认证";
                 case 2:
                     return "已认证";
                 case 3:

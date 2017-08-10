@@ -7,8 +7,8 @@ angular.module('admin').controller('DoctorDetailsCtrl', ['$rootScope', '$state',
         portService.getDoctorDetails(vm.params.id).then(function (res) {
             if (res.data.code === 0) {
                 vm.data = res.data.data;
-                vm.user = res.data.data.user[vm.params.id];
-                vm.hospital = res.data.data.hospital[vm.params.id];
+                vm.user = res.data.data.user;
+                vm.hospital = res.data.data.hospital;
                 vm.MobileCopy = vm.user.mobile; //复制一份手机号码，用于修改手机号时，点击取消按钮的还原
                 console.info(res.data.data)
             } else {
@@ -28,7 +28,7 @@ angular.module('admin').controller('DoctorDetailsCtrl', ['$rootScope', '$state',
             vm.user.mobile = vm.MobileCopy;
         };
 
-        vm.savelModifyPhone = function () {
+        vm.saveModifyPhone = function () {
 
             if (vm.user.mobile.length != 11) {
                 $rootScope.alert("手机号长度错误");
@@ -53,17 +53,19 @@ angular.module('admin').controller('DoctorDetailsCtrl', ['$rootScope', '$state',
 
         //取消认证
         vm.refuse = {}; //拒绝理由，对应的传参是refuse的引用
+        //取消认证
         vm.cancelApproved = function (id) {
-            $rootScope.cancleApproved("取消实名将删除用户身份及银行卡信息", "确认取消？", vm.refuse, function () {
-                console.log(vm.refuse);
+            $rootScope.cancleApproved("取消实名将删除用户身份及银行卡信息","确认取消？",vm.refuse,function () {
+                vm.refuse.status = 4;
+                // console.log(vm.refuse);
                 // 发送请求取消认证变态并删除信息
-                portService.cancelApproved(id).then(function (res) {
-                    if (res.data.code == 0) {
-
-                        $rootScope.alert("取消成功")
+                portService.cancelApproved(id,vm.refuse).then(function (res) {
+                    $state.go($state.current,{},{reload:true});
+                    if(res.data.code==0) {
+                        $rootScope.alert("撤销认证成功")
                     }
                     else {
-                        $rootScope.alert("取消失败")
+                        $rootScope.alert('取消认证失败,code='+code)
                     }
                 })
             });
