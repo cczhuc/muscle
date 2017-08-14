@@ -20,7 +20,9 @@ angular.module('admin')
                 }
                 console.log(self.role.id);
                 roleService.getRole(self.role.id).then(function (res) {
+                    console.log(res);
                     if (res.data.code == 0) {
+                        console.log(res.data.data.role.permissionsSet);
                         var moduleIDs = Object.keys(res.data.data.role.permissionsSet);
                         localStorage["permissionsSet"] = JSON.stringify(res.data.data.role.permissionsSet);
                         $rootScope.permissionsSet = JSON.parse(localStorage["permissionsSet"]);

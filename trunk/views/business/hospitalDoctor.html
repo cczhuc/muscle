@@ -126,10 +126,10 @@
                                     <a class=" btn btn-sm company-a-fix" ui-sref="field.doctorDetails({id:doctor.id})">
                                         查看
                                     </a>
-                                    <a class=" btn btn-sm company-a-fix" ui-sref="field.planTemplate({id:doctor.id})">
+                                    <a class=" btn btn-sm company-a-fix" ui-sref="field.planTemplate({did:doctor.id})">
                                         模板
                                     </a>
-                                    <a class=" btn btn-sm company-a-fix" ui-sref="field.diagnosisRecord({id:doctor.id})">
+                                    <a class=" btn btn-sm company-a-fix" ui-sref="field.diagnosisRecord({did:doctor.id})">
                                         记录
                                     </a>
                                 </div>
@@ -137,10 +137,10 @@
                                     <a class="text-red btn btn-sm company-a-fix" ng-click="vm.cancelApproved(doctor.id)" >
                                         撤销认证
                                     </a>
-                                    <a class=" btn btn-sm company-a-fix" ui-sref="field.patientAppraisal({id:doctor.id})">
+                                    <a class=" btn btn-sm company-a-fix" ui-sref="field.patientAppraisal({did:doctor.id})">
                                         评价
                                     </a>
-                                    <a class=" btn btn-sm company-a-fix" ui-sref="field.transactionDetails({id:doctor.id})">
+                                    <a class=" btn btn-sm company-a-fix" ui-sref="field.transactionDetails({did:doctor.id})">
                                         交易
                                     </a>
                                 </div>
