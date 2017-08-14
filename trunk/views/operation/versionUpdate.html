@@ -38,9 +38,9 @@
                 <label class="col-md-2 control-label">版本信息</label>
                 <div>
                     <div class="col-md-10">
-                        <div class="row form-group" ng-repeat="x in vm.data.info track by $index">
+                        <div class="row form-group" ng-repeat="x in vm.info track by $index">
                             <div class="col-md-10 col-xs-10 f-short">
-                                <input class="form-control" type="text" name="f-messageTitle" ng-model="vm.data.info[$index]" maxlength="500" ng-class="{'error':myform.f-messageTitle.$invalid && myform.f-messageTitle.$touched}">
+                                <input class="form-control" type="text" name="f-messageTitle" ng-model="vm.info[$index]" maxlength="500" ng-class="{'error':myform.f-messageTitle.$invalid && myform.f-messageTitle.$touched}">
                             </div>
                             <div class="col-md-2 col-xs-2 f-min80">
                                 <button ng-click="vm.addTag()">+</button>
@@ -61,7 +61,7 @@
             <div class="form-group">
                 <div class="col-md-2"></div>
                 <div class="col-md-8">
-                    <button type="button" class="btn btn-success" ng-click="vm.send() " ng-disabled="!myform.$valid">发送
+                    <button type="button" class="btn btn-success" ng-click="vm.send() " ng-disabled="!myform.$valid">发布
                     </button>
                     <button type="button" class="btn btn-default" ui-sref="field.versionManagement">取消</button>
                 </div>
