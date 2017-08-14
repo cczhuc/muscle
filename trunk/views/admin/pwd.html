@@ -2,30 +2,28 @@
     <div class="col-lg-12">
         <div class="panel panel-default">
             <div class="panel-heading">
-                用户信息编辑
+                修改密码
             </div>
             <div class="panel-body">
                 <div class="row">
                     <div class="col-lg-12">
                         <form class="form-horizontal">
                             <div class="form-group">
-                                <label for="username" class="col-sm-2 control-label">用户名</label>
+                                <label for="oldPwd" class="col-sm-2 control-label">旧密码</label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" id="username" placeholder="user name" ng-model="vm.data.name">
+                                    <input type="password" class="form-control" id="oldPwd" placeholder="" ng-model="vm.data.oldPwd">
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="password" class="col-sm-2 control-label">密码</label>
+                                <label for="newPwd" class="col-sm-2 control-label">新密码</label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" id="password" placeholder="password" ng-model="vm.data.pwd">
+                                    <input type="password" class="form-control" id="newPwd" placeholder="" ng-model="vm.data.newPwd">
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="col-sm-2 control-label">角色</label>
+                                <label for="newPwdAgain" class="col-sm-2 control-label">重复新密码</label>
                                 <div class="col-sm-10">
-                                    <select class="form-control" ng-model="vm.data.roleID">
-                                        <option ng-repeat="role in vm.roleList" ng-value="role.id" ng-selected="role.id == vm.data.roleID">{{role.name}}</option>
-                                    </select>
+                                    <input type="password" class="form-control" id="newPwdAgain" placeholder="" ng-model="vm.data.newPwdAgain">
                                 </div>
                             </div>
                         </form>
@@ -34,8 +32,7 @@
                 <div class="row">
                     <div class="col-sm-2"></div>
                     <div class="col-sm-10">
-                        <button class="btn btn-success" ng-click="vm.saveOrUpdate()">保存</button>
-                        <button class="btn btn-danger" ui-sref="field.manager">取消</button>
+                        <button class="btn btn-success" ng-click="vm.save()">保存</button>
                     </div>
                 </div>
             </div>
