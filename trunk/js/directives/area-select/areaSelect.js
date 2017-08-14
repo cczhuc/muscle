@@ -12,7 +12,7 @@
  * <city-select select-data="vm.areaData" select-result="vm.selectArea"></city-select>
  * */
 angular.module("admin")
-    .directive('citySelect', function (areaData,commonUtil) {
+    .directive('citySelect', function (areaData, commonUtil) {
         return {
             priority: 1,
             restrict: 'EA',
@@ -20,22 +20,22 @@ angular.module("admin")
             scope: {
                 selectResult: '=',
                 selectData: '=',
-                judge:'@'//用来判断需要表单验证，如果需要，在指令中加上judge="true"属性或者!!judge为true即可
+                judge: '@'//用来判断需要表单验证，如果需要，在指令中加上judge="true"属性或者!!judge为true即可
             },
             template: '<div class="row">' +
-            '<label class="control-label col-md-2 word-spacing-25">'+
-            '<span class="star fl pd-left-30" ng-class={conceal:province!==undefined} ng-if="!!judge">*</span>'+
+            '<label class="control-label col-md-2 word-spacing-25">' +
+            '<span class="star fl pd-left-30" ng-class={conceal:province!==undefined} ng-if="!!judge">*</span>' +
             '省' +
-            '</label>'+
+            '</label>' +
             '<div class="col-md-4">' +
             '<select required name="province" class="form-control" ng-model="province" ng-options="province.id as province.name for province in provinces">' +
             '<option value="">请选择省份</option>' +
             '</select>' +
             '</div>' +
             '<label class="control-label col-md-2 word-spacing-25">' +
-            '<span class="star fl pd-left-30" ng-class={conceal:city!=undefined} ng-if="!!judge">*</span>'+
+            '<span class="star fl pd-left-30" ng-class={conceal:city!=undefined} ng-if="!!judge">*</span>' +
             '市' +
-            '</label>'+
+            '</label>' +
             '<div class="col-md-4">' +
             '<select required name="city" class="form-control" ng-model="city" ng-options="city.id as city.name for city in filteredCities">' +
             '<option value="">请选择城市</option>' +

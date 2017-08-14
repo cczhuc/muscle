@@ -29,7 +29,6 @@ angular.module('admin').controller('DoctorDetailsCtrl', ['$rootScope', '$state',
         };
 
         vm.saveModifyPhone = function () {
-
             if (vm.user.mobile.length != 11) {
                 $rootScope.alert("手机号长度错误");
                 return 1;
@@ -49,7 +48,6 @@ angular.module('admin').controller('DoctorDetailsCtrl', ['$rootScope', '$state',
                 });
             }
         };
-
 
         //取消认证
         vm.refuse = {}; //拒绝理由，对应的传参是refuse的引用

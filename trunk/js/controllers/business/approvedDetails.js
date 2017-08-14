@@ -8,7 +8,6 @@ angular.module("admin").controller('ApprovedDetailsCtrl',["$rootScope","$state",
             if (res.data.code===0) {
                 console.log(res);
                 vm.data = res.data.data;
-
             }
             else {
                 $rootScope.alert(res.data.message)
