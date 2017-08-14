@@ -76,7 +76,7 @@
             }
         };
         vm.clearImg = function(){
-            delete vm.data.img;
+            vm.data.img = ' ';
         };
         vm.cancel = function (){
             if(vm.data.type == 0){
