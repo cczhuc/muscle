@@ -2,8 +2,7 @@ angular.module("admin").controller('HospitalListCtrl',["$rootScope","$scope","$s
     function ($rootScope,$scope,$state,$http,portService,hospitalGrade,commonUtil) {
         var vm = this;
         /**获取常量表数据**/
-        var data ={size:""};
-        data.size=1000;
+        var data ={size:1000};
         vm.selectData = portService.getParamList(data);
 
         vm.searchParams = $state.params;

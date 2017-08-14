@@ -2,6 +2,7 @@ angular.module('admin').controller('PatientRecordCtrl',['$rootScope','$state','$
     function ($rootScope,$state,$http,portService) {
         var vm = this;
         vm.searchParams = $state.params;
+        console.log($state.params);
         //把需要日历插件需要+86399999的参数的名字以字符串放进来，写在html日期插件的属性里，给search插件去处理
         vm.timeFixArr = ["payEndAt"];
         // 时间格式转换
@@ -24,17 +25,23 @@ angular.module('admin').controller('PatientRecordCtrl',['$rootScope','$state','$
             vm.tempParams.amountStart = vm.tempParams.amountEnd;
             vm.tempParams.amountEnd = tempSum;
         }
-
+        // 获取病人详情，拿到病人名字
+        portService.getPatientDetails($state.params.pid).then(function (res){
+            if(res.data.code === 0) {
+                vm.user = res.data.data;
+            } else {
+                $rootScope.alert(res.data.message);
+            }
+        });
+        // 获取订单记录
         portService.getPatientRecord(vm.tempParams).then(function (res) {
             if(res.data.code==0) {
-                console.log(res);
                 vm.patientRecord = res.data.data;
                 vm.total = res.data.total;
             }
             else {
                 $rootScope.alert(res.data.message)
             }
-
         })
     }
 ]);

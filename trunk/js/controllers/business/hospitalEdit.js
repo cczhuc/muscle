@@ -1,11 +1,10 @@
 angular.module("admin").controller('HospitalEditCtrl',["$rootScope","$state","$http","portService",
-"hospitalGrade","commonUtil","FileUploader","uploadService",
-    function ($rootScope,$state,$http,portService,hospitalGrade,commonUtil,FileUploader,uploadService) {
+"hospitalGrade","commonUtil","FileUploader","uploadService","$timeout",
+    function ($rootScope,$state,$http,portService,hospitalGrade,commonUtil,FileUploader,uploadService,$timeout) {
         var vm = this;
         /**获取常量表数据**/
-        var data ={size:""};
-        data.size=1000;
-        vm.selectData = portService.getParamList(data);
+        var data ={size:1000};
+        // vm.selectData = portService.getParamList(data);
 
         vm.data = $state.params;
         vm.hospitalGrade = hospitalGrade;
@@ -26,10 +25,10 @@ angular.module("admin").controller('HospitalEditCtrl',["$rootScope","$state","$h
             //获取数据
             portService.getHospitalDetails(vm.data.id).then(function (res) {
                 if (res.data.code==0) {
-                    console.log(res);
                     vm.data = res.data.data;
                     // 省市区数据转换
                     vm.address1 = commonUtil.areaDateTransform(vm.data.province, vm.data.city, vm.data.county);
+                    vm.selectData = portService.getParamList(data);
                 }
                 else {
                     $rootScope.alert(res.data.message)
@@ -47,7 +46,6 @@ angular.module("admin").controller('HospitalEditCtrl',["$rootScope","$state","$h
                     vm.data.cid = vm.data.city;
                     portService.editHospital(vm.data.id,vm.data).then(function (res) {
                         if (res.data.code===0) {
-                            console.log(res);
                             $state.go("field.hospitalList", {reload: true});
                             $rootScope.alert("上线成功")
                         }
@@ -68,7 +66,6 @@ angular.module("admin").controller('HospitalEditCtrl',["$rootScope","$state","$h
                 vm.data.cid = vm.data.city;
                 portService.editHospital(vm.data.id,vm.data).then(function (res) {
                     if (res.data.code===0) {
-                        console.log(res);
                         $state.go("field.hospitalList", {reload: true});
                         $rootScope.alert("编辑成功")
                     }
@@ -91,7 +88,6 @@ angular.module("admin").controller('HospitalEditCtrl',["$rootScope","$state","$h
                     vm.data.status=0;
                     vm.data.cid = vm.data.city;
                     portService.addHospital(vm.data).then(function (res) {
-                        console.log(res);
                         if (res.data.code===0) {
                             $state.go("field.hospitalList", {reload: true});
                             $rootScope.alert("上线成功")
@@ -113,7 +109,6 @@ angular.module("admin").controller('HospitalEditCtrl',["$rootScope","$state","$h
                 vm.data.cid = vm.data.city;
                 portService.addHospital(vm.data).then(function (res) {
                     if (res.data.code===0) {
-                        console.log(res);
                         $state.go("field.hospitalList", {reload: true});
                         $rootScope.alert("编辑成功")
                     }
@@ -123,5 +118,6 @@ angular.module("admin").controller('HospitalEditCtrl',["$rootScope","$state","$h
                 })
             }
         }
+        vm.selectData = portService.getParamList(data);
     }
 ]);
