@@ -64,8 +64,10 @@
                             <div class="form-group">
                                 <label class="control-label col-md-4 word-spacing-25 pd-right-10">收&emsp;&emsp;入</label>
                                 <div class="col-md-8">
-                                    <input type="text" class="form-control"
-                                           ng-value="vm.data.income + '&nbsp;' + '(元)' " disabled>
+                                    <input
+                                            type="text" class="form-control"
+                                            ng-value="vm.data.income + '&nbsp;' +
+                                            '(元)'" disabled>
                                 </div>
                             </div>
                         </div>
@@ -186,8 +188,13 @@
         </div>
         <div class="panel-body">
             <div class="row  pd-bottom-20">
+
                 <div class="col-md-4">
-                    <button class="btn btn-warning" ui-sref="field.doctorList">返回</button>
+                    <!--返回上一个url-->
+                    <button class="btn btn-warning btn-margin" onclick="javascript:{window.history.go(-1);}">
+                        返回
+                    </button>
+                    <!--<button class="btn btn-warning" ui-sref="field.doctorList">返回</button>-->
                 </div>
             </div>
         </div>

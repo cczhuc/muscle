@@ -94,7 +94,12 @@
 
                     <div class="divTableBody">
                         <div class="divTableRow" ng-repeat="info in vm.programRelationList track by $index">
-                            <div class="divTableCell handle">{{info.createAt|date:'yyyy-MM-dd'}}</div>
+                            <div class="divTableCell handle">
+                                <!--为undefined时不显示-->
+                                <span ng-if="info.createAt === 0 || info.createAt">
+                                    {{info.createAt|date:'yyyy-MM-dd'}}
+                                </span>
+                            </div>
                             <div class="divTableCell">{{info.name}}</div>
                             <div class="divTableCell">{{vm.patient[info.pid].mobile}}</div>
                             <div class="divTableCell">{{info.treatment}}</div>

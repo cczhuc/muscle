@@ -20,6 +20,7 @@ angular.module('admin').controller('DoctorListCtrl',['$rootScope','$state','$htt
 
         //获取服务器时间
         commonUtil.getServerTime().then(function (res) {
+
             vm.serviceTime = res;
             //对年龄的处理
             vm.tempParams.ageFrom = parseInt(vm.tempParams.ageFrom) || undefined;

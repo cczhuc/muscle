@@ -1,17 +1,17 @@
 angular.module("admin")
     .directive('search', function () {
-        return {
-            restrict: 'EA',
-            templateUrl: 'js/directives/searchParams/search-params.html',
-            replace: true,
-            scope: {
-                params: '=',
-                //需要+85399999
-                timeFixArr: '=timeFixArr',
-                end: "=",
-                //点击搜索或者清空，会触发一个方法
-                changeFn: "&?"
-            },
+                return {
+                    restrict: 'EA',
+                    templateUrl: 'js/directives/searchParams/search-params.html',
+                    replace: true,
+                    scope: {
+                        params: '=',
+                        //需要+85399999
+                        timeFixArr: '=timeFixArr',
+                        end: "=",
+                        //点击搜索或者清空，会触发一个方法
+                        changeFn: "&?"
+                    },
             controller: function ($state, commonUtil, $scope) {
 
                 // 搜索

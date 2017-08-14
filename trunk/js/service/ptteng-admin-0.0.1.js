@@ -24,11 +24,11 @@ angular.module('admin')
             role: function (rid) {
 
                 if (rid == undefined || rid == "") {
-                    return "/a/u/role";
-                    // return "JSON/role1.json";
+                    // return "/a/u/role";
+                    return "JSON/role1.json";
                 } else {
-                    return "/a/u/role/" + rid;
-                    // return "JSON/role1.json";
+                    // return "/a/u/role/" + rid;
+                    return "JSON/role1.json";
 
                 }
 
@@ -53,8 +53,8 @@ angular.module('admin')
             },
             module_list: "/a/u/module/",
             module_multi_detail: function (params) {
-                return "/a/u/multi/module" + commonUtil.concactArrayParam("ids", params);
-                // return "JSON/role.json" + commonUtil.concactArrayParam("ids", params);
+                // return "/a/u/multi/module" + commonUtil.concactArrayParam("ids", params);
+                return "JSON/role.json" + commonUtil.concactArrayParam("ids", params);
             },
 
             //article

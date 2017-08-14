@@ -6,10 +6,9 @@ angular.module('admin').controller('DiagnosisDetailsCtrl', ['$rootScope', '$stat
         portService.diagnosisDetails(vm.searchParams.id).then(function (res) {
 
             if (res.data.code === 0) {
-                console.log("res",res);
                 vm.diagnosisDetails = res.data.data;
-                vm.patient = res.data.patient[vm.diagnosisDetails.id];
-                // console.log(vm.diagnosisDetails);
+                vm.patient = res.data.patient[vm.diagnosisDetails.pid];
+                console.log(vm.diagnosisDetails);
             } else {
                 $rootScope.alert(res.data.message);
             }

@@ -101,8 +101,8 @@
                     <div class="divTableBody">
                         <div class="divTableRow" ng-repeat="info in vm.commentList track by $index">
                             <div class="divTableCell handle">{{$index+1}}</div>
-                            <div class="divTableCell">{{vm.userList[info.id].mobile}}</div>
-                            <div class="divTableCell">{{vm.userList[info.id].name}}</div>
+                            <div class="divTableCell">{{vm.userList[info.pid].mobile}}</div>
+                            <div class="divTableCell">{{vm.userList[info.pid].name}}</div>
                             <div class="divTableCell">{{info.star}}星</div>
                             <div class="divTableCell">{{info.commentAt|date:'yyyy-MM-dd'}}</div>
 
