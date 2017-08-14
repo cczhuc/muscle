@@ -52,7 +52,6 @@ angular.module("admin").controller('ApprovedListCtrl',["$rootScope","$state","$h
                         $rootScope.alert(res.data.message);
                     }
                 })
-
             })
         }
 

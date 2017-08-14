@@ -35,7 +35,6 @@ angular.module('admin')
                     }
                 });
             });
-
             return result;
         };
 
@@ -61,10 +60,10 @@ angular.module('admin')
                     if (res.data.code == 0) {
                         // 拼出页面要展示的模块列表信息格式
                         vm.moduleList = commonUtil.buildTree(res.data.data.moduleList);
-                        console.log(vm.moduleList);
                         if (vm.id) {
                             // 请求角色下的模块权限
                             roleService.getRole(vm.id).then(function (res) {
+                                console.log("res",res);
                                 if (res.data.code == 0) {
 
                                     vm.name = res.data.data.role.name;

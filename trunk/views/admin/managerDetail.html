@@ -46,7 +46,7 @@
                 <div class="col-xs-9">
                     <select class="form-control" style="min-width: 160px" ng-model="vm.data.roleID">
                         <option value="">请选择</option>
-                        <option ng-repeat="role in vm.roleList" ng-value="role.id" ng-selected="vm.rid == role.id">
+                        <option ng-repeat="role in vm.roleList" ng-value="role.id" ng-selected="vm.data.roleID == role.id">
                             {{role.name}}
                         </option>
                     </select>

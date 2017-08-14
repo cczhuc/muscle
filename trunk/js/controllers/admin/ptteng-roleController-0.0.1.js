@@ -16,7 +16,7 @@ angular.module('admin')
                     total: res.data.data.total || 0
                 };
 
-                roleService.batchGetRole(res.data.data.ids).then(function(res) {
+                roleService.batchGetRole(res.data.data.rids).then(function(res) {
                     console.log(res);
 
                     if (res.data.code == 0) {
