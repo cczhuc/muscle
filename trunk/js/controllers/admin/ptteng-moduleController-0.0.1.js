@@ -8,7 +8,7 @@ angular.module('admin')
             if (res.data.code == 0) {
 
                 vm.next = res.data.data.next;
-                vm.total  = Math.ceil(res.data.data.total / res.data.data.size);
+                vm.total = res.data.data.total;
                 moduleService.batchGetModule(res.data.data.ids).then(function(res){
                     vm.list = res.data.data.moduleList;
                 })

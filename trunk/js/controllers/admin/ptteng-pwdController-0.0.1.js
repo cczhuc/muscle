@@ -9,7 +9,7 @@ angular.module('admin')
             if(vm.data.newPwd==vm.data.newPwdAgain){
                 pwdService.changePwd(vm.data).then(function(res){
 
-                    commonUtil.showReturnMsg(res,"field.home");
+                    commonUtil.showReturnMsg(res,"field.dashboard");
 
                 })
             }else{

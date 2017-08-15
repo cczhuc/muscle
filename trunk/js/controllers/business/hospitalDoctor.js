@@ -20,12 +20,10 @@ angular.module("admin").controller('HospitalDoctorCtrl',["$rootScope","$scope","
         }
         portService.getHospitalDoctor(vm.tempParams).then(function (res) {
             if (res.data.code==0) {
-                console.log('res',res);
                 for (var i=0;i<res.data.data.doctorList.length;i++) {
                     Object.assign(res.data.data.doctorList[i],res.data.data.userList[res.data.data.doctorList[i].id])
                 }
                 vm.doctor = res.data.data.doctorList;
-                console.log(vm.doctor);
                 vm.total = res.data.total;
             }
             else {
@@ -40,7 +38,6 @@ angular.module("admin").controller('HospitalDoctorCtrl',["$rootScope","$scope","
                 console.log(vm.refuse);
                 // 发送请求取消认证变态并删除信息
                 portService.cancelApproved(id,vm.refuse).then(function (res) {
-                    console.log(res);
                     if(res.data.code==0) {
                         $state.go($state.current, {}, {reload: true});
                         $rootScope.alert("取消成功")

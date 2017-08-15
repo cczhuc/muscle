@@ -639,12 +639,12 @@ angular.module('admin')
                 areaData.provinces = [];
                 areaData.cities = [];
                 areaData.provinces = res.filter(function (item) {
-                    if (item.value=='0' && item.type=='city') {
+                    if (item.type=='province') {
                         return item;
                     }
                 });
                 areaData.cities = res.filter(function (item) {
-                    if (item.type=='city' && item.value!='0') {
+                    if (item.type=='city') {
                         return item;
                     }
                 });

@@ -31,24 +31,23 @@ angular.module('admin', ['oc.lazyLoad', 'ui.router', 'ngCookies', 'mgcrea.ngStra
                 $state.go("field.dashboard");
                 return false;
             }
-            window.scrollTo(0, 0);
-            //权限验证
-            //取出数据
-            var permissionsSet = JSON.parse(localStorage.permissionsSet);
-            var moduleList = JSON.parse(localStorage.moduleList);
-            var name = $state.current.name;
-            //进行比对
-            var permision = [];
-            angular.forEach(moduleList,function (data) {
-                if (data.url==name) {
-                    permision = permissionsSet[data.id]
-                }
-            });
-            $rootScope.permision = {
-                create:permision.indexOf('create')===-1?false:true,
-                update:permision.indexOf('update')===-1?false:true,
-                delete:permision.indexOf('delete')===-1?false:true,
-            }
+            // window.scrollTo(0, 0);
+            // //权限验证
+            // //取出数据
+            // var permissionsSet = JSON.parse(localStorage.permissionsSet);
+            // var moduleList = JSON.parse(localStorage.moduleList);
+            // var name = $state.current.name;
+            // //进行比对
+            // var permision = [];
+            // angular.forEach(moduleList,function (data) {
+            //     if (data.url==name) {
+            //         permision = permissionsSet[data.id]            $rootScope.permision = {
+            //             create:permision.indexOf('create')===-1?false:true,
+            //             update:permision.indexOf('update')===-1?false:true,
+            //             delete:permision.indexOf('delete')===-1?false:true,
+            //         }
+            //     }
+            // });
         });
 
 
