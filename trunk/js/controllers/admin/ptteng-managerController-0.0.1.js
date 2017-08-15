@@ -1,11 +1,11 @@
 'use strict';
 angular.module('admin')
-    .controller('ManagerCtrl', function ($state, $scope, $rootScope,$cookies, commonUtil, managerService,roleService) {
+    .controller('ManagerCtrl', ['$state', '$scope', '$rootScope', 'commonUtil', 'managerService','roleService',ManagerCtrl]);
+        function ManagerCtrl($state, $scope, $rootScope, commonUtil, managerService,roleService) {
         var vm = $scope.vm = {};
         $scope.rid_role={};
         vm.roleList=[];
-        var roleParam={size:65535};
-
+        //var roleParam={size:65535};
 
         function getRoleList(rids) {
             roleService.batchGetRole(rids).then(function (res) {
@@ -18,33 +18,27 @@ angular.module('admin')
                     data.role = $scope.rid_role[data.roleID];
                 });
 
-
             });
         }
+
 
         function getManagerList() {
             managerService.getManagerList().then(function (res) {
                 if (res.data.code == 0) {
-                    vm.page = {
-                        next: res.data.data.next || 0,
-                        size: res.data.data.size || 0,
-                        page: res.data.data.page || 0,
-                        total: res.data.data.total || 0
-                    };
+                    var managerTotal= res.data.data.total;
                     managerService.batchGetManager(res.data.data.ids).then(function (res) {
-
                         if (res.data.code == 0) {
                             vm.list = res.data.data.managerList;
+                            vm.total = Math.ceil(managerTotal / $state.params.size||10);
                             var rids = [];
+                            angular.forEach(res.data.data.managerList, function (data) {
+                            rids.push(data.roleID);
 
-                            angular.forEach(res.data.data.managerList, function (data, index, array) {
-                                rids.push(data.roleID);
                             });
-                            getRoleList(rids);
+                                getRoleList(rids);
                         } else {
                             commonUtil.showErrMsg(res);
                         }
-
                     });
 
                 } else {
@@ -68,38 +62,26 @@ angular.module('admin')
 
         };
 
-
-        roleService.getRoleList(roleParam).then(function (res) {
+        roleService.getRoleList(/*roleParam*/).then(function (res) {
             if (res.data.code == 0) {
 
-                roleService.batchGetRole(res.data.data.ids).then(function (res) {
-
-
+                roleService.batchGetRole(res.data.data.rids).then(function (res) {
                     if (res.data.code == 0) {
-
                         vm.roleList= res.data.data.roleList;
-
                         vm.roleList.push({id:-1,name:"全部角色"});
-
-
-
-                        console.log(vm.roleList)
-
-
                     } else {
                         commonUtil.showErrMsg(res);
                     }
                 });
             } else {
                 commonUtil.showErrMsg(res);
-            }
-
+                }
+            console.log("res"+res.data.data)
         });
 
         // search
         vm.rid = {};
         vm.search = function(){
-
             if(vm.rid<0){
                 getManagerList();
 
@@ -108,6 +90,7 @@ angular.module('admin')
             }
 
         };
+
 
         // init
         function searchManager(param) {
@@ -132,4 +115,4 @@ angular.module('admin')
                 }
             });
         }
-    });
+    }

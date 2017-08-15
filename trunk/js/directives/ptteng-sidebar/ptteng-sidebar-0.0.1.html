@@ -1,19 +1,9 @@
 <div class=" sidebar ng-isolate-scope" role="navigation">
-    <!--collapse控制默认显示还是隐藏-->
     <div class="sidebar-nav navbar-collapse collapse">
-        <ul class="nav in side" id="side-menu" ng-model="collapseVar" role="tablist" aria-multiselectable="true"
-            bs-collapse>
-
-
+        <ul class="nav in side" id="side-menu" ng-model="collapseVar" role="tablist" aria-multiselectable="true" bs-collapse>
             <!--<li ui-sref-active="active" class="active">-->
-            <!--<a href="#/dashboard"><i class="fa fa-home "></i> 欢迎页</a>-->
+                <!--<a ui-sref="field.home"><i class="fa fa-home fa-fw"></i> 欢迎页</a>-->
             <!--</li>-->
-
-            <!--<li ng-repeat="side in sideList" ui-sref-active="active" class="active">-->
-            <!--<a href="#/{{side.url}}"><i class="fa fa-home fa-fw"></i> {{side.name}}</a>-->
-            <!--</li>-->
-
-
             <li class="nav-first-level" ng-class="{active: collapseVar==($index)}" ng-repeat="side in sideList">
                 <a href="" bs-collapse-toggle role="tab">
                     <i class="fa  fa-pencil"></i>
@@ -28,7 +18,47 @@
                     </li>
                 </ul>
             </li>
+
+            <!--对比哦-->
+            <!-- demo module -->
+            <!--
+            <li ng-class="{active: collapseVar==11}" class="ng-binding">
+                <a href="" ng-click="check(11)"><i class="fa fa-wrench fa-fw"></i> 基本元素DEMO<span class="fa arrow"></span></a>
+                <ul class="nav nav-second-level collapse" collapse="collapseVar!=11" style="height: 0;">
+                    <li ui-sref-active="active">
+                        <a ui-sref="field.icon" href="#/field/icon">图标</a>
+                    </li>
+                    <li ui-sref-active="active">
+                        <a ui-sref="field.button" href="#/field/button">按钮</a>
+                    </li>
+                    <li ui-sref-active="active">
+                        <a ui-sref="field.notify" href="#/field/notify">提示</a>
+                    </li>
+                </ul>
+            </li>
+            <li ng-class="{active: collapseVar==12}">
+                <a href="" ng-click="check(12)"><i class="fa fa-sitemap fa-fw"></i> 多级菜单DEMO<span class="fa arrow"></span></a>
+                <ul class="nav nav-second-level collapse" collapse="collapseVar!=12" style="height: 0;">
+                    <li>
+                        <a href="">二级菜单</a>
+                    </li>
+                    <li>
+                        <a href="">二级菜单</a>
+                    </li>
+                    <li ng-init="third=!third" ng-class="{active: multiCollapseVar==13}">
+                        <a href="" ng-click="multiCheck(13)">二级菜单含三级菜单<span class="fa arrow"></span></a>
+                        <ul class="nav nav-third-level collapse" collapse="multiCollapseVar!=13" style="height: 0;">
+                            <li>
+                                <a href="">三级菜单</a>
+                            </li>
+                            <li>
+                                <a href="">三级菜单</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            -->
         </ul>
     </div>
 </div>
-

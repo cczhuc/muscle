@@ -13,7 +13,7 @@ angular.module('admin')
                     return "/a/u/manager/" + mid;
                 }
             },
-            manager_list: "/a/u/manager/list/",
+            manager_list: "/a/u/manager/list",
             manager_multi_detail: function (params) {
                 return "/a/u/multi/manager" + commonUtil.concactArrayParam("ids", params);
 
@@ -161,34 +161,18 @@ angular.module('admin')
 
         }
     })
+
     .factory('roleService', function ($http, path, moduleService, commonUtil, recordCookies) {
         return {
             getRole: function (rid) {
                 return $http.get(path.role(rid));
             },
-            addRole: function (params) {
-                return $http({
-                    url: path.role(),
-                    method: "POST",
-                    headers: {'Content-Type': 'application/json;charset=UTF-8'},
-                    data: JSON.stringify(params),
-                    transformRequest: function (data, headersGetter) {
-                        return data;
-                    }
-                });
+            addRole: function(params) {
+                return $http.post(path.role(), params);
             },
-            updateRole: function (rid, params) {
-                recordCookies({targetID: rid});
-                //return $http.put(path.role(rid), params);
-                return $http({
-                    url: path.role(rid),
-                    method: "PUT",
-                    headers: {'Content-Type': 'application/json;charset=UTF-8'},
-                    data: JSON.stringify(params),
-                    transformRequest: function (data, headersGetter) {
-                        return data;
-                    }
-                });
+            updateRole: function(rid,params) {
+                    recordCookies({targetID: rid});
+                    return $http.put(path.role(rid), params);
             },
             deleteRole: function (rid) {
                 recordCookies({targetID: rid});

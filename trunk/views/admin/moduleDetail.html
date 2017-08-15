@@ -1,47 +1,66 @@
-<div class="panel panel-default">
-    <div class="panel-heading">{{(!!vm.id)?"模块编辑":"模块新增"}}</div>
-    <div class="panel-body">
-        <form class="form-horizontal">
-            <div class="form-group">
-                <label class="control-label col-xs-2 text-right">名称*</label>
-                <div class="col-xs-9">
-                    <input type="text" class="form-control" ng-model="vm.data.name" placeholder="请输入名称">
-                </div>
+<div class="row pd-top-2">
+    <div class="col-lg-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                模块编辑
             </div>
-            <div class="form-group">
-                <label class="control-label col-xs-2 text-right">MenuId</label>
-                <div class="col-xs-9">
-                    <input type="text" class="form-control" ng-model="vm.data.menuID" placeholder="请输入meunID,只能是英文">
-                </div>
-            </div>
-            <div class="form-group">
-                <label class="control-label col-xs-2 text-right">URL地址</label>
-                <div class="col-xs-9">
-                    <input type="text" class="form-control" ng-model="vm.data.url" placeholder="请输入模块对应url地址">
-                </div>
-            </div>
-            <div class="form-group">
-                <label class="control-label col-xs-2 text-right">父模块ID</label>
-                <div class="col-xs-9">
-                    <input type="text" class="form-control" ng-model="vm.data.parentID" placeholder="请输入父模块ID">
-                </div>
-            </div>
-            <div class="form-group">
-                <label class="control-label col-xs-2 text-right">模块类别</label>
-                <div class="col-xs-9">
-                    <input type="text" class="form-control" ng-model="vm.data.type" placeholder="请输入模块类别">
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="col-xs-9 col-xs-offset-2">
-                    <div class="col-xs-4">
-                        <button class="btn btn-default btn-block" ng-click="vm.saveOrUpdate()">保存</button>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <form class="form-horizontal">
+                            <div class="form-group">
+                                <label for="name" class="col-sm-2 control-label">名称*</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="name" placeholder="name" ng-model="vm.data.name">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="menuId" class="col-sm-2 control-label">父节点ID</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="parentID" placeholder="parentID" ng-model="vm.data.parentID">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="menuId" class="col-sm-2 control-label">MenuId</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="menuId" placeholder="MenuId" ng-model="vm.data.menuID">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="url" class="col-sm-2 control-label">URL地址</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="url" placeholder="url" ng-model="vm.data.url">
+                                </div>
+                            </div>
+                            <!--<div class="form-group">-->
+                                <!--<label for="type" class="col-sm-2 control-label">模块类别</label>-->
+                                <!--<div class="col-sm-10">-->
+                                    <!--<input type="text" class="form-control" id="type" placeholder="module type " ng-model="vm.data.type">-->
+                                <!--</div>-->
+                            <!--</div>-->
+                            <div class="form-group">
+                                <label for="icon" class="col-sm-2 control-label">icon</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="icon" placeholder="icon class" ng-model="vm.data.icon">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="level" class="col-sm-2 control-label">顺序</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="level" placeholder="icon class" ng-model="vm.data.level">
+                                </div>
+                            </div>
+                        </form>
                     </div>
-                    <div class="col-xs-4">
-                        <button class="btn btn-default btn-block" ui-sref="field.module">取消</button>
+                </div>
+                <div class="row">
+                    <div class="col-sm-2"></div>
+                    <div class="col-sm-10">
+                        <button class="btn btn-success" ng-click="vm.saveOrUpdate()">保存</button>
+                        <button class="btn btn-danger" ui-sref="field.module">取消</button>
                     </div>
                 </div>
             </div>
-        </form>
+        </div>
     </div>
 </div>

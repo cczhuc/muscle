@@ -21,12 +21,12 @@ function projectRouteConfig($stateProvider, $urlRouterProvider, $ocLazyLoadProvi
         .state('field', {
             url: '',
             templateUrl: 'views/main.html',
-            controller: 'MainController',
+            controller: 'MainCtrl',
             controllerAs: 'vm',
             abstract: true, // true 表明此状态不能被显性激活，只能被子状态隐性激活
             resolve: {
                 loadMyFile: _lazyLoad([
-                    'js/controllers/admin/mainController.js',
+                    'js/controllers/admin/ptteng-mainController-0.0.1.js',
                     'js/directives/ptteng-sidebar/ptteng-sidebar-0.0.1.js',
                     'js/directives/searchParams/search-params.js',
                     'js/directives/ptteng-user/ptteng-user-0.0.1.js',
@@ -44,21 +44,21 @@ function projectRouteConfig($stateProvider, $urlRouterProvider, $ocLazyLoadProvi
 
         // 公共管理模块 (此处可以配置 但是不要删除 若操作记录没有的话 可以删除掉)
         // 登录登出
+
         .state('login', {
             url: '/login',
             templateUrl: 'views/admin/login.html',
-            controller: 'LoginController',
-            controllerAs: 'vm',
+            controller: 'LoginCtrl',
             resolve: {
                 loadMyFile: _lazyLoad(
-                    'js/controllers/admin/loginController.js')
+                    'js/controllers/admin/ptteng-loginController-0.0.1.js')
             }
         })
 
         //后台管理开始
         //用户管理
         .state('field.manager', {
-            url: '/manager?page',
+            url: '/manager/:page/:size/:next',
             templateUrl: 'views/admin/manager.html',
             controller: 'ManagerCtrl',
             resolve: {
@@ -74,9 +74,17 @@ function projectRouteConfig($stateProvider, $urlRouterProvider, $ocLazyLoadProvi
                 loadMyFile: _lazyLoad('js/controllers/admin/ptteng-managerDetailController-0.0.1.js')
             }
         })
+        // .state('field.managerCheck', {
+        //     url: '/managerCheck/:id',
+        //     templateUrl: 'views/admin/managerCheck.html',
+        //     controller: 'ManagerDetailCtrl',
+        //     resolve: {
+        //         loadMyFile: _lazyLoad('js/controllers/admin/ptteng-managerDetailController-0.0.1.js')
+        //     }
+        // })
         //角色管理
         .state('field.role', {
-            url: '/role/:page',
+            url: '/role/:page/:size/:next',
             templateUrl: 'views/admin/role.html',
             controller: 'RoleCtrl',
             resolve: {
@@ -85,7 +93,7 @@ function projectRouteConfig($stateProvider, $urlRouterProvider, $ocLazyLoadProvi
         })
         //角色新增
         .state('field.roleDetail', {
-            url: '/roleDetail/:id',
+            url: '/roleDetail/:id/:name',
             templateUrl: 'views/admin/roleDetail.html',
             controller: 'RoleDetailCtrl',
             resolve: {
@@ -94,7 +102,7 @@ function projectRouteConfig($stateProvider, $urlRouterProvider, $ocLazyLoadProvi
         })
         //模块管理
         .state('field.module', {
-            url: '/module?page&size',
+            url: '/module/:page/:size/:next',
             templateUrl: 'views/admin/module.html',
             controller: 'ModuleCtrl',
             resolve: {
@@ -113,7 +121,7 @@ function projectRouteConfig($stateProvider, $urlRouterProvider, $ocLazyLoadProvi
         //密码修改
         .state('field.pwd', {
             url: '/pwd',
-            templateUrl: 'views/admin/pwdSetting.html',
+            templateUrl: 'views/admin/pwd.html',
             controller: 'PwdCtrl',
             resolve: {
                 loadMyFile: _lazyLoad('js/controllers/admin/ptteng-pwdController-0.0.1.js')
