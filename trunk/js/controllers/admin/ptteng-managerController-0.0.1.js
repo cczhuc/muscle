@@ -29,10 +29,9 @@ angular.module('admin')
                     managerService.batchGetManager(res.data.data.ids).then(function (res) {
                         if (res.data.code == 0) {
                             vm.list = res.data.data.managerList;
-                            vm.total = res.data.data.total;
                             var rids = [];
                             angular.forEach(res.data.data.managerList, function (data) {
-                            rids.push(data.roleID);
+                                rids.push(data.roleID);
 
                             });
                                 getRoleList(rids);

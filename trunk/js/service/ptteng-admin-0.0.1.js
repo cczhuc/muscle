@@ -16,7 +16,6 @@ angular.module('admin')
             manager_list: "/a/u/manager/list",
             manager_multi_detail: function (params) {
                 return "/a/u/multi/manager" + commonUtil.concactArrayParam("ids", params);
-
             },
             //pwd
             changePwd: "/a/u/pwd",

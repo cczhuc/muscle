@@ -7,9 +7,9 @@ angular.module('admin')
         vm.id = $state.params.ids;
         roleService.getRoleList().then(function (res) {
             if (res.data.code == 0) {
-                vm.total = res.data.data.total;
                 roleService.batchGetRole(res.data.data.rids).then(function (res) {
                     if (res.data.code == 0) {
+                        vm.total = res.data.data.total;
                         vm.list = res.data.data.roleList;
                     } else {
                         commonUtil.showErrMsg(res);
