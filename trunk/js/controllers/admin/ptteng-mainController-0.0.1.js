@@ -1,5 +1,5 @@
 'use strict';
-angular.module('admin')
+angular.module('admin',['ui.sortable'])
     .controller('MainCtrl', ['$scope', '$rootScope', '$state',MainCtrl]);
         function MainCtrl($scope, $rootScope, $state) {
         // 是否登录检测，否则跳转到登录页
