@@ -29,7 +29,7 @@ angular.module('admin')
                     managerService.batchGetManager(res.data.data.ids).then(function (res) {
                         if (res.data.code == 0) {
                             vm.list = res.data.data.managerList;
-                            vm.total = Math.ceil(managerTotal / $state.params.size||10);
+                            vm.total = res.data.data.total;
                             var rids = [];
                             angular.forEach(res.data.data.managerList, function (data) {
                             rids.push(data.roleID);
@@ -76,7 +76,7 @@ angular.module('admin')
             } else {
                 commonUtil.showErrMsg(res);
                 }
-            console.log("res"+res.data.data)
+
         });
 
         // search

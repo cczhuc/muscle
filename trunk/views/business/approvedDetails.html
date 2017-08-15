@@ -1,3 +1,4 @@
+<script src="../../js/controllers/admin/ptteng-loginController-0.0.1.js"></script>
 <div class="panel panel-default">
     <div class="panel-heading">
         <strong>认证详情</strong>
@@ -73,6 +74,8 @@
                             <div class="form-group">
                                 <label class="control-label col-md-4 word-spacing-25 pd-right-10">职称</label>
                                 <div class="col-md-8">
+                                    <!--<input type="text" class="form-control" ng-model="vm.data.position"-->
+                                           <!--disabled>-->
                                     <select class="form-control" ng-model="vm.data.position" ng-options="x.name as x.name for x in vm.positionalTitle" disabled>
                                         <option value="">全部</option>
                                     </select>
@@ -115,7 +118,7 @@
             </div>
             <div class="pd-left-65">
                 <button class="btn btn-info btn-margin" ng-click="vm.check()" ng-disabled="vm.data.status!==1">审核</button>
-                <button class="btn btn-warning btn-margin" ui-sref="field.approvedList">返回</button>
+                <button class="btn btn-warning btn-margin" onclick="javascript:{window.history.go(-1);}">返回</button>
             </div>
         </div>
     </form>

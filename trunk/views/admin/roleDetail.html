@@ -26,7 +26,7 @@
                                                 <input type="checkbox" ng-model="list.change" ng-click="vm.changeModule($index)">{{list.name}}
                                             </label>
 
-                                            <div class="checkbox mg-left-2" ng-repeat="li in list.nodes">
+                                            <div class="checkbox margin-left-20" ng-repeat="li in list.nodes">
                                                 <label>
                                                     <input type="checkbox"
                                                            ng-checked="vm.selectList[$parent.$index].nodes[$index].use==true"
@@ -35,8 +35,6 @@
                                                 </label>
                                             </div>
                                         </li>
-
-
                                     </ul>
                                 </div>
                             </div>

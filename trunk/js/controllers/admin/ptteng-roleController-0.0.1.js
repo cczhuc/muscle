@@ -7,7 +7,7 @@ angular.module('admin')
         vm.id = $state.params.ids;
         roleService.getRoleList().then(function (res) {
             if (res.data.code == 0) {
-                vm.total = Math.ceil(res.data.data.total/res.data.data.size);
+                vm.total = res.data.data.total;
                 roleService.batchGetRole(res.data.data.rids).then(function (res) {
                     if (res.data.code == 0) {
                         vm.list = res.data.data.roleList;
