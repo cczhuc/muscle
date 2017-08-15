@@ -306,6 +306,7 @@
     border: 1px solid #ddd;
     display: table-cell;
     padding: 7px 10px;
+    vertical-align: middle;
     word-break: break-all;
 }
 .divTableFoot {
