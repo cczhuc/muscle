@@ -4,9 +4,7 @@
 (function(){
     'use strict';
 
-    angular
-        .module('admin')
-        .controller('ContentListCtrl', ContentListCtrl);
+    angular.module('admin').controller('ContentListCtrl', ContentListCtrl);
 
     ContentListCtrl.$inject = ['$scope', 'portService', '$rootScope', '$timeout', '$state'];
 
