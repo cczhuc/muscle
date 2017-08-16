@@ -7,7 +7,6 @@ angular.module('admin')
         vm.pwd = "";
         $scope.submit = function() {
             loginService.login({name: vm.name, pwd: vm.pwd}).then(function(res) {
-                console.log(res);
                 if (res.data.code == 0) {
                     $cookies.login = "true";
                     $state.go("field.dashboard");

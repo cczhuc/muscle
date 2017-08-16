@@ -8,7 +8,6 @@ angular.module('admin').controller('DiagnosisDetailsCtrl', ['$rootScope', '$stat
             if (res.data.code === 0) {
                 vm.diagnosisDetails = res.data.data;
                 vm.patient = res.data.patient[vm.diagnosisDetails.pid];
-                console.log(vm.diagnosisDetails);
             } else {
                 $rootScope.alert(res.data.message);
             }

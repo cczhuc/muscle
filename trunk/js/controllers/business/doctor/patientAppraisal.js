@@ -16,8 +16,6 @@ angular.module('admin').controller('PatientAppraisalCtrl', ['$rootScope', '$stat
                 //搜索按钮指令会对vm.searchParams.end + 86400000 -1,所以要反向操作
                 vm.tempParams.createFrom = vm.tempParams.createTo - 86400000 + 1;
                 vm.tempParams.createTo = tempAt + 86400000 - 1;
-                console.log("vm.tempParams.createFrom", vm.tempParams.createFrom);
-                console.log("vm.tempParams.createTo", vm.tempParams.createTo);
             }
         }());
 
@@ -26,8 +24,6 @@ angular.module('admin').controller('PatientAppraisalCtrl', ['$rootScope', '$stat
                 vm.commentList = res.data.data.commentList;
                 vm.userList = res.data.data.userList;
                 vm.total = res.data.data.total;
-                console.log( vm.commentList);
-                console.log( vm.userList);
             } else {
                 $rootScope.alert(res.data.message);
             }
