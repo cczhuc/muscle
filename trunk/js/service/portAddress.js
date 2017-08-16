@@ -109,13 +109,21 @@ angular.module("admin").factory("address",function ($state,$http){
 
         // 内容管理
         contentList_url:function(){
-            return "/a/u/content/search"
+            return "/a/u/article/search"
         },
-        contentRank_url:function(rank){
-            return "/a/u/content/rank"+rank
+        // contentRank_url:function(rank){
+        //     return "/a/u/content/rank"+rank
+        // },
+        articleSort_url:function(){
+            return "/a/u/article/sort"
         },
 
         // 运营管理
+        // 参数设置
+        paramSetting_url:function(prince){
+            return "/a/u/param?prince="+prince
+        },
+        // 消息列表
         messageList_url:function(){
             return "/a/u/message/search"
         },

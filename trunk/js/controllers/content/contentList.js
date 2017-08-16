@@ -23,7 +23,7 @@
             portService.getContentList().then(function (res){
                 console.log(res);
                 vm.total = res.data.data.total;
-                vm.content = res.data.data.contentList;
+                vm.content = res.data.data.articleList;
             })
         }
         // 拖动部分
@@ -33,8 +33,8 @@
         };
         vm.save = function(){
             $scope.sortableOptions.disabled = true;
-            vm.ranks = vm.resArr.join('&rank=');
-            portService.putContentRank(vm.ranks).then(function(res){
+            // vm.ranks = vm.resArr.join('&rank=');
+            portService.putSort(vm.resArr).then(function(res){
                 console.log(res);
             })
         };

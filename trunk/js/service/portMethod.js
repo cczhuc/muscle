@@ -105,9 +105,15 @@ angular.module("admin")
         getContentList:function(param){
             return $http.get(address.contentList_url())
         },
-
+        // 拖动
+        putSort:function(data){
+            return $http.post(address.articleSort_url(),data)
+        },
         // 运营管理
-
+        // 参数设置
+        putParam:function(prince){
+            return $http.put(address.paramSetting_url(prince))
+        },
         // 获取信息列表
         getMessageList:function(param){
             return $http.get(address.messageList_url())
