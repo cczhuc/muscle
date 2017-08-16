@@ -2,7 +2,6 @@ angular.module('admin').controller('PatientRecordCtrl',['$rootScope','$state','$
     function ($rootScope,$state,$http,portService) {
         var vm = this;
         vm.searchParams = $state.params;
-        console.log($state.params);
         //把需要日历插件需要+86399999的参数的名字以字符串放进来，写在html日期插件的属性里，给search插件去处理
         vm.timeFixArr = ["payEndAt"];
         // 时间格式转换

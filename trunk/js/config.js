@@ -31,7 +31,7 @@ angular.module('admin', ['oc.lazyLoad', 'ui.router', 'ngCookies', 'mgcrea.ngStra
                 $state.go("field.dashboard");
                 return false;
             }
-            // window.scrollTo(0, 0);
+            window.scrollTo(0, 0);
             // //权限验证
             // //取出数据
             // var permissionsSet = JSON.parse(localStorage.permissionsSet);
@@ -271,7 +271,7 @@ function lazyLoadConfig($ocLazyLoadProvider) {
 // Loader
 function loadingBar(cfpLoadingBarProvider) {
     cfpLoadingBarProvider.latencyThreshold = 200;
-    cfpLoadingBarProvider.includeSpinner = false;
+    cfpLoadingBarProvider.includeSpinner = true;
 }
 
 

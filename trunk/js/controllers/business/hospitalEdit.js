@@ -2,9 +2,8 @@ angular.module("admin").controller('HospitalEditCtrl',["$rootScope","$state","$h
 "hospitalGrade","commonUtil","FileUploader","uploadService","$timeout",
     function ($rootScope,$state,$http,portService,hospitalGrade,commonUtil,FileUploader,uploadService,$timeout) {
         var vm = this;
-        /**获取常量表数据**/
+
         var data ={size:1000};
-        // vm.selectData = portService.getParamList(data);
 
         vm.data = $state.params;
         vm.hospitalGrade = hospitalGrade;
@@ -28,6 +27,7 @@ angular.module("admin").controller('HospitalEditCtrl',["$rootScope","$state","$h
                     vm.data = res.data.data;
                     // 省市区数据转换
                     vm.address1 = commonUtil.areaDateTransform(vm.data.province, vm.data.city, vm.data.county);
+                    /**获取常量表数据**/
                     vm.selectData = portService.getParamList(data);
                 }
                 else {

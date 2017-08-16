@@ -6,7 +6,6 @@ angular.module("admin").controller('ApprovedDetailsCtrl',["$rootScope","$state",
         // 获取数据
         portService.getApprovedDetails(vm.data.id).then(function (res) {
             if (res.data.code===0) {
-                console.log(res);
                 vm.data = res.data.data;
             }
             else {

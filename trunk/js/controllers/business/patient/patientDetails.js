@@ -7,7 +7,6 @@ angular.module('admin').controller('PatientDetailsCtrl',['$rootScope','$state','
             if(res.data.code === 0) {
                 vm.user = res.data.data;
                 vm.MobileCopy =  vm.user.mobile; //复制一份手机号码，用于修改手机号时，点击取消按钮的还原
-                console.info(res.data.data)
             } else {
                 $rootScope.alert(res.data.message);
             }
