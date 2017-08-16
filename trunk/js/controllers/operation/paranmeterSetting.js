@@ -18,7 +18,6 @@
 
         ////////////////
         vm.searchParams = $state.params;
-        console.log($state.params);
         vm.timeFixArr = ['endAt'];
         vm.searchParams.startAt = parseInt(vm.searchParams.startAt) || undefined;
         vm.searchParams.endAt = parseInt(vm.searchParams.endAt) || undefined;

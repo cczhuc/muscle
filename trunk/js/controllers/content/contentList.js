@@ -62,7 +62,6 @@
                     for(var y = 0; y < vm.content.length; y++){
                         vm.resArr.push(vm.content[y].id);
                     }
-                    console.log(vm.resArr);
                 })
             },
             disabled : true
