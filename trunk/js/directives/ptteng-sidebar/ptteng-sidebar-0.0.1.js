@@ -57,7 +57,7 @@ angular.module('admin')
                             }
                         })
                     });
-                    console.log($scope.sideList);
+
                     sessionStorage.mineSide = JSON.stringify($scope.sideList);
                 };
 
