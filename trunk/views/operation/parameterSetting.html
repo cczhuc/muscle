@@ -1,17 +1,116 @@
 <div class="panel panel-default">
-    <div class="panel-heading white">
-        <strong>参数设置</strong>
-    </div>
-    <div class="panel-body table-responsive">
-        <div class="panel panel-default">
-            <div class="panel-heading white">
-                <strong class="f-redline">价格设置</strong>
+    <form class="form-horizontal">
+        <div class="panel-body">
+            <div class="row pd-bottom-20">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label class="control-label col-md-4 word-spacing-25">类别</label>
+                        <div class="col-md-8">
+                            <input type="text" class="form-control" ng-model="vm.searchParams.type" maxlength="11" >
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label class="control-label col-md-4 word-spacing-25">名称</label>
+                        <div class="col-md-8">
+                            <input type="text" class="form-control" ng-model="vm.searchParams.name">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label class="control-label col-md-4 word-spacing-25">值</label>
+                        <div class="col-md-8">
+                            <input type="text" class="form-control" ng-model="vm.searchParams.value">
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="panel-body table-responsive grey">
-                <div class="f-marginleft">方案价格 <input type="text" class="form-control f-inputbox" ng-model="vm.currentValue"> （元）</div>
+            <div class="row pd-bottom-20">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label class="control-label col-md-4">发送日期</label>
+                        <div class="col-md-8">
+                            <input type="text" class="form-control" size="20" bs-datepicker autoclose="true"
+                                    data-date-format="yyyy-MM-dd" data-date-type="number"
+                                    ng-model="vm.searchParams.startAt" data-max-date="{{vm.searchParams.endAt}}">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label class="control-label col-md-4 text-center ">—</label>
+                        <div class="col-md-8">
+                            <input type="text" class="form-control" size="20" bs-datepicker autoclose="true"
+                                    data-date-format="yyyy-MM-dd" data-date-type="number"
+                                    ng-model="vm.searchParams.endAt" data-min-date="{{vm.searchParams.startAt}}">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row pd-bottom-2">
+                <div class="col-md-4 pull-right text-right">
+                    <search params="vm.searchParams" time-fix-arr="vm.timeFixArr"></search>
+                </div>
             </div>
         </div>
-        <button class="btn btn-success f-btnpadding" ng-click="vm.save()">保存</button>
-        <button class="btn btn-info f-btnpadding" ng-click="vm.restore()">还原</button>
-    </div>
+    </form>
 </div>
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <strong>常量表</strong>
+        <button type="button" class="btn btn-xs btn-success pull-right margin-left-10" ui-sref="field.parameterSettingEdit({})">
+            +新增
+        </button>
+    </div>
+    <div class="list-replace" ng-if="vm.data.length == 0">
+        <div class="list-replace-text">暂无任何数据</div>
+    </div>
+    <div class="panel-body  panel-body-noMax" ng-if="vm.data.length != 0">
+        <div class="divTable">
+            <div class="divTableHeading">
+                <div class="divTableHead">序号</div>
+                <div class="divTableHead">类别</div>
+                <div class="divTableHead">名称</div>
+                <div class="divTableHead">值</div>
+                <div class="divTableHead">修改时间</div>
+                <div class="divTableHead">备注</div>
+                <div class="divTableHead">操作</div>
+            </div>
+            <div class="divTableBody">
+                <div class="divTableRow" ng-repeat="item in vm.data track by $index">
+                    <div  class="divTableCell handle">{{item.id}}</div>
+                    <div  class="divTableCell">{{item.type}}</div>
+                    <div  class="divTableCell">{{item.name}}</div>
+                    <div  class="divTableCell">{{item.value}}</div>
+                    <div  class="divTableCell">{{item.updateAt|date:"yyyy-MM-dd HH:mm:ss"}}</div>
+                    <div  class="divTableCell">{{item.comment}}</div>
+                    <div  class="divTableCell" >
+                        <a type="button" class="btn btn-sm" ui-sref="field.parameterSettingEdit({id:item.id})">编辑</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <pagination ng-if="vm.total" total="{{vm.total}}" default-page="4"></pagination>
+</div>
+
+
+<!--<div class="panel panel-default">-->
+    <!--<div class="panel-heading white">-->
+        <!--<strong>参数设置</strong>-->
+    <!--</div>-->
+    <!--<div class="panel-body table-responsive">-->
+        <!--<div class="panel panel-default">-->
+            <!--<div class="panel-heading white">-->
+                <!--<strong class="f-redline">价格设置</strong>-->
+            <!--</div>-->
+            <!--<div class="panel-body table-responsive grey">-->
+                <!--<div class="f-marginleft">方案价格 <input type="text" class="form-control f-inputbox" ng-model="vm.currentValue"> （元）</div>-->
+            <!--</div>-->
+        <!--</div>-->
+        <!--<button class="btn btn-success f-btnpadding" ng-click="vm.save()">保存</button>-->
+        <!--<button class="btn btn-info f-btnpadding" ng-click="vm.restore()">还原</button>-->
+    <!--</div>-->
+<!--</div>-->

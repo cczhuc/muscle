@@ -9,7 +9,7 @@
                             <div class="col-md-8">
                                 <input type="text" class="form-control" size="20" bs-datepicker autoclose="true"
                                        data-date-format="yyyy-MM-dd" data-date-type="number"
-                                       ng-model="vm.searchParams.startAt">
+                                       ng-model="vm.searchParams.createFrom" data-max-date="today">
                             </div>
                         </div>
                     </div>
@@ -19,7 +19,7 @@
                             <div class="col-md-8">
                                 <input type="text" class="form-control" size="20" bs-datepicker autoclose="true"
                                        data-date-format="yyyy-MM-dd" data-date-type="number"
-                                       ng-model="vm.searchParams.endAt">
+                                       ng-model="vm.searchParams.createTo" data-max-date="today">
                             </div>
                         </div>
                     </div>
@@ -29,10 +29,10 @@
                             <div class="col-md-8">
                                 <select class="form-control" ng-model="vm.searchParams.position">
                                     <option value="">全部</option>
-                                    <option value="1">主任医师</option>
-                                    <option value="2">副主任医师</option>
-                                    <option value="3">主治医师</option>
-                                    <option value="4">其他</option>
+                                    <option value="主任医师">主任医师</option>
+                                    <option value="副主任医师">副主任医师</option>
+                                    <option value="主治医师">主治医师</option>
+                                    <option value="其他">其他</option>
                                 </select>
                             </div>
                         </div>
@@ -46,7 +46,7 @@
                             <div class="col-md-8">
                                 <input class="form-control"
                                        type="text"
-                                       ng-model="vm.searchParams.mobile">
+                                       ng-model="vm.searchParams.mobile" numberic maxlength="11">
                             </div>
                         </div>
                     </div>
@@ -64,7 +64,7 @@
                         <div class="form-group">
                             <label class="control-label col-md-4 word-spacing-25">账户状态</label>
                             <div class="col-md-8">
-                                <select class="form-control" ng-model="vm.searchParams.status">
+                                <select class="form-control" ng-model="vm.searchParams.accountStatus">
                                     <option value="">全部</option>
                                     <option value="0">正常</option>
                                     <option value="1">冻结</option>
@@ -73,13 +73,11 @@
                         </div>
                     </div>
                 </div>
-
                 <div class="row">
                     <div class="col-md-12 text-right ">
-                        <search params="vm.searchParams"></search>
+                        <search params="vm.searchParams" time-fix-arr="vm.timeFixArr"></search>
                     </div>
                 </div>
-
             </div>
         </form>
     </div>
@@ -89,14 +87,12 @@
     <div class="col-lg-12">
         <div class="panel panel-default">
             <div class="panel-heading">
-                <strong>{{vm.hospitalName}}医师列表</strong>
+                <strong>{{vm.searchParams.hName}}医师列表</strong>
             </div>
-
-            <div class="list-replace" ng-if="vm.doctorList.length == 0">
+            <div class="list-replace" ng-if="vm.doctor.length == 0">
                 <div class="list-replace-text">暂无任何数据</div>
             </div>
-
-            <div class="panel-body panel-body-noMax" ng-if="vm.doctorList.length != 0">
+            <div class="panel-body panel-body-noMax" ng-if="vm.doctor.length != 0">
                 <div class="divTable">
                     <div class="divTableHeading">
                         <div class="divTableHead">ID</div>
@@ -110,28 +106,28 @@
                     </div>
 
                     <div class="divTableBody">
-                        <div class="divTableRow" ng-repeat="doctor in vm.doctorList track by $index">
-                            <div class="divTableCell handle">{{doctor.uuid}}</div>
+                        <div class="divTableRow" ng-repeat="doctor in vm.doctor track by $index">
+                            <div class="divTableCell handle">{{doctor.id}}</div>
                             <div class="divTableCell">{{doctor.createAt|date:'yyyy-MM-dd'}}</div>
                             <div class="divTableCell">{{doctor.mobile}}</div>
                             <div class="divTableCell">{{doctor.name}}</div>
-                            <div class="divTableCell">{{doctor.position|doctorPositionFilter}}</div>
+                            <div class="divTableCell">{{doctor.position}}</div>
                             <div class="divTableCell">{{doctor.income}}</div>
-                            <div class="divTableCell" ng-class="{'text-green':doctor.status==0}">{{doctor.status|freezedFilter}}</div>
+                            <div class="divTableCell" ng-class="{'text-green':doctor.accountStatus==0}">{{doctor.accountStatus|freezedStatusFilter}}</div>
 
                             <div class="divTableCell company-tableCell-fix">
                                 <div class="row">
                                     <a class="text-red btn btn-sm company-a-fix" href=""
-                                       ng-click="vm.freezeDoctor(doctor.id,0,doctor.status)" ng-class="{'text-green':doctor.status==1}">
-                                        {{doctor.status|changeFreezedStatusFilter}}
+                                       ng-click="vm.freezeDoctor(doctor.id,doctor.accountStatus)" ng-class="{'text-green':doctor.accountStatus==1}">
+                                        {{doctor.accountStatus|changeFreezedStatusFilter}}
                                     </a>
-                                    <a class=" btn btn-sm company-a-fix" ui-sref="field.doctorDetails({id:doctor.uuid})">
+                                    <a class=" btn btn-sm company-a-fix" ui-sref="field.doctorDetails({id:doctor.id})">
                                         查看
                                     </a>
-                                    <a class=" btn btn-sm company-a-fix" ui-sref="field.planTemplate({id:doctor.uuid})">
+                                    <a class=" btn btn-sm company-a-fix" ui-sref="field.planTemplate({did:doctor.id})">
                                         模板
                                     </a>
-                                    <a class=" btn btn-sm company-a-fix" ui-sref="field.diagnosisRecord({id:doctor.uuid})">
+                                    <a class=" btn btn-sm company-a-fix" ui-sref="field.diagnosisRecord({did:doctor.id})">
                                         记录
                                     </a>
                                 </div>
@@ -139,10 +135,10 @@
                                     <a class="text-red btn btn-sm company-a-fix" ng-click="vm.cancelApproved(doctor.id)" >
                                         撤销认证
                                     </a>
-                                    <a class=" btn btn-sm company-a-fix" ui-sref="field.patientAppraisal({id:doctor.uuid})">
+                                    <a class=" btn btn-sm company-a-fix" ui-sref="field.patientAppraisal({did:doctor.id})">
                                         评价
                                     </a>
-                                    <a class=" btn btn-sm company-a-fix" ui-sref="field.transactionDetails({id:doctor.uuid})">
+                                    <a class=" btn btn-sm company-a-fix" ui-sref="field.transactionDetails({did:doctor.id})">
                                         交易
                                     </a>
                                 </div>

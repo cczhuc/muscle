@@ -2,23 +2,41 @@
     <form class="form-horizontal">
         <div class="panel-body">
             <div class="row pd-bottom-20">
+
                 <div class="col-md-4">
                     <div class="form-group">
                         <label class="control-label col-md-4 word-spacing-25">标&emsp;&emsp;题</label>
                         <div class="col-md-8">
-                            <input type="text" class="form-control">
+                            <input type="text" ng-model="vm.searchParams.title" class="form-control">
                         </div>
                     </div>
                 </div>
-
                 <div class="col-md-4">
                     <div class="form-group">
-                        <label class="control-label col-md-4">创建日期</label>
+                        <label class="control-label col-md-4 word-spacing-25">创&ensp;建&ensp;者</label>
                         <div class="col-md-8">
-                            <input type="text" class="form-control" size="20" bs-datepicker autoclose="true" data-date-format="yyyy-MM-dd" data-date-type="number" data-max-date="{{vm.searchParams.endAt}}" ng-model="vm.searchParams.startAt">
+                            <input type="text" class="form-control" ng-model="vm.searchParams.createByName">
                         </div>
                     </div>
                 </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label class="control-label col-md-4 word-spacing-25">作&emsp;&emsp;者</label>
+                        <div class="col-md-8">
+                            <input type="text" class="form-control" ng-model="vm.searchParams.author">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row pd-bottom-20">
+                <div class="col-md-4">
+                <div class="form-group">
+                    <label class="control-label col-md-4">创建日期</label>
+                    <div class="col-md-8">
+                        <input type="text" class="form-control" size="20" bs-datepicker autoclose="true" data-date-format="yyyy-MM-dd" data-date-type="number" data-max-date="{{vm.searchParams.endAt}}" ng-model="vm.searchParams.startAt">
+                    </div>
+                </div>
+            </div>
                 <div class="col-md-4">
                     <div class="form-group">
                         <label class="control-label col-md-4 text-center ">—</label>
@@ -27,34 +45,15 @@
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="row pd-bottom-20">
-                <div class="col-md-4">
-                    <div class="form-group">
-                        <label class="control-label col-md-4 word-spacing-25">创&ensp;建&ensp;者</label>
-                        <div class="col-md-8">
-                            <input type="text" class="form-control">
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="form-group">
-                        <label class="control-label col-md-4 word-spacing-25">作&emsp;&emsp;者</label>
-                        <div class="col-md-8">
-                            <select class="form-control" ng-model="vm.searchParams.status">
-                                <option value="">全部</option> <option value="2">已认证</option>
-                                <option value="1">未认证</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
+
                 <div class="col-md-4">
                     <div class="form-group">
                         <label class="control-label col-md-4 word-spacing-25">状态</label>
                         <div class="col-md-8">
                             <select class="form-control" ng-model="vm.searchParams.status">
-                                <option value="">全部</option> <option value="2">已认证</option>
-                                <option value="1">未认证</option>
+                                <option value="">全部</option>
+                                <option value="1">已上线</option>
+                                <option value="2">草稿</option>
                             </select>
                         </div>
                     </div>
@@ -62,7 +61,7 @@
             </div>
             <div class="row pd-bottom-2">
                 <div class="col-md-4 pull-right text-right">
-                    <search params="vm.searchParams"></search>
+                    <search params="vm.searchParams" time-fix-arr="vm.timeFixArr"></search>
                 </div>
             </div>
         </div>
@@ -74,7 +73,7 @@
         <div class=" pull-right">
             <button class="btn btn-info btn-xs" ng-if="sortableOptions.disabled == true" ng-click="vm.sort()">排序</button>
             <button class="btn btn-success btn-xs" ng-if="sortableOptions.disabled == false" ng-click="vm.save()">保存</button>
-            <button class="btn btn-primary btn-xs" ui-sref="field.contentEdit" ui-sref-opts="{reload:true}" href="#/messageEdit">
+            <button class="btn btn-primary btn-xs" ui-sref="field.contentEdit({type:vm.searchParams.type})" ui-sref-opts="{reload:true}" href="#/messageEdit">
                 <i class="fa fa-plus-square fa-fw"></i>新增
             </button>
         </div>
@@ -83,25 +82,25 @@
         <ul class="contentrank" ui-sortable="sortableOptions" ng-model="vm.content">
                 <li>
                     <span class="rank1">序号</span>
-                    <span class="rank4">标题</span>
+                    <span class="rank3">标题</span>
                     <span class="rank3">作者</span>
                     <span class="rank2">状态</span>
                     <span class="rank3">创建者</span>
-                    <span class="rank3">创建时间</span>
+                    <span class="rank4">创建时间</span>
                     <span class="rank4">操作</span>
                 </li>
                 <li ng-repeat="item in vm.content track by $index">
                     <span class="rank1">{{item.id}}</span>
-                    <span class="rank4">{{item.title}}</span>
+                    <span class="rank3">{{item.title}}</span>
                     <span class="rank3">{{item.author}}</span>
                     <span class="rank2">{{item.status|contentListStatusFilter}}</span>
-                    <span class="rank3">{{item.createBy}}</span>
-                    <span class="rank3">{{item.createAt}}</span>
+                    <span class="rank3">{{item.createByName}}</span>
+                    <span class="rank4">{{item.createAt|date:"yyyy-MM-dd HH:mm:ss"}}</span>
                     <span class="rank4">
-                        <a ng-if="item.status=='0'" type="button" class="btn btn-sm text-green" ng-click="vm.online()">上线</a>
-                        <a ng-if="item.status=='1'" type="button" class="btn btn-sm text-red" ng-click="vm.offline()">下线</a>
+                        <a ng-if="item.status!==1" type="button" class="btn btn-sm text-green" ng-click="vm.online($index)">上线</a>
+                        <a ng-if="item.status=='1'" type="button" class="btn btn-sm text-red" ng-click="vm.offline($index)">下线</a>
                         <a type="button" class="btn btn-sm" ui-sref="field.contentEdit({id:vm.content[$index].id})">编辑</a>
-                        <a type="button" class="btn btn-sm text-red" ng-click="vm.delete()">删除</a>
+                        <a type="button" class="btn btn-sm text-red" ng-click="vm.delete($index)">删除</a>
                     </span>
                 </li>
         </ul>

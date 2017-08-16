@@ -14,10 +14,18 @@ angular.module('admin')
         }
     })
 
-    .filter('freezedFilter',function() {
+    //把毫秒转为年，用于根据出生日期时间戳算年龄
+    .filter('ageFilter',["commonUtil",function (commonUtil) {
+        return function(time) {
+            var age = parseInt(time/24/60/60/1000/365);
+            return age;
+        }
+    }])
+
+    .filter('freezedStatusFilter',function() {
         return function(freezed) {
             switch(freezed) {
-                case 0 :
+                case 0:
                     return "正常";
                 case 1:
                     return "冻结";
@@ -29,8 +37,9 @@ angular.module('admin')
 
     .filter('changeFreezedStatusFilter',function() {
         return function(freezed) {
+            freezed = parseInt(freezed);
             switch(freezed) {
-                case 0 :
+                case 0:
                     return "冻结";
                 case 1:
                     return "解冻";
@@ -45,13 +54,13 @@ angular.module('admin')
     .filter('approvedListStatusFilter', function () {
         return function (status) {
             switch (status) {
-                case 0:
-                    return "已认证";
                 case 1:
                     return "未认证";
                 case 2:
-                    return "已拒绝";
+                    return "已认证";
                 case 3:
+                    return "已拒绝";
+                case 4:
                     return "已撤销";
                 default :
                     return "数据异常";
@@ -75,9 +84,9 @@ angular.module('admin')
         return function(type) {
             switch(type) {
                 case 0:
-                    return "提现";
-                case 1:
                     return "方案出售";
+                case 1:
+                    return "提现";
                 default:
                     return "type="+type+"数据异常";
             }
@@ -87,12 +96,14 @@ angular.module('admin')
     .filter('dealStatusFilter',function() {
         return function(status) {
             switch(status) {
+                case -1:
+                    return "订单失效";
                 case 0 :
-                    return "成功";
+                    return "付款失败";
                 case 1:
-                    return "进行中";
+                    return "付款成功";
                 case 2:
-                    return "失败";
+                    return "待付款";
                 default:
                         return "status="+status+"数据异常";
             }
@@ -153,12 +164,13 @@ angular.module('admin')
             }
         }
     })
+
     // 患者-订单记录-交易类型
     .filter('transactionTypeFilter', function () {
         return function (status) {
             switch (status) {
                 case 0:
-                    return "方案支付";
+                    return "方案购买";
                 default :
                     return "数据异常";
             }
@@ -168,10 +180,14 @@ angular.module('admin')
     .filter('transactionStatusFilter', function () {
         return function (status) {
             switch (status) {
+                case -1:
+                    return "订单失效";
                 case 0:
-                    return "成功";
+                    return "付款失败";
                 case 1:
-                    return "失败";
+                    return "付款成功";
+                case 2:
+                    return "待付款";
                 default :
                     return "数据异常";
             }
@@ -194,9 +210,9 @@ angular.module('admin')
 //     内容列表
     .filter('contentListStatusFilter',function(){
         return function(status){
-            if(status === 0){
-                return "草稿"
-            }else {return "已上线"}
+            if(status === 1){
+                return "已上线"
+            }else {return "草稿"}
         }
     })
 
@@ -234,7 +250,7 @@ angular.module('admin')
     //     版本过滤
     .filter('appVersionFilter',function(){
         return function(status){
-            if(status === 0){
+            if(status == 0){
                 return "医师版"
             }else {return "患者版"}
         }

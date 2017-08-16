@@ -124,7 +124,7 @@ var doctorDetail = Mock.mock('/a/user',{
 });
 
 // 合作医院列表
-var hospitalList = Mock.mock('/a/hospital/search',{
+var hospitalList = Mock.mock('/a/u/search/hospital',{
     code:0,
     data:{
         'hospitalList|10': [{
@@ -160,7 +160,7 @@ var hospitalDetails = Mock.mock('/a/hospital',{
     message:'success'
 });
 // 合作医院的医师列表
-var hospitalDoctor = Mock.mock('/a/u/hospital/doctor',{
+var hospitalDoctor = Mock.mock('/a/u/search/doctor',{
     code:0,
     data:{
         'doctorList|10': [{
@@ -169,7 +169,7 @@ var hospitalDoctor = Mock.mock('/a/u/hospital/doctor',{
             'name':'@cname()',
             'position|0-3':1,
             'income|0-100.2':0,
-            'status|0-1':1,
+            'accountStatus|0-1':1,
             'createAt|1499184000000-1499356800000':1499184000000
         }],
         hospitalName:'北京东城中医医院',
@@ -197,18 +197,18 @@ var PatientAppraisalList = Mock.mock('/a/PatientAppraisalLit',{
     message:'success'
 });
 // 用户管理患者版-订单记录
-var patientRecord = Mock.mock('/a/u/patientRecord',{
+var patientRecord = Mock.mock('/a/u/order/list',{
     code:0,
     data:{
         'recordList|10': [{
             'id|1-100': 1,
-            'transaction_time|1499184000000-1499356800000':1499184000000,
+            'payAt|1499184000000-1499356800000':1499184000000,
             'product':'火热活血多段控制训练',
-            'transaction_number':20171111092130213,
-            'sum|1-100.2':1,
-            'transaction_type': 0,
-            'transaction_status|0-1':0,
-            'transaction_way|0-1':0
+            'orderNo':20171111092130213,
+            'amount|1-100.2':1,
+            'type': 0,
+            'status|-1-2':0,
+            'way|0-1':0
         }
         ],
         page: 1,

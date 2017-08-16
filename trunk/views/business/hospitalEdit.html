@@ -35,7 +35,7 @@
                 <div class="col-md-10">
                     <div class="form-group">
                         <div class="col-md-12">
-                            <city-select select-result="vm.data.address" required judge=true></city-select>
+                            <city-select select-result="vm.address1" required judge=true select-data="vm.selectData"></city-select>
                         </div>
                     </div>
                 </div>
@@ -48,7 +48,7 @@
                             地&emsp;&emsp;址
                         </label>
                         <div class="col-md-10">
-                            <input type="text" class="form-control" name="address" ng-model="vm.data.address1"
+                            <input type="text" class="form-control" name="address" ng-model="vm.data.address"
                             maxlength="25"       required>
                         </div>
                     </div>
@@ -59,7 +59,7 @@
                 <div class="col-md-10">
                     <div class="form-group">
                         <label class="col-md-2 control-label word-spacing-25">
-                            <span class="star fl pd-left-30" ng-class="{'conceal':vm.data.image!=undefined&&vm.data.image!='undefined'}">*</span>
+                            <span class="star fl pd-left-30" ng-class="{'conceal':vm.data.img!=undefined&&vm.data.img!='undefined'}">*</span>
                             医院图片
                         </label>
                         <div class="col-md-10 padding-0">
@@ -72,9 +72,10 @@
                                        uploader="vm.uploader1"
                                        accept="image/*"
                                 />
+                                <span>（建议图片尺寸：1280x720）</span>
                             </div>
                             <div class="col-md-12">
-                                <img ng-src="{{vm.data.image}}" alt="配图预览" class="img-responsive">
+                                <img ng-src="{{vm.data.img}}" alt="配图预览" class="img-responsive">
                             </div>
                             <div class="col-md-12">
                                 <div class="table-responsive col-md-8 padding-0">
@@ -131,14 +132,15 @@
                 <div class="col-md-2"></div>
                 <div class="col-md-8">
                     <button type="button" class="btn btn-success" ng-click="vm.pubHospital() "
-                            ng-disabled="!myform.$valid||vm.params.img==undefined">立即上线
+                            ng-disabled="!myform.$valid||vm.data.img==undefined">立即上线
                     </button>
                     <button type="button" class="btn btn-success" ng-click="vm.saveHospital()"
-                            ng-disabled="!myform.$valid||vm.params.img==undefined"
+                            ng-disabled="!myform.$valid||vm.data.img==undefined"
                             >存为草稿
                     </button>
                     <!--<span class="text-red" ng-show="!vm.vaidShow">请补全信息</span>-->
-                    <button type="button" class="btn btn-default pull-right" ui-sref="field.hospitalList">取消</button>
+                    <button type="button" class="btn btn-default pull-right" onclick="javascript:{window.history.go(-1);}">取消</button>
+                    <!--<button type="button" class="btn btn-default pull-right" ui-sref="field.hospitalList">取消</button>-->
                 </div>
             </div>
         </form>

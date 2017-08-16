@@ -12,7 +12,7 @@ function projectRouteConfig($stateProvider, $urlRouterProvider, $ocLazyLoadProvi
         events: true
     });
 
-    //更改url格式配置为html5，去掉#号
+    // 更改url格式配置为html5，去掉#号
     // $locationProvider.html5Mode(true);
 
     $urlRouterProvider.otherwise('/dashboard');
@@ -21,12 +21,12 @@ function projectRouteConfig($stateProvider, $urlRouterProvider, $ocLazyLoadProvi
         .state('field', {
             url: '',
             templateUrl: 'views/main.html',
-            controller: 'MainController',
+            controller: 'MainCtrl',
             controllerAs: 'vm',
             abstract: true, // true 表明此状态不能被显性激活，只能被子状态隐性激活
             resolve: {
                 loadMyFile: _lazyLoad([
-                    'js/controllers/admin/mainController.js',
+                    'js/controllers/admin/ptteng-mainController-0.0.1.js',
                     'js/directives/ptteng-sidebar/ptteng-sidebar-0.0.1.js',
                     'js/directives/searchParams/search-params.js',
                     'js/directives/ptteng-user/ptteng-user-0.0.1.js',
@@ -44,21 +44,21 @@ function projectRouteConfig($stateProvider, $urlRouterProvider, $ocLazyLoadProvi
 
         // 公共管理模块 (此处可以配置 但是不要删除 若操作记录没有的话 可以删除掉)
         // 登录登出
+
         .state('login', {
             url: '/login',
             templateUrl: 'views/admin/login.html',
-            controller: 'LoginController',
-            controllerAs: 'vm',
+            controller: 'LoginCtrl',
             resolve: {
                 loadMyFile: _lazyLoad(
-                    'js/controllers/admin/loginController.js')
+                    'js/controllers/admin/ptteng-loginController-0.0.1.js')
             }
         })
 
         //后台管理开始
         //用户管理
         .state('field.manager', {
-            url: '/manager?page',
+            url: '/manager/:page/:size/:next',
             templateUrl: 'views/admin/manager.html',
             controller: 'ManagerCtrl',
             resolve: {
@@ -74,9 +74,17 @@ function projectRouteConfig($stateProvider, $urlRouterProvider, $ocLazyLoadProvi
                 loadMyFile: _lazyLoad('js/controllers/admin/ptteng-managerDetailController-0.0.1.js')
             }
         })
+        // .state('field.managerCheck', {
+        //     url: '/managerCheck/:id',
+        //     templateUrl: 'views/admin/managerCheck.html',
+        //     controller: 'ManagerDetailCtrl',
+        //     resolve: {
+        //         loadMyFile: _lazyLoad('js/controllers/admin/ptteng-managerDetailController-0.0.1.js')
+        //     }
+        // })
         //角色管理
         .state('field.role', {
-            url: '/role/:page',
+            url: '/role/:page/:size/:next',
             templateUrl: 'views/admin/role.html',
             controller: 'RoleCtrl',
             resolve: {
@@ -85,7 +93,7 @@ function projectRouteConfig($stateProvider, $urlRouterProvider, $ocLazyLoadProvi
         })
         //角色新增
         .state('field.roleDetail', {
-            url: '/roleDetail/:id',
+            url: '/roleDetail/:id/:name',
             templateUrl: 'views/admin/roleDetail.html',
             controller: 'RoleDetailCtrl',
             resolve: {
@@ -94,7 +102,7 @@ function projectRouteConfig($stateProvider, $urlRouterProvider, $ocLazyLoadProvi
         })
         //模块管理
         .state('field.module', {
-            url: '/module?page&size',
+            url: '/module/:page/:size/:next',
             templateUrl: 'views/admin/module.html',
             controller: 'ModuleCtrl',
             resolve: {
@@ -113,7 +121,7 @@ function projectRouteConfig($stateProvider, $urlRouterProvider, $ocLazyLoadProvi
         //密码修改
         .state('field.pwd', {
             url: '/pwd',
-            templateUrl: 'views/admin/pwdSetting.html',
+            templateUrl: 'views/admin/pwd.html',
             controller: 'PwdCtrl',
             resolve: {
                 loadMyFile: _lazyLoad('js/controllers/admin/ptteng-pwdController-0.0.1.js')
@@ -127,7 +135,7 @@ function projectRouteConfig($stateProvider, $urlRouterProvider, $ocLazyLoadProvi
 
         //患者列表页
         .state('field.patientList', {
-            url: '/patientList/:page/:size?&registerFrom&registerTo&ageFrom&ageTo&freezed&mobile&name',
+            url: '/patientList/:page/:size?&registerFrom&registerTo&ageFrom&ageTo&accountStatus&mobile&name',
             templateUrl: 'views/business/patientList.html',
             controller: 'PatientListCtrl',
             controllerAs: 'vm',
@@ -140,7 +148,7 @@ function projectRouteConfig($stateProvider, $urlRouterProvider, $ocLazyLoadProvi
 
         //医师列表页
         .state('field.doctorList', {
-            url: '/doctorList/:page/:size?&registerFrom&registerTo&ageFrom&ageTo&freezed&mobile&name',
+            url: '/doctorList/:page/:size?&registerFrom&registerTo&ageFrom&ageTo&accountStatus&mobile&name',
             templateUrl: 'views/business/doctorList.html',
             controller: 'DoctorListCtrl',
             controllerAs: 'vm',
@@ -164,7 +172,7 @@ function projectRouteConfig($stateProvider, $urlRouterProvider, $ocLazyLoadProvi
             }
         })
         .state('field.patientRecord', {
-            url: '/patientRecord?id&page&size&name&product&transaction_type&transaction_status&minSum&maxSum&startAt&endAt',
+            url: '/patientRecord?pid&page&size&product&type&status&amountStart&amountEnd&payStartAt&payEndAt',
             templateUrl: 'views/business/patient/patientRecord.html',
             controller: 'PatientRecordCtrl',
             controllerAs: 'vm',
@@ -175,8 +183,7 @@ function projectRouteConfig($stateProvider, $urlRouterProvider, $ocLazyLoadProvi
             }
         })
         .state('field.patientTestData', {
-            url: '/patientTestData?id&name&page&size&startAt&endAt',
-            params:{"name":""},
+            url: '/patientTestData?pid&page&size&startAt&endAt',
             templateUrl: 'views/business/patient/patientTestData.html',
             controller: 'PatientTestDataCtrl',
             controllerAs: 'vm',
@@ -186,54 +193,68 @@ function projectRouteConfig($stateProvider, $urlRouterProvider, $ocLazyLoadProvi
                 ])
             }
         })
-        // 用户管理-医师版
+        .state('field.patientReportDetails', {
+            url: '/patientReportDetails?id',
+            templateUrl: 'views/business/patient/patientReportDetails.html',
+            controller: 'PatientReportDetailsCtrl',
+            controllerAs: 'vm',
+            resolve: {
+                loadMyFile: _lazyLoad([
+                    'js/controllers/business/patient/patientReportDetails.js'
+                ])
+            }
+        })
+        //医师详情
         .state('field.doctorDetails', {
-            url: '/doctorDetails?&id',
+            url: '/doctorDetails?id',
             templateUrl: 'views/business/doctor/doctorDetails.html',
             controller: 'DoctorDetailsCtrl',
             controllerAs: 'vm',
             resolve: {
                 loadMyFile: _lazyLoad([
-                    'js/controllers/business/doctor/doctorDetails.js',
+                    'js/controllers/business/doctor/doctorDetails.js'
                 ])
             }
         })
+        //方案模板
         .state('field.planTemplate', {
-            url: '/planTemplate/:id?minCount&maxCount&startAt&endAt&name',
+            url: '/planTemplate/:page/:size?did?name&createFrom&createTo&countFrom&countTo',
             templateUrl: 'views/business/doctor/planTemplate.html',
             controller: 'PlanTemplateCtrl',
             controllerAs: 'vm',
             resolve: {
                 loadMyFile: _lazyLoad([
-                    'js/controllers/business/doctor/planTemplate.js',
+                    'js/controllers/business/doctor/planTemplate.js'
                 ])
             }
         })
+        //诊断记录
         .state('field.diagnosisRecord', {
-            url: '/diagnosisRecord/:id/:page',
+            url: '/diagnosisRecord/:page/:size?did&name&createFrom&createTo&mobile',
             templateUrl: 'views/business/doctor/diagnosisRecord.html',
             controller: 'DiagnosisRecordCtrl',
             controllerAs: 'vm',
             resolve: {
                 loadMyFile: _lazyLoad([
-                    'js/controllers/business/doctor/diagnosisRecord.js',
+                    'js/controllers/business/doctor/diagnosisRecord.js'
                 ])
             }
         })
+        //诊断详情
         .state('field.diagnosisDetails', {
-            url: '/diagnosisDetails/:recordId',
+            url: '/diagnosisDetails?id&did',
             templateUrl: 'views/business/doctor/diagnosisDetails.html',
             controller: 'DiagnosisDetailsCtrl',
             controllerAs: 'vm',
             resolve: {
                 loadMyFile: _lazyLoad([
-                    'js/controllers/business/doctor/diagnosisDetails.js',
+                    'js/controllers/business/doctor/diagnosisDetails.js'
                 ])
             }
         })
         //医师版-患者评价
         .state('field.patientAppraisal', {
-            url: '/patientAppraisal/:id',
+            url: '/patientAppraisal/:page/:size?did&createFrom&createTo&mobile&name&star',
             templateUrl: 'views/business/doctor/patientAppraisal.html',
             controller: 'PatientAppraisalCtrl',
             controllerAs: 'vm',
@@ -243,8 +264,9 @@ function projectRouteConfig($stateProvider, $urlRouterProvider, $ocLazyLoadProvi
                 ])
             }
         })
+        //评价详情
         .state('field.appraisalDetails', {
-            url: '/appraisalDetails?',
+            url: '/appraisalDetails?id&did',
             templateUrl: 'views/business/doctor/appraisalDetails.html',
             controller: 'AppraisalDetailsCtrl',
             controllerAs: 'vm',
@@ -254,8 +276,9 @@ function projectRouteConfig($stateProvider, $urlRouterProvider, $ocLazyLoadProvi
                 ])
             }
         })
+        //交易明细
         .state('field.transactionDetails', {
-            url: '/transactionDetails/:id',
+            url: '/transactionDetails/:page/:size?did?payStartAt?payEndAt?amountStart?amountEnd?status?type',
             templateUrl: 'views/business/doctor/transactionDetails.html',
             controller: 'TransactionDetailsCtrl',
             controllerAs: 'vm',
@@ -267,7 +290,7 @@ function projectRouteConfig($stateProvider, $urlRouterProvider, $ocLazyLoadProvi
         })
         // 业务管理-认证管理
         .state('field.approvedList', {
-            url: '/approvedList/:page/:size?telphone&name&status&startAt&endAt',
+            url: '/approvedList/:page/:size?mobile&name&status&applyFrom&applyTo',
             templateUrl: 'views/business/approvedList.html',
             controller: 'ApprovedListCtrl',
             controllerAs: 'vm',
@@ -290,7 +313,7 @@ function projectRouteConfig($stateProvider, $urlRouterProvider, $ocLazyLoadProvi
         })
         // 业务管理-合作医院管理
         .state('field.hospitalList', {
-            url: '/hospitalList?size&name&grade&status&minNum&maxNum&province&city',
+            url: '/hospitalList/:page/:size?name&grade&status&totalFrom&totalTo&province&city',
             templateUrl: 'views/business/hospitalList.html',
             controller: 'HospitalListCtrl',
             controllerAs: 'vm',
@@ -314,7 +337,7 @@ function projectRouteConfig($stateProvider, $urlRouterProvider, $ocLazyLoadProvi
             }
         })
         .state('field.hospitalDoctor', {
-            url: '/hospitalDoctor?id&page&size&name&mobile&status&startAt&endAt&position',
+            url: '/hospitalDoctor?hid&hName&page&size&name&mobile&accountStatus&createFrom&createTo&position',
             templateUrl: 'views/business/hospitalDoctor.html',
             controller: 'HospitalDoctorCtrl',
             controllerAs: 'vm',
@@ -328,10 +351,11 @@ function projectRouteConfig($stateProvider, $urlRouterProvider, $ocLazyLoadProvi
 
         // 内容管理开始
         .state('field.contentListPatient', {
-            url: '/contentList',
+            url: '/contentListPatient/:page/:size/:type?title&startAt&endAt&createByName&status&author',
             templateUrl: 'views/content/contentList.html',
             controller: 'ContentListCtrl',
             controllerAs: 'vm',
+            params:{type:'1'},
             resolve: {
                 loadMyFile: _lazyLoad([
                     'js/controllers/content/contentList.js',
@@ -339,10 +363,11 @@ function projectRouteConfig($stateProvider, $urlRouterProvider, $ocLazyLoadProvi
             }
         })
         .state('field.contentListDoctor', {
-            url: '/contentList',
+            url: '/contentListDoctor/:page/:size/:type?title&startAt&endAt&createByName&status&author',
             templateUrl: 'views/content/contentList.html',
             controller: 'ContentListCtrl',
             controllerAs: 'vm',
+            params:{type:'0'},
             resolve: {
                 loadMyFile: _lazyLoad([
                     'js/controllers/content/contentList.js',
@@ -350,7 +375,7 @@ function projectRouteConfig($stateProvider, $urlRouterProvider, $ocLazyLoadProvi
             }
         })
         .state('field.contentEdit', {
-            url: '/contentEdit',
+            url: '/contentEdit/:id/:type',
             templateUrl: 'views/content/contentEdit.html',
             controller: 'ContentEditCtrl',
             controllerAs: 'vm',
@@ -369,7 +394,7 @@ function projectRouteConfig($stateProvider, $urlRouterProvider, $ocLazyLoadProvi
 
         // 运营管理开始
         .state('field.parameterSetting', {
-            url: '/parameterSetting',
+            url: '/parameterSetting/:page/:size?type&value&name&startAt&endAt',
             templateUrl: 'views/operation/parameterSetting.html',
             controller: 'ParameterSettingCtrl',
             controllerAs: 'vm',
@@ -379,19 +404,30 @@ function projectRouteConfig($stateProvider, $urlRouterProvider, $ocLazyLoadProvi
                 ])
             }
         })
+        .state('field.parameterSettingEdit', {
+            url: '/parameterSettingEdit/:id',
+            templateUrl: 'views/operation/parameterSettingEdit.html',
+            controller: 'ParameterSettingEditCtrl',
+            controllerAs: 'vm',
+            resolve: {
+                loadMyFile: _lazyLoad([
+                    'js/controllers/operation/paranmeterSettingEdit.js',
+                ])
+            }
+        })
         .state('field.messageList', {
-            url: '/messageList/:page/:size',
+            url: '/messageList/:page/:size?title&createByName&status&startAt&endAt&personType',
             templateUrl: 'views/operation/messageList.html',
             controller: 'MessageListCtrl',
             controllerAs: 'vm',
             resolve: {
                 loadMyFile: _lazyLoad([
-                    'js/controllers/operation/messageList.js',
+                    'js/controllers/operation/messageList.js'
                 ])
             }
         })
         .state('field.messageEdit', {
-            url: '/messageEdit',
+            url: '/messageEdit/:id',
             templateUrl: 'views/operation/messageEdit.html',
             controller: 'MessageEditCtrl',
             controllerAs: 'vm',
@@ -414,7 +450,7 @@ function projectRouteConfig($stateProvider, $urlRouterProvider, $ocLazyLoadProvi
             }
         })
         .state('field.versionUpdate', {
-            url: '/versionUpdate',
+            url: '/versionUpdate?id',
             templateUrl: 'views/operation/versionUpdate.html',
             controller: 'VersionUpdateCtrl',
             controllerAs: 'vm',
@@ -425,7 +461,7 @@ function projectRouteConfig($stateProvider, $urlRouterProvider, $ocLazyLoadProvi
             }
         })
         .state('field.opinionList', {
-            url: '/opinionList?page',
+            url: '/opinionList/:page/:size?name&type&mobile&startAt&endAt&title',
             templateUrl: 'views/operation/opinionList.html',
             controller: 'OpinionListCtrl',
             controllerAs: 'vm',
@@ -436,7 +472,7 @@ function projectRouteConfig($stateProvider, $urlRouterProvider, $ocLazyLoadProvi
             }
         })
         .state('field.opinionDetails', {
-            url: '/opinionDetails',
+            url: '/opinionDetails?id',
             templateUrl: 'views/operation/opinionDetails.html',
             controller: 'OpinionDetailsCtrl',
             controllerAs: 'vm',

@@ -3,10 +3,8 @@ angular.module('admin')
     .factory('path', function (commonUtil) {
         return {
             //login
-            // login: "/a/login",
-            login: "JSON/login.json",
-            // logout: "/a/logout",
-            logout: "JSON/logout.json",
+            login: "/a/login",
+            logout: "/a/logout",
             //manager
             manager: function (mid) {
                 if (mid == undefined || mid == "") {
@@ -14,12 +12,10 @@ angular.module('admin')
                 } else {
                     return "/a/u/manager/" + mid;
                 }
-
             },
-            manager_list: "/a/u/manager/",
+            manager_list: "/a/u/manager/list",
             manager_multi_detail: function (params) {
                 return "/a/u/multi/manager" + commonUtil.concactArrayParam("ids", params);
-
             },
             //pwd
             changePwd: "/a/u/pwd",
@@ -27,19 +23,15 @@ angular.module('admin')
             role: function (rid) {
 
                 if (rid == undefined || rid == "") {
-                    // return "/a/u/role";
-                    return "JSON/role1.json";
+                    return "/a/u/role";
                 } else {
-                    // return "/a/u/role/" + rid;
-                    return "JSON/role1.json";
-
+                    return "/a/u/role/" + rid;
                 }
 
             },
             role_list: "/a/u/role/",
             role_multi_detail: function (params) {
                 return "/a/u/multi/role" + commonUtil.concactArrayParam("ids", params);
-
             },
             role_module: function (rid) {
                 return "/a/u/role/" + rid + "/module"
@@ -57,8 +49,7 @@ angular.module('admin')
             },
             module_list: "/a/u/module/",
             module_multi_detail: function (params) {
-                // return "/a/u/multi/module" + commonUtil.concactArrayParam("ids", params);
-                return "JSON/role.json" + commonUtil.concactArrayParam("ids", params);
+                return "/a/u/multi/module" + commonUtil.concactArrayParam("ids", params);
             },
 
             //article
@@ -78,10 +69,10 @@ angular.module('admin')
     .factory('loginService', function ($http, path) {
         return {
             login: function (params) {
-                return $http.get(path.login, params);
+                return $http.post(path.login, params);
             },
             logout: function () {
-                return $http.get(path.logout);
+                return $http.post(path.logout);
             },
             changePwd: function (params) {
                 // params: id|password
@@ -165,34 +156,18 @@ angular.module('admin')
 
         }
     })
+
     .factory('roleService', function ($http, path, moduleService, commonUtil, recordCookies) {
         return {
             getRole: function (rid) {
                 return $http.get(path.role(rid));
             },
-            addRole: function (params) {
-                return $http({
-                    url: path.role(),
-                    method: "POST",
-                    headers: {'Content-Type': 'application/json;charset=UTF-8'},
-                    data: JSON.stringify(params),
-                    transformRequest: function (data, headersGetter) {
-                        return data;
-                    }
-                });
+            addRole: function(params) {
+                return $http.post(path.role(), params);
             },
-            updateRole: function (rid, params) {
-                recordCookies({targetID: rid});
-                //return $http.put(path.role(rid), params);
-                return $http({
-                    url: path.role(rid),
-                    method: "PUT",
-                    headers: {'Content-Type': 'application/json;charset=UTF-8'},
-                    data: JSON.stringify(params),
-                    transformRequest: function (data, headersGetter) {
-                        return data;
-                    }
-                });
+            updateRole: function(rid,params) {
+                    recordCookies({targetID: rid});
+                    return $http.put(path.role(rid), params);
             },
             deleteRole: function (rid) {
                 recordCookies({targetID: rid});

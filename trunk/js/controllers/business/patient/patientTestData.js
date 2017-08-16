@@ -1,7 +1,13 @@
-angular.module('admin').controller('PatientTestDataCtrl',['$rootScope','$state','$http','portService',
-    function ($rootScope,$state,$http,portService) {
+angular.module('admin').controller('PatientTestDataCtrl',['$rootScope','$state','$http','portService','commonUtil',
+    function ($rootScope,$state,$http,portService,commonUtil) {
         var vm = this;
         vm.searchParams = $state.params;
+        //获取服务器时间
+        commonUtil.getServerTime().then(function (res) {
+            vm.serviceTime = res;
+        });
+        //把需要日历插件需要+86399999的参数的名字以字符串放进来，写在html日期插件的属性里，给search插件去处理
+        vm.timeFixArr = ["endAt"];
         // 时间格式转换
         vm.searchParams.startAt = parseInt(vm.searchParams.startAt) || undefined;
         vm.searchParams.endAt = parseInt(vm.searchParams.endAt) || undefined;
@@ -17,12 +23,11 @@ angular.module('admin').controller('PatientTestDataCtrl',['$rootScope','$state',
             vm.tempParams.endAt = tempAt + 86400000 -1;
         }
 
-
-        portService.getPatientTestData(vm.tempParams.id).then(function (res) {
+        portService.getPatientTestData(vm.tempParams).then(function (res) {
             if(res.data.code==0) {
-                console.log(res);
-                vm.patientTestData = res.data.data.testDataList;
-                vm.total = res.data.data.total;
+                vm.patientTestData = res.data.data.trainList;
+                vm.total = res.data.total;
+                vm.user = res.data.data.user;
             }
             else {
                 $rootScope.alert(res.data.message)

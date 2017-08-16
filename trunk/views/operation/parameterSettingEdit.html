@@ -1,0 +1,43 @@
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <strong>常量表</strong>
+    </div>
+    <div class="panel-body">
+        <form class="form-horizontal" name="myform">
+            <div class="form-group">
+                <label class="col-md-2 control-label">类别</label>
+                <div class="col-md-8">
+                    <input class="form-control" type="text" name="content" ng-model="vm.data.type" maxlength="25" ng-class="{'error':myform.content.$invalid && myform.content.$touched}" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-2 control-label word-spacing-25">名称</label>
+                <div class="col-md-8">
+                    <input class="form-control" type="text" name="content" ng-model="vm.data.name" maxlength="14" ng-class="{'error':myform.content.$invalid && myform.content.$touched}" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-2 control-label word-spacing-25">值</label>
+                <div class="col-md-8">
+                    <input class="form-control" type="text" name="content" ng-model="vm.data.value" maxlength="500" ng-class="{'error':myform.content.$invalid && myform.content.$touched}" required>
+                </div>
+                <label class="col-md-2 control-label word-spacing-25 text-left">（元）</label>
+
+            </div>
+            <div class="form-group">
+                <label class="col-md-2 control-label word-spacing-25">备注</label>
+                <div class="col-md-8">
+                    <textarea class="form-control" type="text" ng-model="vm.data.comment" maxlength="25" name="content" ng-class="{'error':myform.content.$invalid && myform.content.$touched}" required></textarea>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-2"></div>
+                <div class="col-md-8">
+                    <button type="button" class="btn btn-success" ng-click="vm.save() " ng-disabled="!myform.$valid">保存
+                    </button>
+                    <button type="button" class="btn btn-default pull-right" ui-sref="field.parameterSetting">取消</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

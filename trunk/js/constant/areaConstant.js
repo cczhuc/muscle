@@ -5,7 +5,6 @@ angular.module('admin')
     .filter('provinceFilter', function (PROVINCE) {
         return function (id) {
             if (id != undefined && id != '') {
-
                 var name;
                 angular.forEach(PROVINCE, function (data) {
 

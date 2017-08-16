@@ -7,7 +7,9 @@
 .margin-left-2 {
     margin-left: 2%;
 }
-
+.margin-left-20 {
+    margin-left: 20px;
+}
 .maring-left--78 {
     margin-left: -78px!important;
 }
@@ -931,7 +933,6 @@ input[type="number"] {
     padding:15px;
     margin:0 15px;
     height:240px;
-    background-color:#645;
 }
 .approvedImage {
     left:0;
@@ -973,4 +974,52 @@ input[type="number"] {
 .check-tab-active {
     color: #f9d87d;
     background-color: #3a445e;
+}
+/*无数据时显示*/
+.list-replace {
+    height: 120px;
+}
+
+.list-replace-text {
+    text-align: center;
+    color: #a9a9a9;
+    line-height: 120px;
+}
+/*患者报告详情*/
+.report-line {
+    padding: 0 5px;
+    margin-left: 10px;
+    border-left: 1px solid #000000;
+    font-weight: bolder;
+    color: red;
+}
+.report-title {
+    padding: 0 10px;
+    cursor: pointer;
+}
+.report-line-active {
+    padding: 0 5px;
+    border-left: 3px solid #ff0000;
+    font-size: 18px;
+    font-weight: bolder;
+    color: red;
+}
+.report-title-active {
+    padding: 0 10px;
+    font-size: 18px;
+    font-weight: 600;
+    color: #ffffff;
+    background: #1d7ad9;
+    cursor: pointer;
+}
+.report-foot {
+    padding: 0 10px;
+    cursor: pointer;
+}
+.report-foot-active {
+    padding: 0 10px;
+    font-weight: 500;
+    background: #1d7ad9;
+    color: #ffffff;
+    cursor: pointer;
 }

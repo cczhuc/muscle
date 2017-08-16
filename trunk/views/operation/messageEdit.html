@@ -7,41 +7,40 @@
             <div class="form-group">
                 <label class="col-md-2 control-label">*标题名称</label>
                 <div class="col-md-8">
-                    <input class="form-control" type="text" name="f-messageTitle" ng-model="vm.params.title" maxlength="500" ng-class="{'error':myform.f-messageTitle.$invalid && myform.f-messageTitle.$touched}" required>
+                    <input class="form-control" type="text" name="f-messageTitle" ng-model="vm.data.title" maxlength="500" ng-class="{'error':myform.f-messageTitle.$invalid && myform.f-messageTitle.$touched}" required>
                 </div>
             </div>
             <div class="form-group">
                 <label class="col-md-2 control-label word-spacing-25">*发送人群</label>
                 <div class="col-md-8">
                     <div class="row">
-                        <div class="col-md-3">
-                            <label><input type="checkbox" ng-model="vm.sendAll" ng-change="vm.checkAll()" checklist-model="vm.pick" value="0" ng-checked="vm.send.length == vm.pick.length-1"> 所有人</label>
+                        <div class="col-md-12">
+                            <label class="rank4"><input ng-model="vm.data.personType" type="radio" value="0" name="personType"> 所有人</label>
+                            <label class="rank4"><input ng-model="vm.data.personType" type="radio" value="1" name="personType"> 所有患者</label>
+                            <label class="rank4"><input ng-model="vm.data.personType" type="radio" value="2" name="personType"> 所有医师</label>
+                            <label class="rank4"><input ng-model="vm.data.personType" type="radio" value="3" name="personType"> 认证医师</label>
+                            <label class="rank4"><input ng-model="vm.data.personType" type="radio" value="4" name="personType"> 未认证医师</label>
                         </div>
-                        <div class="col-md-3">
-                            <label><input type="checkbox" checklist-model="vm.pick" value="1"> 所有患者</label>
-                        </div>
-                        <div class="col-md-5">
-                            <label><input type="checkbox" ng-model="vm.allDoctor" checklist-model="vm.pick" value="2" ng-change="vm.checkDoctor()"> 所有医师</label><br>
-                            <label class="f-indent"><input type="checkbox" checklist-model="vm.pick" value="3"> 认证医师</label><br>
-                            <label class="f-indent"><input type="checkbox" checklist-model="vm.pick" value="4"> 未认证医师</label>
-                        </div>
+
                     </div>
                 </div>
             </div>
             <div class="form-group">
                 <label class="col-md-2 control-label word-spacing-25">*消 息</label>
                 <div class="col-md-8">
-                    <textarea class="form-control" type="text" ng-model="vm.params.content" maxlength="25" name="f-message" ng-class="{'error':myform.f-message.$invalid && myform.f-message.$touched}" required></textarea>
+                    <textarea class="form-control" type="text" ng-model="vm.data.content" maxlength="25" name="f-message" ng-class="{'error':myform.f-message.$invalid && myform.f-message.$touched}" required></textarea>
                 </div>
             </div>
             <div class="form-group">
                 <label class="col-md-2 control-label">定时发送</label>
                 <div class="col-md-8">
-                    <label><input type="checkbox" ng-model="vm.params.url">
-                        <input type="text" size="10" data-date-format="yyyy/MM/dd" class="form-control f-inputbox" ng-model="sharedDate1" data-autoclose="1" placeholder="日期" bs-datepicker> 日期
+                    <label><input type="checkbox" ng-model="vm.data.type">
                     </label>
                     <label>
-                        <input type="text" size="8" class="form-control f-inputbox" ng-model="sharedDate" data-time-format="HH:mm:ss a" data-autoclose="0" placeholder="时分" bs-timepicker> 时分
+                        <input type="text" size="10" data-date-format="yyyy/MM/dd" class="form-control f-inputbox" ng-model="vm.publishDate" data-autoclose="1" placeholder="日期" bs-datepicker> 日期
+                    </label>
+                    <label>
+                        <input type="text" size="8" class="form-control f-inputbox" ng-model="vm.publishTime" data-time-format="HH:mm:ss a" data-autoclose="0" placeholder="时分" bs-timepicker> 时分
                     </label>
                 </div>
             </div>
@@ -49,16 +48,16 @@
                 <label class="col-md-2 control-label word-spacing-25">通知栏推送</label>
                 <div class="col-md-10 padding-0">
                     <div class="col-md-12 ">
-                        <label><input type="checkbox"> <span class="f-inputbox">推送</span></label>
+                        <label><input type="checkbox" ng-model="vm.data.status"> <span class="f-inputbox">推送</span></label>
                     </div>
                 </div>
             </div>
             <div class="form-group">
                 <div class="col-md-2"></div>
                 <div class="col-md-8">
-                    <button type="button" class="btn btn-success" ng-click="vm.f_send() " ng-disabled="!myform.$valid">发送
+                    <button type="button" class="btn btn-success" ng-click="vm.send(0) " ng-disabled="!myform.$valid">发送
                     </button>
-                    <button type="button" class="btn btn-success" ng-click="vm.saveArticle()" ng-disabled="!myform.$valid">存为草稿
+                    <button type="button" class="btn btn-success" ng-click="vm.send(1)" ng-disabled="!myform.$valid">存为草稿
                     </button>
                     <button type="button" class="btn btn-default pull-right" ui-sref="field.messageList">取消</button>
                 </div>

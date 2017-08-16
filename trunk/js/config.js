@@ -32,23 +32,22 @@ angular.module('admin', ['oc.lazyLoad', 'ui.router', 'ngCookies', 'mgcrea.ngStra
                 return false;
             }
             window.scrollTo(0, 0);
-            //权限验证
-            //取出数据
-            var permissionsSet = JSON.parse(localStorage.permissionsSet);
-            var moduleList = JSON.parse(localStorage.moduleList);
-            var name = $state.current.name;
-            //进行比对
-            var permision = [];
-            angular.forEach(moduleList,function (data) {
-                if (data.url==name) {
-                    permision = permissionsSet[data.id]
-                }
-            });
-            $rootScope.permision = {
-                create:permision.indexOf('create')===-1?false:true,
-                update:permision.indexOf('update')===-1?false:true,
-                delete:permision.indexOf('delete')===-1?false:true,
-            }
+            // //权限验证
+            // //取出数据
+            // var permissionsSet = JSON.parse(localStorage.permissionsSet);
+            // var moduleList = JSON.parse(localStorage.moduleList);
+            // var name = $state.current.name;
+            // //进行比对
+            // var permision = [];
+            // angular.forEach(moduleList,function (data) {
+            //     if (data.url==name) {
+            //         permision = permissionsSet[data.id]            $rootScope.permision = {
+            //             create:permision.indexOf('create')===-1?false:true,
+            //             update:permision.indexOf('update')===-1?false:true,
+            //             delete:permision.indexOf('delete')===-1?false:true,
+            //         }
+            //     }
+            // });
         });
 
 
@@ -128,7 +127,7 @@ angular.module('admin', ['oc.lazyLoad', 'ui.router', 'ngCookies', 'mgcrea.ngStra
                     $scope.title = title;
                     $scope.content = content;
                     $scope.ok = function () {
-                        refuse.text = vm.refuse;
+                        refuse.refuse = vm.refuse;
                         typeof okFn == 'function' && okFn();
                         modal.$promise.then(modal.hide);
                     };
@@ -146,7 +145,7 @@ angular.module('admin', ['oc.lazyLoad', 'ui.router', 'ngCookies', 'mgcrea.ngStra
         $rootScope.approvedCheck = function (refuse ,okFn,cancelFn) {
           var modal = $modal({
               html:true,
-              show:true,
+              show:false,
               controllerAs:'vm',
               templateUrl:'views/template/approvedCheck.html',
               controller:function ($scope) {
@@ -154,13 +153,13 @@ angular.module('admin', ['oc.lazyLoad', 'ui.router', 'ngCookies', 'mgcrea.ngStra
                   //提交按钮禁用状态
                   vm.statusDis = true;
                   //选择通过拒绝、默认通过
-                  vm.checkStatu = "1";
+                  vm.checkStatu = "2";
                   vm.ok = function () {
                       //传到服务的交互数据
-                      refuse.rejectReason = vm.rejectReason;
-                      refuse.checkStatu = vm.checkStatu;
-                      if(refuse.checkStatu==1) {
-                          refuse.rejectReason="";
+                      refuse.refuse = vm.rejectReason;
+                      refuse.status = vm.checkStatu;
+                      if(refuse.status==2) {
+                          refuse.refuse="";
                       }
                       typeof okFn == 'function' && okFn();
                       modal.$promise.then(modal.hide);
@@ -272,7 +271,7 @@ function lazyLoadConfig($ocLazyLoadProvider) {
 // Loader
 function loadingBar(cfpLoadingBarProvider) {
     cfpLoadingBarProvider.latencyThreshold = 200;
-    cfpLoadingBarProvider.includeSpinner = false;
+    cfpLoadingBarProvider.includeSpinner = true;
 }
 
 
@@ -291,7 +290,6 @@ function httpConfig($httpProvider) {
         }
         return $.param(data);
     };
-
 
 }
 

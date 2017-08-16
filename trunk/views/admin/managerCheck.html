@@ -2,7 +2,7 @@
     <div class="col-lg-12">
         <div class="panel panel-default">
             <div class="panel-heading">
-                用户信息编辑
+                用户信息查看
             </div>
             <div class="panel-body">
                 <div class="row">
@@ -11,19 +11,19 @@
                             <div class="form-group">
                                 <label for="username" class="col-sm-2 control-label">用户名</label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" id="username" placeholder="user name" ng-model="vm.data.name">
+                                    <input type="text" class="form-control" id="username" placeholder="user name" ng-model="vm.data.name" disabled="disabled">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="password" class="col-sm-2 control-label">密码</label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" id="password" placeholder="password" ng-model="vm.data.pwd">
+                                    <input type="text" class="form-control" id="password" placeholder="password" ng-model="vm.data.pwd" disabled="disabled">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">角色</label>
                                 <div class="col-sm-10">
-                                    <select class="form-control" ng-model="vm.data.roleID">
+                                    <select class="form-control" ng-model="vm.data.roleID" disabled="disabled">
                                         <option ng-repeat="role in vm.roleList" ng-value="role.id" ng-selected="role.id == vm.data.roleID">{{role.name}}</option>
                                     </select>
                                 </div>
@@ -34,8 +34,7 @@
                 <div class="row">
                     <div class="col-sm-2"></div>
                     <div class="col-sm-10">
-                        <button class="btn btn-success" ng-click="vm.saveOrUpdate()">保存</button>
-                        <button class="btn btn-danger" ui-sref="field.manager">取消</button>
+                        <button class="btn btn-danger" ng-click="vm.cancelCard()">返回</button>
                     </div>
                 </div>
             </div>

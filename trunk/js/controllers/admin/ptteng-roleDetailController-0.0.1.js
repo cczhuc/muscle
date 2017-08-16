@@ -1,89 +1,85 @@
 'use strict';
 angular.module('admin')
-    .controller('RoleDetailCtrl', function ($state, $scope, $rootScope, commonUtil, roleService, managerService, moduleService) {
+    .controller('RoleDetailCtrl', ['$state', '$scope', '$rootScope', 'commonUtil',  'roleService', 'managerService', 'moduleService',RoleDetailCtrl]);
+        function RoleDetailCtrl($state, $scope, $rootScope, commonUtil,  roleService, managerService, moduleService) {
         var vm = $scope.vm = {};
         vm.id = $state.params.id;
-        vm.moduleList = [];
+        vm.name = $state.params.name;
+        vm.selectList = [];
         vm.permissionsSet = [];
         vm.mid_module = {};
-
-
-        var selectedData = function () {
-            var result = {};
-            angular.forEach(vm.moduleList, function (data, index, array) {
+        var selectedToArray = function () {
+            var result = [];
+            angular.forEach(vm.selectList, function (data, index, array) {
                 angular.forEach(data.nodes, function (data, index, array) {
                     if (data.use) {
-                        var selectedAction = [];
-                        if (data.create) {
-                            selectedAction.push('create')
-                        }
-                        if (data.update) {
-                            selectedAction.push('update')
-                        }
-                        if (data.delete) {
-                            selectedAction.push('delete')
-                        }
-                        if (data.sort) {
-                            selectedAction.push('sort')
-                        }
-                        result[data.id] = selectedAction;
+                        result.push(data.id);
                         if (commonUtil.arrayContains(result, data.parentID)) {
-
                         } else {
-                            result[data.parentID] = [];
+                            result.push(data.parentID);
                         }
                     }
                 });
             });
-
-            return result;
+            return result.toString();
         };
+        // function haveRolenum(){
+        //vm.name=$state.params.name;
+        //     var ridList={name:vm.name};
+        //roleDetailsService.roleChange(ridList).then(function(res){
+        //    if(res.data.code==0){
+        //        vm.data=res.data.data;
+        //    }
+        //    console.log(vm.data);
+        //
+        //});}
+        //haveRolenum()
 
 
         // view
-        //if (vm.id) {
+        //function haveRolenum() {
         //    roleService.getRole(vm.id).then(function (res) {
-        //        if (res.data.code == 0) {
+        //        if (res.data.status== 0) {
         //            vm.name = res.data.data.role.name;
-        //            console.log(vm.name)
         //        } else {
         //            commonUtil.showErrMsg(res);
         //        }
         //    });
         //}
+        //haveRolenum()
 
 
-        // 获取所有模块列表ID
         moduleService.getModuleList({size: 65535}).then(function (res) {
             if (res.data.code == 0) {
-                // 根据模块列表ID，获取列表name和层级关系等信息
                 moduleService.batchGetModule(res.data.data.ids).then(function (res) {
                     if (res.data.code == 0) {
-                        // 拼出页面要展示的模块列表信息格式
-                        vm.moduleList = commonUtil.buildTree(res.data.data.moduleList);
-                        console.log(vm.moduleList);
+                        vm.selectList = commonUtil.buildTree(res.data.data.moduleList);
+
                         if (vm.id) {
-                            // 请求角色下的模块权限
-                            roleService.getRole(vm.id).then(function (res) {
+                            roleService.getRoleModule(vm.id).then(function (res) {
+
                                 if (res.data.code == 0) {
 
-                                    vm.name = res.data.data.role.name;
-                                    vm.currentModuleList = res.data.data.role.permissionsSet;
+                                    vm.currentModuleList = res.data.data.mids;
 
 
-                                    angular.forEach(vm.moduleList, function (items) {
+                                    angular.forEach(vm.selectList, function (data, index, array) {
 
-                                        angular.forEach(items.nodes, function (item) {
+                                        angular.forEach(data.nodes, function (data, index, array) {
 
-                                            // 循环查找是否已选中并打上标记
-                                            angular.forEach(vm.currentModuleList, function (value, key) {
+                                            var current = data;
+                                            // console.log(data.id + " get use is " + data.use);
+                                            current.use = false;
 
-                                                if (item.id == key) {
-                                                    item.use = true;
-                                                    item.create = value.in_array("create");
-                                                    item.update = value.in_array("update");
-                                                    item.delete = value.in_array("delete");
-                                                    item.sort = value.in_array("sort");
+                                            angular.forEach(vm.currentModuleList, function (data, index, array) {
+
+                                                if (current.id == data) {
+                                                    current.use = true;
+                                                    // console.log(current.id + " is true ");
+
+
+                                                } else {
+
 
                                                 }
                                             })
@@ -91,7 +87,8 @@ angular.module('admin')
 
                                         })
 
-                                    });
+                                    })
+                                    // console.log(JSON.stringify(vm.selectList));
 
 
                                 }
@@ -120,63 +117,43 @@ angular.module('admin')
 
         });
 
-
-
-        vm.changeAll = function () {
-            var bool = vm.moduleList.$selected;
-
-            angular.forEach(vm.moduleList, function (items) {
-                items.$checked = bool;
-                angular.forEach(items.nodes, function (item) {
-                    item.use = bool;
-                    item.create = bool;
-                    item.update = bool;
-                    item.delete = bool;
-                    item.sort = bool;
-                })
-            })
-        };
-
-        vm.changeModule = function (index) {
-            var bool = vm.moduleList[index].$checked;
-            angular.forEach(vm.moduleList[index].nodes, function (item) {
-                item.use = bool;
-                item.create = bool;
-                item.update = bool;
-                item.delete = bool;
-                item.sort = bool;
-            })
-        };
-
-        vm.changeSubModule = function (pindex, index) {
-            var bool = vm.moduleList[pindex].nodes[index].use;
-            vm.moduleList[pindex].nodes[index].create = bool;
-            vm.moduleList[pindex].nodes[index].update = bool;
-            vm.moduleList[pindex].nodes[index].delete = bool;
-            vm.moduleList[pindex].nodes[index].sort = bool;
-        };
-
-
-        vm.saveOrUpdate = function (roleId) {
-
-            if(roleId){
-                vm.data = {
-                    id: vm.id,
-                    name: vm.name,
-                    permissionsSet: selectedData()
-                };
-            }
-            else{
-                vm.data = {
-                    name: vm.name,
-                    permissionsSet: selectedData()
-                };
-            }
-            sessionStorage.mineSide='';
+        vm.saveOrUpdate = function () {
+            vm.data = {
+                id: vm.id,
+                name: vm.name,
+                permissionsSet: selectedToArray()
+            };
+            console.log(vm.data);
             roleService.saveOrUpdateRole(vm.id, vm.data, "field.role");
 
 
-        }
+        };
+
+        vm.changeModule = function (index) {
+            console.log(index);
+            var bool = vm.selectList[index].change;
+            console.log(bool);
+            angular.forEach(vm.selectList[index].nodes, function (item) {
+                item.use = bool;
+            })
+        };
+        vm.changeSubModule = function (status, index) {
+            var arr = [];
+            angular.forEach(vm.selectList[index].nodes, function (item) {
+                arr.push(item.use);
+            });
+            function check(changes) {
+                return changes == true;
+            }
+            if (arr.some(check) == true) {
+                vm.selectList[index].change = true;
+            } else {
+                vm.selectList[index].change = status;
+            }
 
 
-    });
+
+        };
+
+
+    }

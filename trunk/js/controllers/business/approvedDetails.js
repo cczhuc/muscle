@@ -16,15 +16,16 @@ angular.module("admin").controller('ApprovedDetailsCtrl',["$rootScope","$state",
         vm.refuse ={};
         vm.check = function () {
             $rootScope.approvedCheck(vm.refuse,function () {
-                console.log(vm.refuse);
                 // 发送请求取消认证变态并删除信息
-                portService.Approvedcheck(vm.data.id,vm.refuse).then(function (res) {
-                    if (res.data.code==0) {
-                        if(vm.refuse.checkStatu==1) {
+                portService.cancelApproved(vm.data.id,vm.refuse).then(function (res) {
+                    if (res.data.code===0) {
+                        if(vm.refuse.status==2) {
                             $rootScope.alert("审核通过");
+                            $state.go($state.current, {}, {reload: true});
                         }
-                        else {
+                        else if(vm.refuse.status==3) {
                             $rootScope.alert("审核拒绝");
+                            $state.go($state.current, {}, {reload: true});
                         }
                     }
                     else {

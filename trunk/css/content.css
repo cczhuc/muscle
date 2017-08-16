@@ -83,3 +83,10 @@
     width: 80px;
   }
 }
+.middle {
+  vertical-align: middle;
+}
+.serviceUl {
+  margin: 0;
+  padding-left: 20px;
+}

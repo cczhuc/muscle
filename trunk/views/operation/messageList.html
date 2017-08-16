@@ -28,7 +28,7 @@
                     <div class="form-group">
                         <label class="control-label col-md-4 word-spacing-25">标&emsp;&emsp;题</label>
                         <div class="col-md-8">
-                            <input type="text" class="form-control">
+                            <input type="text" class="form-control" ng-model="vm.searchParams.title">
                         </div>
                     </div>
                 </div>
@@ -40,7 +40,7 @@
                     <div class="form-group">
                         <label class="control-label col-md-4 word-spacing-25">创&ensp;建&ensp;者</label>
                         <div class="col-md-8">
-                            <input type="text" class="form-control">
+                            <input type="text" class="form-control" ng-model="vm.searchParams.createByName">
                         </div>
                     </div>
                 </div>
@@ -50,8 +50,9 @@
                         <div class="col-md-8">
                             <select class="form-control" ng-model="vm.searchParams.status">
                                 <option value="">全部</option>
-                                <option value="2">已认证</option>
-                                <option value="1">未认证</option>
+                                <option value="0">已发送</option>
+                                <option value="1">草稿</option>
+                                <option value="2">即将发送</option>
                             </select>
                         </div>
                     </div>
@@ -60,10 +61,12 @@
                     <div class="form-group">
                         <label class="control-label col-md-4 word-spacing-25">人群类型</label>
                         <div class="col-md-8">
-                            <select class="form-control" ng-model="vm.searchParams.status">
+                            <select class="form-control" ng-model="vm.searchParams.personType">
                                 <option value="">全部</option>
-                                <option value="2">已认证</option>
-                                <option value="1">未认证</option>
+                                <option value="1">全部患者</option>
+                                <option value="2">全部医师</option>
+                                <option value="3">认证医师</option>
+                                <option value="4">未认证医师</option>
                             </select>
                         </div>
                     </div>
@@ -71,7 +74,7 @@
             </div>
             <div class="row pd-bottom-2">
                 <div class="col-md-4 pull-right text-right">
-                    <search params="vm.searchParams"></search>
+                    <search params="vm.searchParams" time-fix-arr="vm.timeFixArr"></search>
                 </div>
             </div>
         </div>
@@ -103,14 +106,14 @@
                 <tr ng-repeat="item in vm.message track by $index">
                     <td>{{item.id}}</td>
                     <td>{{item.title}}</td>
-                    <td>{{item.peoples|messagepeoplesStatusFilter}}</td>
+                    <td>{{item.personType|messagepeoplesStatusFilter}}</td>
                     <td>{{item.status|messageListStatusFilter}}</td>
-                    <td>{{item.createBy}}</td>
-                    <td>{{item.sendAt}}</td>
+                    <td>{{item.createByName}}</td>
+                    <td>{{item.pushAt|date:"yyyy-MM-dd HH:mm:ss"}}</td>
                     <td>
                         <a ng-class="{'visible':item.status=='2'}" type="button" class="btn btn-sm text-green unvisible" ng-click="vm.send()">立即发送</a>
-                        <a ng-class="{'visible':item.status!==0}" type="button" class="btn btn-sm unvisible">编辑</a>
-                        <a  type="button" class="btn btn-sm text-red" ng-click="vm.delete()">删除</a>
+                        <a ng-class="{'visible':item.status!==0}" type="button" class="btn btn-sm unvisible" ui-sref="field.messageEdit({id:vm.message[$index].id})">编辑</a>
+                        <a  type="button" class="btn btn-sm text-red" ng-click="vm.delete($index)">删除</a>
                     </td>
                 </tr>
             </tbody>

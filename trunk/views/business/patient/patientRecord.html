@@ -14,9 +14,10 @@
                     <div class="form-group">
                         <label class="control-label col-md-4 word-spacing-25">方案支付</label>
                         <div class="col-md-8">
-                            <select class="form-control" ng-model="vm.searchParams.transaction_type">
+                            <select class="form-control" ng-model="vm.searchParams.type">
                                 <option value="">全部</option>
-                                <option value="0">方案支付</option>
+                                <option value="0">方案购买</option>
+                                <!--<option value="1">提现</option>-->
                             </select>
                         </div>
                     </div>
@@ -25,10 +26,12 @@
                     <div class="form-group">
                         <label class="control-label col-md-4 word-spacing-25">交易状态</label>
                         <div class="col-md-8">
-                            <select class="form-control" ng-model="vm.searchParams.transaction_status">
+                            <select class="form-control" ng-model="vm.searchParams.status">
                                 <option value="">全部</option>
-                                <option value="0">成功</option>
-                                <option value="1">失败</option>
+                                <option value="-1">订单失效</option>
+                                <option value="0">付款失败</option>
+                                <option value="1">付款成功</option>
+                                <option value="2">待付款</option>
                             </select>
                         </div>
                     </div>
@@ -39,7 +42,7 @@
                     <div class="form-group">
                         <label class="control-label col-md-4">交易金额</label>
                         <div class="col-md-8">
-                            <input type="text" class="form-control" ng-model="vm.searchParams.minSum">
+                            <input type="text" class="form-control" ng-model="vm.searchParams.amountStart" numberic>
                         </div>
                     </div>
                 </div>
@@ -47,7 +50,7 @@
                     <div class="form-group">
                         <label class="control-label col-md-4 text-center ">—</label>
                         <div class="col-md-8">
-                            <input type="text" class="form-control" ng-model="vm.searchParams.maxSum">
+                            <input type="text" class="form-control" ng-model="vm.searchParams.amountEnd" numberic>
                         </div>
                     </div>
                 </div>
@@ -59,7 +62,7 @@
                         <div class="col-md-8">
                             <input type="text" class="form-control" size="20" bs-datepicker autoclose="true"
                                    data-date-format="yyyy-MM-dd" data-date-type="number"
-                                   ng-model="vm.searchParams.startAt">
+                                   ng-model="vm.searchParams.payStartAt" data-max-date="today">
                         </div>
                     </div>
                 </div>
@@ -69,14 +72,14 @@
                         <div class="col-md-8">
                             <input type="text" class="form-control" size="20" bs-datepicker autoclose="true"
                                    data-date-format="yyyy-MM-dd" data-date-type="number"
-                                   ng-model="vm.searchParams.endAt" >
+                                   ng-model="vm.searchParams.payEndAt" data-max-date="today">
                         </div>
                     </div>
                 </div>
             </div>
             <div class="row pd-bottom-2">
                 <div class="col-md-4 pull-right text-right">
-                    <search params="vm.searchParams"></search>
+                    <search params="vm.searchParams" time-fix-arr="vm.timeFixArr"></search>
                 </div>
             </div>
         </div>
@@ -84,7 +87,7 @@
 </div>
 <div class="panel panel-default">
     <div class="panel-heading">
-        <strong>{{vm.searchParams.name}}的订单记录</strong>
+        <strong>{{vm.user.name}}的订单记录</strong>
     </div>
     <div class="list-replace" ng-if="vm.patientRecord.length == 0">
         <div class="list-replace-text">暂无任何数据</div>
@@ -108,13 +111,13 @@
                         <!--<div >{{item.transaction_time|date:'yyyy-MM-dd'}}</div>-->
                         <!--<div >{{item.transaction_time|date:'HH:mm:ss'}}</div>-->
                     <!--</div>-->
-                    <div  class="divTableCell">{{item.transaction_time|date:'yyyy-MM-dd  HH:mm:ss'}}</div>
-                    <div  class="divTableCell">{{item.transaction_number}}</div>
+                    <div  class="divTableCell">{{item.payAt|date:'yyyy-MM-dd  HH:mm:ss'}}</div>
+                    <div  class="divTableCell">{{item.orderNo}}</div>
                     <div  class="divTableCell">{{item.product}}方案</div>
-                    <div  class="divTableCell">{{item.sum}}</div>
-                    <div  class="divTableCell">{{item.transaction_type|transactionTypeFilter}}</div>
-                    <div  class="divTableCell text-red" ng-class="{'text-green':item.transaction_status==0}">{{item.transaction_status|transactionStatusFilter}}</div>
-                    <div class="divTableCell">{{item.transaction_way|transactionWayFilter}}</div>
+                    <div  class="divTableCell">{{item.amount}}</div>
+                    <div  class="divTableCell">{{item.type|transactionTypeFilter}}</div>
+                    <div  class="divTableCell text-red" ng-class="{'text-green':item.status==1}">{{item.status|transactionStatusFilter}}</div>
+                    <div class="divTableCell">{{item.way|transactionWayFilter}}</div>
                 </div>
             </div>
         </div>

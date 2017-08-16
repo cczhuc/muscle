@@ -2,8 +2,37 @@
     <form class="form-horizontal">
         <div class="panel-body">
             <div class="row pd-bottom-20">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label class="control-label col-md-4 word-spacing-25">姓&emsp;&emsp;名</label>
+                        <div class="col-md-8">
+                            <input type="text" class="form-control" ng-model="vm.searchParams.name">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label class="control-label col-md-4 word-spacing-25">APP</label>
+                        <div class="col-md-8">
+                            <select class="form-control" ng-model="vm.searchParams.type">
+                                <option value="">全部</option>
+                                <option value="0">医师版</option>
+                                <option value="1">患者版</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label class="control-label col-md-4 word-spacing-25">手&ensp;机&ensp;号</label>
+                        <div class="col-md-8">
+                            <input type="text" class="form-control" ng-model="vm.searchParams.mobile">
+                        </div>
+                    </div>
+                </div>
 
-
+            </div>
+            <div class="row pd-bottom-20">
                 <div class="col-md-4">
                     <div class="form-group">
                         <label class="control-label col-md-4">提交日期</label>
@@ -25,37 +54,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4">
-                    <div class="form-group">
-                        <label class="control-label col-md-4 word-spacing-25">标&emsp;&emsp;题</label>
-                        <div class="col-md-8">
-                            <input type="text" class="form-control">
-                        </div>
-                    </div>
-                </div>
 
-            </div>
-            <div class="row pd-bottom-20">
-                <div class="col-md-4">
-                    <div class="form-group">
-                        <label class="control-label col-md-4 word-spacing-25">姓&emsp;&emsp;名</label>
-                        <div class="col-md-8">
-                            <input type="text" class="form-control">
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="form-group">
-                        <label class="control-label col-md-4 word-spacing-25">APP</label>
-                        <div class="col-md-8">
-                            <select class="form-control" ng-model="vm.searchParams.status">
-                                <option value="">全部</option>
-                                <option value="2">已认证</option>
-                                <option value="1">未认证</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
             </div>
             <div class="row pd-bottom-2">
                 <div class="col-md-4 pull-right text-right">
@@ -68,11 +67,6 @@
 <div class="panel panel-default">
     <div class="panel-heading">
         <strong>意见反馈</strong>
-        <div class="btn-group pull-right">
-            <button class="btn btn-primary btn-xs" ui-sref="field.opinionDetails" ui-sref-opts="{reload:true}" href="#/messageEdit">
-                <i class="fa fa-plus-square fa-fw"></i>新增
-            </button>
-        </div>
     </div>
     <div class="panel-body table-responsive">
         <table class="table table-striped add-table-border">
@@ -87,15 +81,15 @@
                 </tr>
             </thead>
             <tbody>
-                <tr ng-repeat="item in vm.opinion track by $index">
+                <tr ng-repeat="item in vm.data track by $index">
                     <td>{{item.id}}</td>
-                    <td>{{item.phone}}</td>
+                    <td>{{item.mobile}}</td>
                     <td>{{item.name}}</td>
-                    <td>{{item.APP|appVersionFilter}}</td>
-                    <td>{{item.commitAt}}</td>
+                    <td>{{item.type|appVersionFilter}}</td>
+                    <td>{{item.createAt|date:"yyyy-MM-dd HH:mm:ss"}}</td>
                     <td>
-                        <a  type="button" class="btn btn-sm">编辑</a>
-                        <a  type="button" class="btn btn-sm text-red">删除</a>
+                        <a  type="button" class="btn btn-sm" ui-sref="field.opinionDetails({id:vm.data[$index].id})">查看</a>
+                        <a  type="button" class="btn btn-sm text-red" ng-click="vm.delete($index)">删除</a>
                     </td>
                 </tr>
             </tbody>

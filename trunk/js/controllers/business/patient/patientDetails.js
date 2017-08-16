@@ -3,12 +3,10 @@ angular.module('admin').controller('PatientDetailsCtrl',['$rootScope','$state','
         var vm = this;
         vm.Params = $state.params;
         vm.phoneModifyFlag = true; //手机号码ng-disable的flag标志位
-        portService.getDoctorDetails().then(function (res){
+        portService.getPatientDetails(vm.Params.id).then(function (res){
             if(res.data.code === 0) {
-                vm.doctorDetail = res.data.data;
-                vm.user = vm.doctorDetail.user;
+                vm.user = res.data.data;
                 vm.MobileCopy =  vm.user.mobile; //复制一份手机号码，用于修改手机号时，点击取消按钮的还原
-                console.info(res.data.data)
             } else {
                 $rootScope.alert(res.data.message);
             }
@@ -27,21 +25,25 @@ angular.module('admin').controller('PatientDetailsCtrl',['$rootScope','$state','
         };
 
         vm.savelModifyPhone = function() {
+            if (vm.user.mobile.length != 11) {
+                $rootScope.alert("手机号长度错误");
+                return;
+            }
+            else {
+                $rootScope.operationConfirm("保存修改个人信息", "确认保存？",function () {
+                    vm.phoneModifyFlag = true;
+                    portService.changeUserMobile(vm.user.id,vm.user.mobile).then(function(res) {
+                        if(res.data.code === 0){
+                            $state.go($state.current, {}, {reload: true});
+                            $rootScope.alert("保存成功", function () {})
+                        }
+                        else {
+                            $rootScope.alert(res.data.message);
+                        }
+                    })
 
-            $rootScope.operationConfirm("保存修改个人信息", "确认保存？",function () {
-                vm.phoneModifyFlag = true;
-                portService.changeUserMobile(vm.user.id,vm.user.mobile).then(function(res) {
-                    if(res.data.code === 0){
-                        $state.go($state.current, {}, {reload: true});
-                        $rootScope.alert("保存成功", function () {})
-                    }
-                    else {
-                        $rootScope.alert(res.data.message);
-                    }
-                })
-
-            });
+                });
+            }
         };
-
     }
 ]);

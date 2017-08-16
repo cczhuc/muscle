@@ -8,37 +8,31 @@
         .module('admin')
         .controller('ParameterSettingCtrl', ParameterSettingCtrl);
 
-    ParameterSettingCtrl.$inject = ['$rootScope','$filter','portService'];
+    ParameterSettingCtrl.$inject = ['$rootScope','$filter','portService','$state'];
 
     /* @ngInject */
-    function ParameterSettingCtrl($rootScope,$filter,portService){
+    function ParameterSettingCtrl($rootScope,$filter,portService,$state){
         var vm = this;
         vm.title = 'ParameterSettingCtrl';
 
-        activate();
 
         ////////////////
-
+        vm.searchParams = $state.params;
+        console.log($state.params);
+        vm.timeFixArr = ['endAt'];
+        vm.searchParams.startAt = parseInt(vm.searchParams.startAt) || undefined;
+        vm.searchParams.endAt = parseInt(vm.searchParams.endAt) || undefined;
         function activate(){
-            // code
+            portService.getParamList(vm.searchParams).then(function(res){
+                if(res.data.code === 0){
+                    vm.total = res.data.total;
+                    vm.data = res.data.data;
+                }else{
+                    $rootScope.alert(res.data.message);
+                }
+            });
         }
-        vm.params = 2;
-        vm.currentValue = $filter('number')(vm.params,2);
-        vm.restore = function(){
-            vm.currentValue = $filter('number')(vm.params,2);
-        };
-        vm.save = function(){
-            $rootScope.operationConfirm('', '确认保存修改？', function(){
-                portService.putParam(vm.currentValue).then(function(res){
-                    if(res.code === 0){
-                        $rootScope.alert(res.message);
-                        $rootScope.alert('保存成功');
-                    }else {
-                        $rootScope.alert(res.message);
-                    }
-                })
-            })
-        }
+        activate();
     }
 
 })();
