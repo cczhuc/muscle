@@ -3,7 +3,6 @@ angular.module('admin').controller('DoctorDetailsCtrl', ['$rootScope', '$state',
         var vm = this;
         vm.params = $state.params;
         vm.phoneModifyFlag = true; //手机号码ng-disable的flag标志位
-        console.log("vm.params.id", vm.params.id);
         portService.getDoctorDetails(vm.params.id).then(function (res) {
             if (res.data.code === 0) {
                 vm.data = res.data.data;
