@@ -1,7 +1,7 @@
 'use strict';
 angular.module('admin')
-    .controller('ManagerDetailCtrl', ['$state', '$scope', '$rootScope', 'commonUtil', 'managerService', 'roleService', '$window',ManagerDetailCtrl]);
-function ManagerDetailCtrl($state, $scope, $rootScope, commonUtil, managerService, roleService,$window) {
+    .controller('ManagerDetailCtrl', ['$state', '$scope',  'commonUtil', 'managerService', 'roleService', '$window',ManagerDetailCtrl]);
+function ManagerDetailCtrl($state, $scope,  commonUtil, managerService, roleService,$window) {
     var vm = $scope.vm = {};
     vm.id = $state.params.id;
     vm.name = $state.params.name;
@@ -54,7 +54,7 @@ function ManagerDetailCtrl($state, $scope, $rootScope, commonUtil, managerServic
 
         managerService.saveOrUpdateManager($state.params.id, $scope.vm.data, "field.manager");
 
-    }
+    };
     //返回之前的页面：优惠卡券查看管理员详情之用
     vm.cancelCard = function () {
         $window.history.back();

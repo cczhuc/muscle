@@ -8,10 +8,10 @@
         .module('admin')
         .controller('ParameterSettingCtrl', ParameterSettingCtrl);
 
-    ParameterSettingCtrl.$inject = ['$rootScope','$filter','portService','$state'];
+    ParameterSettingCtrl.$inject = ['$rootScope','portService','$state'];
 
     /* @ngInject */
-    function ParameterSettingCtrl($rootScope,$filter,portService,$state){
+    function ParameterSettingCtrl($rootScope,portService,$state){
         var vm = this;
         vm.title = 'ParameterSettingCtrl';
 

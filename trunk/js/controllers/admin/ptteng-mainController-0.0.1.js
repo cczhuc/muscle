@@ -1,7 +1,7 @@
 'use strict';
 angular.module('admin',['ui.sortable'])
-    .controller('MainCtrl', ['$scope', '$rootScope', '$state',MainCtrl]);
-        function MainCtrl($scope, $rootScope, $state) {
+    .controller('MainCtrl', ['$scope', '$rootScope',MainCtrl]);
+        function MainCtrl($scope, $rootScope) {
         // 是否登录检测，否则跳转到登录页
         // if (!$rootScope.isLogin()) {
         //     $rootScope.alert("您还未登录", function() {

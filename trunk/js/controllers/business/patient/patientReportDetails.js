@@ -1,4 +1,4 @@
-
+// 这次不demo，未做完
 angular.module('admin').controller('PatientReportDetailsCtrl',['$rootScope','$state','$http','portService',
     function ($rootScope,$state,$http,portService) {
         var vm = this;

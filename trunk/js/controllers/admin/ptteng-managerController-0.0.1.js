@@ -1,7 +1,7 @@
 'use strict';
 angular.module('admin')
-    .controller('ManagerCtrl', ['$state', '$scope', '$rootScope', 'commonUtil', 'managerService','roleService',ManagerCtrl]);
-        function ManagerCtrl($state, $scope, $rootScope, commonUtil, managerService,roleService) {
+    .controller('ManagerCtrl', ['$scope', '$rootScope', 'commonUtil', 'managerService','roleService',ManagerCtrl]);
+        function ManagerCtrl( $scope, $rootScope, commonUtil, managerService,roleService) {
         var vm = $scope.vm = {};
         $scope.rid_role={};
         vm.roleList=[];

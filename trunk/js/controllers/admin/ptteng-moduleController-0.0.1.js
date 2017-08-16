@@ -1,7 +1,7 @@
 'use strict';
 angular.module('admin')
-    .controller('ModuleCtrl', ['$state', '$scope', '$rootScope', 'commonUtil', 'moduleService', 'roleService',ModuleCtrl]);
-        function ModuleCtrl($state, $scope, $rootScope, commonUtil, moduleService, roleService) {
+    .controller('ModuleCtrl', [ '$scope', '$rootScope', 'commonUtil', 'moduleService' ,ModuleCtrl]);
+        function ModuleCtrl( $scope, $rootScope, commonUtil, moduleService) {
         var vm = $scope.vm = {};
         moduleService.getModuleList().then(function (res) {
             if (res.data.code == 0) {
