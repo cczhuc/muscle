@@ -9,7 +9,6 @@ angular.module('admin').controller('DoctorDetailsCtrl', ['$rootScope', '$state',
                 vm.user = res.data.data.user;
                 vm.hospital = res.data.data.hospital;
                 vm.MobileCopy = vm.user.mobile; //复制一份手机号码，用于修改手机号时，点击取消按钮的还原
-                console.info(res.data.data)
             } else {
                 $rootScope.alert(res.data.message);
             }
