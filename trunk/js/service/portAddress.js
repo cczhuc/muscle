@@ -111,9 +111,6 @@ angular.module("admin").factory("address",function ($state,$http){
         contentList_url:function(){
             return "/a/u/article/search"
         },
-        // contentRank_url:function(rank){
-        //     return "/a/u/content/rank"+rank
-        // },
         articleSort_url:function(){
             return "/a/u/article/sort"
         },
