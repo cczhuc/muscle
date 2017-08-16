@@ -44,7 +44,6 @@ angular.module('admin').controller('PatientListCtrl', ['$rootScope', '$scope', '
             portService.getPatientList(vm.tempParams).then(function (res) {
                 if (res.data.code === 0) {
                     vm.userList = res.data.data.userList;
-
                     vm.total = res.data.total;
                 } else {
                     $rootScope.alert(res.data.message);
@@ -87,7 +86,6 @@ angular.module('admin').controller('PatientListCtrl', ['$rootScope', '$scope', '
         vm.refuse = {}; //拒绝理由，对应的传参是refuse的引用
         vm.cancelApproved = function (id) {
             $rootScope.cancleApproved("取消实名将删除用户身份及银行卡信息", "确认取消？", vm.refuse, function () {
-
                 // 发送请求取消认证变态并删除信息
                 portService.cancelApproved(id).then(function (res) {
                     if (res.data.code == 0) {

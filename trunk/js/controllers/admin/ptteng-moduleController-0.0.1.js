@@ -4,7 +4,6 @@ angular.module('admin')
         function ModuleCtrl($state, $scope, $rootScope, commonUtil, moduleService, roleService) {
         var vm = $scope.vm = {};
         moduleService.getModuleList().then(function (res) {
-            console.log(res);
             if (res.data.code == 0) {
 
                 vm.next = res.data.data.next;

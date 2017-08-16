@@ -33,7 +33,6 @@ angular.module('admin').controller('TransactionDetailsCtrl',['$rootScope','$stat
             if(res.data.code === 0) {
                 vm.transactionDetails = res.data.data;
                 vm.total = vm.transactionDetails.total;
-                console.log(vm.transactionDetails)
             } else {
                 $rootScope.alert(res.data.message);
             }

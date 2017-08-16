@@ -25,7 +25,6 @@ angular.module('admin').controller('DiagnosisRecordCtrl',['$rootScope','$state',
 
                 vm.programRelationList = res.data.data.program;
                 vm.patient = res.data.data.patientList;
-                console.log(" vm.patient", res.data);
                 vm.total = res.data.data.total;
             } else {
                 $rootScope.alert(res.data.message);
