@@ -15,8 +15,6 @@
         var vm = this;
         vm.title = 'ParameterSettingCtrl';
 
-
-        ////////////////
         vm.searchParams = $state.params;
 
         vm.timeFixArr = ['endAt'];
