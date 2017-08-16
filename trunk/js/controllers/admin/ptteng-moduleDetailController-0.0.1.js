@@ -8,7 +8,6 @@ angular.module('admin')
         if (vm.id) {
             moduleService.getModule(vm.id).then(function(res) {
                 if (res.data.code == 0) {
-                    console.log(res.data.data.module)
                     vm.data = res.data.data.module;
                 }else{
                     commonUtil.showErrMsg(res);

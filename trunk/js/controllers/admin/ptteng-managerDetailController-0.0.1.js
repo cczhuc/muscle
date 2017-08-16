@@ -21,8 +21,6 @@ function ManagerDetailCtrl($state, $scope, $rootScope, commonUtil, managerServic
 
                 if (res.data.code == 0) {
                     vm.roleList = res.data.data.roleList;
-                    console.log(vm.roleList)
-
 
                 } else {
                     commonUtil.showErrMsg(res);

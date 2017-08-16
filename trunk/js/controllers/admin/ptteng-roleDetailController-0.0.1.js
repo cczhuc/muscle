@@ -99,7 +99,6 @@ angular.module('admin')
 
                             })
                         } else {
-                            // create
                             console.log("create new role");
                         }
                     } else {
@@ -123,16 +122,16 @@ angular.module('admin')
                 name: vm.name,
                 permissionsSet: selectedToArray()
             };
-            console.log(vm.data);
+            // console.log(vm.data);
             roleService.saveOrUpdateRole(vm.id, vm.data, "field.role");
 
 
         };
 
         vm.changeModule = function (index) {
-            console.log(index);
+            // console.log(index);
             var bool = vm.selectList[index].change;
-            console.log(bool);
+            // console.log(bool);
             angular.forEach(vm.selectList[index].nodes, function (item) {
                 item.use = bool;
             })
