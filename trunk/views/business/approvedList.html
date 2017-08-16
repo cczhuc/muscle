@@ -91,7 +91,10 @@
                     <div  class="divTableCell">{{item.name}}</div>
                     <div  class="divTableCell">{{item.qualifications}}</div>
                     <div class="text-red divTableCell" ng-class="{'text-green':item.status==2}">{{item.status|approvedListStatusFilter}}</div>
-                    <div class="divTableCell">{{item.refuse|approvedListReasonFilter}}</div>
+                    <div class="divTableCell">
+                        <span ng-if="item.status!=2">{{item.refuse|approvedListReasonFilter}}</span>
+                        <span ng-if="item.status==2">—</span>
+                    </div>
                     <div  class="divTableCell" >
                         <span>
                             <a  type="button" class="btn btn-sm" ng-if="item.status==2" ui-sref="field.doctorDetails({id:item.id})">医师详情</a>

@@ -55,9 +55,9 @@
         $scope.cannotSort = false;
         $scope.sortableOptions = {
             // 数据有变化
-            update : function(e, ui){
+            update: function(e, ui) {
                 //需要使用延时方法，否则会输出原始数据的顺序，可能是BUG？
-                $timeout(function(){
+                $timeout(function() {
                     vm.resArr = [];
                     for(var y = 0; y < vm.content.length; y++){
                         vm.resArr.push(vm.content[y].id);
@@ -89,15 +89,9 @@
                 });
             })
         };
-        vm.delete = function($index){
+        vm.delete = function(){
             $rootScope.operationConfirm('删除将自动下线此内容', '确认删除？', function(){
-                portService.deleteContent(vm.content[$index].id).then(function(res){
-                    if(res.data.code == 0){
-                        $state.go($state.current, vm.searchParams, {reload : true})
-                    } else {
-                        $rootScope.alert(res.data.message)
-                    }
-                })
+                $rootScope.alert('删除成功');
             })
         };
     }

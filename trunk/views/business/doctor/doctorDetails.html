@@ -39,7 +39,7 @@
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label class="control-label col-md-4 word-spacing-25 pd-right-10">
-                                    <span class="text-color-red"  ng-if="vm.user.mobile.length != 11">
+                                    <span class="text-color-red" ng-if="vm.user.mobile.length != 11">
                                         *&emsp;</span
                                     >手机号
                                 </label>
@@ -127,23 +127,19 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row ">
+                    <div class="row">
                         <label class="control-label col-md-2 word-spacing-25 pd-right-10"><span>医师执业证书</span></label>
                         <div class="col-md-5">
                             <div class="form-group">
-                                <div style="height:240px; position:relative; padding:15px; margin:0 15px;">
-                                    <img
-                                            style="min-height:80%; max-width:100%; max-height: 100%; position:absolute; left:0; right:0; bottom:0; top:0; margin:auto;"
-                                            ng-src="{{vm.data.certificate}}" alt="医师资格证照片">
+                                <div class="approvedImageDiv">
+                                    <img class="approvedImage" ng-src="{{vm.data.certificate}}" alt="医师资格证照片">
                                 </div>
                             </div>
                         </div>
                         <div class="col-md-5">
                             <div class="form-group">
-                                <div style="height:240px; position:relative; padding:15px; margin:0 15px;">
-                                    <img
-                                            style="min-height:80%; max-width:100%; max-height: 100%; position:absolute; left:0; right:0; bottom:0; top:0; margin:auto;"
-                                            ng-src="{{vm.data.certificateBack}}" alt="医师资格证照片背面">
+                                <div class="approvedImageDiv">
+                                    <img class="approvedImage" ng-src="{{vm.data.certificateBack}}" alt="医师资格证照片背面">
                                 </div>
                             </div>
                         </div>

@@ -89,12 +89,10 @@
             <div class="panel-heading">
                 <strong>{{vm.searchParams.hName}}医师列表</strong>
             </div>
-
-            <div class="list-replace" ng-if="vm.doctorList.length == 0">
+            <div class="list-replace" ng-if="vm.doctor.length == 0">
                 <div class="list-replace-text">暂无任何数据</div>
             </div>
-
-            <div class="panel-body panel-body-noMax" ng-if="vm.doctorList.length != 0">
+            <div class="panel-body panel-body-noMax" ng-if="vm.doctor.length != 0">
                 <div class="divTable">
                     <div class="divTableHeading">
                         <div class="divTableHead">ID</div>

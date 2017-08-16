@@ -25,7 +25,6 @@ angular.module("admin").controller('ApprovedListCtrl',["$rootScope","$state","$h
                     Object.assign(res.data.data.doctorList[i],res.data.data.userList[res.data.data.doctorList[i].id])
                 }
                 vm.approvedList = res.data.data.doctorList;
-                console.log(vm.approvedList);
                 vm.total = res.data.total;
             }
             else {
