@@ -7,6 +7,9 @@ angular.module("admin").controller('ApprovedDetailsCtrl',["$rootScope","$state",
         portService.getApprovedDetails(vm.data.id).then(function (res) {
             if (res.data.code===0) {
                 vm.data = res.data.data;
+                if (vm.data.status==2) {
+                    vm.data.refuse ="";
+                }
             }
             else {
                 $rootScope.alert(res.data.message)

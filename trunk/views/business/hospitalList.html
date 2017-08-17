@@ -107,7 +107,7 @@
                     <div  class="divTableCell">{{item.city}}</div>
                     <div  class="divTableCell">{{item.grade|hospitalGradeFilter}}</div>
                     <div  class="divTableCell">{{item.total}}</div>
-                    <div  class="divTableCell" style="max-lines: 2;max-width: 204px">{{item.address}}</div>
+                    <div  class="divTableCell line-2" >{{item.address}}</div>
                     <div  class="divTableCell text-red" ng-class="{'text-green':item.status==0}">{{item.status|hospitalListStatusFilter}}</div>
                     <div  class="divTableCell">
                         <a  type="button" class="btn btn-sm text-red" ng-class="{'text-green':item.status==1}"

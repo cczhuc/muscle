@@ -1023,3 +1023,15 @@ input[type="number"] {
     color: #ffffff;
     cursor: pointer;
 }
+
+/*限制div中的行数和每行字数*/
+.line-2 {
+    max-width:160px;
+    /*下面的display未生效，所以line-clamp属性也未生效，主要靠max-weidth来实现
+    实现这种最好还是用js实现
+    */
+    display: -webkit-box;
+    -webkit-line-clamp:2;
+    -webkit-box-orient:vertical;
+    overflow:hidden;
+}
