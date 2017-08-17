@@ -1,14 +1,13 @@
 'use strict';
 angular.module('admin')
-    .controller('ModuleDetailCtrl',['$state','$scope', '$rootScope','commonUtil','moduleService',ModuleDetailCtrl]);
-        function ModuleDetailCtrl($state,$scope, $rootScope,commonUtil,moduleService) {
+    .controller('ModuleDetailCtrl',['$state','$scope', 'commonUtil','moduleService',ModuleDetailCtrl]);
+        function ModuleDetailCtrl($state,$scope, commonUtil,moduleService) {
         var vm = $scope.vm = {};
         vm.id = $state.params.id;
 
         if (vm.id) {
             moduleService.getModule(vm.id).then(function(res) {
                 if (res.data.code == 0) {
-                    console.log(res.data.data.module)
                     vm.data = res.data.data.module;
                 }else{
                     commonUtil.showErrMsg(res);

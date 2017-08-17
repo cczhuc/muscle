@@ -1,7 +1,7 @@
 'use strict';
 angular.module('admin')
-    .controller('PwdCtrl', ['$state','$scope', '$rootScope','commonUtil','pwdService',PwdCtrl]);
-        function PwdCtrl($state,$scope, $rootScope,commonUtil,pwdService) {
+    .controller('PwdCtrl', ['$scope', 'commonUtil','pwdService',PwdCtrl]);
+        function PwdCtrl($scope, commonUtil,pwdService) {
         var vm = $scope.vm = {};
 
         vm.save = function() {

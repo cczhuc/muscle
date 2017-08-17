@@ -8,17 +8,15 @@
         .module('admin')
         .controller('ParameterSettingCtrl', ParameterSettingCtrl);
 
-    ParameterSettingCtrl.$inject = ['$rootScope','$filter','portService','$state'];
+    ParameterSettingCtrl.$inject = ['$rootScope','portService','$state'];
 
     /* @ngInject */
-    function ParameterSettingCtrl($rootScope,$filter,portService,$state){
+    function ParameterSettingCtrl($rootScope,portService,$state){
         var vm = this;
         vm.title = 'ParameterSettingCtrl';
 
-
-        ////////////////
         vm.searchParams = $state.params;
-        console.log($state.params);
+
         vm.timeFixArr = ['endAt'];
         vm.searchParams.startAt = parseInt(vm.searchParams.startAt) || undefined;
         vm.searchParams.endAt = parseInt(vm.searchParams.endAt) || undefined;

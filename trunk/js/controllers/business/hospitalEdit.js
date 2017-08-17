@@ -1,6 +1,6 @@
 angular.module("admin").controller('HospitalEditCtrl',["$rootScope","$state","$http","portService",
-"hospitalGrade","commonUtil","FileUploader","uploadService","$timeout",
-    function ($rootScope,$state,$http,portService,hospitalGrade,commonUtil,FileUploader,uploadService,$timeout) {
+"hospitalGrade","commonUtil","FileUploader","uploadService",
+    function ($rootScope,$state,$http,portService,hospitalGrade,commonUtil,FileUploader,uploadService) {
         var vm = this;
 
         var data ={size:1000};

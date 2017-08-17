@@ -34,7 +34,6 @@
                 }
                 vm.data.type = 1;
                 vm.data.publishAt = vm.publishDate.valueOf() + vm.publishTime.valueOf() + 28800000;
-                console.log(vm.data.publishAt, vm.publishDate.valueOf(), vm.publishTime.valueOf(), vm.publishTime.valueOf() + 28800000)
             } else {
                 vm.data.type = 0;
                 delete vm.data.publishAt;
