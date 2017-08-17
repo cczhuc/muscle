@@ -90,7 +90,7 @@
                     <span class="rank4">操作</span>
                 </li>
                 <li ng-repeat="item in vm.content track by $index">
-                    <span class="rank1">{{item.id}}</span>
+                    <span class="rank1">{{$index+1}}</span>
                     <span class="rank3">{{item.title}}</span>
                     <span class="rank3">{{item.author}}</span>
                     <span class="rank2">{{item.status|contentListStatusFilter}}</span>
