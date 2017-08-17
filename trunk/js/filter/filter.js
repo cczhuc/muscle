@@ -17,7 +17,6 @@ angular.module('admin')
     //把毫秒转为年，用于根据出生日期时间戳算年龄
     .filter('ageFilter',["commonUtil",function (commonUtil) {
         return function(time) {
-            console.log("dqw",time);
             var age = parseInt(time/24/60/60/1000/365);
             return age;
         }
