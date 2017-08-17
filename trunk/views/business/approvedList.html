@@ -91,7 +91,7 @@
                     <div  class="divTableCell">{{item.name}}</div>
                     <div  class="divTableCell">{{item.qualifications}}</div>
                     <div class="text-red divTableCell" ng-class="{'text-green':item.status==2}">{{item.status|approvedListStatusFilter}}</div>
-                    <div class="divTableCell">
+                    <div class="divTableCell line-2">
                         <span ng-if="item.status!=2">{{item.refuse|approvedListReasonFilter}}</span>
                         <span ng-if="item.status==2">—</span>
                     </div>

@@ -148,10 +148,18 @@
                                 {{user.create|date:"yyyy-MM-dd"}}
                             </div>
                             <div class="divTableCell">{{user.mobile}}</div>
-                            <div class="divTableCell">{{user.name}}</div>
+                            <div class="divTableCell">
+                                {{user.name}}
+                                <span ng-if="!user.name">
+                                    —
+                                </span>
+                            </div>
                             <div class="divTableCell">
                                 <span ng-if="user.birth === 0 || user.birth">
                                     {{(vm.serviceTime - user.birth)|ageFilter}}
+                                </span>
+                                <span ng-if="user.birth !== 0 && !user.birth">
+                                    —
                                 </span>
                             </div>
                             <div class="divTableCell">

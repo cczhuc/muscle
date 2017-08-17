@@ -8,8 +8,9 @@
                 <div class="panel-heading">
                     <strong>个人信息</strong>
                 </div>
-                <div class="panel-body">
-                    <div class="row pd-bottom-20">
+                <!--认证的医师的布局-->
+                <div class="panel-body" ng-if='vm.data.status == 2'>
+                    <div  class="row pd-bottom-20" >
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label class="control-label col-md-4 word-spacing-25 pd-right-10">ID&emsp;&emsp;</label>
@@ -22,7 +23,7 @@
                             <div class="form-group">
                                 <label class="control-label col-md-4 word-spacing-25 pd-right-10">姓&emsp;&emsp;名</label>
                                 <div class="col-md-8">
-                                    <input type="text" class="form-control" ng-value="vm.user.name" disabled>
+                                    <input type="text" class="form-control" ng-value="vm.user.name ? vm.user.name : '未填写'" disabled>
                                 </div>
                             </div>
                         </div>
@@ -64,10 +65,8 @@
                             <div class="form-group">
                                 <label class="control-label col-md-4 word-spacing-25 pd-right-10">收&emsp;&emsp;入</label>
                                 <div class="col-md-8">
-                                    <input
-                                            type="text" class="form-control"
-                                            ng-value="vm.data.income + '&nbsp;' +
-                                            '(元)'" disabled>
+                                    <input type="text" class="form-control"
+                                            ng-value="vm.data.income + (vm.data.income?'&nbsp;(元)':'未填写')" disabled>
                                 </div>
                             </div>
                         </div>
@@ -90,7 +89,71 @@
                             <a class="btn btn-primary btn-margin margin-7 inline-block"
                                ui-sref="field.transactionDetails({did:vm.user.id})">交易明细</a>
                         </div>
-
+                    </div>
+                </div>
+                <!--未认证医师的布局-->
+                <div class="panel-body" ng-if='vm.data.status != 2'>
+                    <div  class="row pd-bottom-20" >
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label class="control-label col-md-4 word-spacing-25 pd-right-10">ID&emsp;&emsp;</label>
+                                <div class="col-md-8">
+                                    <input type="text" class="form-control" ng-value="vm.params.id" disabled>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label class="control-label col-md-4 word-spacing-25 pd-right-10">姓&emsp;&emsp;名</label>
+                                <div class="col-md-8">
+                                    <input type="text" class="form-control" ng-value="vm.user.name ? vm.user.name : '未填写'" disabled>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label class="control-label col-md-4 word-spacing-25 pd-right-10">注册时间</label>
+                                <div class="col-md-8">
+                                    <input type="text" class="form-control"
+                                           ng-value="vm.user.createAt|date:'yyyy-MM-dd'" disabled>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row pd-bottom-20">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label class="control-label col-md-4 word-spacing-25 pd-right-10">
+                                    <span class="text-color-red" ng-if="vm.user.mobile.length != 11">
+                                        *&emsp;</span
+                                    >手机号
+                                </label>
+                                <div class="phone-input-wrap">
+                                    <input numberic max-length="11" type="text" class="form-control phone-input"
+                                           ng-model="vm.user.mobile" ng-disabled="vm.phoneModifyFlag">
+                                    <div class="mobile-btn-group">
+                                        <button class="btn btn-warning  phone-btn" ng-show="vm.phoneModifyFlag"
+                                                ng-click="vm.modifyPhone()">修改
+                                        </button>
+                                        <button class="btn btn-danger  phone-btn" ng-show="!vm.phoneModifyFlag"
+                                                ng-click="vm.cancelModifyPhone()">取消
+                                        </button>
+                                        <button class="btn btn-success  phone-btn" ng-show="!vm.phoneModifyFlag"
+                                                ng-click="vm.saveModifyPhone()">保存
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label class="control-label col-md-4 word-spacing-25 pd-right-10">收&emsp;&emsp;入</label>
+                                <div class="col-md-8">
+                                    <input type="text" class="form-control"
+                                           ng-value="vm.data.income + (vm.data.income?'&nbsp;(元)':'未填写')" disabled>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

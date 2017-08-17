@@ -24,17 +24,18 @@ angular.module('admin').controller('PatientListCtrl', ['$rootScope', '$scope', '
         commonUtil.getServerTime().then(function (res) {
             vm.serviceTime = res;
             //对年龄的处理
-            vm.tempParams.ageFrom = parseInt(vm.tempParams.ageFrom) || undefined;
-            vm.tempParams.ageTo = parseInt(vm.tempParams.ageTo) || undefined;
+            //年龄获取的是字符串，需要转换成整数，同时区分0和undefined
+            vm.tempParams.ageFrom =(parseInt(vm.tempParams.ageFrom) === 0 || vm.tempParams.ageFrom)? parseInt(vm.tempParams.ageFrom) : undefined;
+            vm.tempParams.ageTo =(parseInt(vm.tempParams.ageTo) === 0 || vm.tempParams.ageTo)? parseInt(vm.tempParams.ageTo) : undefined;
             if (vm.tempParams.ageFrom > vm.tempParams.ageTo) {
                 var tempAge = vm.tempParams.ageFrom;
                 vm.tempParams.ageFrom = vm.tempParams.ageTo;
                 vm.tempParams.ageTo = tempAge;
             }
-            if (vm.tempParams.ageFrom) {
+            if (vm.tempParams.ageFrom === 0 || vm.tempParams.ageFrom) {
                 vm.tempParams.ageFrom = vm.serviceTime - vm.tempParams.ageFrom * 365 * 24 * 60 * 60 * 1000;
             }
-            if (vm.tempParams.ageTo) {
+            if (vm.tempParams.ageTo === 0 || vm.tempParams.ageTo) {
                 vm.tempParams.ageTo = vm.serviceTime - ((vm.tempParams.ageTo + 1) * 365 * 24 * 60 * 60 * 1000 - 1);
             }
             var agetemp = vm.tempParams.ageFrom;
