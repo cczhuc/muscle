@@ -48,7 +48,7 @@ angular.module("admin").factory("address",function ($state,$http){
         upload_url: function () {
             return "/a/u/img/thumb"
         },
-        // 立即上线、存为草稿
+        // 新增医院、编辑医院
         editHospital_url: function(id,data) {
             var params = $.param(data);
             return "/a/u/hospital/"+id+"?"+params
