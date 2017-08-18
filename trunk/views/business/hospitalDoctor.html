@@ -112,7 +112,12 @@
                             <div class="divTableCell">{{doctor.mobile}}</div>
                             <div class="divTableCell">{{doctor.name}}</div>
                             <div class="divTableCell">{{doctor.position}}</div>
-                            <div class="divTableCell">{{doctor.income}}</div>
+                            <div class="divTableCell">
+                                {{doctor.income}}
+                                <span ng-if="!doctor.income">
+                                    —
+                                </span>
+                            </div>
                             <div class="divTableCell" ng-class="{'text-green':doctor.accountStatus==0}">{{doctor.accountStatus|freezedStatusFilter}}</div>
 
                             <div class="divTableCell company-tableCell-fix">
