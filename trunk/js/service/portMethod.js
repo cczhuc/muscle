@@ -87,7 +87,7 @@ angular.module("admin")
         getHospitalDetails: function (id) {
             return $http.get(address.hospitalDetails_url(id))
         },
-        // 立即上线、存为草稿
+        // 新增医院、编辑医院
         editHospital: function (id,data) {
             return $http.put(address.editHospital_url(id,data))
         },

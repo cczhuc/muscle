@@ -55,7 +55,7 @@ angular.module("admin").controller('HospitalEditCtrl',["$rootScope","$state","$h
                     });
                 });
             };
-            // 存为草稿
+            // 暂不上线
             vm.saveHospital = function () {
                 vm.data.status=1;
                 //省市拆分
@@ -98,7 +98,7 @@ angular.module("admin").controller('HospitalEditCtrl',["$rootScope","$state","$h
                     });
                 });
             };
-            // 存为草稿
+            // 暂不上线
             vm.saveHospital = function () {
                 vm.data.status=1;
                 //省市拆分

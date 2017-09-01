@@ -122,7 +122,7 @@
     <div class="col-lg-12">
         <div class="panel panel-default">
             <div class="panel-heading">
-                <strong>用户列表</strong>
+                <strong>用户列表<span style="font-weight: 500;">—</span>病人</strong>
             </div>
 
             <div class="list-replace" ng-if="vm.userList.length == 0">
@@ -162,7 +162,8 @@
                                     —
                                 </span>
                             </div>
-                            <div class="divTableCell">
+                            <div class="divTableCell"
+                                 ng-class="{'text-red':user.accountStatus == 1,'text-green':user.accountStatus == 0}">
                                 {{user.accountStatus|freezedStatusFilter}}
                             </div>
 
