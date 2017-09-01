@@ -13,13 +13,13 @@
             <div class="form-group">
                 <label class="col-md-2 control-label word-spacing-25">作者</label>
                 <div class="col-md-8">
-                    <input class="form-control" type="text" name="content" ng-model="vm.data.author" maxlength="14" ng-class="{'error':myform.content.$invalid && myform.content.$touched}" required>
+                    <input class="form-control" type="text" name="content" ng-model="vm.data.author" maxlength="14" ng-class="{'error':myform.content.$invalid && myform.content.$touched}" >
                 </div>
             </div>
             <div class="form-group">
                 <label class="col-md-2 control-label word-spacing-25">URL</label>
                 <div class="col-md-8">
-                    <input class="form-control" type="text" name="content" ng-model="vm.data.url" maxlength="500" ng-class="{'error':myform.content.$invalid && myform.content.$touched}" required>
+                    <input class="form-control" type="text" name="content" ng-model="vm.data.url" maxlength="500" ng-class="{'error':myform.content.$invalid && myform.content.$touched}" >
                 </div>
             </div>
             <div class="form-group">
@@ -89,13 +89,13 @@
             <div class="form-group">
                 <label class="col-md-2 control-label word-spacing-25">摘要</label>
                 <div class="col-md-8">
-                    <textarea class="form-control" type="text" ng-model="vm.data.summary" maxlength="25" name="content" ng-class="{'error':myform.content.$invalid && myform.content.$touched}" required></textarea>
+                    <textarea class="form-control" type="text" ng-model="vm.data.summary" maxlength="25" name="content" ng-class="{'error':myform.content.$invalid && myform.content.$touched}" ></textarea>
                 </div>
             </div>
             <div class="form-group" ng-if="vm.data.type!=='4'">
                 <label class="col-md-2 control-label">正文</label>
                 <div class="col-md-8 editor">
-                    <script type="text/html" ng-model="vm.data.content" required meta-umeditor
+                    <script type="text/html" ng-model="vm.data.content"  meta-umeditor
                             emit-name="emitCreateDaily" id="myEditor"
                             meta-umeditor-placeholder='编辑日报内容...' meta-umeditor-config="vm.dailyConfig"></script>
 

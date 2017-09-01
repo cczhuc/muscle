@@ -32,12 +32,15 @@
                 if(vm.publishDate === undefined || vm.publishTime === undefined){
                     $rootScope.alert('请选择发送时间')
                 }
-                vm.data.type = 1;
-                vm.data.publishAt = vm.publishDate.valueOf() + vm.publishTime.valueOf() + 28800000;
+                vm.data.type = 2;
+                vm.data.pushAt = vm.publishDate.valueOf() + vm.publishTime.valueOf() + 28800000;
             } else {
-                vm.data.type = 0;
-                delete vm.data.publishAt;
+                vm.data.type = 2;
+                delete vm.data.pushAt;
             }
+            if(vm.data.notice_status == true&& vm.data.notice_status!==0){
+                vm.data.notice_status = 1
+            }else(vm.data.notice_status = 0);
             vm.data.status = status;
             if(vm.id==''){
                 newMessage();
@@ -50,7 +53,7 @@
             portService.postMessage(vm.data).then(function(res){
                 if(res.data.code === 0){
                     $rootScope.alert("发送成功");
-                    $state.go($state.current, {}, {reload : true});
+                    history.go(-1);
                 } else {
                     $rootScope.alert(res.data.message);
                 }
@@ -61,7 +64,7 @@
             portService.postMessage(vm.id,vm.data).then(function(res){
                 if(res.data.code === 0){
                     $rootScope.alert("发送成功");
-                    $state.go($state.current, {}, {reload : true});
+                    history.go(-1);
                 } else {
                     $rootScope.alert(res.data.message);
                 }
